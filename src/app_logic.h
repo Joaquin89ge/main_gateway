@@ -13,24 +13,27 @@
  *
  * Esta clase orquesta la interacción entre los diferentes módulos (identidad del nodo,
  * gestión de radio, protocolo de comunicación y adquisición de datos) para implementar
- * el comportamiento de un nodo sensor. Su rol principal es enviar datos y responder
- * a solicitudes de un Gateway.
+ * el comportamiento de un nodo sensor. Su rol principal es gateway por ende envia announchers
+ * solicita data y escucha hello.
  */
+
+#define MAX_NODES 250
+#define NUMERO_MUESTRAS_ATMOSFERICAS 8
+
 class AppLogic
 {
 private:
-    SensorManager getData;                      /**< @brief Referencia al objeto SensorManager para obtener datos de sensores. */
-    NodeIdentity nodeIdentity;                  /**< @brief Referencia al objeto NodeIdentity para gestionar la identidad del nodo. */
-    RadioManager radio;                         /**< @brief Referencia al objeto RadioManager para la comunicación por radio. */
-    uint8_t gatewayAddress;                     /**< @brief Dirección de red del Gateway con el que este sensor se comunica. */
-    uint8_t nodeID;                             /**< @brief Dirección de red del nodo. */
-    bool gatwayRegistred = false;               /**< @brief Flag que establece el registro de un getway por ende recepcion exitosa de un anunche. */
-    const unsigned long intervaloHello = 60000; /**< @brief Intervalo en milisegundos (60 segundo)*/
-    unsigned long temBuf = 0;                   // bufer guarda tiempo
+
+    NodeIdentity nodeIdentity;                      /**< @brief Referencia al objeto NodeIdentity para gestionar la identidad del nodo. */
+    RadioManager radio;                             /**< @brief Referencia al objeto RadioManager para la comunicación por radio. */
+    uint8_t gatewayAddress;                         /**< @brief Dirección de red del Gateway con el que este sensor se comunica. */
+    uint8_t nodeID[MAX_NODES];                      /**< @brief Direcciónes de red de nodos conocidos. */
+    const unsigned long intervaloAnnounce = 120000; /**< @brief Intervalo en milisegundos (120 segundo)*/
+    unsigned long temBuf = 0;                       // bufer guarda tiempo
 
     // implementar logica de envio y recepcion datos
 
-    void handleAnnounce(uint8_t *buf, uint8_t len, uint8_t from);
+    void sendAnnounce(uint8_t *buf, uint8_t len, uint8_t from);
 
     /**
      * @brief Envía un mensaje HELLO al Gateway.
@@ -38,26 +41,24 @@ private:
      * Este método es llamado por el nodo sensor al iniciar para anunciarse
      * a la red y al Gateway.
      */
-    void sendHello();
+    void handleHello();
 
-    void sendAtmosphericData();
-    void sendGroungGpsData();
+    void handleAtmosphericData();
+    void handleGroungGpsData();
 
-    // envia daros fragmentados por ende necesito vector string y ademas da tiempo bloqueante (delay()) al gatway para procesado de datos
-    bool sendFragmentData(const std::vector<String> &stringList);
-
-    void changeID(uint8_t *buf, uint8_t len);
+    void sendChangeID(uint8_t *buf, uint8_t len);
 
 public:
+    AtmosphericSample atmosSamples[NUMERO_MUESTRAS_ATMOSFERICAS]; // Ejemplo: array para 8 muestras
+    GroundSensor groundData;
+    GpsSensor gpsData;
     /**
      * @brief Constructor de la clase AppLogic para un nodo sensor.
      *
      * @param identity Referencia al objeto NodeIdentity para la gestión de la identidad del nodo.
      * @param radioMgr Referencia al objeto RadioManager para la comunicación por radio.
-     * @param data Referencia al objeto SensorManager para la adquisición de datos de sensores.
-     * @param gwAddress La dirección de red predefinida o conocida del Gateway.
      */
-    AppLogic(SensorManager data, NodeIdentity identity, RadioManager radioMgr);
+    AppLogic(NodeIdentity identity, RadioManager radioMgr);
 
     /**
      * @brief Inicia la lógica de la aplicación del nodo sensor.

@@ -5,6 +5,8 @@
 #include <Arduino.h>
 #include "protocol.h"
 
+
+
 class SensorManager
 {
 private:
