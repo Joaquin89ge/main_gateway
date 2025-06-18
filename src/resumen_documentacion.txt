@@ -1,0 +1,209 @@
+## Introducción y Estructura General
+
+Este firmware está organizado según principios SOLID y modularidad, facilitando su comprensión, mantenimiento y extensión. La aplicación principal corre sobre ESP8266 con módulo SX1278 usando la librería RadioHead RHMesh. Está dividida en cinco capas o módulos:
+
+1. **NodeIdentity**: gestión de la identidad única (MAC) y validación de clave compartida.
+2. **RadioManager**: abstracción del hardware LoRa (RH\_RF95) y del enrutador mesh (RHMesh).
+3. **Protocol**: definición de tipos de mensaje, serialización y parsing, ahora soportando payload JSON.
+4. **AppLogic**: lógica de aplicación, maneja estados y flujos de ANNOUNCE, HELLO, REQUEST\_DATA, DATA.
+5. **main.cpp**: punto de entrada, inicializa módulos y ejecuta el bucle principal.
+
+Cada módulo consiste en un archivo de cabecera (`.h`) que define su interfaz pública, y un archivo de implementación (`.cpp`) con la lógica interna.
+
+---
+
+## Módulos Detallados
+
+### 1. NodeIdentity
+
+* **Objetivo**: Proveer un identificador único (`nodeID`) y validar la legitimidad del gateway mediante una clave compartida de 4 bytes.
+
+#### NodeIdentity.h
+
+* **Clase**: `NodeIdentity`
+* **Métodos públicos**:
+
+  * `NodeIdentity(const uint8_t* sharedKey)`: constructor que lee el MAC y guarda la clave.
+  * `String getNodeID() const`: devuelve la MAC formateada.
+  * `bool validateKey(const uint8_t* receivedKey) const`: compara la clave recibida con la almacenada.
+  * `void printDebugInfo() const`: imprime en serie MAC y clave actual.
+
+#### NodeIdentity.cpp
+
+* **Constructor**: Llama a `WiFi.macAddress()`, almacena MAC en `nodeID` y copia los 4 bytes de clave.
+* **Métodos**:
+
+  * `getNodeID()`: devuelve `nodeID`.
+  * `validateKey()`: `memcmp` de las 4 bytes.
+  * `printDebugInfo()`: muestra en Serial la información interna para depuración.
+
+---
+
+### 2. RadioManager
+
+* **Objetivo**: Ocultar detalles de inicialización y uso de RH\_RF95 + RHMesh, exponiendo send/recv sencillos.
+
+#### RadioManager.h
+
+* **Clase**: `RadioManager`
+* **Constructor**: `RadioManager(uint8_t address)`, define la dirección lógica mesh.
+* **Métodos públicos**:
+
+  * `bool init()`: reinicia el SX1278, configura frecuencia, potencia y RHMesh.
+  * `bool sendMessage(uint8_t to, const uint8_t* data, uint8_t len)`: envía unicast/wait a un nodo.
+  * `bool recvMessage(uint8_t* buf, uint8_t* len, uint8_t* from)`: recibe con ACK.
+  * `void update()`: placeholder para tareas periódicas de radio.
+
+#### RadioManager.cpp
+
+* **init()**: controla pin de reset, llama a `manager.init()`, ajusta frecuencia (ej. 915 MHz) y potencia TX.
+* **sendMessage()**: `manager.sendtoWait(...)`, devuelve éxito/fracaso.
+* **recvMessage()**: `manager.recvfromAck(...)`, llena búfer y dirección origen.
+* **update()**: actualmente vacío, reservado para métricas o CAD futuro.
+
+---
+
+### 3. Protocol
+
+* **Objetivo**: Definir tipos de mensajes y serialización/parsing de un struct con JSON.
+
+#### Protocol.h
+
+* **Namespace**: `Protocol`
+* **Enum**: `MessageType { ANNOUNCE, REQUEST_DATA, DATA, HELLO }`
+* **Struct**:
+
+  ```cpp
+  struct Message {
+    MessageType type;
+    String nodeID;
+    String jsonPayload;
+  };
+  ```
+* **Funciones**:
+
+  * `uint8_t serialize(const Message& msg, uint8_t* buffer);`
+  * `bool parse(const uint8_t* buffer, uint8_t length, Message& msgOut);`
+
+#### Protocol.cpp
+
+* **serialize()**:
+
+  1. Escribe `msg.type` (1 byte).
+  2. Copia `msg.nodeID` + terminador `'\0'`.
+  3. Copia directamente `msg.jsonPayload` (raw `c_str()`).
+  4. Retorna longitud total.
+
+* **parse()**:
+
+  1. Lee `type`.
+  2. Lee hasta `'\0'` para reconstruir `nodeID`.
+  3. Construye `jsonPayload` con el resto del buffer.
+  4. Devuelve `true` siempre (asume estructura válida).
+
+---
+
+### 4. AppLogic
+
+* **Objetivo**: Orquestar comportamiento de nodo o gateway según `gatewayMode`.
+
+#### AppLogic.h
+
+* **Clase**: `AppLogic`
+* **Constructor**: `AppLogic(NodeIdentity&, RadioManager&, bool isGateway=false)`
+* **Métodos**:
+
+  * `begin()`: envía HELLO (sensor) o ANNOUNCE (gateway).
+  * `update()`:
+
+    * Recibe mensajes mesh.
+    * En nodo sensor: procesa ANNOUNCE → almacena `gatewayID`; procesa REQUEST\_DATA → llama a `sendData()`.
+    * En gateway: procesa HELLO → registra nuevo nodo; procesa DATA → parsea JSON.
+  * `setSensorData(...)`: almacena muestras de sensores para el siguiente envío.
+* **Métodos privados**:
+
+  * `sendHello()`, `sendAnnounce()`, `sendData()`.
+  * Handlers: `handleAnnounce()`, `handleRequestData()`, `handleHello()`, `handleData()`.
+  * `getCurrentTimestamp()`: helper que retorna un string con la fecha/hora actuales.
+
+#### AppLogic.cpp
+
+* **Sensor (`gatewayMode=false`)**:
+
+  * `begin()`: `sendHello()`.
+  * `handleAnnounce()`: valida clave y guarda `gatewayID`.
+  * `handleRequestData()`: si `msg.nodeID==gatewayID`, construye JSON con `sensorAtmos`, `sensorGround`, `sensorEnergy` y llama a `sendData()`.
+
+* **Gateway (`gatewayMode=true`)**:
+
+  * `begin()`: envía primer `ANNOUNCE()`.
+  * `update()`: periódicamente envía `ANNOUNCE` y, tras descubrir nodos, puede enviar `REQUEST_DATA`.
+  * `handleHello()`: añade nuevas MAC a `knownNodes`.
+  * `handleData()`: parsea el JSON recibido y lo expone por Serial o a una interfaz externa.
+
+---
+
+### 5. main.cpp
+
+* **Objetivo**: Configurar el ESP8266, desactivar WiFi, inicializar módulos y lanzar el bucle.
+
+#### main.cpp (nodo sensor)
+
+```cpp
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include "NodeIdentity.h"
+#include "RadioManager.h"
+#include "AppLogic.h"
+
+NodeIdentity identity(SHARED_KEY);
+RadioManager radio(NODE_ADDR);
+AppLogic app(identity, radio, false);
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.mode(WIFI_OFF);
+  identity.printDebugInfo();
+  radio.init();
+  app.begin();
+  // Cargar datos de sensores reales o dummy:
+  app.setSensorData(atmos, ground, energy);
+}
+
+void loop() {
+  app.update();
+  delay(100);
+}
+```
+
+#### main.cpp (gateway)
+
+```cpp
+NodeIdentity identity(SHARED_KEY);
+RadioManager radio(GATEWAY_ADDR);
+AppLogic app(identity, radio, true);
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.mode(WIFI_OFF);
+  identity.printDebugInfo();
+  radio.init();
+  app.begin();
+}
+
+void loop() {
+  app.update();
+  delay(100);
+}
+```
+
+---
+
+## Conclusión
+
+Esta estructura modular permite:
+
+* **Separar responsabilidades** claras por módulo.
+* **Extender**: añadir nuevos tipos de mensajes o funciones sin tocar todo el sistema.
+* **Reutilizar**: los módulos `Protocol` y `RadioManager` pueden emplearse en otros proyectos LoRa.
+* **Mantener legibilidad**: cada archivo (.h/.cpp) tiene una misión concreta, detallada aquí para tu documentación.

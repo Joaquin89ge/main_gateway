@@ -1,0 +1,96 @@
+✅ Resumen Técnico – Red de Sensores LoRaMesh (ESP8266 + SX1278 + RHMesh)
+🔧 Hardware base:
+ESP8266 (p.ej. NodeMCU, Wemos D1 Mini)
+
+Módulo SX1278 LoRa 433 MHz
+
+Alimentación estable (p. ej. batería + step-up o microUSB)
+
+Antena de 433 MHz bien conectada
+
+🏗️ Topología y Roles:
+Gateway (nodo raíz / address 1):
+
+Siempre encendido
+
+Se autoanuncia cada 30 segundos con tipo ANNOUNCE
+
+Solicita datos cada 5 minutos a nodos conocidos (REQUEST_DATA)
+
+Recibe HELLO y DATA unicast
+
+Nodos sensores (address 2+):
+
+Escuchan ANNOUNCE y almacenan la MAC del gateway si la clave es válida
+
+Al arrancar, envían HELLO (se enruta al gateway)
+
+Responden unicast al REQUEST_DATA con tipo DATA
+
+🔐 Identificación y Seguridad Ligera:
+Cada nodo usa su MAC ESP como ID única (String nodeID = WiFi.macAddress();)
+
+Validación del ANNOUNCE mediante una clave compartida de 4 bytes (SHARED_KEY)
+
+Evita confiar ciegamente en broadcasts maliciosos
+
+📡 Red Mesh Dinámica:
+Basada en RadioHead RHMesh:
+
+Descubre rutas automáticamente
+
+Se auto-reconfigura si un nodo cae
+
+Encapsula rutas y retransmisiones por capa radio
+
+No se necesita saber la topología manualmente
+
+Mensajes siempre viajan unicast a través de la red
+
+📦 Protocolos y Mensajes:
+Todos los mensajes usan la siguiente estructura:
+
+cpp
+Copiar
+Editar
+struct Message {
+  uint8_t type;
+  String nodeID;
+  uint8_t payload[Protocol::MAX_PAYLOAD_SIZE];
+  uint8_t payloadLength;
+};
+Tipo	Código	Emisor	Receptor	Notas
+ANNOUNCE	0x01	Gateway	Broadcast	Contiene MAC y clave compartida
+REQUEST_DATA	0x02	Gateway	Unicast	Solicita datos a nodo específico
+DATA	0x03	Nodo	Gateway	Datos del sensor
+HELLO	0x04	Nodo nuevo	Gateway	Se envía al arrancar o reconectar
+
+🧱 Estructura Modular (cumple SOLID):
+Módulo	Responsabilidad principal
+NodeIdentity	Lectura de MAC, validación de clave
+Protocol	Serialización/parsing de mensajes
+RadioManager	Capa de abstracción de RHMesh/SX1278
+AppLogic	Controla estados (ANNOUNCE, HELLO, DATA...)
+main.cpp	Setup/loop minimalista
+
+📈 Escalabilidad:
+Soporta incorporación dinámica de nuevos nodos
+
+Hasta 255 nodos posibles con RHMesh
+
+Mesh multihop con detección de fallos
+
+Fácil extensión para más tipos de mensajes o sensores
+
+🧠 Recomendaciones futuras:
+Mejora	Descripción
+CRC/Firma en mensajes	Para robustecer seguridad frente a falsificación
+Persistencia (EEPROM/FS)	Guardar nodos conocidos en caso de reinicio
+Soporte OTA / comandos	Enviar comandos o actualizar firmware remotamente
+Nodo con sensores reales	Reemplazar payload fijo por lectura real (DHT11, DS18B20, etc.)
+Interfaz web en el gateway	Para monitoreo en tiempo real desde PC/Smartphone
+Encriptación LoRa (AES)	Si se desea máxima seguridad física del enlace
+
+¿Querés que armemos ahora un ejemplo con sensores reales o querés preparar funciones tipo onData() y onHello() para callbacks personalizados?
+
+También puedo preparar un diagrama visual de la arquitectura si te ayuda.
