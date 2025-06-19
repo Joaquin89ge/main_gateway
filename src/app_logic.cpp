@@ -3,9 +3,10 @@
 #include "app_logic.h" // Incluye la definición de la clase AppLogic.
 
 // TODO:queda implementar logica  errores y posible reinicio si se acomulan
+// TODO: poner funciones y completar todo
 /**
  * @file app_logic.cpp
- * @brief Implementación de la clase AppLogic para un nodo sensor.
+ * @brief Implementación de la clase AppLogic para un gateway
  */
 
 /**
@@ -25,12 +26,11 @@
  * debería ser actualizada para tomar `gwAddress`. Por ahora, documento la versión actual del .cpp
  * e inicializo `gatewayAddress` a un valor por defecto o inválido si no se proporciona.
  */
-AppLogic::AppLogic(SensorManager data,NodeIdentity identity, RadioManager radioMgr )
-: getData(data),
-      nodeIdentity(identity),
-      radio(radioMgr){
-    nodeID = nodeIdentity.getNodeID();
-    gatwayRegistred = nodeIdentity.getGetway(gatewayAddress);
+AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
+    : nodeIdentity(identity),
+      radio(radioMgr)
+{
+    gatewayAddress = nodeIdentity.getNodeID();
     // begin();
 }
 
@@ -59,59 +59,55 @@ void AppLogic::begin()
 void AppLogic::update()
 {
 
-    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
-    uint8_t len = sizeof(buf);            // Longitud máxima del búfer
-    uint8_t from;                         // Dirección del remitente
-    uint8_t flag;                         // FLAG de detecccion protocolo
+    /*    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
+        uint8_t len = sizeof(buf);            // Longitud máxima del búfer
+        uint8_t from;                         // Dirección del remitente
+        uint8_t flag;                         // FLAG de detecccion protocolo
 
-    getData.update();
-    // Intenta recibir un mensaje.
-    if (radio.recvMessage(buf, &len, &from, &flag))
-    {
-        Serial.print(F("[AppLogic] Mensaje recibido de 0x"));
-        Serial.print(from, HEX);
-        Serial.print(F(" con longitud "));
-        Serial.println(len);
-
-        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::ANNOUNCE)
+        // Intenta recibir un mensaje.
+        if (radio.recvMessage(buf, &len, &from, &flag))
         {
-            //   handleAnnounce  lista creo
-            handleAnnounce(buf, len, from);
-        }
-        else if (gatwayRegistred == true && from == gatewayAddress)
-        {
+            Serial.print(F("[AppLogic] Mensaje recibido de 0x"));
+            Serial.print(from, HEX);
+            Serial.print(F(" con longitud "));
+            Serial.println(len);
 
-            switch (static_cast<Protocol::MessageType>(flag))
+            if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::ANNOUNCE)
+            {
+                //   handleAnnounce  lista creo
+                handleAnnounce(buf, len, from);
+            }
+            else if (gatwayRegistred == true && from == gatewayAddress)
             {
 
-            case Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC:
-                // listo creo
-                sendAtmosphericData();
-                break;
-            case Protocol::MessageType::REQUEST_DATA_GPC_GROUND:
-                // listo creo
-                sendGroungGpsData();
-                break;
-            case Protocol::MessageType::ERROR_DIRECCION:
+                switch (static_cast<Protocol::MessageType>(flag))
+                {
 
-                changeID(buf, len);
+                case Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC:
+                    // listo creo
+                    sendAtmosphericData();
+                    break;
+                case Protocol::MessageType::REQUEST_DATA_GPC_GROUND:
+                    // listo creo
+                    sendGroungGpsData();
+                    break;
+                case Protocol::MessageType::ERROR_DIRECCION:
 
-                break;
-            default:
-                Serial.print("Tipo de mensaje desconocido o no relevante para este nodo: 0x");
-                Serial.println(flag, HEX);
-                break;
+                    changeID(buf, len);
+
+                    break;
+                default:
+                    Serial.print("Tipo de mensaje desconocido o no relevante para este nodo: 0x");
+                    Serial.println(flag, HEX);
+                    break;
+                }
             }
         }
-    }
-
-    unsigned long tiempoActual = millis();
-
-    if (tiempoActual - temBuf >= intervaloHello)
-    {
-        temBuf = tiempoActual;
-        sendHello();
-    }
+    */
+    handleHello();
+    handleUartRequest();
+    if (nodesRegistred)
+        timer();
 }
 /**
  * @brief Envía un mensaje HELLO al Gateway.
@@ -122,16 +118,66 @@ void AppLogic::update()
  * Serializa el mensaje y lo envía a través de `radio.sendMessage()` al `gatewayAddress`.
  * Registra el envío en la consola serial.
  */
-void AppLogic::sendHello()
+void AppLogic::handleHello()
 {
-    uint8_t buffer[0];
-    if (radio.sendMessage(gatewayAddress, buffer, sizeof(buffer), static_cast<uint8_t>(Protocol::MessageType::HELLO)))
+    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
+    uint8_t len = sizeof(buf);            // Longitud máxima del búfer
+    uint8_t from;                         // Dirección del remitente
+    uint8_t flag;                         // FLAG de detecccion protocolo
+
+    // Intenta recibir un mensaje.
+    if (radio.recvMessage(buf, &len, &from, &flag))
     {
-        Serial.println(F("[AppLogic] HELLO enviado exitosamente."));
+        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO)
+        {
+            if (counterNodes == 0)
+            {
+                nodeIDs[counterNodes] = from;
+                nodesRegistred = true;
+                return;
+            }
+
+            for (uint8_t i = 0; i < counterNodes; i++)
+            {
+                if (nodeIDs[i] == from)
+                {
+
+                    sendChangeID(from);
+                }
+            }
+            nodeIDs[counterNodes - 1] = from;
+            nodesRegistred = true;
+        }
     }
-    else
+}
+
+void AppLogic::sendChangeID(uint8_t from)
+{
+    uint8_t IDsAcotados[RH_MAX_MESSAGE_LEN]; /*copia lo maximo posile de ids
+     guardados para limitar error de cambio de id del nodo y a suves simplifica
+     el envio de mensaje maximo manda RH_MAX_LEN del array (solo un mensaje) */
+    memcpy(IDsAcotados, nodeIDs, RH_MAX_MESSAGE_LEN);
+    IDsAcotados[0] = from;
+    radio.sendMessage(from, IDsAcotados, sizeof(IDsAcotados), Protocol::MessageType::ERROR_DIRECCION);
+}
+
+void AppLogic::timer()
+{
+    unsigned long tiempoActual = millis();
+
+    if (tiempoActual - temBuf >= intervaloAnnounce)
     {
-        Serial.println(F("[AppLogic] Fallo al enviar HELLO."));
+        temBuf = tiempoActual;
+        sendAnnounce();
+    }
+    else if (tiempoActual - temBuf1 >= intervaloAtmospheric)
+    {
+        temBuf1 = tiempoActual;
+        requestAtmosphericData();
+    }
+    if (compareHsAndMs())
+    {
+        requestGroundGpsData();
     }
 }
 
@@ -139,101 +185,116 @@ void AppLogic::sendHello()
  * @brief Maneja un mensaje ANNOUNCE.
  *
  */
-
-void AppLogic::handleAnnounce(uint8_t *buf, uint8_t len, uint8_t from)
+void AppLogic::sendAnnounce()
 {
-    if (gatwayRegistred == true && gatewayAddress == from)
-        return;
-
-    if (buf[0] == Protocol::KEY)
-    {
-        gatewayAddress = from;
-        nodeIdentity.saveGetway(gatewayAddress);
-        gatwayRegistred = true;
-    }
-    return;
+    uint8_t key = Protocol::KEY;
+    radio.sendMessage(255, &key, sizeof(key), static_cast<uint8_t>(Protocol::MessageType::ANNOUNCE));
 }
 
 /**
- * @brief Envía los datos actuales del sensor al Gateway.
+ * @brief solicita los datos actuales de atmospheic a los nodos.
 
  */
-void AppLogic::sendAtmosphericData()
+void AppLogic::requestAtmosphericData()
 {
-    getData.readSensorsAtmospheric();
 
-    if (radio.sendMessage(gatewayAddress, reinterpret_cast<uint8_t *>(&getData.atmosSamples), sizeof(getData.atmosSamples), Protocol::MessageType::DATA_ATMOSPHERIC))
+    std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> atmosSamples;
+    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
+    uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
+    uint8_t from;                               // Dirección del remitente
+    uint8_t flag;
+    uint8_t nodeId; // FLAG de detecccion protocolo
+    for (uint8_t i = 0; i < counterNodes; i++)
     {
-        Serial.println(F("[AppLogic] DATA atmosferica enviado exitosamente."));
-    }
-    else
-    {
-        Serial.println(F("[AppLogic] Falló el envío de DATA atmosferica al Gateway."));
-    }
-    /*idea sensilla para recepcion
-    void processReceivedPacket(uint8_t* data, uint8_t len) {
-    // 1. Verificar tamaño
-    if(len != sizeof(atmosSamples)) {
-        Serial.print("Tamaño incorrecto: ");
-        Serial.print(len);
-        Serial.print(" vs ");
-        Serial.println(sizeof(atmosSamples));
-        return;
-    }
+        nodeIDs[i] = nodeId;
 
-    // 2. Convertir a nuestra estructura
-    atmosSamples* packet = reinterpret_cast<atmosSamples*>(data);
-    */
+        radio.sendMessage(nodeId, buf, len, static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC));
+
+        bool t = false;
+        uint8_t intentos = 0;
+        while (t == false || intentos <= connectionRetries)
+        {
+
+            intentos++;
+            // Intenta recibir un mensaje.
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            {
+
+                if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC && from == nodeId)
+                {
+                    // 1. Verificar tamaño
+                    if (len != (sizeof(atmosSamples)))
+                    {
+                        Serial.print("Tamaño incorrecto: ");
+                        Serial.print(len);
+                        Serial.print(" vs ");
+                        Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+                        t = false;
+                        continue;
+                    }
+                    // 2. Convertir a nuestra estructura
+                    // *** ESTA ES LA FORMA CORRECTA ***
+                    memcpy(atmosSamples.data(), buf, len);
+                    AtmosphericSampleNodes[nodeId] = atmosSamples;
+                    t = true;
+                    break;
+                }
+            }
+        }
+    }
 }
 
 /**
- * @brief Envía los datos actuales del sensor al Gateway.
+ * @brief solicita los datos actuales de Ground y Gps a los nodos.
 
  */
-void AppLogic::sendGroungGpsData()
+void AppLogic::requestGroundGpsData()
 {
-    getData.readGroundGpsSensors();
-    GroundGpsPacket packet;
-    packet.ground = getData.groundData;
-    packet.gps = getData.gpsData;
-    if (radio.sendMessage(gatewayAddress, reinterpret_cast<uint8_t *>(&packet), sizeof(packet), Protocol::MessageType::DATA_GPS_CROUND))
+
+    std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples;
+    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
+    uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
+    uint8_t from;                               // Dirección del remitente
+    uint8_t flag;
+    uint8_t nodeId; // FLAG de detecccion protocolo
+    for (uint8_t i = 0; i < counterNodes; i++)
     {
-        Serial.println(F("[AppLogic] DATA gps y ground enviado exitosamente."));
+        nodeIDs[i] = nodeId;
+
+        radio.sendMessage(nodeId, buf, len, static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_GPC_GROUND));
+
+        bool t = false;
+        uint8_t intentos = 0;
+        while (t == false || intentos <= connectionRetries)
+        {
+
+            intentos++;
+            // Intenta recibir un mensaje.
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            {
+
+                if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_GPC_GROUND && from == nodeId)
+                {
+                    // 1. Verificar tamaño
+                    if (len != (sizeof(groundSamples)))
+                    {
+                        Serial.print("Tamaño incorrecto: ");
+                        Serial.print(len);
+                        Serial.print(" vs ");
+                        Serial.println(sizeof(groundSamples));
+                        t = false;
+                        continue;
+                    }
+                    // 2. Convertir a nuestra estructura
+                    // *** ESTA ES LA FORMA CORRECTA ***
+                    memcpy(groundSamples.data(), buf, len);
+                    groundGpsSamplesNodes[nodeId] = groundSamples;
+                    t = true;
+                    break;
+                }
+            }
+        }
     }
-    else
-    {
-        Serial.println(F("[AppLogic] Falló el envío de DATA  gps y ground al Gateway."));
-    }
-    /*idea sensilla para recepcion
-    void processReceivedPacket(uint8_t* data, uint16_t len) {
-    if(len != sizeof(GroundGpsPacket)) {
-        Serial.println("Error: Tamaño incorrecto");
-        return;
-    }
-
-    GroundGpsPacket* packet = reinterpret_cast<GroundGpsPacket*>(data);
-
-    // Verificar checksum
-    if(packet->checksum != calculateChecksum(*packet)) {
-        Serial.println("Error en checksum");
-        return;
-    }
-
-    // Procesar datos de suelo
-    float soilTemp = packet->ground.temp / 10.0f;
-    float soilHumidity = packet->ground.moisture / 10.0f;
-    float ph = packet->ground.PH / 10.0f;
-
-    // Procesar GPS
-    double latitude = static_cast<double>(packet->gps.latitude) / 10000000.0;
-    double longitude = static_cast<double>(packet->gps.longitude) / 10000000.0;
-
-    // Verificar flags
-    bool validLocation = (packet->gps.flags & 0x01);
-    bool validAltitude = (packet->gps.flags & 0x02);
-    bool validTime = (packet->gps.flags & 0x04);
-}
-    */
 }
 
 void AppLogic::changeID(uint8_t *buf, uint8_t len)
