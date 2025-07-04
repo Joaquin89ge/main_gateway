@@ -4,7 +4,6 @@
 
 // TODO:queda implementar logica  errores y posible reinicio si se acomulan
 // TODO: poner funciones y completar todo
-//!!! entorno de prueba modifique funciines para prueba !!!!!!
 /**
  * @file app_logic.cpp
  * @brief Implementación de la clase AppLogic para un gateway
@@ -32,8 +31,6 @@ AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
       radio(radioMgr)
 {
     gatewayAddress = nodeIdentity.getNodeID();
-    Serial.println("mi Id: ");
-    Serial.print(gatewayAddress);
     // begin();
 }
 
@@ -64,7 +61,7 @@ void AppLogic::update()
 
     handleHello();
     handleUartRequest();
-    //if (nodesRegistred)
+    if (nodesRegistred)
         timer();
 }
 /**
@@ -86,12 +83,6 @@ void AppLogic::handleHello()
     // Intenta recibir un mensaje.
     if (radio.recvMessage(buf, &len, &from, &flag))
     {
-        Serial.println("recibi HELLO ");
-        Serial.println("flag");
-        Serial.print(static_cast<Protocol::MessageType>(flag));
-        Serial.println("de:");
-        Serial.print(from);
-
         if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO)
         {
             if (counterNodes == 0)
@@ -128,18 +119,18 @@ void AppLogic::sendChangeID(uint8_t from)
 void AppLogic::timer()
 {
     unsigned long tiempoActual = millis();
-    Serial.print(tiempoActual - temBuf);
-    if (tiempoActual - temBuf >= intervaloAnnounce)
+
+    if (tiempoActual - temBuf >= INTERVALOANNOUNCE)
     {
         temBuf = tiempoActual;
         sendAnnounce();
     }
-    else if (tiempoActual - temBuf1 >= intervaloAtmospheric)
+    else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC)
     {
         temBuf1 = tiempoActual;
         requestAtmosphericData();
     }
-    else if (compareHsAndMs())
+    if (compareHsAndMs())
     {
         requestGroundGpsData();
     }
@@ -153,7 +144,6 @@ void AppLogic::sendAnnounce()
 {
     uint8_t key = Protocol::KEY;
     radio.sendMessage(255, &key, sizeof(key), static_cast<uint8_t>(Protocol::MessageType::ANNOUNCE));
-    Serial.print("enviado Anuncher: ");
 }
 
 /**
@@ -182,7 +172,7 @@ void AppLogic::requestAtmosphericData()
 
             intentos++;
             // Intenta recibir un mensaje.
-            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL))
             {
 
                 if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC && from == nodeId)
@@ -190,10 +180,13 @@ void AppLogic::requestAtmosphericData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(atmosSamples)))
                     {
-                        Serial.print("Tamaño incorrecto: ");
-                        Serial.print(len);
-                        Serial.print(" vs ");
-                        Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+                        if (DEBUGPRINTS == false)
+                        {
+                            Serial.print("Tamaño incorrecto: ");
+                            Serial.print(len);
+                            Serial.print(" vs ");
+                            Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+                        }
                         t = false;
                         continue;
                     }
@@ -215,7 +208,8 @@ void AppLogic::requestAtmosphericData()
  */
 void AppLogic::requestGroundGpsData()
 {
-
+    if (DEBUGPRINTS == false)
+        Serial.println("requestGroundGpsData");
     std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples;
     uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
     uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
@@ -225,7 +219,11 @@ void AppLogic::requestGroundGpsData()
     for (uint8_t i = 0; i < counterNodes; i++)
     {
         nodeId = nodeIDs[i];
-
+        if (DEBUGPRINTS == false)
+        {
+            Serial.println("enviando REQUEST_DATA_GPC_GROUND a");
+            Serial.println(nodeId);
+        }
         radio.sendMessage(nodeId, buf, len, static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_GPC_GROUND));
 
         bool t = false;
@@ -235,7 +233,7 @@ void AppLogic::requestGroundGpsData()
 
             intentos++;
             // Intenta recibir un mensaje.
-            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL))
             {
 
                 if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_GPC_GROUND && from == nodeId)
@@ -243,10 +241,13 @@ void AppLogic::requestGroundGpsData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(groundSamples)))
                     {
-                        Serial.print("Tamaño incorrecto: ");
-                        Serial.print(len);
-                        Serial.print(" vs ");
-                        Serial.println(sizeof(groundSamples));
+                        if (DEBUGPRINTS == true)
+                        {
+                            Serial.print("Tamaño incorrecto: ");
+                            Serial.print(len);
+                            Serial.print(" vs ");
+                            Serial.println(sizeof(groundSamples));
+                        }
                         t = false;
                         continue;
                     }
@@ -254,6 +255,8 @@ void AppLogic::requestGroundGpsData()
                     // *** ESTA ES LA FORMA CORRECTA ***
                     memcpy(groundSamples.data(), buf, len);
                     groundGpsSamplesNodes[nodeId] = groundSamples;
+                    if (DEBUGPRINTS == false)
+                        Serial.println("recepcion exitosa de REQUEST_DATA_GPC_GROUND");
                     t = true;
                     break;
                 }
@@ -264,11 +267,20 @@ void AppLogic::requestGroundGpsData()
 
 bool AppLogic::compareHsAndMs()
 {
-    return true;
+    if (clockRtc.getMinutos() == 00)
+    {
+        for (uint8_t i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++)
+        {
+            if (clockRtc.getHora() == intervaloHorasSuelo[i])
+                return true;
+        }
+    }
+    return false;
 }
 
 // TODO: falta implementar
 void AppLogic::handleUartRequest()
 {
+
     return;
 }

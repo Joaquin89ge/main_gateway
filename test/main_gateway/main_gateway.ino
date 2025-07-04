@@ -13,6 +13,7 @@ RadioManager radio(identity.getNodeID());
 
 AppLogic logic(identity, radio);
 
+bool errorFlag = false;
 
 void setup()
 {
@@ -24,14 +25,18 @@ void setup()
     if (!radio.init())
     {
         Serial.println("Error al inicializar RadioManager");
-        
+        errorFlag = true; // Detener ejecución
     }
 
     logic.begin();
-    Serial.print("todo ok GATEWAY");
+    if (DEBUGPRINTS == false && errorFlag==false) Serial.print("todo ok en gateway");
 }
 
 void loop()
 {
-    logic.update();
+    if (!errorFlag)
+    {
+        logic.update();
+        delay(100);
+    }
 }

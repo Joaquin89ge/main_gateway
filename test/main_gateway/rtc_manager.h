@@ -4,11 +4,7 @@
 #include <Arduino.h> // Necesario para tipos como String y Serial (aunque Wire y RTClib ya lo incluyen indirectamente)
 #include <Wire.h>    // Para la comunicación I2C
 #include <RTClib.h>  // Librería de Adafruit para RTC
-
-// Define el pin SDA y SCL para I2C en tu ESP8266.
-// Para NodeMCU/Wemos D1 Mini: D2 (GPIO4) para SDA, D1 (GPIO5) para SCL.
-#define I2C_SDA 4
-#define I2C_SCL 16
+#include "config.h"
 
 class RtcManager
 {

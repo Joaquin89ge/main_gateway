@@ -59,51 +59,6 @@ void AppLogic::begin()
 void AppLogic::update()
 {
 
-    /*    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
-        uint8_t len = sizeof(buf);            // Longitud máxima del búfer
-        uint8_t from;                         // Dirección del remitente
-        uint8_t flag;                         // FLAG de detecccion protocolo
-
-        // Intenta recibir un mensaje.
-        if (radio.recvMessage(buf, &len, &from, &flag))
-        {
-            Serial.print(F("[AppLogic] Mensaje recibido de 0x"));
-            Serial.print(from, HEX);
-            Serial.print(F(" con longitud "));
-            Serial.println(len);
-
-            if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::ANNOUNCE)
-            {
-                //   handleAnnounce  lista creo
-                handleAnnounce(buf, len, from);
-            }
-            else if (gatwayRegistred == true && from == gatewayAddress)
-            {
-
-                switch (static_cast<Protocol::MessageType>(flag))
-                {
-
-                case Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC:
-                    // listo creo
-                    sendAtmosphericData();
-                    break;
-                case Protocol::MessageType::REQUEST_DATA_GPC_GROUND:
-                    // listo creo
-                    sendGroungGpsData();
-                    break;
-                case Protocol::MessageType::ERROR_DIRECCION:
-
-                    changeID(buf, len);
-
-                    break;
-                default:
-                    Serial.print("Tipo de mensaje desconocido o no relevante para este nodo: 0x");
-                    Serial.println(flag, HEX);
-                    break;
-                }
-            }
-        }
-    */
     handleHello();
     handleUartRequest();
     if (nodesRegistred)
@@ -165,12 +120,12 @@ void AppLogic::timer()
 {
     unsigned long tiempoActual = millis();
 
-    if (tiempoActual - temBuf >= intervaloAnnounce)
+    if (tiempoActual - temBuf >= INTERVALOANNOUNCE)
     {
         temBuf = tiempoActual;
         sendAnnounce();
     }
-    else if (tiempoActual - temBuf1 >= intervaloAtmospheric)
+    else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC)
     {
         temBuf1 = tiempoActual;
         requestAtmosphericData();
@@ -217,7 +172,7 @@ void AppLogic::requestAtmosphericData()
 
             intentos++;
             // Intenta recibir un mensaje.
-            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL))
             {
 
                 if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC && from == nodeId)
@@ -225,10 +180,13 @@ void AppLogic::requestAtmosphericData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(atmosSamples)))
                     {
-                        Serial.print("Tamaño incorrecto: ");
-                        Serial.print(len);
-                        Serial.print(" vs ");
-                        Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+                        if (DEBUGPRINTS == false)
+                        {
+                            Serial.print("Tamaño incorrecto: ");
+                            Serial.print(len);
+                            Serial.print(" vs ");
+                            Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+                        }
                         t = false;
                         continue;
                     }
@@ -250,7 +208,8 @@ void AppLogic::requestAtmosphericData()
  */
 void AppLogic::requestGroundGpsData()
 {
-
+    if (DEBUGPRINTS == false)
+        Serial.println("requestGroundGpsData");
     std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples;
     uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
     uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
@@ -260,7 +219,11 @@ void AppLogic::requestGroundGpsData()
     for (uint8_t i = 0; i < counterNodes; i++)
     {
         nodeId = nodeIDs[i];
-
+        if (DEBUGPRINTS == false)
+        {
+            Serial.println("enviando REQUEST_DATA_GPC_GROUND a");
+            Serial.println(nodeId);
+        }
         radio.sendMessage(nodeId, buf, len, static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_GPC_GROUND));
 
         bool t = false;
@@ -270,7 +233,7 @@ void AppLogic::requestGroundGpsData()
 
             intentos++;
             // Intenta recibir un mensaje.
-            if (radio.recvMessageTimeout(buf, &len, &from, &flag, timeoutGral))
+            if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL))
             {
 
                 if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::REQUEST_DATA_GPC_GROUND && from == nodeId)
@@ -278,10 +241,13 @@ void AppLogic::requestGroundGpsData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(groundSamples)))
                     {
-                        Serial.print("Tamaño incorrecto: ");
-                        Serial.print(len);
-                        Serial.print(" vs ");
-                        Serial.println(sizeof(groundSamples));
+                        if (DEBUGPRINTS == true)
+                        {
+                            Serial.print("Tamaño incorrecto: ");
+                            Serial.print(len);
+                            Serial.print(" vs ");
+                            Serial.println(sizeof(groundSamples));
+                        }
                         t = false;
                         continue;
                     }
@@ -289,6 +255,8 @@ void AppLogic::requestGroundGpsData()
                     // *** ESTA ES LA FORMA CORRECTA ***
                     memcpy(groundSamples.data(), buf, len);
                     groundGpsSamplesNodes[nodeId] = groundSamples;
+                    if (DEBUGPRINTS == false)
+                        Serial.println("recepcion exitosa de REQUEST_DATA_GPC_GROUND");
                     t = true;
                     break;
                 }
@@ -313,5 +281,6 @@ bool AppLogic::compareHsAndMs()
 // TODO: falta implementar
 void AppLogic::handleUartRequest()
 {
+
     return;
 }

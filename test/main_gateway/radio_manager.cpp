@@ -41,7 +41,6 @@ RadioManager::RadioManager(uint8_t address)
 
 bool RadioManager::init()
 {
-
     while (!driver.init())
     {
 

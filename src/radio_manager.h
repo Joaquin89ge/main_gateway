@@ -5,6 +5,7 @@
 #include <RHMesh.h>
 #include <RH_RF95.h>
 #include <SPI.h>
+#include "config.h"
 
 /**
  * @class RadioManager

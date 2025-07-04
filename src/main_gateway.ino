@@ -29,12 +29,12 @@ void setup()
     }
 
     logic.begin();
-    Serial.print("todo ok");
+    if (DEBUGPRINTS == false && errorFlag==false) Serial.print("todo ok en gateway");
 }
 
 void loop()
 {
-    if (errorFlag == false)
+    if (!errorFlag)
     {
         logic.update();
         delay(100);

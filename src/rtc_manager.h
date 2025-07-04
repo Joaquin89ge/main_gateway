@@ -4,9 +4,7 @@
 #include <Arduino.h> // Necesario para tipos como String y Serial (aunque Wire y RTClib ya lo incluyen indirectamente)
 #include <Wire.h>    // Para la comunicación I2C
 #include <RTClib.h>  // Librería de Adafruit para RTC
-
-#define I2C_SDA 4  // d2
-#define I2C_SCL 16 // d0
+#include "config.h"
 
 class RtcManager
 {

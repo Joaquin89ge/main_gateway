@@ -8,6 +8,7 @@
 #include "radio_manager.h" // Para RadioManager (gestión de radio LoRa)
 #include "protocol.h"      // Para Protocol (serialización/deserialización de mensajes)
 #include "rtc_manager.h"
+#include "config.h"
 
 /**
  * @class AppLogic
@@ -19,10 +20,6 @@
  * solicita data y escucha hello.
  */
 
-#define MAX_NODES 250
-#define NUMERO_MUESTRAS_ATMOSFERICAS 8
-#define CANTIDAD_PAQUETES_ALMACENAR
-#define CANTIDAD_MUESTRAS_SUELO 2
 class AppLogic
 {
 private:
@@ -35,13 +32,10 @@ private:
     bool nodesRegistred = false;
     uint8_t counterNodes = 0; /**< @brief contador de red de nodos conocidos. */
 
-    const unsigned long intervaloAnnounce = 120000;                    /**< @brief Intervalo en milisegundos (2 min) para announce*/
-    const unsigned long intervaloAtmospheric = 480000;                 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
     const int intervaloHorasSuelo[CANTIDAD_MUESTRAS_SUELO] = {12, 24}; /**< @brief horas para request data ground y gps*/
     unsigned long temBuf = 0;                                          /**< @brief bufer guarda tiempo */
     unsigned long temBuf1 = 0;                                         /**< @brief  bufer guarda tiempo1 */
 
-    const uint16_t timeoutGral = 1500;   /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
     const uint8_t connectionRetries = 2; /**< @brief reintentos para pedir nuevamente datos, alcanzaaod el maximo se agrega la direccion del nodo a nodesDown*/
 
     bool updatedData = false; /**< @brief  flag de datos actualizados, se pone en true luego de un requestAtmosphericData o requestGroundGpsData */
@@ -72,7 +66,7 @@ public:
     // Un mapa donde cada elemento es un std::array que contiene NUMERO_MUESTRAS_ATMOSFERICAS de AtmosphericSample
     std::map<std::uint8_t, std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS>> AtmosphericSampleNodes; // contiene las medicioens atmosfericas de cada nodo @warning no pasar los 200 0 250 unidades por sobrecargar el almacenamiento
 
-    /* *@warning se espera que se recolecten los datos por medio de uart en maximo intervaloAtmospheric*2 ya que antes de volver a pedir los datos tiene que esta vacios lo datos para evitar sobrecarga de memoria  */
+    /* *@warning se espera que se recolecten los datos por medio de uart en maximo INTERVALOATMOSPHERIC*2 ya que antes de volver a pedir los datos tiene que esta vacios lo datos para evitar sobrecarga de memoria  */
 
     uint8_t nodesDown[MAX_NODES]; /**< @brief  recolecta los nodos que no contesten o tuvieron fallos  */
 
