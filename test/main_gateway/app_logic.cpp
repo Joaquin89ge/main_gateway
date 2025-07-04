@@ -4,6 +4,7 @@
 
 // TODO:queda implementar logica  errores y posible reinicio si se acomulan
 // TODO: poner funciones y completar todo
+//!!! entorno de prueba modifique funciines para prueba !!!!!!
 /**
  * @file app_logic.cpp
  * @brief Implementación de la clase AppLogic para un gateway
@@ -31,6 +32,8 @@ AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
       radio(radioMgr)
 {
     gatewayAddress = nodeIdentity.getNodeID();
+    Serial.println("mi Id: ");
+    Serial.print(gatewayAddress);
     // begin();
 }
 
@@ -59,54 +62,9 @@ void AppLogic::begin()
 void AppLogic::update()
 {
 
-    /*    uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
-        uint8_t len = sizeof(buf);            // Longitud máxima del búfer
-        uint8_t from;                         // Dirección del remitente
-        uint8_t flag;                         // FLAG de detecccion protocolo
-
-        // Intenta recibir un mensaje.
-        if (radio.recvMessage(buf, &len, &from, &flag))
-        {
-            Serial.print(F("[AppLogic] Mensaje recibido de 0x"));
-            Serial.print(from, HEX);
-            Serial.print(F(" con longitud "));
-            Serial.println(len);
-
-            if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::ANNOUNCE)
-            {
-                //   handleAnnounce  lista creo
-                handleAnnounce(buf, len, from);
-            }
-            else if (gatwayRegistred == true && from == gatewayAddress)
-            {
-
-                switch (static_cast<Protocol::MessageType>(flag))
-                {
-
-                case Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC:
-                    // listo creo
-                    sendAtmosphericData();
-                    break;
-                case Protocol::MessageType::REQUEST_DATA_GPC_GROUND:
-                    // listo creo
-                    sendGroungGpsData();
-                    break;
-                case Protocol::MessageType::ERROR_DIRECCION:
-
-                    changeID(buf, len);
-
-                    break;
-                default:
-                    Serial.print("Tipo de mensaje desconocido o no relevante para este nodo: 0x");
-                    Serial.println(flag, HEX);
-                    break;
-                }
-            }
-        }
-    */
     handleHello();
     handleUartRequest();
-    if (nodesRegistred)
+    //if (nodesRegistred)
         timer();
 }
 /**
@@ -128,6 +86,12 @@ void AppLogic::handleHello()
     // Intenta recibir un mensaje.
     if (radio.recvMessage(buf, &len, &from, &flag))
     {
+        Serial.println("recibi HELLO ");
+        Serial.println("flag");
+        Serial.print(static_cast<Protocol::MessageType>(flag));
+        Serial.println("de:");
+        Serial.print(from);
+
         if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO)
         {
             if (counterNodes == 0)
@@ -164,7 +128,7 @@ void AppLogic::sendChangeID(uint8_t from)
 void AppLogic::timer()
 {
     unsigned long tiempoActual = millis();
-
+    Serial.print(tiempoActual - temBuf);
     if (tiempoActual - temBuf >= intervaloAnnounce)
     {
         temBuf = tiempoActual;
@@ -175,7 +139,7 @@ void AppLogic::timer()
         temBuf1 = tiempoActual;
         requestAtmosphericData();
     }
-    if (compareHsAndMs())
+    else if (compareHsAndMs())
     {
         requestGroundGpsData();
     }
@@ -189,6 +153,7 @@ void AppLogic::sendAnnounce()
 {
     uint8_t key = Protocol::KEY;
     radio.sendMessage(255, &key, sizeof(key), static_cast<uint8_t>(Protocol::MessageType::ANNOUNCE));
+    Serial.print("enviado Anuncher: ");
 }
 
 /**
@@ -299,15 +264,7 @@ void AppLogic::requestGroundGpsData()
 
 bool AppLogic::compareHsAndMs()
 {
-    if (clockRtc.getMinutos() == 00)
-    {
-        for (uint8_t i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++)
-        {
-            if (clockRtc.getHora() == intervaloHorasSuelo[i])
-                return true;
-        }
-    }
-    return false;
+    return true;
 }
 
 // TODO: falta implementar

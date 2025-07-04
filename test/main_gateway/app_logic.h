@@ -35,8 +35,8 @@ private:
     bool nodesRegistred = false;
     uint8_t counterNodes = 0; /**< @brief contador de red de nodos conocidos. */
 
-    const unsigned long intervaloAnnounce = 120000;                    /**< @brief Intervalo en milisegundos (2 min) para announce*/
-    const unsigned long intervaloAtmospheric = 480000;                 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
+    const unsigned long intervaloAnnounce = 10000;                     //!                /**< @brief Intervalo en milisegundos (2 min) para announce*/
+    const unsigned long intervaloAtmospheric = 20000;                  //!             /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
     const int intervaloHorasSuelo[CANTIDAD_MUESTRAS_SUELO] = {12, 24}; /**< @brief horas para request data ground y gps*/
     unsigned long temBuf = 0;                                          /**< @brief bufer guarda tiempo */
     unsigned long temBuf1 = 0;                                         /**< @brief  bufer guarda tiempo1 */

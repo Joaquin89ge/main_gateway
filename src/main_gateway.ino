@@ -5,14 +5,13 @@
 #include "node_identity.h"
 #include "radio_manager.h"
 #include "app_logic.h"
-#include "sensor_manager.h"
 
 
 NodeIdentity identity;
 
 RadioManager radio(identity.getNodeID());
-SensorManager data;
-AppLogic logic(data,identity, radio);
+
+AppLogic logic(identity, radio);
 
 bool errorFlag = false;
 

@@ -1,12 +1,46 @@
-#ifndef STRUCT_JSON_H
-#define STRUCT_JSON_H
-// en desuso
-#include <Arduino.h> // Asumo que String proviene de Arduino
+// Protocol.h (protocol bit support)
+// 03:00 16/6/2025
 
-/**#pragma pack(push, 1)  // Eliminar padding entre miembros de estructuras
+#ifndef PROTOCOL_H
+#define PROTOCOL_H
 
+#include <Arduino.h> // Para tipos como String, uint8_t
+#include <vector>    // Para std::vector
+
+// #define RH_MESH_MAX_MESSAGE_LEN 50
 /**
- * Muestra atmosférica (DHT22)
+ * @brief Espacio de nombres para las definiciones del protocolo de comunicación.
+ *
+ * Este espacio de nombres encapsula las estructuras de datos y funciones
+ * para la serialización y deserialización de mensajes entre nodos.
+ */
+namespace Protocol
+{
+
+    const uint8_t KEY = 0x69; /**< @brief Longitud de la clave de seguridad del protocolo. */
+
+    /**
+     * @brief Enumeración que define los tipos de mensajes soportados por el protocolo.
+     *
+     * Cada valor representa un propósito específico para el mensaje, permitiendo
+     * a los nodos interpretar y procesar el contenido del payload JSON adecuadamente.
+     */
+    enum MessageType : uint8_t
+    {
+        ANNOUNCE = 0x01,                 /**< @brief Mensaje de anuncio de un nodo. */
+        REQUEST_DATA_ATMOSPHERIC = 0x02, /**< @brief Protocolo para  solicitud de datos atmosfericos.*/
+        REQUEST_DATA_GPC_GROUND = 0x03,  /**< @brief Protocolo para  solicitud de datos gps y ground */
+        DATA_ATMOSPHERIC = 0x04,         /**< @brief Protocolo para  envio de datos atmosfericos. */
+        DATA_GPS_CROUND = 0x05,          /**< @brief Protocolo para  envio de datos gps y ground. */
+        HELLO = 0x06,                    /**< @brief Mensaje de saludo/conexión inicial. */
+        ERROR_DIRECCION = 0x07           /**< @brief Mensaje de direccion de nodo repetida volver hacer hash mac. */
+    };
+
+} // namespace Protocol
+
+#pragma pack(push, 1) // Eliminar padding entre miembros de estructuras
+
+/* Muestra atmosférica (DHT22)
  * Rango temperatura: -40.0°C a 80.0°C (con precisión ±0.5°C)
  * Rango humedad: 0.0% a 100.0% (con precisión ±3%)
  * Total: 6 bytes por muestra
@@ -58,6 +92,20 @@ struct GpsSensor
 
 #pragma pack(pop) // Restaurar alineación normal
 
+#pragma pack(push, 1) // Asegurar empaquetamiento sin padding
+
+/**
+ * Paquete combinado Suelo + GPS
+ * Total: 26 bytes
+ */
+struct GroundGpsPacket
+{
+    GroundSensor ground; // 13 bytes
+    GpsSensor gps;       // 13 bytes
+
+}; // Total: 26 bytes
+
+#pragma pack(pop) // Restaurar alineación normal
 // clase propia para gestion consumo interno no se trasnmite
 struct EnergyData
 {
@@ -93,4 +141,4 @@ para sensor ground Sensor Suelo Npk Ph T/h Ec Modbus Rs485 Nutrientes Tierra
 - Resolución: 1 [mg/kg]
 */
 
-#endif // STRUCT_JSON_H
+#endif // PROTOCOL_H
