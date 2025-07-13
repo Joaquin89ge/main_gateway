@@ -16,23 +16,6 @@
  */
 #define RFM95_INT 5 // d1
 
-/**
- * @brief Frecuencia LoRa configurada en MHz.
- *
- * Este define establece la frecuencia de operación para la comunicación LoRa.
- * Debe elegirse en función de las regulaciones regionales y otros nodos de la red.
- */
-#define FRECUENCI_CONF 415.0
-
-/**
- * @brief Nivel de potencia de transmisión para LoRa en dBm.
- *
- * Este define establece la potencia de transmisión del módulo LoRa.
- * Un valor más alto generalmente significa un mayor alcance pero consume más energía.
- * La potencia máxima para el RFM95 es típicamente de 20 dBm.
- */
-#define POWER_LORA 23
-
 RadioManager::RadioManager(uint8_t address)
     : driver(RFM95_CS, RFM95_INT), manager(driver, address)
 {
@@ -41,27 +24,10 @@ RadioManager::RadioManager(uint8_t address)
 
 bool RadioManager::init()
 {
-    while (!driver.init())
-    {
-
-        Serial.println("LoRa radio init failed");
-
-        delay(100);
-    }
-
-    Serial.println("LoRa radio init OK!");
-
-    if (!driver.setFrequency(FRECUENCI_CONF))
-    {
-
-        Serial.println("setFrequency failed");
-
-        delay(100);
-    }
-
-    Serial.print("Set Freq to: ");
-    Serial.println(FRECUENCI_CONF);
-    driver.setTxPower(POWER_LORA, false);
+   if (!manager.init())
+    DEBUG_PRINT("RF95 MESH init failed");
+DEBUG_PRINT("RF95 MESH init okay");
+ 
     return true;
 }
 bool RadioManager::sendMessage(uint8_t to, uint8_t *data, uint8_t len, uint8_t flag)
@@ -90,8 +56,8 @@ bool RadioManager::recvMessage(uint8_t *buf, uint8_t *len, uint8_t *from, uint8_
 
 bool RadioManager::recvMessageTimeout(uint8_t *buf, uint8_t *len, uint8_t *from, uint8_t *flag, uint16_t timeout)
 {
-    uint8_t dest;      // Variable interna para la dirección de destino
-    uint8_t messageId; // Variable interna para el ID del mensaje de RadioHead
+    //uint8_t dest;      // Variable interna para la dirección de destino
+    //uint8_t messageId; // Variable interna para el ID del mensaje de RadioHead
 
     // Llama a manager.recvfromAckTimeout con los parámetros adecuados
     // Los punteros 'from', 'dest', 'messageId' y 'flags' deben ser proporcionados a la función.
@@ -103,7 +69,7 @@ bool RadioManager::recvMessageTimeout(uint8_t *buf, uint8_t *len, uint8_t *from,
     // Aquí, 'flag' del parámetro de tu función se mapea a 'flags' de recvfromAckTimeout
     // y 'from' de tu función se mapea a 'from' de recvfromAckTimeout.
     // 'dest' y 'messageId' son variables temporales que no necesitas devolver.
-    if (manager.recvfromAckTimeout(buf, len, timeout, from, &dest, &messageId, flag))
+    if (manager.recvfromAckTimeout(buf, len, timeout, from, NULL, NULL, flag))
     {
         // Mensaje recibido y reconocido con éxito dentro del tiempo
         return true;

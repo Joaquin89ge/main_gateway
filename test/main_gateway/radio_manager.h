@@ -100,5 +100,5 @@ private:
     RH_RF95 driver; /**< @brief La instancia del controlador de radio RFM95. Maneja las operaciones de radio de bajo nivel. */
     RHMesh manager; /**< @brief La instancia del gestor de red RHMesh. Maneja el enrutamiento y el direccionamiento. */
 };
-
+ 
 #endif // RADIO_MANAGER_H

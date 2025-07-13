@@ -1,27 +1,34 @@
 
+#define DEBUG_MODE 
 
-// En tu .ino o un archivo de utilidad
 #ifdef DEBUG_MODE
-    #define DEBUG_PRINT(x) Serial.print(x)
-    #define DEBUG_PRINTLN(x) Serial.println(x)
-#else
-    #define DEBUG_PRINT(x)
-    #define DEBUG_PRINTLN(x)
-#endif
 
-// Luego en tu código:
-DEBUG_PRINTLN("Este mensaje solo se mostrará en modo depuración.");
-
-
-#define DEBUGPRINTS false
-
+#define DEBUG_PRINT(x) Serial.print(x)
+#define DEBUG_PRINTLN(x) Serial.println(x)
 #define MAX_NODES 250
 #define NUMERO_MUESTRAS_ATMOSFERICAS 8
-#define CANTIDAD_PAQUETES_ALMACENAR
+
+#define CANTIDAD_MUESTRAS_SUELO 2
+#define TIMEOUTGRAL 2000           /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
+#define INTERVALOANNOUNCE 5000     /**< @brief Intervalo en milisegundos (5 seg) para announce*/
+#define INTERVALOATMOSPHERIC 30000 /**< @brief Intervalo en milisegundos (1 minutos) para request atmospheric*/
+
+#else
+
+#define DEBUG_PRINT(x)
+#define DEBUG_PRINTLN(x)
+#define MAX_NODES 250
+#define NUMERO_MUESTRAS_ATMOSFERICAS 8
+
 #define CANTIDAD_MUESTRAS_SUELO 2
 #define TIMEOUTGRAL 1500            /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
 #define INTERVALOANNOUNCE 120000    /**< @brief Intervalo en milisegundos (2 min) para announce*/
 #define INTERVALOATMOSPHERIC 480000 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
+
+#endif
+
+
+#define MAC_STR_LEN_WITH_NULL 18 
 
 // lora
 /**
@@ -40,22 +47,6 @@ DEBUG_PRINTLN("Este mensaje solo se mostrará en modo depuración.");
  */
 #define RFM95_INT 5 // d1
 
-/**
- * @brief Frecuencia LoRa configurada en MHz.
- *
- * Este define establece la frecuencia de operación para la comunicación LoRa.
- * Debe elegirse en función de las regulaciones regionales y otros nodos de la red.
- */
-#define FRECUENCI_CONF 415.0
-
-/**
- * @brief Nivel de potencia de transmisión para LoRa en dBm.
- *
- * Este define establece la potencia de transmisión del módulo LoRa.
- * Un valor más alto generalmente significa un mayor alcance pero consume más energía.
- * La potencia máxima para el RFM95 es típicamente de 20 dBm.
- */
-#define POWER_LORA 23
 
 // RTC
 #define I2C_SDA 4  // d2

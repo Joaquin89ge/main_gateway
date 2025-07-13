@@ -5,14 +5,11 @@
 #include "node_identity.h"
 #include "radio_manager.h"
 #include "app_logic.h"
-
+#include "config.h"
 
 NodeIdentity identity;
-
 RadioManager radio(identity.getNodeID());
-
 AppLogic logic(identity, radio);
-
 bool errorFlag = false;
 
 void setup()
@@ -24,19 +21,19 @@ void setup()
 
     if (!radio.init())
     {
-        Serial.println("Error al inicializar RadioManager");
+        DEBUG_PRINTLN("Error al inicializar RadioManager");
         errorFlag = true; // Detener ejecución
     }
 
     logic.begin();
-    if (DEBUGPRINTS == false && errorFlag==false) Serial.print("todo ok en gateway");
+    if (errorFlag==false) DEBUG_PRINT("todo ok en gateway");
 }
 
 void loop()
 {
-    if (!errorFlag)
+    if (1 == 1)
     {
         logic.update();
-        delay(100);
+        
     }
 }

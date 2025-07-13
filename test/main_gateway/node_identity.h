@@ -10,7 +10,7 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <LittleFS.h> // ¡Cambiamos de EEPROM.h a LittleFS.h!
-
+#include "config.h"
 // Nombres de archivos para LittleFS (más descriptivo que direcciones de EEPROM)
 #define NODE_ID_FILE "/node_id.json"      ///< Nombre del archivo para el ID del nodo
 #define GATEWAY_ADDR_FILE "/gateway.json" ///< Nombre del archivo para la dirección del gateway

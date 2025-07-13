@@ -27,14 +27,14 @@ namespace Protocol
 
             if (currentPayloadPart.length() > RH_MESH_MAX_MESSAGE_LEN)
             {
-                Serial.println("ERROR: Un fragmento de datos excede RH_MESH_MAX_MESSAGE_LEN. Esto no debería pasar.");
+                DEBUG_PRINTLN("ERROR: Un fragmento de datos excede RH_MESH_MAX_MESSAGE_LEN. Esto no debería pasar.");
                 outputFragments.clear();
                 return outputFragments;
             }
 
             outputFragments.push_back(currentPayloadPart);
-            Serial.print("  Fragmento DATA #");
-            Serial.print(i);
+            DEBUG_PRINT("  Fragmento DATA #");
+            DEBUG_PRINT(i);
         }
 
 
@@ -53,17 +53,17 @@ namespace Protocol
 
         if (crcMessage.length() > RH_MESH_MAX_MESSAGE_LEN)
         {
-            Serial.println("ERROR: El mensaje CRC_FINAL excede RH_MESH_MAX_MESSAGE_LEN. El formato del CRC es demasiado largo.");
+            DEBUG_PRINTLN("ERROR: El mensaje CRC_FINAL excede RH_MESH_MAX_MESSAGE_LEN. El formato del CRC es demasiado largo.");
             outputFragments.clear();
             return outputFragments;
         }
 
         outputFragments.push_back(crcMessage); // Este es el último String en el vector
-        Serial.print("  Mensaje CRC_FINAL (len: ");
-        Serial.print(crcMessage.length());
-        Serial.print("): ");
-        Serial.println(crcMessage);
-        Serial.println("NO errors");
+        DEBUG_PRINT("  Mensaje CRC_FINAL (len: ");
+        DEBUG_PRINT(crcMessage.length());
+        DEBUG_PRINT("): ");
+        DEBUG_PRINTLN(crcMessage);
+        DEBUG_PRINTLN("NO errors");
         return outputFragments;
     }
 
@@ -99,8 +99,8 @@ StaticJsonDocument<JSON_DOC_SIZE> parseJsonString(const String& jsonInputString)
   if (error) {
     // Imprime un mensaje de error detallado en el Serial Monitor.
     // 'error.f_str()' devuelve una descripción del error desde la memoria Flash.
-    Serial.print(F("ERROR en deserializeJson(): "));
-    Serial.println(error.f_str());
+    DEBUG_PRINT(F("ERROR en deserializeJson(): "));
+    DEBUG_PRINTLN(error.f_str());
 
     // Retorna un JsonDocument vacío para indicar que la operación falló.
     // El llamador debe verificar si el documento retornado es nulo (`.isNull()`).
@@ -113,7 +113,7 @@ StaticJsonDocument<JSON_DOC_SIZE> parseJsonString(const String& jsonInputString)
   // Acceso al campo 'date' principal del documento.
   // Se obtiene como 'const char*' para evitar una copia a String si solo se necesita leer.
   const char* mainDate = doc[F("date")].as<const char*>();
-  // Serial.print(F("Fecha principal: ")); Serial.println(mainDate); // Descomentar para depurar
+  // DEBUG_PRINT(F("Fecha principal: ")); DEBUG_PRINTLN(mainDate); // Descomentar para depurar
 
   // Itera sobre el array 'atmosphere'.
   // Se castre explícitamente a JsonArray para asegurar que es un array antes de iterar.
@@ -123,9 +123,9 @@ StaticJsonDocument<JSON_DOC_SIZE> parseJsonString(const String& jsonInputString)
     float atmosphere_item_moisture = atmosphere_item[F("moisture")].as<float>();
     const char* atmosphere_item_date = atmosphere_item[F("date")].as<const char*>();
 
-    // Serial.print(F("  Atmosphere - Temp: ")); Serial.print(atmosphere_item_temp);
-    // Serial.print(F(", Moisture: ")); Serial.print(atmosphere_item_moisture);
-    // Serial.print(F(", Date: ")); Serial.println(atmosphere_item_date); // Descomentar para depurar
+    // DEBUG_PRINT(F("  Atmosphere - Temp: ")); DEBUG_PRINT(atmosphere_item_temp);
+    // DEBUG_PRINT(F(", Moisture: ")); DEBUG_PRINT(atmosphere_item_moisture);
+    // DEBUG_PRINT(F(", Date: ")); DEBUG_PRINTLN(atmosphere_item_date); // Descomentar para depurar
   }
 
   // Acceso al objeto 'ground'.
@@ -136,11 +136,11 @@ StaticJsonDocument<JSON_DOC_SIZE> parseJsonString(const String& jsonInputString)
   float ground_EC = ground[F("EC")].as<float>();
   float ground_PH = ground[F("PH")].as<float>();
 
-  // Serial.print(F("  Ground - Temp: ")); Serial.print(ground_temp); // Descomentar para depurar
-  // Serial.print(F(", Moisture: ")); Serial.print(ground_moisture);
-  // Serial.print(F(", NPK: ")); Serial.print(ground_npk);
-  // Serial.print(F(", EC: ")); Serial.print(ground_EC);
-  // Serial.print(F(", PH: ")); Serial.println(ground_PH);
+  // DEBUG_PRINT(F("  Ground - Temp: ")); DEBUG_PRINT(ground_temp); // Descomentar para depurar
+  // DEBUG_PRINT(F(", Moisture: ")); DEBUG_PRINT(ground_moisture);
+  // DEBUG_PRINT(F(", NPK: ")); DEBUG_PRINT(ground_npk);
+  // DEBUG_PRINT(F(", EC: ")); DEBUG_PRINT(ground_EC);
+  // DEBUG_PRINT(F(", PH: ")); DEBUG_PRINTLN(ground_PH);
 
   // Acceso al objeto 'gps'.
   JsonObject gps = doc[F("gps")].as<JsonObject>();
@@ -151,10 +151,10 @@ StaticJsonDocument<JSON_DOC_SIZE> parseJsonString(const String& jsonInputString)
   int gps_minute = gps[F("minute")].as<int>();
   int gps_second = gps[F("second")].as<int>();
 
-  // Serial.print(F("  GPS - Lat: ")); Serial.print(gps_latitude); // Descomentar para depurar
-  // Serial.print(F(", Lon: ")); Serial.print(gps_longitude);
-  // Serial.print(F(", Alt: ")); Serial.print(gps_altitudeMeters);
-  // Serial.print(F(", Time: ")); Serial.print(gps_hour); Serial.print(":"); Serial.print(gps_minute); Serial.print(":"); Serial.println(gps_second);
+  // DEBUG_PRINT(F("  GPS - Lat: ")); DEBUG_PRINT(gps_latitude); // Descomentar para depurar
+  // DEBUG_PRINT(F(", Lon: ")); DEBUG_PRINT(gps_longitude);
+  // DEBUG_PRINT(F(", Alt: ")); DEBUG_PRINT(gps_altitudeMeters);
+  // DEBUG_PRINT(F(", Time: ")); DEBUG_PRINT(gps_hour); DEBUG_PRINT(":"); DEBUG_PRINT(gps_minute); DEBUG_PRINT(":"); DEBUG_PRINTLN(gps_second);
 
   // Si llegamos hasta aquí, la deserialización y el acceso a los datos fueron exitosos.
   return doc; // Retorna el JsonDocument lleno.

@@ -1,13 +1,31 @@
 
-#define DEBUGPRINTS false
+#define DEBUG_MODE
 
+#ifdef DEBUG_MODE
+
+#define DEBUG_PRINT(x) Serial.print(x)
+#define DEBUG_PRINTLN(x) Serial.println(x)
 #define MAX_NODES 250
 #define NUMERO_MUESTRAS_ATMOSFERICAS 8
-#define CANTIDAD_PAQUETES_ALMACENAR
+
+#define CANTIDAD_MUESTRAS_SUELO 2
+#define TIMEOUTGRAL 1500           /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
+#define INTERVALOANNOUNCE 5000     /**< @brief Intervalo en milisegundos (5 seg) para announce*/
+#define INTERVALOATMOSPHERIC 60000 /**< @brief Intervalo en milisegundos (1 minutos) para request atmospheric*/
+
+#else
+
+#define DEBUG_PRINT(x)
+#define DEBUG_PRINTLN(x)
+#define MAX_NODES 250
+#define NUMERO_MUESTRAS_ATMOSFERICAS 8
+
 #define CANTIDAD_MUESTRAS_SUELO 2
 #define TIMEOUTGRAL 1500            /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
 #define INTERVALOANNOUNCE 120000    /**< @brief Intervalo en milisegundos (2 min) para announce*/
 #define INTERVALOATMOSPHERIC 480000 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
+
+#endif
 
 // lora
 /**

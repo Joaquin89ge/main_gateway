@@ -44,23 +44,23 @@ bool RadioManager::init()
     while (!driver.init())
     {
 
-        Serial.println("LoRa radio init failed");
+        DEBUG_PRINTLN("LoRa radio init failed");
 
         delay(100);
     }
 
-    Serial.println("LoRa radio init OK!");
+    DEBUG_PRINTLN("LoRa radio init OK!");
 
     if (!driver.setFrequency(FRECUENCI_CONF))
     {
 
-        Serial.println("setFrequency failed");
+        DEBUG_PRINTLN("setFrequency failed");
 
         delay(100);
     }
 
-    Serial.print("Set Freq to: ");
-    Serial.println(FRECUENCI_CONF);
+    DEBUG_PRINT("Set Freq to: ");
+    DEBUG_PRINTLN(FRECUENCI_CONF);
     driver.setTxPower(POWER_LORA, false);
     return true;
 }

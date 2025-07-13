@@ -10,24 +10,24 @@ RtcManager::RtcManager()
 bool RtcManager::begin()
 {
     Wire.begin(I2C_SDA, I2C_SCL); // Inicializa I2C con los pines definidos
-    Serial.println("Inicializando RTC...");
+    DEBUG_PRINTLN("Inicializando RTC...");
     if (!rtc.begin())
     {
-        Serial.println("¡Error! No se encontró el módulo RTC. Revisa las conexiones.");
+        DEBUG_PRINTLN("¡Error! No se encontró el módulo RTC. Revisa las conexiones.");
         return false; // Indica fallo en la inicialización
     }
 
     // Opcional: Comprobar si el RTC perdió energía y ajustar la hora
     if (rtc.lostPower())
     {
-        Serial.println("RTC perdió energía, ¡ajustando la hora al momento de la compilación!");
+        DEBUG_PRINTLN("RTC perdió energía, ¡ajustando la hora al momento de la compilación!");
         // Ajusta el RTC a la fecha y hora de compilación.
         // ¡Recuerda comentar esta línea después de la primera subida para que el reloj mantenga su hora!
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
         // Puedes usar la fecha y hora actual del sistema si tienes conectividad a internet:
         // rtc.adjust(DateTime(2025, 6, 19, 16, 45, 0)); // Ejemplo: Año, Mes, Día, Hora, Minuto, Segundo
     }
-    Serial.println("RTC inicializado correctamente.");
+    DEBUG_PRINTLN("RTC inicializado correctamente.");
     return true; // Indica éxito en la inicialización
 }
 

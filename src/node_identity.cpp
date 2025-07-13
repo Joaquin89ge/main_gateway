@@ -158,7 +158,7 @@ bool NodeIdentity::getGetway(uint8_t &getwayAdress)
     uint8_t value = GETWAY_NOT_SET;
     if (loadByteFromFile(GATEWAY_ADDR_FILE, value) == false)
     {
-        Serial.println("error en load memori");
+        DEBUG_PRINTLN("error en load memori");
         return false;
     }
     if (value != GETWAY_NOT_SET)
@@ -178,14 +178,14 @@ void NodeIdentity::begin()
 {
 
     // --- ¡IMPORTANTE! Inicializar LittleFS una sola vez en setup() ---
-    Serial.println("Inicializando LittleFS en sketch principal...");
+    DEBUG_PRINTLN("Inicializando LittleFS en sketch principal...");
     if (!LittleFS.begin())
     {
-        Serial.println("Fallo al montar LittleFS. Intentando formatear...");
+        DEBUG_PRINTLN("Fallo al montar LittleFS. Intentando formatear...");
         // LittleFS.format(); // ¡Ten precaución! Esto borra todos los archivos.
         if (!LittleFS.begin())
         {
-            Serial.println("Fallo crítico: LittleFS no se pudo montar.");
+            DEBUG_PRINTLN("Fallo crítico: LittleFS no se pudo montar.");
             return; // Detener la ejecución si LittleFS no está listo
         }
     }

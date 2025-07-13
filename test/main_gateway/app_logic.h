@@ -28,9 +28,7 @@ private:
     RtcManager clockRtc;
     uint8_t gatewayAddress; /**< @brief Dirección de red del Gateway con el que este sensor se comunica. */
 
-    uint8_t nodeIDs[MAX_NODES]; /**< @brief Direcciónes de red de nodos conocidos. */
-    bool nodesRegistred = false;
-    uint8_t counterNodes = 0; /**< @brief contador de red de nodos conocidos. */
+    std::map<uint8_t, String> mapNodesIDsMac;
 
     const int intervaloHorasSuelo[CANTIDAD_MUESTRAS_SUELO] = {12, 24}; /**< @brief horas para request data ground y gps*/
     unsigned long temBuf = 0;                                          /**< @brief bufer guarda tiempo */
@@ -40,8 +38,8 @@ private:
 
     bool updatedData = false; /**< @brief  flag de datos actualizados, se pone en true luego de un requestAtmosphericData o requestGroundGpsData */
 
-    // implementar logica de envio y recepcion datos
-
+   uint8_t countGroundSamples = 0 ;/**< @brief  cuenta en que posicion del array meter la medicion del modulo lora ya que el poquete de datos es por dia CANTIDAD_MUESTRAS_SUELO x DIA */
+    
     void sendAnnounce();
 
     /**
@@ -51,7 +49,7 @@ private:
      * a la red y al Gateway.
      */
     void handleHello();
-
+    bool registerNewNode(char receivedMac, uint8_t from);
     void requestAtmosphericData();
     void requestGroundGpsData();
     void handleUartRequest();

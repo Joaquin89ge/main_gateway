@@ -180,13 +180,12 @@ void AppLogic::requestAtmosphericData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(atmosSamples)))
                     {
-                        if (DEBUGPRINTS == false)
-                        {
-                            Serial.print("Tamaño incorrecto: ");
-                            Serial.print(len);
-                            Serial.print(" vs ");
-                            Serial.println(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
-                        }
+
+                        DEBUG_PRINT("Tamaño incorrecto: ");
+                        DEBUG_PRINT(len);
+                        DEBUG_PRINT(" vs ");
+                        DEBUG_PRINTLN(sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS);
+
                         t = false;
                         continue;
                     }
@@ -208,8 +207,8 @@ void AppLogic::requestAtmosphericData()
  */
 void AppLogic::requestGroundGpsData()
 {
-    if (DEBUGPRINTS == false)
-        Serial.println("requestGroundGpsData");
+
+    DEBUG_PRINTLN("requestGroundGpsData");
     std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples;
     uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
     uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
@@ -219,11 +218,10 @@ void AppLogic::requestGroundGpsData()
     for (uint8_t i = 0; i < counterNodes; i++)
     {
         nodeId = nodeIDs[i];
-        if (DEBUGPRINTS == false)
-        {
-            Serial.println("enviando REQUEST_DATA_GPC_GROUND a");
-            Serial.println(nodeId);
-        }
+
+        DEBUG_PRINTLN("enviando REQUEST_DATA_GPC_GROUND a");
+        DEBUG_PRINT(nodeId);
+
         radio.sendMessage(nodeId, buf, len, static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_GPC_GROUND));
 
         bool t = false;
@@ -241,13 +239,12 @@ void AppLogic::requestGroundGpsData()
                     // 1. Verificar tamaño
                     if (len != (sizeof(groundSamples)))
                     {
-                        if (DEBUGPRINTS == true)
-                        {
-                            Serial.print("Tamaño incorrecto: ");
-                            Serial.print(len);
-                            Serial.print(" vs ");
-                            Serial.println(sizeof(groundSamples));
-                        }
+
+                        DEBUG_PRINT("Tamaño incorrecto: ");
+                        DEBUG_PRINT(len);
+                        DEBUG_PRINT(" vs ");
+                        DEBUG_PRINTLN(sizeof(groundSamples));
+
                         t = false;
                         continue;
                     }
@@ -255,8 +252,8 @@ void AppLogic::requestGroundGpsData()
                     // *** ESTA ES LA FORMA CORRECTA ***
                     memcpy(groundSamples.data(), buf, len);
                     groundGpsSamplesNodes[nodeId] = groundSamples;
-                    if (DEBUGPRINTS == false)
-                        Serial.println("recepcion exitosa de REQUEST_DATA_GPC_GROUND");
+
+                    DEBUG_PRINTLN("recepcion exitosa de REQUEST_DATA_GPC_GROUND");
                     t = true;
                     break;
                 }
