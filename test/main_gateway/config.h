@@ -27,7 +27,7 @@
 
 #endif
 
-
+#define RH_MESH_MAX_MESSAGE_LEN 50
 #define MAC_STR_LEN_WITH_NULL 18 
 
 // lora

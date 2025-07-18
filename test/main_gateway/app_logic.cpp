@@ -1,6 +1,6 @@
 // 03:00 16/6/2025
 //  AppLogic.cpp (Lógica para un nodo sensor)
-#include "app_logic.h"  // Incluye la definición de la clase AppLogic.
+#include "app_logic.h" // Incluye la definición de la clase AppLogic.
 
 // TODO:queda implementar logica  errores y posible reinicio si se acomulan
 // TODO: poner funcion RTC y terminar tests
@@ -27,8 +27,9 @@
  * e inicializo `gatewayAddress` a un valor por defecto o inválido si no se proporciona.
  */
 AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
-  : nodeIdentity(identity),
-    radio(radioMgr) {
+    : nodeIdentity(identity),
+      radio(radioMgr)
+{
   gatewayAddress = nodeIdentity.getNodeID();
   // begin();
 }
@@ -40,7 +41,8 @@ AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
  * Su propósito es realizar configuraciones iniciales. Actualmente, envía un mensaje HELLO
  * al `gatewayAddress` para anunciar la presencia de este nodo sensor en la red.
  */
-void AppLogic::begin() {
+void AppLogic::begin()
+{
 }
 
 /**
@@ -54,7 +56,8 @@ void AppLogic::begin() {
  * - `Protocol::REQUEST_DATA`: Llama a `handleRequestData()`.
  * - Otros tipos: Se ignora y se imprime un mensaje si no son esperados por un sensor.
  */
-void AppLogic::update() {
+void AppLogic::update()
+{
 
   handleHello();
   handleUartRequest();
@@ -71,14 +74,16 @@ void AppLogic::update() {
  * Registra el envío en la consola serial.
  */
 
-void AppLogic::handleHello() {
-  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];  // Buffer for the received message
-  uint8_t len;                           // Maximum buffer length
-  uint8_t from;                          // Sender address
-  uint8_t flag;                          // Protocol detection FLAG
+void AppLogic::handleHello()
+{
+  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Buffer for the received message
+  uint8_t len;                          // Maximum buffer length
+  uint8_t from;                         // Sender address
+  uint8_t flag;                         // Protocol detection FLAG
 
-  bool triSend = radio.recvMessage(buf, &len, &from, &flag);
-  if (triSend) {
+  bool triSend = radio.recvMessageTimeout(buf, &len, &from, &flag, 100);
+  if (triSend)
+  {
     DEBUG_PRINTLN("AppLogic::handleHello(): Entering.");
     // Message successfully received
     DEBUG_PRINT("AppLogic::handleHello(): Message received. Sender: 0x");
@@ -89,7 +94,8 @@ void AppLogic::handleHello() {
     DEBUG_PRINTLN(String(flag, HEX));
 
     // Check if the FLAG corresponds to the HELLO message type
-    if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO && len == MAC_STR_LEN_WITH_NULL) {
+    if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO && len == MAC_STR_LEN_WITH_NULL)
+    {
       DEBUG_PRINTLN("AppLogic::handleHello(): Message is of type HELLO.");
       char receivedMac[MAC_STR_LEN_WITH_NULL];
       // Copiar los bytes recibidos al buffer de la MAC
@@ -99,19 +105,21 @@ void AppLogic::handleHello() {
       registerNewNode(*receivedMac, from);
       DEBUG_PRINTLN("AppLogic::handleHello(): Exiting.");
     }
-  } else  // The flag is not HELLO
-  {
-    /*DEBUG_PRINT("AppLogic::handleHello(): Message received, but FLAG (0x");
-    DEBUG_PRINT(String(flag, HEX));
-    DEBUG_PRINT(" or  Length: ");
-    DEBUG_PRINT(String(leng));
-    DEBUG_PRINTLN(") is not HELLO. Ignoring message.");*/
+    else // The flag is not HELLO
+    {
+      DEBUG_PRINT("AppLogic::handleHello(): Message received, but FLAG (0x");
+      DEBUG_PRINT(String(flag, HEX));
+      DEBUG_PRINT(" or  Length: ");
+      DEBUG_PRINT(String(len));
+      DEBUG_PRINTLN(") is not HELLO. Ignoring message.");
+    }
   }
 }
 
-bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
+bool AppLogic::registerNewNode(char receivedMac, uint8_t from)
+{
   // This 'if' block handles the initial state where no nodes are recorded yet.
-  if (mapNodesIDsMac.empty())  // registro de una
+  if (mapNodesIDsMac.empty()) // registro de una
   {
 
     DEBUG_PRINT("AppLogic::handleHello(): First node detected. Registering 0x");
@@ -119,7 +127,7 @@ bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
     DEBUG_PRINTLN(" as node 0.");
     mapNodesIDsMac[from] = String(receivedMac);
     DEBUG_PRINTLN("AppLogic::handleHello(): First node registered. Exiting.");
-    //return true;  // Exit the function as the first node has been processed succesful.
+    // return true;  // Exit the function as the first node has been processed succesful.
   }
 
   // If not the first node, check if it's already registered
@@ -133,28 +141,35 @@ bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
   auto it1 = mapNodesIDsMac.find(from);
 
   // Comprobar si el iterador no es el final del mapa (es decir, la clave se encontró)
-  if (it1 != mapNodesIDsMac.end()) {
+  if (it1 != mapNodesIDsMac.end())
+  {
     DEBUG_PRINT("  ¡Clave encontrada!");
-    if (it1->second == String(receivedMac)) {
+    if (it1->second == String(receivedMac))
+    {
       DEBUG_PRINT("nodo ya registrado");
-      //return true;  // Exit the function as the first node has been processed succesful.
-    } else if (it1->second != String(receivedMac)) {
+      // return true;  // Exit the function as the first node has been processed succesful.
+    }
+    else if (it1->second != String(receivedMac))
+    {
       DEBUG_PRINT("nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: ");
-      DEBUG_PRINT(it1->second);  // it1->second es el valor (la String de la MAC)
+      DEBUG_PRINT(it1->second); // it1->second es el valor (la String de la MAC)
       DEBUG_PRINTLN("AppLogic::handleHello(): envio send change ID.");
       sendChangeID(from);
-      return false;  // Exit the function as the first node hasn't been processed .
+      return false; // Exit the function as the first node hasn't been processed .
     }
-  } else {
+  }
+  else
+  {
     DEBUG_PRINT("AppLogic::handleHello(): Nuevo Nodo ya que no esta registrado su key. Registering 0x");
     DEBUG_PRINT(String(from, HEX));
     DEBUG_PRINTLN(" as node 0.");
     mapNodesIDsMac[from] = String(receivedMac);
-    //return true;  // Exit the function as the first node has been processed succesful.
+    // return true;  // Exit the function as the first node has been processed succesful.
   }
   return true;
 }
-void AppLogic::sendChangeID(uint8_t from) {
+void AppLogic::sendChangeID(uint8_t from)
+{
   // Declara IDsAcotados con el tamaño máximo de mensaje que puede enviar el radio.
   // Esto asegura que el búfer local es lo suficientemente grande.
   uint8_t IDsAcotados[RH_MESH_MAX_MESSAGE_LEN];
@@ -175,11 +190,14 @@ void AppLogic::sendChangeID(uint8_t from) {
   // Asegurarse de que no copiamos de una posición inválida si counterNodes es 0.
   // Aunque si counterNodes es 0, bytesToCopy sería 0 y memcpy no haría nada.
   // Es buena práctica verificar siempre.
-  if (bytesToCopy > 0) {
+  if (bytesToCopy > 0)
+  {
     // Copia los IDs registrados (hasta el límite del búfer de mensaje)
     size_t i = 0;
-    for (const auto &pair : mapNodesIDsMac) {
-      if ((i + 1) <= bytesToCopy) {
+    for (const auto &pair : mapNodesIDsMac)
+    {
+      if ((i + 1) <= bytesToCopy)
+      {
         IDsAcotados[i] = pair.first;
         i++;
       }
@@ -187,7 +205,9 @@ void AppLogic::sendChangeID(uint8_t from) {
     DEBUG_PRINT("AppLogic::sendChangeID(): Se copiaron ");
     DEBUG_PRINT(String(bytesToCopy));
     DEBUG_PRINTLN(" bytes de nodeIDs a IDsAcotados.");
-  } else {
+  }
+  else
+  {
     DEBUG_PRINTLN("AppLogic::sendChangeID(): No hay IDs de nodos para copiar (counterNodes es 0).");
     // Si no hay nodos, el mensaje puede ser solo el 'from' o un mensaje vacío si tiene sentido.
     // En este caso, IDsAcotados ya está "vacío" o con basura, así que solo pondremos 'from'.
@@ -211,19 +231,24 @@ void AppLogic::sendChangeID(uint8_t from) {
   DEBUG_PRINTLN("AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.");
 }
 
-void AppLogic::timer() {
+void AppLogic::timer()
+{
   // DEBUG_PRINTLN("entro timer ");
   unsigned long tiempoActual = millis();
 
-  if (tiempoActual - temBuf >= INTERVALOANNOUNCE) {
+  if (tiempoActual - temBuf >= INTERVALOANNOUNCE)
+  {
     temBuf = tiempoActual;
     sendAnnounce();
-  } else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false) {
+  }
+  else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false)
+  {
     temBuf1 = tiempoActual;
     DEBUG_PRINTLN("salto timer requestAtmosphericData");
     requestAtmosphericData();
   }
-  if (compareHsAndMs() && mapNodesIDsMac.empty() == false) {
+  if (compareHsAndMs() && mapNodesIDsMac.empty() == false)
+  {
     DEBUG_PRINTLN("salto hora requestGroundGpsData");
     requestGroundGpsData();
   }
@@ -233,7 +258,8 @@ void AppLogic::timer() {
  * @brief Maneja un mensaje ANNOUNCE.
  *
  */
-void AppLogic::sendAnnounce() {
+void AppLogic::sendAnnounce()
+{
   DEBUG_PRINTLN("enviando announce KEY:");
   uint8_t key = Protocol::KEY;
   DEBUG_PRINTLN(String(key));
@@ -245,16 +271,17 @@ void AppLogic::sendAnnounce() {
  * @brief solicita los datos actuales de atmospheic a los nodos.
 
  */
-void AppLogic::requestAtmosphericData() {
+void AppLogic::requestAtmosphericData()
+{
 
   DEBUG_PRINTLN("DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.");
 
   std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> atmosSamples;
-  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];  // Búfer para el mensaje recibido
+  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN]; // Búfer para el mensaje recibido
   uint8_t key = Protocol::KEY;
-  uint8_t len;                                                                           // Longitud máxima del búfer
-  uint8_t from;                                                                          // Dirección del remitente
-  uint8_t flag = static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC);  // FLAG de detecccion protocolo
+  uint8_t len;                                                                          // Longitud máxima del búfer
+  uint8_t from;                                                                         // Dirección del remitente
+  uint8_t flag = static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC); // FLAG de detecccion protocolo
   uint8_t nodeId = 0;
 
   // Calcula el tamaño esperado de los datos atmosféricos para validación
@@ -264,8 +291,8 @@ void AppLogic::requestAtmosphericData() {
   DEBUG_PRINT(", Tamano esperado de muestras: ");
   DEBUG_PRINTLN(expectedAtmosphericDataSize);
 
-
-  for (const auto &pair : mapNodesIDsMac) {
+  for (const auto &pair : mapNodesIDsMac)
+  {
     nodeId = pair.first;
     DEBUG_PRINT("DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x");
     DEBUG_PRINTLN(String(nodeId, HEX));
@@ -274,7 +301,7 @@ void AppLogic::requestAtmosphericData() {
     // Envio de la solicitud
     DEBUG_PRINT(String(nodeId, HEX));
     DEBUG_PRINT(" con payload de ");
-    DEBUG_PRINT(len);  // Aquí 'len' es el tamaño completo del buffer de recepción, no el payload del REQUEST
+    DEBUG_PRINT(len); // Aquí 'len' es el tamaño completo del buffer de recepción, no el payload del REQUEST
     DEBUG_PRINTLN(" bytes (manager.sendMessage).");
 
     // NOTA: Si el mensaje REQUEST_DATA_ATMOSPHERIC no lleva payload,
@@ -283,11 +310,11 @@ void AppLogic::requestAtmosphericData() {
 
     radio.sendMessage(nodeId, &key, sizeof(key), flag);
 
-
     bool t = false;
     t = false;
     uint8_t intentos = 0;
-    while (t == false && intentos <= connectionRetries) {
+    while (t == false && intentos <= connectionRetries)
+    {
       intentos++;
       DEBUG_PRINT("DEBUG: Intento ");
       DEBUG_PRINT(intentos);
@@ -297,10 +324,11 @@ void AppLogic::requestAtmosphericData() {
       DEBUG_PRINT(TIMEOUTGRAL);
       DEBUG_PRINTLN("ms).");
 
-      uint8_t current_recv_len = sizeof(buf);  // Reiniciar len para cada llamada a recvMessageTimeout
+      uint8_t current_recv_len = sizeof(buf); // Reiniciar len para cada llamada a recvMessageTimeout
 
       // Intenta recibir un mensaje.
-      if (radio.recvMessageTimeout(buf, &current_recv_len, &from, &flag, TIMEOUTGRAL)) {
+      if (radio.recvMessageTimeout(buf, &current_recv_len, &from, &flag, TIMEOUTGRAL))
+      {
         DEBUG_PRINT("DEBUG: Mensaje recibido. Remitente: 0x");
         DEBUG_PRINT(String(from, HEX));
         DEBUG_PRINT(", Tipo: 0x");
@@ -309,20 +337,23 @@ void AppLogic::requestAtmosphericData() {
         DEBUG_PRINTLN(current_recv_len);
 
         // Verifica tipo de mensaje y remitente
-        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_ATMOSPHERIC && from == nodeId) {
+        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_ATMOSPHERIC && from == nodeId)
+        {
           DEBUG_PRINTLN("DEBUG: Tipo de mensaje y remitente coinciden.");
 
           // 1. Verificar tamaño del payload recibido
-          if (current_recv_len != expectedAtmosphericDataSize) {
+          if (current_recv_len != expectedAtmosphericDataSize)
+          {
             DEBUG_PRINT("DEBUG: ERROR: Tamano de payload INCORRECTO. Recibido: ");
             DEBUG_PRINT(current_recv_len);
             DEBUG_PRINT(" bytes, Esperado: ");
             DEBUG_PRINT(expectedAtmosphericDataSize);
             DEBUG_PRINTLN(" bytes.");
 
-
             // No se modifica 't', el bucle continuará si hay reintentos.
-          } else {
+          }
+          else
+          {
             DEBUG_PRINTLN("DEBUG: Tamano de payload CORRECTO. Realizando memcpy.");
             // 2. Convertir a nuestra estructura
             memcpy(atmosSamples.data(), buf, current_recv_len);
@@ -330,60 +361,64 @@ void AppLogic::requestAtmosphericData() {
             DEBUG_PRINT("DEBUG: Datos de nodo 0x");
             DEBUG_PRINT(String(nodeId, HEX));
             DEBUG_PRINTLN(" almacenados.");
-            t = true;  // Marca como exitoso
-
-
+            t = true; // Marca como exitoso
 
             //_--------------------------------borrar
-            if (1 == 1) {
+            if (1 == 1)
+            {
               DEBUG_PRINTLN("--- DEBUG: Imprimiendo muestras atmosfericas almacenadas ---");
 
-              if (AtmosphericSampleNodes.empty()) {
+              if (AtmosphericSampleNodes.empty())
+              {
                 DEBUG_PRINTLN("DEBUG: El mapa AtmosphericSampleNodes esta vacio.");
                 return;
               }
 
               // Itera sobre cada entrada (par clave-valor) en el mapa
-              for (const auto &pair : AtmosphericSampleNodes) {
-                uint8_t nodeId = pair.first;  // La clave es el ID del nodo
+              for (const auto &pair : AtmosphericSampleNodes)
+              {
+                uint8_t nodeId = pair.first; // La clave es el ID del nodo
                 // Accedemos al std::array de AtmosphericSample usando .second
                 const std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> &samples = pair.second;
 
                 DEBUG_PRINT("DEBUG: Nodo ID: 0x");
-                DEBUG_PRINT(String(nodeId, HEX));  // Convierte el ID a String hexadecimal para imprimir
+                DEBUG_PRINT(String(nodeId, HEX)); // Convierte el ID a String hexadecimal para imprimir
                 DEBUG_PRINTLN(" ----");
 
                 // Itera sobre cada AtmosphericSample dentro del array para este nodo
-                for (size_t i = 0; i < samples.size(); ++i) {
-                  const AtmosphericSample &sample = samples[i];  // Obtén una referencia a la muestra actual
+                for (size_t i = 0; i < samples.size(); ++i)
+                {
+                  const AtmosphericSample &sample = samples[i]; // Obtén una referencia a la muestra actual
 
                   DEBUG_PRINT("DEBUG:   Muestra ");
-                  DEBUG_PRINT(i + 1);  // Para empezar a contar desde 1
+                  DEBUG_PRINT(i + 1); // Para empezar a contar desde 1
                   DEBUG_PRINT(": ");
 
                   // Temperatura: Se divide por 10.0 para obtener el valor flotante
                   DEBUG_PRINT("Temp=");
-                  DEBUG_PRINT((float)sample.temp / 10.0);  // Imprimir float
+                  DEBUG_PRINT((float)sample.temp / 10.0); // Imprimir float
                   DEBUG_PRINT("C, ");
 
                   // Humedad: Se divide por 10.0 para obtener el valor flotante
                   DEBUG_PRINT("Hum=");
-                  DEBUG_PRINT((float)sample.moisture / 10.0);  // Imprimir float
+                  DEBUG_PRINT((float)sample.moisture / 10.0); // Imprimir float
                   DEBUG_PRINT("%");
 
                   // Hora y Minuto: Requiere lógica de formato manual para el cero inicial
                   DEBUG_PRINT(", Hora=");
-                  if (sample.hour < 10) {
-                    DEBUG_PRINT("0");  // Rellena con cero si es necesario
+                  if (sample.hour < 10)
+                  {
+                    DEBUG_PRINT("0"); // Rellena con cero si es necesario
                   }
                   DEBUG_PRINT(sample.hour);
                   DEBUG_PRINT(":");
-                  if (sample.minute < 10) {
-                    DEBUG_PRINT("0");  // Rellena con cero si es necesario
+                  if (sample.minute < 10)
+                  {
+                    DEBUG_PRINT("0"); // Rellena con cero si es necesario
                   }
                   DEBUG_PRINT(sample.minute);
 
-                  DEBUG_PRINTLN("");  // Nueva línea para la siguiente muestra
+                  DEBUG_PRINTLN(""); // Nueva línea para la siguiente muestra
                 }
                 DEBUG_PRINT("DEBUG: ---- Fin de muestras para Nodo ID: 0x");
                 DEBUG_PRINT(String(nodeId, HEX));
@@ -392,44 +427,45 @@ void AppLogic::requestAtmosphericData() {
               DEBUG_PRINTLN("--- DEBUG: Fin de impresion de muestras atmosfericas ---");
             }
 
-
-
-
-            break;  // Salir del bucle while
+            break; // Salir del bucle while
           }
-        } else {
+        }
+        else
+        {
           DEBUG_PRINT("DEBUG: Mensaje recibido pero NO ES LA RESPUESTA ESPERADA (tipo o remitente incorrecto).");
         }
       }
-      if (t == false) radio.sendMessage(nodeId, &key, sizeof(key), flag);
+      if (t == false)
+        radio.sendMessage(nodeId, &key, sizeof(key), flag);
 
-    }  // Fin del while de reintentos
+    } // Fin del while de reintentos
 
-    if (!t) {
+    if (!t)
+    {
       DEBUG_PRINT("DEBUG: Fallo al obtener datos de nodo 0x");
       DEBUG_PRINT(String(nodeId, HEX));
       DEBUG_PRINTLN(" despues de todos los intentos.");
     }
-    DEBUG_PRINTLN("DEBUG: ---");  // Separador entre nodos
-  }                               // Fin del for de nodos
+    DEBUG_PRINTLN("DEBUG: ---"); // Separador entre nodos
+  } // Fin del for de nodos
   DEBUG_PRINTLN("DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.");
 }
-
 
 /**
  * @brief solicita los datos actuales de Ground y Gps a los nodos.
  */
-void AppLogic::requestGroundGpsData() {
+void AppLogic::requestGroundGpsData()
+{
 
   // DEBUG: Inicio de la función principal de solicitud de datos de suelo y GPS.
   DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- INICIO --");
 
   // std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples; // Ya está definido como miembro del mapa
-  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = { 0 };  // Búfer para el mensaje recibido
-  uint8_t len = sizeof(buf);                     // Longitud máxima del búfer
-  uint8_t from;                                  // Dirección del remitente
+  uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = {0}; // Búfer para el mensaje recibido
+  uint8_t len = sizeof(buf);                  // Longitud máxima del búfer
+  uint8_t from;                               // Dirección del remitente
   uint8_t flag = static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_GPC_GROUND);
-  uint8_t nodeId;  // FLAG de detección protocolo
+  uint8_t nodeId; // FLAG de detección protocolo
   uint8_t key = Protocol::KEY;
 
   size_t expectedGroundcDataSize = sizeof(GroundGpsPacket);
@@ -439,8 +475,8 @@ void AppLogic::requestGroundGpsData() {
   DEBUG_PRINT(String(expectedGroundcDataSize));
   DEBUG_PRINTLN(" bytes.");
 
-
-  for (const auto &pair : mapNodesIDsMac) {
+  for (const auto &pair : mapNodesIDsMac)
+  {
     nodeId = pair.first;
 
     // DEBUG: Procesando un nuevo nodo.
@@ -456,7 +492,8 @@ void AppLogic::requestGroundGpsData() {
 
     bool t = false;
     uint8_t intentos = 0;
-    while (t == false && intentos <= connectionRetries) {
+    while (t == false && intentos <= connectionRetries)
+    {
 
       intentos++;
       // DEBUG: Mostrar el número de intento actual.
@@ -466,9 +503,9 @@ void AppLogic::requestGroundGpsData() {
       DEBUG_PRINT(String(nodeId, HEX));
       DEBUG_PRINTLN(".");
 
-
       // Intenta recibir un mensaje.
-      if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL)) {
+      if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL))
+      {
 
         // DEBUG: Mensaje recibido. Mostrar remitente, tipo y longitud.
         DEBUG_PRINT("DEBUG: Mensaje recibido de 0x");
@@ -478,12 +515,14 @@ void AppLogic::requestGroundGpsData() {
         DEBUG_PRINT(", Longitud: ");
         DEBUG_PRINTLN(String(len));
 
-        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_GPS_CROUND && from == nodeId) {
+        if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_GPS_CROUND && from == nodeId)
+        {
           // DEBUG: El mensaje es el esperado.
           DEBUG_PRINTLN("DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.");
 
           // 1. Verificar tamaño
-          if (len != expectedGroundcDataSize) {
+          if (len != expectedGroundcDataSize)
+          {
 
             // DEBUG: Mensaje de error por tamaño incorrecto.
             DEBUG_PRINT("DEBUG: ERROR: Tamano incorrecto. Recibido: ");
@@ -493,55 +532,61 @@ void AppLogic::requestGroundGpsData() {
             DEBUG_PRINTLN(".");
 
             t = false;
-            continue;  // Continúa al siguiente intento
-          } else {
-                  // *** LA LÓGICA CLAVE: Insertar un solo GroundGpsPacket en el array del mapa ***
+            continue; // Continúa al siguiente intento
+          }
+          else
+          {
+            // *** LA LÓGICA CLAVE: Insertar un solo GroundGpsPacket en el array del mapa ***
 
-                // Paso 1: Asegurarse de que el nodo ya existe en el mapa o crearlo con un array por defecto.
-                // Si el nodo no existe, groundGpsSamplesNodes[nodeId] lo creará con un array inicializado.
-                // Si ya existe, obtendrá una referencia a ese array.
-                std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO>& nodeSamples = groundGpsSamplesNodes[nodeId];
+            // Paso 1: Asegurarse de que el nodo ya existe en el mapa o crearlo con un array por defecto.
+            // Si el nodo no existe, groundGpsSamplesNodes[nodeId] lo creará con un array inicializado.
+            // Si ya existe, obtendrá una referencia a ese array.
+            std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> &nodeSamples = groundGpsSamplesNodes[nodeId];
 
-                // Paso 2: Copia los bytes del búfer 'buf' directamente a una variable temporal de GroundGpsPacket.
-                // Esto es necesario para asegurar una copia limpia y manejable.
-                GroundGpsPacket receivedPacket;
-                memcpy(&receivedPacket, buf, expectedGroundcDataSize); // Copia el contenido del búfer al paquete temporal
+            // Paso 2: Copia los bytes del búfer 'buf' directamente a una variable temporal de GroundGpsPacket.
+            // Esto es necesario para asegurar una copia limpia y manejable.
+            GroundGpsPacket receivedPacket;
+            memcpy(&receivedPacket, buf, expectedGroundcDataSize); // Copia el contenido del búfer al paquete temporal
 
-                // Paso 3: Define la 'count' (posición) donde quieres almacenar este paquete.
+            // Paso 3: Define la 'count' (posición) donde quieres almacenar este paquete.
 
-                // Verificar que la posición 'count' sea válida
-                if (countGroundSamples < CANTIDAD_MUESTRAS_SUELO) {
-                    nodeSamples[countGroundSamples] = receivedPacket; // Asigna el paquete recibido a la posición 'count'
-                    DEBUG_PRINT("DEBUG: Paquete de nodo 0x");
-                    DEBUG_PRINT(String(nodeId, HEX));
-                    DEBUG_PRINT(" almacenado en posicion ");
-                    DEBUG_PRINT(String(countGroundSamples));
-                    DEBUG_PRINTLN(".");
-                    countGroundSamples ++;
-                    t = true; // Marca como exitoso
-                    
-                } else {
-                    DEBUG_PRINT("DEBUG: ERROR: Posicion 'count' (");
-                    DEBUG_PRINT(String(countGroundSamples));
-                    DEBUG_PRINT(") excede el tamano del array (");
-                    DEBUG_PRINT(String(CANTIDAD_MUESTRAS_SUELO));
-                    DEBUG_PRINTLN("). Paquete no almacenado.");
-                    break;
-                }
+            // Verificar que la posición 'count' sea válida
+            if (countGroundSamples < CANTIDAD_MUESTRAS_SUELO)
+            {
+              nodeSamples[countGroundSamples] = receivedPacket; // Asigna el paquete recibido a la posición 'count'
+              DEBUG_PRINT("DEBUG: Paquete de nodo 0x");
+              DEBUG_PRINT(String(nodeId, HEX));
+              DEBUG_PRINT(" almacenado en posicion ");
+              DEBUG_PRINT(String(countGroundSamples));
+              DEBUG_PRINTLN(".");
+              countGroundSamples++;
+              t = true; // Marca como exitoso
+            }
+            else
+            {
+              DEBUG_PRINT("DEBUG: ERROR: Posicion 'count' (");
+              DEBUG_PRINT(String(countGroundSamples));
+              DEBUG_PRINT(") excede el tamano del array (");
+              DEBUG_PRINT(String(CANTIDAD_MUESTRAS_SUELO));
+              DEBUG_PRINTLN("). Paquete no almacenado.");
+              break;
+            }
 
-           
             //----------------------------borrar -----------------
             // Este bloque de debug está aquí en tu código original. No lo muevo para no alterar la lógica.
-            if (1 == 1) {  // Esto es siempre verdadero, por lo que siempre se ejecuta.
+            if (1 == 1)
+            { // Esto es siempre verdadero, por lo que siempre se ejecuta.
               DEBUG_PRINTLN("--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---");
 
-              if (groundGpsSamplesNodes.empty()) {
+              if (groundGpsSamplesNodes.empty())
+              {
                 DEBUG_PRINTLN("DEBUG: El mapa groundGpsSamplesNodes esta vacio.");
                 // return; // Esta línea podría salir de la función principal, lo cual afectaría la lógica.
                 // Mantengo tu código, pero si se llama aquí, no debería salir de la función requestGroundGpsData.
               }
 
-              for (const auto &pair_inner : groundGpsSamplesNodes) {  // Usar 'pair_inner' para evitar conflicto de nombre
+              for (const auto &pair_inner : groundGpsSamplesNodes)
+              { // Usar 'pair_inner' para evitar conflicto de nombre
                 uint8_t nodeId_inner = pair_inner.first;
                 const std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> &packets_inner = pair_inner.second;
 
@@ -549,7 +594,8 @@ void AppLogic::requestGroundGpsData() {
                 DEBUG_PRINT(String(nodeId_inner, HEX));
                 DEBUG_PRINTLN(" ----");
 
-                for (size_t i_inner = 0; i_inner < packets_inner.size(); ++i_inner) {
+                for (size_t i_inner = 0; i_inner < packets_inner.size(); ++i_inner)
+                {
                   const GroundGpsPacket &packet_inner = packets_inner[i_inner];
                   const GroundSensor &ground_inner = packet_inner.ground;
                   const GpsSensor &gps_inner = packet_inner.gps;
@@ -583,18 +629,33 @@ void AppLogic::requestGroundGpsData() {
                   DEBUG_PRINT(String(gps_inner.altitude));
                   DEBUG_PRINT("m, Hora=");
 
-                  if (gps_inner.hour < 10) { DEBUG_PRINT("0"); }
+                  if (gps_inner.hour < 10)
+                  {
+                    DEBUG_PRINT("0");
+                  }
                   DEBUG_PRINT(String(gps_inner.hour));
                   DEBUG_PRINT(":");
-                  if (gps_inner.minute < 10) { DEBUG_PRINT("0"); }
+                  if (gps_inner.minute < 10)
+                  {
+                    DEBUG_PRINT("0");
+                  }
                   DEBUG_PRINT(String(gps_inner.minute));
 
                   DEBUG_PRINT(", Flags=0x");
                   DEBUG_PRINT(String(gps_inner.flags, HEX));
 
-                  if (gps_inner.flags & 0x01) { DEBUG_PRINT(" (Ubicacion Valida)"); }
-                  if (gps_inner.flags & 0x02) { DEBUG_PRINT(" (Altitud Valida)"); }
-                  if (gps_inner.flags & 0x04) { DEBUG_PRINT(" (Hora Valida)"); }
+                  if (gps_inner.flags & 0x01)
+                  {
+                    DEBUG_PRINT(" (Ubicacion Valida)");
+                  }
+                  if (gps_inner.flags & 0x02)
+                  {
+                    DEBUG_PRINT(" (Altitud Valida)");
+                  }
+                  if (gps_inner.flags & 0x04)
+                  {
+                    DEBUG_PRINT(" (Hora Valida)");
+                  }
 
                   DEBUG_PRINTLN("");
                   DEBUG_PRINTLN("DEBUG:   --------------------");
@@ -604,12 +665,14 @@ void AppLogic::requestGroundGpsData() {
                 DEBUG_PRINTLN(" ----");
               }
               DEBUG_PRINTLN("--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---");
-            }  // Fin del if (1 == 1)
+            } // Fin del if (1 == 1)
             //----------------------------borrar -----------------
 
-            break;  // Salir del bucle while (reintentos)
+            break; // Salir del bucle while (reintentos)
           }
-        } else {
+        }
+        else
+        {
           // DEBUG: Mensaje recibido pero no coincide con el tipo o remitente esperado.
           DEBUG_PRINT("DEBUG: Mensaje inesperado. Tipo recibido: 0x");
           DEBUG_PRINT(String(flag, HEX));
@@ -617,34 +680,39 @@ void AppLogic::requestGroundGpsData() {
           DEBUG_PRINT(String(from, HEX));
           DEBUG_PRINTLN(".");
         }
-      } else {
+      }
+      else
+      {
         // DEBUG: No se recibió respuesta en el timeout.
         DEBUG_PRINT("DEBUG: Timeout. No se recibio respuesta de 0x");
         DEBUG_PRINT(String(nodeId, HEX));
         DEBUG_PRINTLN(".");
       }
-      if (t == false) {
+      if (t == false)
+      {
         // DEBUG: Se reenvía el mensaje si no hubo éxito.
         DEBUG_PRINT("DEBUG: No exitoso. Reenviando solicitud a 0x");
         DEBUG_PRINT(String(nodeId, HEX));
         DEBUG_PRINTLN(".");
         radio.sendMessage(nodeId, &key, sizeof(key), flag);
       }
-    }  // Fin del while de reintentos
+    } // Fin del while de reintentos
 
-    if (!t) {
+    if (!t)
+    {
       // DEBUG: Fallo final al obtener datos.
       DEBUG_PRINT("DEBUG: Fallo definitivo para nodo 0x");
       DEBUG_PRINT(String(nodeId, HEX));
       DEBUG_PRINTLN(".");
     }
     DEBUG_PRINTLN("DEBUG: --- Fin de procesamiento para nodo ---");
-  }  // Fin del for de nodos
+  } // Fin del for de nodos
 
   // DEBUG: Fin de la función principal.
   DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- FIN --");
 }
-bool AppLogic::compareHsAndMs() {
+bool AppLogic::compareHsAndMs()
+{
   /*if (clockRtc.getMinutos() == 00)
     {
         for (uint8_t i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++)
@@ -657,7 +725,8 @@ bool AppLogic::compareHsAndMs() {
 }
 
 // TODO: falta implementar
-void AppLogic::handleUartRequest() {
+void AppLogic::handleUartRequest()
+{
 
   return;
 }

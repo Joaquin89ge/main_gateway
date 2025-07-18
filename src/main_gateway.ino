@@ -8,11 +8,8 @@
 #include "config.h"
 
 NodeIdentity identity;
-
 RadioManager radio(identity.getNodeID());
-
 AppLogic logic(identity, radio);
-
 bool errorFlag = false;
 
 void setup()
@@ -34,9 +31,9 @@ void setup()
 
 void loop()
 {
-    if (!errorFlag)
+    if (1 == 1)
     {
         logic.update();
-        delay(100);
+        
     }
 }
