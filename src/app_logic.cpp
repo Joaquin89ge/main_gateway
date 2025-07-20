@@ -222,7 +222,7 @@ void AppLogic::timer() {
   } else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false) {
     temBuf1 = tiempoActual;
     DEBUG_PRINTLN("salto timer requestAtmosphericData");
-    requestAtmosphericData();
+    requestGroundGpsData();
   }
   if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
     DEBUG_PRINTLN("salto hora requestGroundGpsData");
@@ -663,16 +663,16 @@ void AppLogic::requestGroundGpsData() {
   DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- FIN --");
 }
 bool AppLogic::compareHsAndMs() {
-    DEBUG_PRINTLN("compareHsAndMs: Iniciando función");
+    //DEBUG_PRINTLN("compareHsAndMs: Iniciando función");
     
     // Verificar si el RTC está funcionando correctamente
     if (!rtc.isDateTimeValid()) {
-        DEBUG_PRINTLN("compareHsAndMs: RTC no válido, retornando false");
+        //DEBUG_PRINTLN("compareHsAndMs: RTC no válido, retornando false");
         return false;
     }
     
     if (!rtc.isRunning()) {
-        DEBUG_PRINTLN("compareHsAndMs: RTC no está funcionando, retornando false");
+        //DEBUG_PRINTLN("compareHsAndMs: RTC no está funcionando, retornando false");
         return false;
     }
     

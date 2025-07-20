@@ -320,3 +320,34 @@ graph TB
 ---
 
 _Diagramas generados con Mermaid para la documentación del Sistema Gateway Agrícola_
+
+# Diagrama de Conexiones de la Placa
+
+A continuación se muestra un diagrama en bloques que representa las conexiones físicas entre la placa principal (ESP8266/ESP32) y los módulos periféricos utilizados en el sistema:
+
+```mermaid
+%% Incluido desde docs/diagramas_arquitectura/conexiones_placa.mmd
+
+graph TD
+    ESP[ESP8266 / ESP32]
+    LORA[LoRa SX1278]
+    RTC[RTC DS1302]
+    DHT[DHT22 Sensor]
+    GPS[GPS Neo-6M]
+    POWER[Fuente de Alimentación]
+
+    POWER --> ESP
+    ESP -- SPI (MOSI/MISO/SCK/CS) --> LORA
+    ESP -- 3-wire (IO/SCLK/CE) --> RTC
+    ESP -- GPIO (D2) --> DHT
+    ESP -- UART (RX/TX) --> GPS
+    LORA -- Antena --> ANT[Antena 433MHz]
+```
+
+> El archivo fuente editable de este diagrama se encuentra en: `docs/diagramas_arquitectura/conexiones_placa.mmd`.
+
+**Descripción:**
+
+- La placa ESP8266/ESP32 se conecta a los módulos LoRa, RTC, DHT22 y GPS mediante diferentes interfaces (SPI, 3-wire, GPIO, UART).
+- La fuente de alimentación provee energía a la placa principal.
+- El módulo LoRa se conecta a una antena externa para la comunicación inalámbrica de largo alcance.

@@ -1,0 +1,20 @@
+---
+title: Diagrama de Conexiones de la Placa
+---
+
+%% Diagrama en bloques de conexiones físicas entre la placa y los módulos
+
+graph TD
+    ESP[ESP8266 / ESP32]
+    LORA[LoRa SX1278]
+    RTC[RTC DS1302]
+    DHT[DHT22 Sensor]
+    GPS[GPS Neo-6M]
+    POWER[Fuente de Alimentación]
+
+    POWER --> ESP
+    ESP -- SPI (MOSI/MISO/SCK/CS) --> LORA
+    ESP -- 3-wire (IO/SCLK/CE) --> RTC
+    ESP -- GPIO (D2) --> DHT
+    ESP -- UART (RX/TX) --> GPS
+    LORA -- Antena --> ANT[Antena 433MHz] 
