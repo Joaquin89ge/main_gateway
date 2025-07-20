@@ -1,0 +1,21 @@
+sd␀lܟ<␀�l�<␃␌␄␌�␄l�␌c|��␃�␓�r�#�␄c��gn�dog���␄c␜8��lrl;lx�o�␘␃␌␄�␌d␌��␌␄␌#␄g�|␃�␄�␜�␌#��no�␀$��l`␃�␛␓ng␄$`␃␏␃'{���o␄␄cd�␏lp�n�␘␃␄␌{�ܜ�␜��␃␄c␄o�|␃␌�␌#��no�␀␄␌d`␂�␛␒'o␌$`␃␏␃g{���o␌␄b��`␃␏r��g␄␌c��`␃�␃␌␌$�␜���d`␃��g�␇d��␃�␓�g��s��'|�␌d␌�␄l ␃␜c�␒␃␄�|␃;�␃l�o�␄�o�␀␄l ␃��{�d�l␛�␌␄␌�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init failedRF95 MESH init okayRF95 MESH init failedRF95 MESH init okayRTC lost confidence in the DateTime!
+Error al inicializar RTC
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+enviando announce KEY:
+105

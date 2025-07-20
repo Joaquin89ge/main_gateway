@@ -1,0 +1,245 @@
+rd␀d��|␀�l�|␃␄␌␄�␄$�␄c|��␃�␛�{�c�␄c��o'�lno���␌b␜x��l;l{lp�n�␘␃␄␌�␌l␄��␌␌␄c␄o�<␃�␄�␜�␄c��gn�␀d��$`␃�␛␛'o␌d`␂␎␃gs�ۓo␌␄#d�␎$p�'�␐␂␄␌sĜ��␜��␂␄c␌o�|␃␌�␄c��gn�␀␄␌l`␃�␓␛gn␌d`␂␇␃gs�ۓn␌␄#��`␃␎;��g␄␄c�� ␃�␃␄␌d�␜�␄␌d`␃��o�␇l��␃�␒�o�r��g|�␌l␄�␄$`␃␜#�␛␂␄�|␃{�␃$�'�␄�n�␀␄$`␃��s�l�l␛�␌␄␄�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okayRTC lost confidence in the DateTime!
+Error al inicializar RTC
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: [requestGroundGpsData] -- FIN --
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 26
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: Paquete de nodo 0x12 almacenado en posicion 0.
+--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---
+DEBUG: Nodo ID (interno): 0x12 ----
+DEBUG:   Paquete 1 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=133, P=5141, K=36797, EC=2556, PH=0.6
+DEBUG:     [GPS] Lat=-0.0009999, Lon=-0.0009999, Alt=-9999m, Hora=255:255, Flags=0x0
+DEBUG:   --------------------
+DEBUG:   Paquete 2 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=0.0C, Hum=0.0%, N=0, P=0, K=0, EC=0, PH=0.0
+DEBUG:     [GPS] Lat=0.0000000, Lon=0.0000000, Alt=0m, Hora=00:00, Flags=0x0
+DEBUG:   --------------------
+DEBUG: ---- Fin de muestras para Nodo ID (interno): 0x12 ----
+--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto hora requestGroundGpsData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.

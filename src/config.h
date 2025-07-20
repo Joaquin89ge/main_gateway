@@ -13,6 +13,7 @@
 #define INTERVALOANNOUNCE 5000     /**< @brief Intervalo en milisegundos (5 seg) para announce*/
 #define INTERVALOATMOSPHERIC 30000 /**< @brief Intervalo en milisegundos (1 minutos) para request atmospheric*/
 
+
 #else
 
 #define DEBUG_PRINT(x)
@@ -26,6 +27,13 @@
 #define INTERVALOATMOSPHERIC 480000 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
 
 #endif
+
+// Configuración de delays para solicitudes de datos (más conservador en producción)
+//#define DELAY_BETWEEN_ATMOSPHERIC_REQUESTS 2000  /**< @brief Delay entre solicitudes atmosféricas en milisegundos (2 segundos) */
+//#define DELAY_BETWEEN_GROUND_REQUESTS 5000       /**< @brief Delay entre solicitudes de suelo/GPS en milisegundos (5 segundos) */
+#define DELAY_BETWEEN_NODES 200                 /**< @brief Delay entre procesamiento de nodos en milisegundos (1.5 segundos) */
+#define DELAY_BEFORE_RETRY_ATMOSPHERIC 2000       /**< @brief Delay antes de reintentar solicitudes atmosféricas (500ms) */
+#define DELAY_BEFORE_RETRY_GROUND 4000           /**< @brief Delay antes de reintentar solicitudes de suelo/GPS (1.5 segundos) */
 
 #define RH_MESH_MAX_MESSAGE_LEN 50
 #define MAC_STR_LEN_WITH_NULL 18 
@@ -48,6 +56,7 @@
 #define RFM95_INT 5 // d1
 
 
-// RTC
-#define I2C_SDA 4  // d2
-#define I2C_SCL 16 // d0
+// RTC DS1302 (3-wire interface)
+#define RTC_CLK 18  // Pin CLK del DS1302 (D3 en ESP8266)
+#define RTC_DAT 19  // Pin DAT del DS1302 (D2 en ESP8266) 
+#define RTC_RST 4  // Pin RST del DS1302 (D0 en ESP8266)

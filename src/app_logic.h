@@ -25,7 +25,7 @@ class AppLogic
 private:
     NodeIdentity nodeIdentity; /**< @brief Referencia al objeto NodeIdentity para gestionar la identidad del nodo. */
     RadioManager radio;        /**< @brief Referencia al objeto RadioManager para la comunicación por radio. */
-    RtcManager clockRtc;
+    RtcManager& rtc;          /**< @brief Referencia al objeto RtcManager para gestión del tiempo. */
     uint8_t gatewayAddress; /**< @brief Dirección de red del Gateway con el que este sensor se comunica. */
 
     std::map<uint8_t, String> mapNodesIDsMac;
@@ -73,8 +73,9 @@ public:
      *
      * @param identity Referencia al objeto NodeIdentity para la gestión de la identidad del nodo.
      * @param radioMgr Referencia al objeto RadioManager para la comunicación por radio.
+     * @param rtcMgr Referencia al objeto RtcManager para la gestión del tiempo.
      */
-    AppLogic(NodeIdentity identity, RadioManager radioMgr);
+    AppLogic(NodeIdentity identity, RadioManager radioMgr, RtcManager& rtcMgr);
 
     /**
      * @brief Inicia la lógica de la aplicación del nodo sensor.

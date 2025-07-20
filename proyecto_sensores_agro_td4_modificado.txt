@@ -1,0 +1,272 @@
+﻿Objetivo del Proyecto: Desarrollo e Implementación de una Malla de Sensores Agrícolas Inteligente y Autónoma        1
+Identificar las tareas necesarias        3
+Asignar responsables        4
+Prioridad de Tareas del Proyecto        4
+Recursos Necesarios        6
+Analisis mercado (Estado del arte)        7
+Mercado Actual y Jugadores Clave:        7
+Oportunidades y Desafíos:        7
+Factores Clave para el Éxito:        7
+algoritmo-modelo predictivo        8
+1. Bosque Aleatorio (Random Forest)        8
+2. LightGBM (Light Gradient Boosting Machine)        8
+3. HDL-PCY (con EDM)        9
+4. LSTM (Long Short-Term Memory)        10
+Metricas y diagnostico (alaertas):        12
+1. Condiciones del Suelo        12
+2. Eficiencia de la Fertilización        13
+3. Eficiencia de Riego        13
+4. Métricas Integradoras y Analíticas        14
+Consideraciones Finales        14
+notas a destacar        15
+Análisis Comparativo Condensado: LoRa vs. Zigbee para Redes de Sensores Agrícolas Modulares        15
+
+
+
+
+
+
+Objetivo del Proyecto: Desarrollo e Implementación de una Malla de Sensores Agrícolas Inteligente y Autónoma
+
+
+El propósito central de este proyecto es diseñar, desarrollar e implementar un sistema integral y autónomo de monitoreo agrícola basado en una red de sensores inalámbrica (malla). El sistema busca optimizar la gestión de cultivos mediante la recolección de datos precisos del suelo y ambiente, su procesamiento, presentación y la generación de análisis predictivos mediante Inteligencia Artificial.
+Parámetros Clave a Monitorear:
+* Suelo: Índice NPK (Nitrógeno, Fósforo, Potasio), Electroconductividad (EC), pH, Temperatura y Humedad.
+* Ambiente: Temperatura y Humedad.
+Estos parámetros son fundamentales para la toma de decisiones en la agricultura moderna, como respaldan fuentes del sector (Gestiriego, Agrawdata).
+Características y Componentes Estratégicos del Sistema:
+1. Autonomía Energética: Cada nodo sensor operará de forma independiente de la red eléctrica, utilizando fuentes de energía renovables (paneles solares y baterías) para asegurar un funcionamiento continuo en campo.
+2. Comunicación Robusta en Malla (Mesh): Se implementará una red de comunicación inalámbrica basada en tecnología LoRa (específicamente LoRaMesher sobre ESP8266), permitiendo una red dinámica, auto-configurable y resiliente entre los sensores y un dispositivo central.
+3. Dispositivo Central Inteligente: Un nodo central (basado en esp8266) recibirá, procesar, presentará y almacenará temporalmente los datos de la red de sensores. (border computing alarmas).
+4. 5. Plataforma Web para Análisis Avanzado: Los datos serán enviados a un servidor web (propio Raspberry Pi o servicio cloud) para:
+   * Visualización detallada de datos históricos y en tiempo real.
+   * Generación de alertas tempranas sobre condiciones críticas (ej. estrés hídrico, desbalance de nutrientes) notificadas a través de la plataforma y mensajería (ej. WhatsApp).
+Impacto Esperado: Contribuir a una agricultura más eficiente, sostenible y rentable, ofreciendo una solución tecnológica adaptada a las necesidades del sector, con potencial de personalización y un claro retorno de inversión.
+
+
+Identificar las tareas necesarias
+A continuación, se detallan las tareas esenciales para el desarrollo e implementación del sistema:
+1. Diseño del Sistema de Alimentación:
+   * Integración de paneles solares, baterías y sistema de gestión de baterías (BMS) para autonomía energética.
+2. Toma de Datos Sensoriales:
+   * Adquisición de datos de los sensores mediante ESP8266 (considerando sensores con interfaz RS485).
+   * Almacenamiento preventivo de datos y transmisión eficiente.
+3. Comunicación de la Red de Sensores:
+   * Implementación de un protocolo de comunicación en malla utilizando ESP8266 y LoRa.
+   * Requisitos de la red:
+      * Dinámica.
+      * Roles auto-asignables.
+      * Auto-reparable.
+   * Tecnología seleccionada: LoRaMesher (https://jaimi5.github.io/LoRaMesher/).
+4. Desarrollo del Servidor Web:
+   * Selección y configuración del servidor:
+      * Sistema Operativo: debian.
+      * Backend: node red.
+      * Visualización: grafana.
+      * Gestor de base de datos:.
+5. Interfaz Local del Dispositivo Central:
+   * no
+6. Configuración Inicial del Dispositivo:
+   * 7. Definición de Alertas:
+   * Implementación de un sistema de alertas configurable por el usuario.
+   * Parámetros umbral configurables según el tipo de plantación.
+   * Configuración del destinatario de las alertas (ej., WhatsApp).
+8. Análisis Predictivo:
+
+
+Asignar responsables
+
+
+
+
+
+
+
+
+
+
+Prioridad de Tareas del Proyecto
+Basado en la presentación y el documento proporcionado, se propone la siguiente priorización de tareas, con justificaciones para cada orden:
+1. Toma de Datos Sensoriales:
+   * Prioridad: Alta
+   * Justificación: La adquisición confiable de datos es fundamental para todo el proyecto. Sin datos precisos y oportunos de los sensores, el resto de las funcionalidades (servidor web, interfaz local, análisis predictivo) no tienen valor. Es crucial establecer la correcta lectura de los sensores (incluyendo la interfaz RS485), el almacenamiento y la transmisión de datos desde el inicio.
+2. Comunicación de la Red de Sensores:
+   * Prioridad: Alta
+   * Justificación: Establecer una red de comunicación robusta y confiable entre los sensores y el dispositivo central es igualmente crítico. La elección de LoRaMesher es acertada por sus características de red dinámica, auto-asignable y auto-reparable. Implementar y probar esta red es esencial para asegurar que los datos fluyan correctamente.
+3. Diseño del Sistema de Alimentación:
+   * Prioridad: Media
+   * Justificación: La autonomía energética es un objetivo importante, pero puede desarrollarse en paralelo con las tareas de software, siempre y cuando se cuente con una fuente de energía estable para las primeras pruebas de los sensores y la red LoRa. El diseño e implementación del sistema de alimentación (paneles, baterías, BMS) puede refinarse a medida que se avanza en el proyecto.
+4. Desarrollo del Servidor Web:
+   * Prioridad: Media
+   * Justificación: El servidor web es necesario para la visualización y el análisis de datos a gran escala. Su desarrollo puede comenzar una vez que se tenga cierta seguridad en la adquisición y transmisión de datos. La estructura del servidor (Raspbian, Python, Flask, Plotly, PostgreSQL) puede ir construyéndose en etapas.
+
+
+5. Definición de Alertas:
+   * Prioridad: Baja
+   * Justificación: El sistema de alertas es una funcionalidad valiosa, pero su implementación depende de tener un sistema de monitoreo de datos estable. Se puede postergar hasta que la adquisición, transmisión y almacenamiento de datos estén funcionando correctamente.
+6. Análisis Predictivo:
+   * Prioridad: Baja
+   * Justificación: El análisis predictivo es la funcionalidad más avanzada del proyecto. Su implementación requiere una gran cantidad de datos históricos y un sistema robusto de procesamiento. Por lo tanto, es lógico dejarlo para el final del desarrollo.
+
+
+Recursos Necesarios
+A continuación, se presenta una lista de los materiales necesarios para el proyecto, con enlaces a Mercado Libre cuando están disponibles, y sugerencias para mejorar la presentación.
+* Sensor de suelo:
+   * Sensor suelo NPK, pH, temperatura y humedad, RS485
+      * Nota: El sensor ya incluye la interfaz RS485, lo cual es correcto según la descripción del proyecto.
+* Procesamiento:
+   * Raspberry Pi 3 o 4.
+      * Si es posible, conseguir una prestada de la universidad.
+      * Alternativas para desarrollo/pruebas:
+         * Servidor web desde laptop.
+         * Servicio de hosting (Hostinger u otro).
+* Microcontroladores:
+   * ESP32: X1
+      * ESP32 NodeMCU, Wi-Fi, Bluetooth, USB-C
+   * ESP8266 X2
+      * Nota: Sería bueno especificar el modelo exacto de ESP8266. Un modelo común es el ESP8266 NodeMCU. Se podría agregar un link a Mercado Libre para este componente también.
+* Comunicación:
+   * Módulo LoRa: X2
+      * Módulo RF transceptor LoRa RA-02 SX1278, 10km
+
+
+* Energía:
+   * Panel solar
+   * Batería
+   * Sistema de gestión de batería (BMS)
+      * Nota: Indicar especificaciones de voltaje y corriente sería útil.
+* Sensores Adicionales
+   * DHT22: Sensor de temperatura y humedad.
+      * Nota: Agregar un link de Mercado Libre para este sensor también.
+* Interfaz Local
+   * Pantalla SPI
+      * Nota: Especificar el tamaño de la pantalla.
+
+
+
+
+Analisis mercado (Estado del arte)
+Mercado Actual y Jugadores Clave:
+* Auravant: Plataforma digital para gestión de cultivos, integra sensores y análisis satelital.
+* Wiagro: Especializada en IoT para monitoreo post-cosecha (bolsas de silo).
+* Acronex: Tecnología para monitoreo en tiempo real de maquinaria agrícola y condiciones ambientales.
+* Farmonaut: Soluciones basadas en satélites para monitoreo de cultivos y clima, con herramientas de IA.
+Oportunidades y Desafíos:
+Aunque existen soluciones (proyecto inta), hay oportunidades significativas para:
+1. Integración más profunda: Combinar datos de sensores específicos (pH, NPK) con datos climáticos para recomendaciones muy precisas sobre fertilización y riego.
+2. Personalización: Adaptar las soluciones a los diversos cultivos y condiciones regionales de Argentina.
+3. Facilidad de uso y costo-beneficio: Superar barreras de implementación (compatibilidad de sensores, conectividad rural, complejidad) y demostrar un claro retorno de la inversión (ROI), especialmente para pequeños productores sensibles al costo inicial. Modelos de negocio flexibles y soporte local en español son cruciales.
+Factores Clave para el Éxito:
+La adopción depende de la facilidad de implementación, la disponibilidad de soporte técnico local y la percepción clara de los beneficios económicos y productivos. Demostrar mejoras cuantificables (KPIs) como ahorro de agua/fertilizantes y aumento de rendimiento es fundamental.
+
+
+aMetricas y diagnostico (alaertas):
+A continuación se detallan una serie de métricas y enfoques para diagnosticar las condiciones actuales como para prever problemas o identificar oportunidades de optimización. dando alertas fisicas (luz roja en sensor y servidor local) como alerta por whatsapp.
+________________
+
+
+1. Condiciones del Suelo
+* pH:
+
+   * Qué mide: La acidez o alcalinidad del suelo.
+   * Importancia: Valores extremos pueden afectar la disponibilidad de nutrientes.
+   * Aplicación: Compararlo con el rango óptimo para cada cultivo.
+   * Conductividad Eléctrica (EC):
+
+      * Qué mide: La salinidad del suelo y la concentración de sales disueltas.
+      * Importancia: Una alta EC puede interferir con la absorción de nutrientes y afectar el crecimiento radicular.
+      * Aplicación: Determinar si existen condiciones de estrés salino.
+      * Niveles de Nutrientes (N, P, K):
+
+         * Qué miden: La cantidad disponible de nitrógeno, fósforo y potasio.
+         * Importancia: Determina la fertilidad del suelo.
+         * Aplicación: Comparar estos valores con los “umbrales críticos” recomendados y evaluar si se cumplen los requisitos del cultivo.
+         * Humedad del Suelo:
+
+            * Qué mide: La cantidad de agua presente en el suelo en un momento dado.
+            * Importancia: Fundamental para el crecimiento y la absorción de nutrientes.
+            * Aplicación: Evaluar la capacidad de retención y determinar si el riego se ajusta a las necesidades reales del cultivo.
+            * Temperatura del Suelo:
+
+               * Qué mide: La temperatura interna del suelo, que influye en la actividad microbiana y la absorción de nutrientes.
+               * Importancia: Puede indicar problemas relacionados con la estabilización y la dinámica de nutrientes.
+________________
+
+
+2. Eficiencia de la Fertilización
+               * Eficiencia en el Uso del Fertilizante (FUE):
+
+                  * Definición: Relación entre la cantidad de nutrientes asimilados por el cultivo y la cantidad de fertilizante aplicado.
+                  * Aplicación: Permite ver si el fertilizante se está utilizando de manera óptima y, en función de los resultados, ajustar dosis o momentos de aplicación.
+                  * Índice de Respuesta a la Fertilización:
+
+                     * Definición: Diferencia en el rendimiento del cultivo entre tratamientos con fertilizante y un control sin fertilización, en términos porcentuales o absolutos.
+                     * Aplicación: Ayuda a determinar si el incremento en el rendimiento justifica la inversión en fertilizantes y cuál es la respuesta óptima esperado.
+                     * Disponibilidad Relativa de Nutrientes:
+
+                        * Definición: Cociente entre el nivel actual de nutrientes y el valor óptimo o recomendado para el cultivo.
+                        * Aplicación: Un valor por debajo de 1 indicaría deficiencia, mientras que uno cercano o mayor a 1 señalaría condiciones favorables o incluso exceso.
+________________
+
+
+3. Eficiencia de Riego
+                        * Eficiencia de Uso del Agua (WUE):
+
+                           * Definición: Relación entre el rendimiento del cultivo y la cantidad total de agua aplicada.
+                           * Aplicación: Permite ajustar estrategias de riego para maximizar la productividad y minimizar el despilfarro de agua.
+                           * Índice de Estrés Hídrico:
+
+                              * Definición: Diferencia (o porcentaje) entre la humedad real del suelo y la humedad óptima para el cultivo.
+                              * Aplicación: Se puede utilizar para emitir alertas tempranas sobre posibles déficits o excesos de agua, permitiendo ajustar el riego en tiempo real.
+                              * Uniformidad del Riego:
+
+                                 * Definición: Medida de la variabilidad en la distribución del agua en distintas zonas del campo, a partir de los datos de humedad del suelo.
+                                 * Aplicación: Un coeficiente de variación bajo indicaría una distribución homogénea, mientras que un valor alto podría señalar ineficiencias en la infraestructura de riego.
+                                 * Evapotranspiración (ET):
+
+                                    * Qué mide: La cantidad de agua perdida por el cultivo y el suelo por evaporación y transpiración.
+                                    * Aplicación: Integrar datos climáticos permitirá calcular la ET, que a su vez se usa para determinar la demanda real de riego.
+________________
+
+
+4. Métricas Integradoras y Analíticas
+
+
+                                    * Curvas de Respuesta:
+
+                                       * Qué se obtiene: Relación entre los incrementos en la aplicación de fertilizantes o agua y el rendimiento obtenido.
+                                       * Aplicación: Ayudan a definir los puntos de rendimiento óptimo y evitar tanto la sobreaplicación como la subaplicación de insumos.
+________________
+
+
+Consideraciones Finales
+                                       * Definición de Umbrales:
+ Cada métrica deberá tener umbrales de referencia específicos para el cultivo y para las condiciones locales, basados en recomendaciones agronómicas.
+
+                                       * Integración de Datos Temporales:
+ Usar series temporales te permitirá detectar tendencias y cambios de estacionalidad, lo que es muy útil para planificar intervenciones en fertilización e irrigación.
+
+                                       * Configuración de alertas:
+ Setear numero de whatsapp para alertas.
+
+
+notas a destacar
+
+
+Análisis Comparativo Condensado: LoRa vs. Zigbee para Redes de Sensores Agrícolas Modulares
+La evaluación comparativa entre LoRa y Zigbee para una red de sensores agrícolas distribuida (nodos cada 2-5 hectáreas) revela ventajas significativas para LoRa, especialmente considerando un diseño modular y las características inherentes de cada tecnología.
+                                          1. Alcance Operativo:
+                                          * LoRa: Diseñada para largo alcance (kilómetros) [1], es esencial para interconectar sensores en áreas extensas minimizando repetidores.
+                                          * Zigbee: Su alcance limitado (máx. 300m exterior) [2] exigiría una red más densa, elevando costos y puntos de fallo para cubrir las distancias proyectadas.
+                                          2. Flexibilidad y Complejidad:
+                                          * LoRa: Ofrece notable flexibilidad, permitiendo comunicaciones P2P directas con la capa física y módulos estándar (ej. SX1278 con ESP8266), sin requerir la arquitectura LoRaWAN completa. Librerías como LoRaMesher facilitan redes de malla personalizadas [3].
+                                          * Zigbee: Se rige por el estándar IEEE 802.15.4, exigiendo hardware específico y una compleja pila de software (stack) para gestionar el protocolo [2]. El uso de módulos genéricos no es viable, dependiendo a menudo de stacks propietarios con posibles licencias.
+                                          3. Diseño Modular y Adaptabilidad:
+                                          * Un pilar fundamental del diseño propuesto es la modularidad en la comunicación. El microcontrolador principal (ej. ESP8266) se encarga de la adquisición y procesamiento inicial de datos, delegando la transmisión inalámbrica a un módulo de comunicación externo (como el módulo LoRa). Esta separación funcional permite una alta adaptabilidad, facilitando el reemplazo del módulo de comunicación por otra tecnología (ej. NB-IoT, Sigfox, zigbee o incluso futuras alternativas) si las condiciones del entorno o los requerimientos del proyecto cambiasen, sin necesidad de rediseñar la lógica central de adquisición de datos del nodo sensor. 
+Conclusión Técnica:
+Para el sistema de monitoreo agrícola propuesto, con sensores distribuidos espacialmente y un enfoque en la modularidad, LoRa emerge como la alternativa técnicamente más ventajosa. Su superior alcance es crucial para la escala geográfica. Además de la potencial optimización de costos refuerzan su idoneidad como solución tecnológica preferente para este proyecto.
+https://doi.org/10.1109/AIIoT58432.2024.10574650
+Referencias:
+[1] Semtech Corporation. (s.f.). What is LoRa? Recuperado de https://www.semtech.com/lora/what-is-lora
+[2] Connectivity Standards Alliance. (s.f.). Zigbee - The Full-Stack, Secure, Interoperable, and Low-Power IoT Solution. Recuperado de https://csa-iot.org/all-solutions/zigbee/
+[3] Mekki, K., Bajic, E., Chaxel, F., & Meyer, F. (2019). A comparative study of LoRaWAN, Sigfox, and NB-IoT for smart agriculture applications. IEEE Internet of Things Journal, 6(6), 9971-9985.

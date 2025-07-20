@@ -1,0 +1,744 @@
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+enviando announce KEY:
+105
+1
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 1440
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: No se encontraron coincidencias
+compareHsAndMs: Iniciando función
+compareHsAndMs: Obteniendo hora actual
+RtcManager: No inicializado
+compareHsAndMs: Hora actual obtenida: 00:00
+compareHsAndMs: Comparando con 2 intervalos
+compareHsAndMs: Procesando intervalo 0
+compareHsAndMs: Hora objetivo: 12:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '12:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 12:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinutes2 = 720
+RtcManager::compareHsAndMs: Resultado = 0
+compareHsAndMs: No coincidencia para este intervalo
+compareHsAndMs: Procesando intervalo 1
+compareHsAndMs: Hora objetivo: 24:00
+compareHsAndMs: Llamando a compareHsAndMs del RTC
+RtcManager::compareHsAndMs: Comparando '00:00' con '24:00'
+RtcManager::compareHsAndMs: time1 = 0:0
+RtcManager::compareHsAndMs: time2 = 24:0
+RtcManager::compareHsAndMs: totalMinutes1 = 0, totalMinut

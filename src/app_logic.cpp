@@ -26,9 +26,10 @@
  * debería ser actualizada para tomar `gwAddress`. Por ahora, documento la versión actual del .cpp
  * e inicializo `gatewayAddress` a un valor por defecto o inválido si no se proporciona.
  */
-AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr)
+AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr, RtcManager& rtcMgr)
   : nodeIdentity(identity),
-    radio(radioMgr) {
+    radio(radioMgr),
+    rtc(rtcMgr) {
   gatewayAddress = nodeIdentity.getNodeID();
   // begin();
 }
@@ -223,7 +224,7 @@ void AppLogic::timer() {
     DEBUG_PRINTLN("salto timer requestAtmosphericData");
     requestAtmosphericData();
   }
-  if (compareHsAndMs() && mapNodesIDsMac.empty() == false) {
+  if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
     DEBUG_PRINTLN("salto hora requestGroundGpsData");
     requestGroundGpsData();
   }
@@ -283,6 +284,8 @@ void AppLogic::requestAtmosphericData() {
 
     radio.sendMessage(nodeId, &key, sizeof(key), flag);
 
+    // Delay antes de esperar respuesta
+    delay(DELAY_BEFORE_RETRY_ATMOSPHERIC);
 
     bool t = false;
     t = false;
@@ -401,7 +404,11 @@ void AppLogic::requestAtmosphericData() {
           DEBUG_PRINT("DEBUG: Mensaje recibido pero NO ES LA RESPUESTA ESPERADA (tipo o remitente incorrecto).");
         }
       }
-      if (t == false) radio.sendMessage(nodeId, &key, sizeof(key), flag);
+      if (t == false) {
+        // Delay antes de reintentar
+        delay(DELAY_BEFORE_RETRY_ATMOSPHERIC);
+        radio.sendMessage(nodeId, &key, sizeof(key), flag);
+      }
 
     }  // Fin del while de reintentos
 
@@ -411,6 +418,9 @@ void AppLogic::requestAtmosphericData() {
       DEBUG_PRINTLN(" despues de todos los intentos.");
     }
     DEBUG_PRINTLN("DEBUG: ---");  // Separador entre nodos
+    
+    // Delay entre procesamiento de nodos
+    delay(DELAY_BETWEEN_NODES);
   }                               // Fin del for de nodos
   DEBUG_PRINTLN("DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.");
 }
@@ -453,6 +463,9 @@ void AppLogic::requestGroundGpsData() {
     DEBUG_PRINTLN(".");
 
     radio.sendMessage(nodeId, &key, sizeof(key), flag);
+
+    // Delay antes de esperar respuesta
+    delay(DELAY_BEFORE_RETRY_GROUND);
 
     bool t = false;
     uint8_t intentos = 0;
@@ -628,6 +641,8 @@ void AppLogic::requestGroundGpsData() {
         DEBUG_PRINT("DEBUG: No exitoso. Reenviando solicitud a 0x");
         DEBUG_PRINT(String(nodeId, HEX));
         DEBUG_PRINTLN(".");
+        // Delay antes de reintentar
+        delay(DELAY_BEFORE_RETRY_GROUND);
         radio.sendMessage(nodeId, &key, sizeof(key), flag);
       }
     }  // Fin del while de reintentos
@@ -639,21 +654,66 @@ void AppLogic::requestGroundGpsData() {
       DEBUG_PRINTLN(".");
     }
     DEBUG_PRINTLN("DEBUG: --- Fin de procesamiento para nodo ---");
+    
+    // Delay entre procesamiento de nodos
+    delay(DELAY_BETWEEN_NODES);
   }  // Fin del for de nodos
 
   // DEBUG: Fin de la función principal.
   DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- FIN --");
 }
 bool AppLogic::compareHsAndMs() {
-  /*if (clockRtc.getMinutos() == 00)
-    {
-        for (uint8_t i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++)
-        {
-            if (clockRtc.getHora() == intervaloHorasSuelo[i])
-                return false;
+    DEBUG_PRINTLN("compareHsAndMs: Iniciando función");
+    
+    // Verificar si el RTC está funcionando correctamente
+    if (!rtc.isDateTimeValid()) {
+        DEBUG_PRINTLN("compareHsAndMs: RTC no válido, retornando false");
+        return false;
+    }
+    
+    if (!rtc.isRunning()) {
+        DEBUG_PRINTLN("compareHsAndMs: RTC no está funcionando, retornando false");
+        return false;
+    }
+    
+    // Obtener la hora actual del RTC
+    DEBUG_PRINTLN("compareHsAndMs: Obteniendo hora actual");
+    String currentTime = rtc.getTimeString();
+    DEBUG_PRINT("compareHsAndMs: Hora actual obtenida: ");
+    DEBUG_PRINTLN(currentTime);
+    
+    // Verificar que la hora obtenida sea válida (no "00:00" que indica error)
+    if (currentTime == "00:00") {
+        DEBUG_PRINTLN("compareHsAndMs: Hora inválida obtenida del RTC, retornando false");
+        return false;
+    }
+    
+    // Comparar con cada intervalo de horas configurado
+    DEBUG_PRINT("compareHsAndMs: Comparando con ");
+    DEBUG_PRINT(CANTIDAD_MUESTRAS_SUELO);
+    DEBUG_PRINTLN(" intervalos");
+    
+    for (int i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++) {
+        DEBUG_PRINT("compareHsAndMs: Procesando intervalo ");
+        DEBUG_PRINTLN(i);
+        
+        String targetTime = String(intervaloHorasSuelo[i]) + ":00";
+        DEBUG_PRINT("compareHsAndMs: Hora objetivo: ");
+        DEBUG_PRINTLN(targetTime);
+        
+        DEBUG_PRINTLN("compareHsAndMs: Llamando a compareHsAndMs del RTC");
+        if (rtc.compareHsAndMs(currentTime, targetTime)) {
+            DEBUG_PRINT("compareHsAndMs: Coincidencia encontrada - Hora actual: ");
+            DEBUG_PRINT(currentTime);
+            DEBUG_PRINT(" con intervalo: ");
+            DEBUG_PRINTLN(targetTime);
+            return true;
         }
-    }*/
-  return false;
+        DEBUG_PRINTLN("compareHsAndMs: No coincidencia para este intervalo");
+    }
+    
+    DEBUG_PRINTLN("compareHsAndMs: No se encontraron coincidencias");
+    return false;
 }
 
 // TODO: falta implementar

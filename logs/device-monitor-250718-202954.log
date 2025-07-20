@@ -1,0 +1,2788 @@
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Mensaje recibido. Remitente: 0x12, Tipo: 0x6, Longitud: 18
+DEBUG: Mensaje recibido pero NO ES LA RESPUESTA ESPERADA (tipo o remitente incorrecto).DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+{l␀l��|␀�d�|␃␄␄␌�␌d�␌b|��␃�␛�s�b�␌#��no�$gn���␄c␜p��dsdsd8�g�␐␃␌␄�␄l␌Ĝ␄␌␌c␌'�|␃�␌�␜�␌b��og�␀l��l`␃�␒␛o'␄l`␃␇␃o;Ǜ�'␄␌cl�␇lx�o�␘␃␌␄;����␜��␃␌#␌g�|␂␄�␌b��og�␀␌␄l`␃�␒␓og␄l ␃␇␃n;���g␄␌cē`␃␇sۓn␌␄c��`␃�␃␌␄l�$�␄l ␃��n�␏l��␃�␒�o�r��g|�␌d␄�␄l`␃␜#�␛␂␄�|␃{�␃$�n�␄�o�␀␄l`␃��s�l�l␛�␌␄␄�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okay--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayenviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Mensaje recibido. Remitente: 0x12, Tipo: 0x4, Longitud: 48
+DEBUG: Tipo de mensaje y remitente coinciden.
+DEBUG: Tamano de payload CORRECTO. Realizando memcpy.
+DEBUG: Datos de nodo 0x12 almacenados.
+--- DEBUG: Imprimiendo muestras atmosfericas almacenadas ---
+DEBUG: Nodo ID: 0x12 ----
+DEBUG:   Muestra 1: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 2: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 3: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 4: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 5: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 6: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 7: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 8: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG: ---- Fin de muestras para Nodo ID: 0x12 ----
+--- DEBUG: Fin de impresion de muestras atmosfericas ---
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Mensaje recibido. Remitente: 0x12, Tipo: 0x4, Longitud: 48
+DEBUG: Tipo de mensaje y remitente coinciden.
+DEBUG: Tamano de payload CORRECTO. Realizando memcpy.
+DEBUG: Datos de nodo 0x12 almacenados.
+--- DEBUG: Imprimiendo muestras atmosfericas almacenadas ---
+DEBUG: Nodo ID: 0x12 ----
+DEBUG:   Muestra 1: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 2: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 3: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 4: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 5: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 6: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 7: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG:   Muestra 8: Temp=0.00C, Hum=0.00%, Hora=00:00
+DEBUG: ---- Fin de muestras para Nodo ID: 0x12 ----
+--- DEBUG: Fin de impresion de muestras atmosfericas ---
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 50, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 2 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Intento 3 de recepcion para nodo 0x12 (Timeout: 2000ms).
+DEBUG: Fallo al obtener datos de nodo 0x12 despues de todos los intentos.
+DEBUG: ---
+DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+�␜�sd␀$��|␀�l�|␃␌␌␄�␄l�␄c|��␃�␒�;�cF␄c��g'�lng���␌b8x␄$c␇l{l
