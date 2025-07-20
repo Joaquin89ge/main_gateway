@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solución de Problemas &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Solución de Problemas</a><ul>
+<li><a class="reference internal" href="#problemas-de-compilacion">Problemas de Compilación</a><ul>
+<li><a class="reference internal" href="#error-radiohead-library-not-found">Error: «RadioHead library not found»</a></li>
+<li><a class="reference internal" href="#error-rtcds1302-library-not-found">Error: «RtcDS1302 library not found»</a></li>
+<li><a class="reference internal" href="#error-littlefs-library-not-found">Error: «LittleFS library not found»</a></li>
+<li><a class="reference internal" href="#error-de-memoria-insuficiente">Error de Memoria Insuficiente</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-subida">Problemas de Subida</a><ul>
+<li><a class="reference internal" href="#error-failed-to-connect-to-esp8266">Error: «Failed to connect to ESP8266»</a></li>
+<li><a class="reference internal" href="#error-upload-failed">Error: «Upload failed»</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-hardware">Problemas de Hardware</a><ul>
+<li><a class="reference internal" href="#error-de-comunicacion-lora">Error de Comunicación LoRa</a></li>
+<li><a class="reference internal" href="#error-de-rtc">Error de RTC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-red">Problemas de Red</a><ul>
+<li><a class="reference internal" href="#nodos-no-detectados">Nodos No Detectados</a></li>
+<li><a class="reference internal" href="#perdida-de-paquetes">Pérdida de Paquetes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-memoria">Problemas de Memoria</a><ul>
+<li><a class="reference internal" href="#desbordamiento-de-memoria">Desbordamiento de Memoria</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-energia">Problemas de Energía</a><ul>
+<li><a class="reference internal" href="#consumo-excesivo">Consumo Excesivo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-datos">Problemas de Datos</a><ul>
+<li><a class="reference internal" href="#datos-corruptos">Datos Corruptos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problemas-de-configuracion">Problemas de Configuración</a><ul>
+<li><a class="reference internal" href="#configuracion-no-persistente">Configuración No Persistente</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comandos-de-diagnostico">Comandos de Diagnóstico</a><ul>
+<li><a class="reference internal" href="#verificar-estado-del-sistema">Verificar Estado del Sistema</a></li>
+<li><a class="reference internal" href="#verificar-memoria">Verificar Memoria</a></li>
+<li><a class="reference internal" href="#verificar-red">Verificar Red</a></li>
+<li><a class="reference internal" href="#verificar-rtc">Verificar RTC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logs-de-diagnostico">Logs de Diagnóstico</a><ul>
+<li><a class="reference internal" href="#habilitar-logs-detallados">Habilitar Logs Detallados</a></li>
+<li><a class="reference internal" href="#interpretar-logs">Interpretar Logs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contacto-y-soporte">Contacto y Soporte</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Solución de Problemas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/troubleshooting.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="solucion-de-problemas">
+<h1>Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h1>
+<p>Esta guía te ayudará a identificar y resolver problemas comunes del Sistema Gateway Agrícola.</p>
+<section id="problemas-de-compilacion">
+<h2>Problemas de Compilación<a class="headerlink" href="#problemas-de-compilacion" title="Link to this heading"></a></h2>
+<section id="error-radiohead-library-not-found">
+<h3>Error: «RadioHead library not found»<a class="headerlink" href="#error-radiohead-library-not-found" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error de compilación: <cite>fatal error: “RHMesh.h” file not found</cite>
+- Error: <cite>RadioHead library not found</cite></p>
+<p><strong>Solución:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Instalar librería RadioHead
+pio lib install «RadioHead»</p>
+<p># O instalar manualmente
+pio lib install «<a class="reference external" href="https://github.com/airspayce/RadioHead.git">https://github.com/airspayce/RadioHead.git</a>»</p>
+</div></blockquote>
+</section>
+<section id="error-rtcds1302-library-not-found">
+<h3>Error: «RtcDS1302 library not found»<a class="headerlink" href="#error-rtcds1302-library-not-found" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error de compilación: <cite>fatal error: “RtcDS1302.h” file not found</cite>
+- Error: <cite>RtcDS1302 library not found</cite></p>
+<p><strong>Solución:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Instalar librería RtcDS1302
+pio lib install «andrewrapp/RtcDS1302»</p>
+</div></blockquote>
+</section>
+<section id="error-littlefs-library-not-found">
+<h3>Error: «LittleFS library not found»<a class="headerlink" href="#error-littlefs-library-not-found" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error de compilación: <cite>fatal error: “LittleFS.h” file not found</cite>
+- Error: <cite>LittleFS library not found</cite></p>
+<p><strong>Solución:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Instalar librería LittleFS
+pio lib install «LittleFS»</p>
+</div></blockquote>
+</section>
+<section id="error-de-memoria-insuficiente">
+<h3>Error de Memoria Insuficiente<a class="headerlink" href="#error-de-memoria-insuficiente" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error: <cite>section “.text” will not fit in region “iram0_0”</cite>
+- Error: <cite>section “.data” will not fit in region “dram0_0”</cite></p>
+<p><strong>Solución:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Reducir buffers en config.h
+#define MAX_NODES 100                    // Reducir de 250 a 100
+#define NUMERO_MUESTRAS_ATMOSFERICAS 4   // Reducir de 8 a 4
+#define RH_MESH_MAX_MESSAGE_LEN 30       // Reducir de 50 a 30</p>
+</div></blockquote>
+</section>
+</section>
+<section id="problemas-de-subida">
+<h2>Problemas de Subida<a class="headerlink" href="#problemas-de-subida" title="Link to this heading"></a></h2>
+<section id="error-failed-to-connect-to-esp8266">
+<h3>Error: «Failed to connect to ESP8266»<a class="headerlink" href="#error-failed-to-connect-to-esp8266" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error: <cite>Failed to connect to ESP8266: Timed out waiting for packet header</cite>
+- Error: <cite>Failed to connect to ESP8266: Invalid head of packet</cite></p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Conexión USB:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cambiar cable USB</p></li>
+<li><p>Probar puerto USB diferente</p></li>
+<li><p>Verificar drivers instalados</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Modo de Descarga:</strong>
+- Mantener botón FLASH presionado
+- Presionar botón RESET
+- Soltar botón RESET
+- Soltar botón FLASH después de 2 segundos</p></li>
+</ol>
+<p>3. <strong>Verificar Puerto:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Listar puertos disponibles
+pio device list</p>
+<p># Usar puerto correcto
+pio run –target upload –upload-port COM7</p>
+</div></blockquote>
+</section>
+<section id="error-upload-failed">
+<h3>Error: «Upload failed»<a class="headerlink" href="#error-upload-failed" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Error: <cite>Upload failed: Timed out waiting for packet header</cite>
+- Error: <cite>Upload failed: Invalid head of packet</cite></p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Velocidad de Subida:</strong>
+.. code-block:: ini</p>
+<blockquote>
+<div><p># En platformio.ini
+upload_speed = 921600</p>
+</div></blockquote>
+<p>2. <strong>Verificar Configuración de Board:</strong>
+.. code-block:: ini</p>
+<blockquote>
+<div><p># En platformio.ini
+board = esp12e
+platform = espressif8266</p>
+</div></blockquote>
+<p>3. <strong>Limpiar y Recompilar:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p>pio run –target clean
+pio run –target build
+pio run –target upload</p>
+</div></blockquote>
+</section>
+</section>
+<section id="problemas-de-hardware">
+<h2>Problemas de Hardware<a class="headerlink" href="#problemas-de-hardware" title="Link to this heading"></a></h2>
+<section id="error-de-comunicacion-lora">
+<h3>Error de Comunicación LoRa<a class="headerlink" href="#error-de-comunicacion-lora" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Mensaje: <cite>RF95 MESH init failed</cite>
+- No hay comunicación entre nodos
+- Errores de timeout en transmisión</p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Conexiones:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Confirmar pines SPI conectados correctamente</p></li>
+<li><p>Verificar alimentación 3.3V estable</p></li>
+<li><p>Confirmar antena conectada</p></li>
+</ul>
+</div></blockquote>
+<p>2. <strong>Verificar Configuración:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En config.h
+#define RFM95_CS 2   // Verificar pin CS
+#define RFM95_INT 5  // Verificar pin INT</p>
+</div></blockquote>
+<p>3. <strong>Diagnóstico de Hardware:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Verificar comunicación SPI
+pio device monitor –port COM7
+# Buscar mensajes de inicialización</p>
+</div></blockquote>
+</section>
+<section id="error-de-rtc">
+<h3>Error de RTC<a class="headerlink" href="#error-de-rtc" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Mensaje: <cite>RTC initialization failed</cite>
+- Fecha/hora incorrecta
+- RTC no responde</p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Conexiones 3-wire:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Confirmar pines CLK, DAT, RST conectados</p></li>
+<li><p>Verificar niveles de voltaje 3.3V</p></li>
+<li><p>Confirmar batería de backup</p></li>
+</ul>
+</div></blockquote>
+<p>2. <strong>Verificar Configuración:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En config.h
+#define RTC_CLK 18   // Verificar pin CLK
+#define RTC_DAT 19   // Verificar pin DAT
+#define RTC_RST 4    // Verificar pin RST</p>
+</div></blockquote>
+<p>3. <strong>Diagnóstico de RTC:</strong>
+.. code-block:: bash</p>
+<blockquote>
+<div><p># Verificar estado del RTC
+pio device monitor –port COM7
+# Buscar mensajes de RTC</p>
+</div></blockquote>
+</section>
+</section>
+<section id="problemas-de-red">
+<h2>Problemas de Red<a class="headerlink" href="#problemas-de-red" title="Link to this heading"></a></h2>
+<section id="nodos-no-detectados">
+<h3>Nodos No Detectados<a class="headerlink" href="#nodos-no-detectados" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- No se reciben mensajes HELLO
+- Nodos no aparecen en la red
+- Timeouts de comunicación</p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Configuración de Frecuencia:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En radio_manager.cpp
+driver.setFrequency(433.0);  // Verificar frecuencia</p>
+</div></blockquote>
+<p>2. <strong>Verificar Potencia de Transmisión:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En radio_manager.cpp
+driver.setTxPower(20, false);  // Aumentar potencia si es necesario</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Verificar Distancia:</strong>
+- Reducir distancia entre nodos
+- Verificar obstáculos
+- Probar con antenas de mayor ganancia</p></li>
+</ol>
+</section>
+<section id="perdida-de-paquetes">
+<h3>Pérdida de Paquetes<a class="headerlink" href="#perdida-de-paquetes" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Mensajes perdidos ocasionalmente
+- Timeouts frecuentes
+- Datos incompletos</p>
+<p><strong>Solución:</strong>
+1. <strong>Ajustar Parámetros LoRa:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Aumentar spreading factor para mayor alcance
+driver.setSpreadingFactor(9);</p>
+<p>// Aumentar coding rate para mayor robustez
+driver.setCodingRate4(6);</p>
+</div></blockquote>
+<p>2. <strong>Ajustar Timeouts:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En config.h
+#define TIMEOUTGRAL 3000        // Aumentar timeout
+#define INTERVALOANNOUNCE 10000 // Aumentar intervalo</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Verificar Interferencias:</strong>
+- Cambiar frecuencia si es necesario
+- Verificar fuentes de interferencia
+- Usar filtros si es necesario</p></li>
+</ol>
+</section>
+</section>
+<section id="problemas-de-memoria">
+<h2>Problemas de Memoria<a class="headerlink" href="#problemas-de-memoria" title="Link to this heading"></a></h2>
+<section id="desbordamiento-de-memoria">
+<h3>Desbordamiento de Memoria<a class="headerlink" href="#desbordamiento-de-memoria" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Reinicios inesperados
+- Comportamiento errático
+- Errores de heap</p>
+<p><strong>Solución:</strong>
+1. <strong>Reducir Buffers:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En config.h
+#define MAX_NODES 100                    // Reducir número de nodos
+#define NUMERO_MUESTRAS_ATMOSFERICAS 4   // Reducir muestras
+#define RH_MESH_MAX_MESSAGE_LEN 30       // Reducir tamaño de mensaje</p>
+</div></blockquote>
+<p>2. <strong>Optimizar Almacenamiento:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Usar tipos de datos más pequeños
+uint8_t nodeID;  // En lugar de uint16_t
+uint16_t timestamp;  // En lugar de uint32_t</p>
+</div></blockquote>
+<p>3. <strong>Liberar Memoria:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Limpiar buffers periódicamente
+void cleanupMemory() {</p>
+<blockquote>
+<div><p>// Limpiar buffers no utilizados</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="problemas-de-energia">
+<h2>Problemas de Energía<a class="headerlink" href="#problemas-de-energia" title="Link to this heading"></a></h2>
+<section id="consumo-excesivo">
+<h3>Consumo Excesivo<a class="headerlink" href="#consumo-excesivo" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Batería se agota rápidamente
+- Voltaje inestable
+- Reinicios por bajo voltaje</p>
+<p><strong>Solución:</strong>
+1. <strong>Optimizar Sleep:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Implementar sleep profundo
+ESP.deepSleep(60000000);  // Sleep por 1 minuto</p>
+</div></blockquote>
+<p>2. <strong>Reducir Transmisiones:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// En config.h
+#define INTERVALOANNOUNCE 300000    // Aumentar intervalo (5 min)
+#define INTERVALOATMOSPHERIC 900000 // Aumentar intervalo (15 min)</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Optimizar Hardware:</strong>
+- Usar regulador de voltaje eficiente
+- Verificar consumo de componentes
+- Implementar modo de baja potencia</p></li>
+</ol>
+</section>
+</section>
+<section id="problemas-de-datos">
+<h2>Problemas de Datos<a class="headerlink" href="#problemas-de-datos" title="Link to this heading"></a></h2>
+<section id="datos-corruptos">
+<h3>Datos Corruptos<a class="headerlink" href="#datos-corruptos" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Valores de sensores incorrectos
+- Datos fuera de rango
+- Checksums fallidos</p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar Validación:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Implementar validación de rangos
+if (temperature &lt; -40 || temperature &gt; 80) {</p>
+<blockquote>
+<div><p>// Datos inválidos
+return false;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>2. <strong>Implementar Checksums:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Verificar integridad de datos
+uint8_t checksum = calculateChecksum(data, length);
+if (checksum != receivedChecksum) {</p>
+<blockquote>
+<div><p>// Datos corruptos
+return false;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>3. <strong>Reintentos:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Implementar reintentos para datos críticos
+for (int i = 0; i &lt; MAX_RETRIES; i++) {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (requestData()) {</dt><dd><p>break;</p>
+</dd>
+</dl>
+<p>}
+delay(RETRY_DELAY);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="problemas-de-configuracion">
+<h2>Problemas de Configuración<a class="headerlink" href="#problemas-de-configuracion" title="Link to this heading"></a></h2>
+<section id="configuracion-no-persistente">
+<h3>Configuración No Persistente<a class="headerlink" href="#configuracion-no-persistente" title="Link to this heading"></a></h3>
+<p><strong>Síntomas:</strong>
+- Configuración se pierde al reiniciar
+- Archivos no se guardan en LittleFS
+- Errores de escritura</p>
+<p><strong>Solución:</strong>
+1. <strong>Verificar LittleFS:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Inicializar LittleFS correctamente
+if (!LittleFS.begin()) {</p>
+<blockquote>
+<div><p>Serial.println(«Error al inicializar LittleFS»);
+return false;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>2. <strong>Verificar Escritura:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Verificar escritura exitosa
+File file = LittleFS.open(«/config.json», «w»);
+if (!file) {</p>
+<blockquote>
+<div><p>Serial.println(«Error al abrir archivo para escritura»);
+return false;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>3. <strong>Backup de Configuración:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>// Implementar backup automático
+void backupConfiguration() {</p>
+<blockquote>
+<div><p>// Crear backup de configuración</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="comandos-de-diagnostico">
+<h2>Comandos de Diagnóstico<a class="headerlink" href="#comandos-de-diagnostico" title="Link to this heading"></a></h2>
+<section id="verificar-estado-del-sistema">
+<h3>Verificar Estado del Sistema<a class="headerlink" href="#verificar-estado-del-sistema" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar comunicación serial</span>
+pio<span class="w"> </span>device<span class="w"> </span>monitor<span class="w"> </span>--port<span class="w"> </span>COM7<span class="w"> </span>--baud<span class="w"> </span><span class="m">115200</span>
+
+<span class="c1"># Buscar mensajes de estado:</span>
+<span class="c1"># - &quot;RF95 MESH init okay&quot;</span>
+<span class="c1"># - &quot;RTC inicializado correctamente&quot;</span>
+<span class="c1"># - &quot;NodeIdentity::getNodeID()&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="verificar-memoria">
+<h3>Verificar Memoria<a class="headerlink" href="#verificar-memoria" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Función para verificar memoria disponible</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">checkMemory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Free heap: %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ESP</span><span class="p">.</span><span class="n">getFreeHeap</span><span class="p">());</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Free stack: %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ESP</span><span class="p">.</span><span class="n">getFreeContStack</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="verificar-red">
+<h3>Verificar Red<a class="headerlink" href="#verificar-red" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Función para verificar estado de red</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">checkNetwork</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Nodos activos: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">activeNodes</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Paquetes enviados: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">packetsSent</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Paquetes recibidos: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">packetsReceived</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="verificar-rtc">
+<h3>Verificar RTC<a class="headerlink" href="#verificar-rtc" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Función para verificar RTC</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">checkRTC</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RtcDateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getDateTime</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Fecha: %04d/%02d/%02d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">now</span><span class="p">.</span><span class="n">Year</span><span class="p">(),</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">Month</span><span class="p">(),</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">Day</span><span class="p">());</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hora: %02d:%02d:%02d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">now</span><span class="p">.</span><span class="n">Hour</span><span class="p">(),</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">Minute</span><span class="p">(),</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">Second</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logs-de-diagnostico">
+<h2>Logs de Diagnóstico<a class="headerlink" href="#logs-de-diagnostico" title="Link to this heading"></a></h2>
+<section id="habilitar-logs-detallados">
+<h3>Habilitar Logs Detallados<a class="headerlink" href="#habilitar-logs-detallados" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// En config.h</span>
+<span class="cp">#define DEBUG_MODE true</span>
+<span class="cp">#define LOG_LEVEL DEBUG</span>
+<span class="cp">#define ENABLE_SERIAL_OUTPUT true</span>
+
+<span class="c1">// En código</span>
+<span class="cp">#ifdef DEBUG_MODE</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[DEBUG] %s: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+<section id="interpretar-logs">
+<h3>Interpretar Logs<a class="headerlink" href="#interpretar-logs" title="Link to this heading"></a></h3>
+<p><strong>Logs de Inicialización:</strong>
+.. code-block:: text</p>
+<blockquote>
+<div><p>Inicializando LittleFS en sketch principal…
+RF95 MESH init okay
+RTC inicializado correctamente
+NodeIdentity::getNodeID() - ID: 0x42
+AppLogic::begin() - Gateway iniciado</p>
+</div></blockquote>
+<p><strong>Logs de Comunicación:</strong>
+.. code-block:: text</p>
+<blockquote>
+<div><p>RadioManager::sendMessage() - Enviando a 0x10
+RadioManager::recvMessage() - Recibido de 0x10
+AppLogic::handleHello() - Nodo 0x10 registrado</p>
+</div></blockquote>
+<p><strong>Logs de Error:</strong>
+.. code-block:: text</p>
+<blockquote>
+<div><p>ERROR: RF95 MESH init failed
+ERROR: RTC initialization failed
+ERROR: Memory allocation failed</p>
+</div></blockquote>
+</section>
+</section>
+<section id="contacto-y-soporte">
+<h2>Contacto y Soporte<a class="headerlink" href="#contacto-y-soporte" title="Link to this heading"></a></h2>
+<p>Si los problemas persisten:</p>
+<ol class="arabic simple">
+<li><p><strong>Recopilar Información:</strong>
+- Logs completos del sistema
+- Configuración actual
+- Descripción detallada del problema</p></li>
+<li><p><strong>Verificar Documentación:</strong>
+- Revisar guías de instalación
+- Consultar configuración avanzada
+- Verificar requisitos del sistema</p></li>
+<li><p><strong>Contactar Soporte:</strong>
+- Email: <a class="reference external" href="mailto:soporte&#37;&#52;&#48;agro-iot&#46;com">soporte<span>&#64;</span>agro-iot<span>&#46;</span>com</a>
+- GitHub: <a class="reference external" href="https://github.com/agro-iot/gateway/issues">https://github.com/agro-iot/gateway/issues</a>
+- Foro: <a class="reference external" href="https://forum.agro-iot.com">https://forum.agro-iot.com</a></p></li>
+</ol>
+<p>Para más información, consulta la documentación completa en las siguientes secciones.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

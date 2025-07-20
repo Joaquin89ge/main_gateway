@@ -1,0 +1,41 @@
+digraph GatewayFlow {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightblue];
+    
+    // Nodos principales
+    start [label="Inicio", shape=oval, fillcolor=lightgreen];
+    init [label="Inicializar ESP8266"];
+    wifi [label="Configurar WiFi OFF"];
+    ni [label="Inicializar NodeIdentity"];
+    rm [label="Inicializar RadioManager"];
+    rtc [label="Inicializar RtcManager"];
+    al [label="Inicializar AppLogic"];
+    
+    // Bucle principal
+    loop [label="Bucle Principal", shape=diamond, fillcolor=lightyellow];
+    process [label="Procesar mensajes"];
+    atmos [label="Solicitar datos atmosféricos"];
+    ground [label="Solicitar datos suelo/GPS"];
+    announce [label="Enviar ANNOUNCE"];
+    timer [label="Actualizar temporizadores"];
+    
+    end [label="Fin", shape=oval, fillcolor=lightgreen];
+    
+    // Conexiones
+    start -> init;
+    init -> wifi;
+    wifi -> ni;
+    ni -> rm;
+    rm -> rtc;
+    rtc -> al;
+    al -> loop;
+    
+    loop -> process;
+    process -> atmos;
+    atmos -> ground;
+    ground -> announce;
+    announce -> timer;
+    timer -> loop;
+    
+    loop -> end [label="Salida"];
+}

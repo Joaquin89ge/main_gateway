@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppLogic - Lógica de Aplicación del Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AppLogic - Lógica de Aplicación del Gateway</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#arquitectura-de-la-clase">🏗️ Arquitectura de la Clase</a><ul>
+<li><a class="reference internal" href="#proposito-principal">Propósito Principal</a></li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">Características Técnicas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-de-la-clase">📁 Estructura de la Clase</a><ul>
+<li><a class="reference internal" href="#variables-de-instancia">Variables de Instancia</a></li>
+<li><a class="reference internal" href="#almacenamiento-de-datos">Almacenamiento de Datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-publicos">🔧 Métodos Públicos</a><ul>
+<li><a class="reference internal" href="#constructor">Constructor</a></li>
+<li><a class="reference internal" href="#begin">begin()</a></li>
+<li><a class="reference internal" href="#update">update()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-privados">🔧 Métodos Privados</a><ul>
+<li><a class="reference internal" href="#sendannounce">sendAnnounce()</a></li>
+<li><a class="reference internal" href="#handlehello">handleHello()</a></li>
+<li><a class="reference internal" href="#registernewnode">registerNewNode()</a></li>
+<li><a class="reference internal" href="#requestatmosphericdata">requestAtmosphericData()</a></li>
+<li><a class="reference internal" href="#requestgroundgpsdata">requestGroundGpsData()</a></li>
+<li><a class="reference internal" href="#handleuartrequest">handleUartRequest()</a></li>
+<li><a class="reference internal" href="#sendchangeid">sendChangeID()</a></li>
+<li><a class="reference internal" href="#timer">timer()</a></li>
+<li><a class="reference internal" href="#comparehsandms">compareHsAndMs()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestion-de-datos">📊 Gestión de Datos</a><ul>
+<li><a class="reference internal" href="#estructuras-de-almacenamiento">Estructuras de Almacenamiento</a><ul>
+<li><a class="reference internal" href="#muestras-atmosfericas">Muestras Atmosféricas</a></li>
+<li><a class="reference internal" href="#muestras-de-suelo-gps">Muestras de Suelo/GPS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestion-de-nodos">Gestión de Nodos</a><ul>
+<li><a class="reference internal" href="#nodos-activos">Nodos Activos</a></li>
+<li><a class="reference internal" href="#nodos-inactivos">Nodos Inactivos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protocolo-de-comunicacion">🔍 Protocolo de Comunicación</a><ul>
+<li><a class="reference internal" href="#tipos-de-mensajes">Tipos de Mensajes</a><ul>
+<li><a class="reference internal" href="#hello">HELLO</a></li>
+<li><a class="reference internal" href="#announce">ANNOUNCE</a></li>
+<li><a class="reference internal" href="#data-request">DATA_REQUEST</a></li>
+<li><a class="reference internal" href="#data-response">DATA_RESPONSE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flujo-de-comunicacion">Flujo de Comunicación</a><ul>
+<li><a class="reference internal" href="#descubrimiento-de-nodos">1. Descubrimiento de Nodos</a></li>
+<li><a class="reference internal" href="#solicitud-de-datos">2. Solicitud de Datos</a></li>
+<li><a class="reference internal" href="#anuncios-periodicos">3. Anuncios Periódicos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#tiempos-de-operacion">Tiempos de Operación</a></li>
+<li><a class="reference internal" href="#capacidades-de-red">Capacidades de Red</a></li>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#gestion-de-memoria">1. Gestión de Memoria</a></li>
+<li><a class="reference internal" href="#robustez-de-red">2. Robustez de Red</a></li>
+<li><a class="reference internal" href="#escalabilidad">3. Escalabilidad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-optimizaciones">Fase 1: Optimizaciones</a></li>
+<li><a class="reference internal" href="#fase-2-nuevas-funcionalidades">Fase 2: Nuevas Funcionalidades</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-uso">📋 Ejemplos de Uso</a><ul>
+<li><a class="reference internal" href="#ejemplo-1-inicializacion-basica">Ejemplo 1: Inicialización Básica</a></li>
+<li><a class="reference internal" href="#ejemplo-2-monitoreo-de-nodos">Ejemplo 2: Monitoreo de Nodos</a></li>
+<li><a class="reference internal" href="#ejemplo-3-acceso-a-datos">Ejemplo 3: Acceso a Datos</a></li>
+<li><a class="reference internal" href="#ejemplo-4-programacion-temporal">Ejemplo 4: Programación Temporal</a></li>
+<li><a class="reference internal" href="#ejemplo-5-gestion-de-errores">Ejemplo 5: Gestión de Errores</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AppLogic - Lógica de Aplicación del Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app_logic.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="applogic-logica-de-aplicacion-del-gateway">
+<h1>AppLogic - Lógica de Aplicación del Gateway<a class="headerlink" href="#applogic-logica-de-aplicacion-del-gateway" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Clase central que orquesta la lógica de aplicación del Gateway agrícola, coordinando la interacción entre identidad del nodo, comunicación de radio, gestión de tiempo y protocolo de comunicación. Implementa el comportamiento principal del Gateway como punto de concentración de la red mesh.</p>
+</section>
+<section id="arquitectura-de-la-clase">
+<h2>🏗️ Arquitectura de la Clase<a class="headerlink" href="#arquitectura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="proposito-principal">
+<h3>Propósito Principal<a class="headerlink" href="#proposito-principal" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Coordinación de Red:</strong> Gestión centralizada de nodos sensores</p></li>
+<li><p><strong>Protocolo de Comunicación:</strong> Manejo de mensajes HELLO, DATA, ANNOUNCE</p></li>
+<li><p><strong>Almacenamiento de Datos:</strong> Buffer de muestras por nodo</p></li>
+<li><p><strong>Programación Temporal:</strong> Eventos basados en horarios</p></li>
+<li><p><strong>Monitoreo de Estado:</strong> Seguimiento de nodos activos/inactivos</p></li>
+</ul>
+</section>
+<section id="caracteristicas-tecnicas">
+<h3>Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Arquitectura:</strong> Modular con inyección de dependencias</p></li>
+<li><p><strong>Escalabilidad:</strong> Soporte para hasta 250 nodos</p></li>
+<li><p><strong>Persistencia:</strong> Almacenamiento de muestras en memoria</p></li>
+<li><p><strong>Tolerancia a Fallos:</strong> Recuperación automática de errores</p></li>
+<li><p><strong>Optimización:</strong> Gestión eficiente de recursos</p></li>
+</ul>
+</section>
+</section>
+<section id="estructura-de-la-clase">
+<h2>📁 Estructura de la Clase<a class="headerlink" href="#estructura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="variables-de-instancia">
+<h3>Variables de Instancia<a class="headerlink" href="#variables-de-instancia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">nodeIdentity</span><span class="p">;</span><span class="w">    </span><span class="c1">///&lt; Gestión de identidad del nodo</span>
+<span class="w">    </span><span class="n">RadioManager</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span><span class="w">           </span><span class="c1">///&lt; Comunicación LoRa mesh</span>
+<span class="w">    </span><span class="n">RtcManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtc</span><span class="p">;</span><span class="w">             </span><span class="c1">///&lt; Gestión de tiempo real</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">gatewayAddress</span><span class="p">;</span><span class="w">       </span><span class="c1">///&lt; Dirección del gateway asociado</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mapNodesIDsMac</span><span class="p">;</span><span class="w">  </span><span class="c1">///&lt; Mapeo ID-MAC de nodos</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">intervaloHorasSuelo</span><span class="p">[</span><span class="n">CANTIDAD_MUESTRAS_SUELO</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">};</span><span class="w">  </span><span class="c1">///&lt; Horarios de muestreo</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">temBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">     </span><span class="c1">///&lt; Buffer de tiempo 1</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">temBuf1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span><span class="c1">///&lt; Buffer de tiempo 2</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">connectionRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">///&lt; Reintentos de conexión</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">updatedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">     </span><span class="c1">///&lt; Flag de datos actualizados</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">countGroundSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">///&lt; Contador de muestras de suelo</span>
+</pre></div>
+</div>
+</section>
+<section id="almacenamiento-de-datos">
+<h3>Almacenamiento de Datos<a class="headerlink" href="#almacenamiento-de-datos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Muestras de suelo/GPS por nodo</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">GroundGpsPacket</span><span class="p">,</span><span class="w"> </span><span class="n">CANTIDAD_MUESTRAS_SUELO</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">groundGpsSamplesNodes</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Muestras atmosféricas por nodo</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">AtmosphericSample</span><span class="p">,</span><span class="w"> </span><span class="n">NUMERO_MUESTRAS_ATMOSFERICAS</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">AtmosphericSampleNodes</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Lista de nodos inactivos</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodesDown</span><span class="p">[</span><span class="n">MAX_NODES</span><span class="p">];</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metodos-publicos">
+<h2>🔧 Métodos Públicos<a class="headerlink" href="#metodos-publicos" title="Link to this heading"></a></h2>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">AppLogic</span><span class="p">(</span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">RadioManager</span><span class="w"> </span><span class="n">radioMgr</span><span class="p">,</span><span class="w"> </span><span class="n">RtcManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtcMgr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Inicialización con inyección de dependencias</p></li>
+<li><p>Configuración de componentes principales</p></li>
+<li><p>Preparación para operación del Gateway</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">identity</span></code>: Gestor de identidad del nodo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radioMgr</span></code>: Gestor de comunicación LoRa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtcMgr</span></code>: Gestor de tiempo real</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">AppLogic</span><span class="w"> </span><span class="nf">logic</span><span class="p">(</span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">rtc</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="begin">
+<h3>begin()<a class="headerlink" href="#begin" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Inicialización de la lógica de aplicación</p></li>
+<li><p>Envío de mensaje HELLO inicial</p></li>
+<li><p>Configuración de timers y buffers</p></li>
+<li><p>Preparación para recepción de datos</p></li>
+</ul>
+<p><strong>Proceso de Inicialización:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Configuración de Componentes:</strong> Setup de dependencias</p></li>
+<li><p><strong>Envío de HELLO:</strong> Anuncio inicial a la red</p></li>
+<li><p><strong>Configuración de Timers:</strong> Inicialización de buffers temporales</p></li>
+<li><p><strong>Preparación de Almacenamiento:</strong> Setup de estructuras de datos</p></li>
+</ol>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">logic</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="update">
+<h3>update()<a class="headerlink" href="#update" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Bucle principal de la aplicación</p></li>
+<li><p>Procesamiento de mensajes entrantes</p></li>
+<li><p>Gestión de eventos temporales</p></li>
+<li><p>Coordinación de operaciones de red</p></li>
+</ul>
+<p><strong>Operaciones Principales:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Recepción de Mensajes:</strong> Procesamiento de datos entrantes</p></li>
+<li><p><strong>Gestión de Timers:</strong> Control de eventos temporales</p></li>
+<li><p><strong>Envío de Announce:</strong> Anuncios periódicos a la red</p></li>
+<li><p><strong>Solicitud de Datos:</strong> Request de muestras a nodos</p></li>
+<li><p><strong>Validación de Estado:</strong> Verificación de nodos activos</p></li>
+</ol>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metodos-privados">
+<h2>🔧 Métodos Privados<a class="headerlink" href="#metodos-privados" title="Link to this heading"></a></h2>
+<section id="sendannounce">
+<h3>sendAnnounce()<a class="headerlink" href="#sendannounce" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">sendAnnounce</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Envía mensaje ANNOUNCE a la red</p></li>
+<li><p>Anuncia presencia del Gateway</p></li>
+<li><p>Incluye información de identidad</p></li>
+<li><p>Utilizado para descubrimiento de nodos</p></li>
+</ul>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Descubrimiento automático de nodos</p></li>
+<li><p>Mantenimiento de tabla de rutas</p></li>
+<li><p>Coordinación de red mesh</p></li>
+</ul>
+</section>
+<section id="handlehello">
+<h3>handleHello()<a class="headerlink" href="#handlehello" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">handleHello</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Procesa mensajes HELLO de nodos</p></li>
+<li><p>Registra nuevos nodos en la red</p></li>
+<li><p>Actualiza tabla de nodos activos</p></li>
+<li><p>Gestiona asociación de nodos</p></li>
+</ul>
+<p><strong>Proceso:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Recepción de HELLO:</strong> Captura de mensaje</p></li>
+<li><p><strong>Validación de Nodo:</strong> Verificación de identidad</p></li>
+<li><p><strong>Registro:</strong> Actualización de tabla de nodos</p></li>
+<li><p><strong>Respuesta:</strong> Confirmación al nodo</p></li>
+</ol>
+</section>
+<section id="registernewnode">
+<h3>registerNewNode()<a class="headerlink" href="#registernewnode" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">registerNewNode</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">receivedMac</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Registra nuevo nodo en la red</p></li>
+<li><p>Asocia MAC address con ID de nodo</p></li>
+<li><p>Actualiza mapeo de nodos</p></li>
+<li><p>Valida unicidad de registro</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">receivedMac</span></code>: MAC address del nodo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code>: ID del nodo remitente</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si el registro fue exitoso</p></li>
+</ul>
+</section>
+<section id="requestatmosphericdata">
+<h3>requestAtmosphericData()<a class="headerlink" href="#requestatmosphericdata" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">requestAtmosphericData</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Solicita datos atmosféricos a nodos</p></li>
+<li><p>Gestiona timeouts y reintentos</p></li>
+<li><p>Procesa respuestas de nodos</p></li>
+<li><p>Almacena muestras recibidas</p></li>
+</ul>
+<p><strong>Proceso:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Selección de Nodos:</strong> Identificación de nodos activos</p></li>
+<li><p><strong>Envío de Request:</strong> Solicitud de datos atmosféricos</p></li>
+<li><p><strong>Espera de Respuesta:</strong> Timeout configurable</p></li>
+<li><p><strong>Procesamiento:</strong> Validación y almacenamiento de datos</p></li>
+</ol>
+</section>
+<section id="requestgroundgpsdata">
+<h3>requestGroundGpsData()<a class="headerlink" href="#requestgroundgpsdata" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">requestGroundGpsData</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Solicita datos de suelo/GPS a nodos</p></li>
+<li><p>Coordina con horarios programados</p></li>
+<li><p>Gestiona muestras múltiples por día</p></li>
+<li><p>Procesa datos de sensores de suelo</p></li>
+</ul>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Programación Temporal:</strong> Basado en horarios específicos</p></li>
+<li><p><strong>Muestras Múltiples:</strong> 2 muestras por día por nodo</p></li>
+<li><p><strong>Validación:</strong> Verificación de integridad de datos</p></li>
+<li><p><strong>Almacenamiento:</strong> Buffer circular por nodo</p></li>
+</ul>
+</section>
+<section id="handleuartrequest">
+<h3>handleUartRequest()<a class="headerlink" href="#handleuartrequest" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">handleUartRequest</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Procesa comandos UART entrantes</p></li>
+<li><p>Permite configuración remota</p></li>
+<li><p>Gestiona debugging y monitoreo</p></li>
+<li><p>Implementa interfaz de control</p></li>
+</ul>
+<p><strong>Comandos Soportados:</strong></p>
+<ul class="simple">
+<li><p><strong>Configuración:</strong> Cambio de parámetros</p></li>
+<li><p><strong>Monitoreo:</strong> Estado de nodos y datos</p></li>
+<li><p><strong>Debugging:</strong> Información de sistema</p></li>
+<li><p><strong>Control:</strong> Comandos de operación</p></li>
+</ul>
+</section>
+<section id="sendchangeid">
+<h3>sendChangeID()<a class="headerlink" href="#sendchangeid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">sendChangeID</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Envía comando de cambio de ID a nodo</p></li>
+<li><p>Gestiona conflictos de identidad</p></li>
+<li><p>Coordina regeneración de IDs</p></li>
+<li><p>Valida nuevos IDs generados</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code>: ID del nodo objetivo</p></li>
+</ul>
+</section>
+<section id="timer">
+<h3>timer()<a class="headerlink" href="#timer" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">timer</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Gestión de eventos temporales</p></li>
+<li><p>Control de timers del sistema</p></li>
+<li><p>Coordinación de operaciones periódicas</p></li>
+<li><p>Programación de eventos</p></li>
+</ul>
+<p><strong>Eventos Temporales:</strong></p>
+<ul class="simple">
+<li><p><strong>Announce:</strong> Anuncios periódicos a la red</p></li>
+<li><p><strong>Request de Datos:</strong> Solicitudes programadas</p></li>
+<li><p><strong>Validación:</strong> Verificación de estado de nodos</p></li>
+<li><p><strong>Mantenimiento:</strong> Operaciones de limpieza</p></li>
+</ul>
+</section>
+<section id="comparehsandms">
+<h3>compareHsAndMs()<a class="headerlink" href="#comparehsandms" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">compareHsAndMs</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Compara hora actual con horarios programados</p></li>
+<li><p>Utiliza RtcManager para validación temporal</p></li>
+<li><p>Gestiona múltiples horarios de muestreo</p></li>
+<li><p>Coordina eventos basados en tiempo</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si es hora de evento programado</p></li>
+</ul>
+<p><strong>Horarios Configurados:</strong></p>
+<ul class="simple">
+<li><p><strong>Muestreo Atmosférico:</strong> Múltiples horarios por día</p></li>
+<li><p><strong>Muestreo de Suelo:</strong> Horarios específicos (12:00, 24:00)</p></li>
+<li><p><strong>Announce:</strong> Anuncios periódicos</p></li>
+<li><p><strong>Mantenimiento:</strong> Operaciones de limpieza</p></li>
+</ul>
+</section>
+</section>
+<section id="gestion-de-datos">
+<h2>📊 Gestión de Datos<a class="headerlink" href="#gestion-de-datos" title="Link to this heading"></a></h2>
+<section id="estructuras-de-almacenamiento">
+<h3>Estructuras de Almacenamiento<a class="headerlink" href="#estructuras-de-almacenamiento" title="Link to this heading"></a></h3>
+<section id="muestras-atmosfericas">
+<h4>Muestras Atmosféricas<a class="headerlink" href="#muestras-atmosfericas" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">AtmosphericSample</span><span class="p">,</span><span class="w"> </span><span class="n">NUMERO_MUESTRAS_ATMOSFERICAS</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">AtmosphericSampleNodes</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>8 muestras por nodo:</strong> Buffer circular</p></li>
+<li><p><strong>Datos:</strong> Temperatura, humedad, presión</p></li>
+<li><p><strong>Timestamp:</strong> Marca temporal de cada muestra</p></li>
+<li><p><strong>Validación:</strong> Verificación de integridad</p></li>
+</ul>
+</section>
+<section id="muestras-de-suelo-gps">
+<h4>Muestras de Suelo/GPS<a class="headerlink" href="#muestras-de-suelo-gps" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">GroundGpsPacket</span><span class="p">,</span><span class="w"> </span><span class="n">CANTIDAD_MUESTRAS_SUELO</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">groundGpsSamplesNodes</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>2 muestras por día por nodo:</strong> Programación temporal</p></li>
+<li><p><strong>Datos:</strong> pH, EC, temperatura suelo, coordenadas GPS</p></li>
+<li><p><strong>Horarios:</strong> 12:00 y 24:00</p></li>
+<li><p><strong>Validación:</strong> Verificación de rangos</p></li>
+</ul>
+</section>
+</section>
+<section id="gestion-de-nodos">
+<h3>Gestión de Nodos<a class="headerlink" href="#gestion-de-nodos" title="Link to this heading"></a></h3>
+<section id="nodos-activos">
+<h4>Nodos Activos<a class="headerlink" href="#nodos-activos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Descubrimiento:</strong> Automático por mensajes HELLO</p></li>
+<li><p><strong>Registro:</strong> Asociación MAC-ID</p></li>
+<li><p><strong>Monitoreo:</strong> Estado de conectividad</p></li>
+<li><p><strong>Mapeo:</strong> Tabla de nodos activos</p></li>
+</ul>
+</section>
+<section id="nodos-inactivos">
+<h4>Nodos Inactivos<a class="headerlink" href="#nodos-inactivos" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodesDown</span><span class="p">[</span><span class="n">MAX_NODES</span><span class="p">];</span>
+</pre></div>
+</div>
+<p><strong>Gestión:</strong></p>
+<ul class="simple">
+<li><p><strong>Detección:</strong> Timeouts de comunicación</p></li>
+<li><p><strong>Registro:</strong> Lista de nodos inactivos</p></li>
+<li><p><strong>Recuperación:</strong> Reintentos automáticos</p></li>
+<li><p><strong>Limpieza:</strong> Eliminación de nodos perdidos</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="protocolo-de-comunicacion">
+<h2>🔍 Protocolo de Comunicación<a class="headerlink" href="#protocolo-de-comunicacion" title="Link to this heading"></a></h2>
+<section id="tipos-de-mensajes">
+<h3>Tipos de Mensajes<a class="headerlink" href="#tipos-de-mensajes" title="Link to this heading"></a></h3>
+<section id="hello">
+<h4>HELLO<a class="headerlink" href="#hello" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Propósito:</strong> Descubrimiento de nodos</p></li>
+<li><p><strong>Emisor:</strong> Nodos sensores</p></li>
+<li><p><strong>Receptor:</strong> Gateway</p></li>
+<li><p><strong>Contenido:</strong> MAC address, ID de nodo</p></li>
+</ul>
+</section>
+<section id="announce">
+<h4>ANNOUNCE<a class="headerlink" href="#announce" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Propósito:</strong> Anuncio de presencia</p></li>
+<li><p><strong>Emisor:</strong> Gateway</p></li>
+<li><p><strong>Receptor:</strong> Todos los nodos</p></li>
+<li><p><strong>Contenido:</strong> ID de Gateway, información de red</p></li>
+</ul>
+</section>
+<section id="data-request">
+<h4>DATA_REQUEST<a class="headerlink" href="#data-request" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Propósito:</strong> Solicitud de datos</p></li>
+<li><p><strong>Emisor:</strong> Gateway</p></li>
+<li><p><strong>Receptor:</strong> Nodos específicos</p></li>
+<li><p><strong>Contenido:</strong> Tipo de datos, parámetros</p></li>
+</ul>
+</section>
+<section id="data-response">
+<h4>DATA_RESPONSE<a class="headerlink" href="#data-response" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Propósito:</strong> Respuesta con datos</p></li>
+<li><p><strong>Emisor:</strong> Nodos sensores</p></li>
+<li><p><strong>Receptor:</strong> Gateway</p></li>
+<li><p><strong>Contenido:</strong> Muestras de sensores</p></li>
+</ul>
+</section>
+</section>
+<section id="flujo-de-comunicacion">
+<h3>Flujo de Comunicación<a class="headerlink" href="#flujo-de-comunicacion" title="Link to this heading"></a></h3>
+<section id="descubrimiento-de-nodos">
+<h4>1. Descubrimiento de Nodos<a class="headerlink" href="#descubrimiento-de-nodos" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Nodo → HELLO → Gateway
+Gateway → Registro → Tabla de Nodos
+</pre></div>
+</div>
+</section>
+<section id="solicitud-de-datos">
+<h4>2. Solicitud de Datos<a class="headerlink" href="#solicitud-de-datos" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Gateway → DATA_REQUEST → Nodo
+Nodo → DATA_RESPONSE → Gateway
+Gateway → Almacenamiento → Buffer
+</pre></div>
+</div>
+</section>
+<section id="anuncios-periodicos">
+<h4>3. Anuncios Periódicos<a class="headerlink" href="#anuncios-periodicos" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Gateway → ANNOUNCE → Red
+Nodos → Actualización → Tabla de Rutas
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="tiempos-de-operacion">
+<h3>Tiempos de Operación<a class="headerlink" href="#tiempos-de-operacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Procesamiento de Mensaje:</strong> &lt;10ms</p></li>
+<li><p><strong>Solicitud de Datos:</strong> &lt;100ms</p></li>
+<li><p><strong>Almacenamiento:</strong> &lt;5ms</p></li>
+<li><p><strong>Validación:</strong> &lt;2ms</p></li>
+</ul>
+</section>
+<section id="capacidades-de-red">
+<h3>Capacidades de Red<a class="headerlink" href="#capacidades-de-red" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Nodos Máximos:</strong> 250 nodos</p></li>
+<li><p><strong>Muestras por Nodo:</strong> 8 atmosféricas + 2 suelo</p></li>
+<li><p><strong>Throughput:</strong> Hasta 100 mensajes/segundo</p></li>
+<li><p><strong>Latencia:</strong> &lt;2 segundos</p></li>
+</ul>
+</section>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~15KB por instancia</p></li>
+<li><p><strong>Flash:</strong> ~5KB (código)</p></li>
+<li><p><strong>CPU:</strong> Moderado impacto en operación</p></li>
+<li><p><strong>Energía:</strong> Optimizado para eficiencia</p></li>
+</ul>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="gestion-de-memoria">
+<h3>1. Gestión de Memoria<a class="headerlink" href="#gestion-de-memoria" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Buffers Circulares:</strong> Evita desbordamiento</p></li>
+<li><p><strong>Validación de Datos:</strong> Prevención de corrupción</p></li>
+<li><p><strong>Limpieza Automática:</strong> Liberación de recursos</p></li>
+<li><p><strong>Optimización:</strong> Uso eficiente de RAM</p></li>
+</ul>
+</section>
+<section id="robustez-de-red">
+<h3>2. Robustez de Red<a class="headerlink" href="#robustez-de-red" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Timeouts:</strong> Configuración apropiada</p></li>
+<li><p><strong>Reintentos:</strong> Estrategias de recuperación</p></li>
+<li><p><strong>Validación:</strong> Verificación de integridad</p></li>
+<li><p><strong>Recuperación:</strong> Manejo de fallos</p></li>
+</ul>
+</section>
+<section id="escalabilidad">
+<h3>3. Escalabilidad<a class="headerlink" href="#escalabilidad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Nodos Dinámicos:</strong> Adición/eliminación automática</p></li>
+<li><p><strong>Datos Incrementales:</strong> Almacenamiento eficiente</p></li>
+<li><p><strong>Procesamiento Paralelo:</strong> Operaciones concurrentes</p></li>
+<li><p><strong>Optimización:</strong> Balance de carga</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-optimizaciones">
+<h3>Fase 1: Optimizaciones<a class="headerlink" href="#fase-1-optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Compresión de Datos:</strong> Reducción de uso de memoria</p></li>
+<li><p><strong>Cache Inteligente:</strong> Almacenamiento optimizado</p></li>
+<li><p><strong>Procesamiento Paralelo:</strong> Operaciones concurrentes</p></li>
+<li><p><strong>Validación Avanzada:</strong> Verificación de integridad</p></li>
+</ul>
+</section>
+<section id="fase-2-nuevas-funcionalidades">
+<h3>Fase 2: Nuevas Funcionalidades<a class="headerlink" href="#fase-2-nuevas-funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Analytics en Tiempo Real:</strong> Análisis de datos</p></li>
+<li><p><strong>Alertas Inteligentes:</strong> Notificaciones automáticas</p></li>
+<li><p><strong>Configuración Remota:</strong> Cambio de parámetros</p></li>
+<li><p><strong>Backup Automático:</strong> Respaldo de datos</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cloud Sync:</strong> Sincronización con la nube</p></li>
+<li><p><strong>APIs Externas:</strong> Conexión con sistemas externos</p></li>
+<li><p><strong>Machine Learning:</strong> Predicción de eventos</p></li>
+<li><p><strong>Interfaz Web:</strong> Monitoreo remoto</p></li>
+</ul>
+</section>
+</section>
+<section id="ejemplos-de-uso">
+<h2>📋 Ejemplos de Uso<a class="headerlink" href="#ejemplos-de-uso" title="Link to this heading"></a></h2>
+<section id="ejemplo-1-inicializacion-basica">
+<h3>Ejemplo 1: Inicialización Básica<a class="headerlink" href="#ejemplo-1-inicializacion-basica" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">;</span>
+<span class="n">RadioManager</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="mh">0x01</span><span class="p">);</span>
+<span class="n">RtcManager</span><span class="w"> </span><span class="nf">rtc</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+
+<span class="n">AppLogic</span><span class="w"> </span><span class="nf">logic</span><span class="p">(</span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">rtc</span><span class="p">);</span>
+<span class="n">logic</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-2-monitoreo-de-nodos">
+<h3>Ejemplo 2: Monitoreo de Nodos<a class="headerlink" href="#ejemplo-2-monitoreo-de-nodos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkNodeStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Verificar nodos activos</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">AtmosphericSampleNodes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Nodo 0x&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">nodeID</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; activo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Verificar nodos inactivos</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_NODES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">logic</span><span class="p">.</span><span class="n">nodesDown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Nodo 0x&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">logic</span><span class="p">.</span><span class="n">nodesDown</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; inactivo&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-3-acceso-a-datos">
+<h3>Ejemplo 3: Acceso a Datos<a class="headerlink" href="#ejemplo-3-acceso-a-datos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">processAtmosphericData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">AtmosphericSampleNodes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Datos atmosféricos del nodo 0x&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">nodeID</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUMERO_MUESTRAS_ATMOSFERICAS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Muestra &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;: Temp=&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sample</span><span class="p">.</span><span class="n">temperature</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;°C, Hum=&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">sample</span><span class="p">.</span><span class="n">humidity</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;%&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-4-programacion-temporal">
+<h3>Ejemplo 4: Programación Temporal<a class="headerlink" href="#ejemplo-4-programacion-temporal" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkScheduledEvents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Verificar si es hora de muestreo</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">logic</span><span class="p">.</span><span class="n">compareHsAndMs</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Es hora de muestreo programado&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Solicitar datos atmosféricos</span>
+<span class="w">        </span><span class="n">logic</span><span class="p">.</span><span class="n">requestAtmosphericData</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Solicitar datos de suelo (si es hora)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;12:00&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">            </span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;24:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">logic</span><span class="p">.</span><span class="n">requestGroundGpsData</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-5-gestion-de-errores">
+<h3>Ejemplo 5: Gestión de Errores<a class="headerlink" href="#ejemplo-5-gestion-de-errores" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">handleCommunicationErrors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Verificar timeouts de comunicación</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastCommunicationTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">TIMEOUTGRAL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Timeout de comunicación detectado&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Reintentar conexión</span>
+<span class="w">        </span><span class="n">logic</span><span class="p">.</span><span class="n">sendAnnounce</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Actualizar timestamp</span>
+<span class="w">        </span><span class="n">lastCommunicationTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Verificar nodos perdidos</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">AtmosphericSampleNodes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isNodeTimeout</span><span class="p">(</span><span class="n">nodeID</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Nodo 0x&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">nodeID</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; perdido&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// Agregar a lista de nodos inactivos</span>
+<span class="w">            </span><span class="n">addToNodesDown</span><span class="p">(</span><span class="n">nodeID</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> La clase AppLogic representa el núcleo de la lógica de aplicación del Gateway agrícola, proporcionando una implementación robusta y escalable para la coordinación de redes IoT, gestión de datos y programación temporal de eventos en sistemas de monitoreo agrícola.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

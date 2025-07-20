@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RadioManager - Gestión de Comunicación LoRa Mesh &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">RadioManager - Gestión de Comunicación LoRa Mesh</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#arquitectura-de-la-clase">🏗️ Arquitectura de la Clase</a><ul>
+<li><a class="reference internal" href="#proposito-principal">Propósito Principal</a></li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">Características Técnicas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-de-la-clase">📁 Estructura de la Clase</a><ul>
+<li><a class="reference internal" href="#variables-de-instancia">Variables de Instancia</a></li>
+<li><a class="reference internal" href="#dependencias">Dependencias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-publicos">🔧 Métodos Públicos</a><ul>
+<li><a class="reference internal" href="#constructor">Constructor</a></li>
+<li><a class="reference internal" href="#init">init()</a></li>
+<li><a class="reference internal" href="#sendmessage">sendMessage()</a></li>
+<li><a class="reference internal" href="#recvmessage">recvMessage()</a></li>
+<li><a class="reference internal" href="#recvmessagetimeout">recvMessageTimeout()</a></li>
+<li><a class="reference internal" href="#update">update()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-hardware">📊 Configuración de Hardware</a><ul>
+<li><a class="reference internal" href="#pines-de-conexion">Pines de Conexión</a></li>
+<li><a class="reference internal" href="#configuracion-spi">Configuración SPI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-de-comunicacion">🔍 Características de Comunicación</a><ul>
+<li><a class="reference internal" href="#protocolo-lora">1. Protocolo LoRa</a></li>
+<li><a class="reference internal" href="#enrutamiento-mesh">2. Enrutamiento Mesh</a></li>
+<li><a class="reference internal" href="#gestion-de-red">3. Gestión de Red</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#tiempos-de-operacion">Tiempos de Operación</a></li>
+<li><a class="reference internal" href="#capacidades-de-red">Capacidades de Red</a></li>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#id1">1. Configuración de Hardware</a></li>
+<li><a class="reference internal" href="#gestion-de-errores">2. Gestión de Errores</a></li>
+<li><a class="reference internal" href="#optimizacion-de-red">3. Optimización de Red</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-optimizaciones">Fase 1: Optimizaciones</a></li>
+<li><a class="reference internal" href="#fase-2-nuevas-funcionalidades">Fase 2: Nuevas Funcionalidades</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-uso">📋 Ejemplos de Uso</a><ul>
+<li><a class="reference internal" href="#ejemplo-1-inicializacion-basica">Ejemplo 1: Inicialización Básica</a></li>
+<li><a class="reference internal" href="#ejemplo-2-envio-de-mensaje">Ejemplo 2: Envío de Mensaje</a></li>
+<li><a class="reference internal" href="#ejemplo-3-recepcion-con-timeout">Ejemplo 3: Recepción con Timeout</a></li>
+<li><a class="reference internal" href="#ejemplo-4-bucle-de-comunicacion">Ejemplo 4: Bucle de Comunicación</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RadioManager - Gestión de Comunicación LoRa Mesh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/radio_manager.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="radiomanager-gestion-de-comunicacion-lora-mesh">
+<h1>RadioManager - Gestión de Comunicación LoRa Mesh<a class="headerlink" href="#radiomanager-gestion-de-comunicacion-lora-mesh" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Clase especializada en la gestión de comunicación de radio LoRa utilizando el módulo RFM95 y la librería RHMesh. Proporciona una capa de abstracción robusta para inicializar, enviar y recibir mensajes a través de una red LoRa mesh.</p>
+</section>
+<section id="arquitectura-de-la-clase">
+<h2>🏗️ Arquitectura de la Clase<a class="headerlink" href="#arquitectura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="proposito-principal">
+<h3>Propósito Principal<a class="headerlink" href="#proposito-principal" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Comunicación LoRa:</strong> Gestión del módulo RFM95</p></li>
+<li><p><strong>Enrutamiento Mesh:</strong> Utilización de RHMesh para routing</p></li>
+<li><p><strong>Protocolo Personalizado:</strong> Implementación de protocolo específico</p></li>
+<li><p><strong>Gestión de Red:</strong> Control de comunicación de red</p></li>
+</ul>
+</section>
+<section id="caracteristicas-tecnicas">
+<h3>Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Hardware:</strong> SX1278 LoRa con RFM95</p></li>
+<li><p><strong>Librería:</strong> RadioHead RHMesh</p></li>
+<li><p><strong>Frecuencia:</strong> 433 MHz (configurable)</p></li>
+<li><p><strong>Potencia:</strong> Hasta 20 dBm</p></li>
+<li><p><strong>Alcance:</strong> Hasta 10km en condiciones óptimas</p></li>
+</ul>
+</section>
+</section>
+<section id="estructura-de-la-clase">
+<h2>📁 Estructura de la Clase<a class="headerlink" href="#estructura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="variables-de-instancia">
+<h3>Variables de Instancia<a class="headerlink" href="#variables-de-instancia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">RH_RF95</span><span class="w"> </span><span class="n">driver</span><span class="p">;</span><span class="w">    </span><span class="c1">///&lt; Controlador de radio RFM95</span>
+<span class="w">    </span><span class="n">RHMesh</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span><span class="w">    </span><span class="c1">///&lt; Gestor de red mesh</span>
+</pre></div>
+</div>
+</section>
+<section id="dependencias">
+<h3>Dependencias<a class="headerlink" href="#dependencias" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;RHMesh.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;RH_RF95.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;config.h&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metodos-publicos">
+<h2>🔧 Métodos Públicos<a class="headerlink" href="#metodos-publicos" title="Link to this heading"></a></h2>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RadioManager</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Inicialización de la clase con dirección única</p></li>
+<li><p>Configuración de parámetros de red</p></li>
+<li><p>Preparación para comunicación mesh</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code>: Dirección única del nodo en la red</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RadioManager</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="mh">0x01</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="init">
+<h3>init()<a class="headerlink" href="#init" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Inicializa el módulo de radio RFM95</p></li>
+<li><p>Configura el gestor de red RHMesh</p></li>
+<li><p>Establece parámetros de frecuencia y potencia</p></li>
+<li><p>Realiza secuencia de reinicio del hardware</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si la inicialización fue exitosa</p></li>
+</ul>
+<p><strong>Proceso de Inicialización:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Configuración de Pines:</strong> SPI y pines de control</p></li>
+<li><p><strong>Inicialización RFM95:</strong> Configuración del driver</p></li>
+<li><p><strong>Configuración RHMesh:</strong> Setup del gestor de red</p></li>
+<li><p><strong>Parámetros de Radio:</strong> Frecuencia, potencia, etc.</p></li>
+<li><p><strong>Verificación:</strong> Test de comunicación</p></li>
+</ol>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar radio&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="sendmessage">
+<h3>sendMessage()<a class="headerlink" href="#sendmessage" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sendMessage</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Envía mensaje a dirección específica</p></li>
+<li><p>Utiliza enrutamiento mesh automático</p></li>
+<li><p>Espera acuse de recibo</p></li>
+<li><p>Maneja retransmisiones automáticamente</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">to</span></code>: Dirección de destino</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Puntero a datos a enviar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Longitud del mensaje</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flag</span></code>: Tipo de mensaje (protocolo)</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si el envío fue exitoso</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Mensaje enviado exitosamente&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="recvmessage">
+<h3>recvMessage()<a class="headerlink" href="#recvmessage" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">recvMessage</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">flag</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Recibe mensaje de la red</p></li>
+<li><p>Extrae datos, longitud y remitente</p></li>
+<li><p>Procesa información del protocolo</p></li>
+<li><p>No bloqueante</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: Buffer para datos recibidos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Puntero a longitud (entrada: máximo, salida: real)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code>: Puntero a dirección del remitente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flag</span></code>: Puntero a tipo de mensaje</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si se recibió mensaje</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">recvMessage</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Mensaje de 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; con flag 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="recvmessagetimeout">
+<h3>recvMessageTimeout()<a class="headerlink" href="#recvmessagetimeout" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">recvMessageTimeout</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Recibe mensaje con timeout específico</p></li>
+<li><p>Útil para operaciones que requieren respuesta</p></li>
+<li><p>Evita bloqueo indefinido</p></li>
+<li><p>Maneja timeouts de red</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">buf</span></code>: Buffer para datos recibidos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Puntero a longitud</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span></code>: Puntero a dirección del remitente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flag</span></code>: Puntero a tipo de mensaje</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code>: Tiempo máximo de espera en ms</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si se recibió mensaje dentro del timeout</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">recvMessageTimeout</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Mensaje recibido en 5 segundos&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Timeout - no se recibió mensaje&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="update">
+<h3>update()<a class="headerlink" href="#update" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Actualiza estado interno del gestor</p></li>
+<li><p>Permite procesamiento de librería RHMesh</p></li>
+<li><p>Maneja actualizaciones de tabla de enrutamiento</p></li>
+<li><p>Gestiona retransmisiones internas</p></li>
+</ul>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Mantener red mesh actualizada</p></li>
+<li><p>Procesar eventos internos</p></li>
+<li><p>Optimizar rendimiento de red</p></li>
+</ul>
+</section>
+</section>
+<section id="configuracion-de-hardware">
+<h2>📊 Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h2>
+<section id="pines-de-conexion">
+<h3>Pines de Conexión<a class="headerlink" href="#pines-de-conexion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RFM95_CS 2   </span><span class="c1">///&lt; Pin Chip Select (D4 en ESP8266)</span>
+<span class="cp">#define RFM95_INT 5  </span><span class="c1">///&lt; Pin Interrupción (D1 en ESP8266)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-spi">
+<h3>Configuración SPI<a class="headerlink" href="#configuracion-spi" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Velocidad:</strong> 8 MHz</p></li>
+<li><p><strong>Modo:</strong> SPI_MODE0</p></li>
+<li><p><strong>Orden:</strong> MSBFIRST</p></li>
+<li><p><strong>Configuración:</strong> Automática por librería</p></li>
+</ul>
+</section>
+</section>
+<section id="caracteristicas-de-comunicacion">
+<h2>🔍 Características de Comunicación<a class="headerlink" href="#caracteristicas-de-comunicacion" title="Link to this heading"></a></h2>
+<section id="protocolo-lora">
+<h3>1. Protocolo LoRa<a class="headerlink" href="#protocolo-lora" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Modulación:</strong> LoRa (SF7-SF12)</p></li>
+<li><p><strong>Ancho de Banda:</strong> 125 kHz</p></li>
+<li><p><strong>Tasa de Datos:</strong> 0.3-37.5 kbps</p></li>
+<li><p><strong>Coding Rate:</strong> 4/5, 4/6, 4/7, 4/8</p></li>
+</ul>
+</section>
+<section id="enrutamiento-mesh">
+<h3>2. Enrutamiento Mesh<a class="headerlink" href="#enrutamiento-mesh" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Algoritmo:</strong> AODV (Ad-hoc On-demand Distance Vector)</p></li>
+<li><p><strong>Tabla de Rutas:</strong> Dinámica y automática</p></li>
+<li><p><strong>Retransmisión:</strong> Automática con acuse de recibo</p></li>
+<li><p><strong>Congestión:</strong> Manejo automático de colisiones</p></li>
+</ul>
+</section>
+<section id="gestion-de-red">
+<h3>3. Gestión de Red<a class="headerlink" href="#gestion-de-red" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Direccionamiento:</strong> 8 bits (0-255)</p></li>
+<li><p><strong>Broadcast:</strong> Soporte para mensajes broadcast</p></li>
+<li><p><strong>Multicast:</strong> Envío a múltiples destinos</p></li>
+<li><p><strong>Unicast:</strong> Comunicación punto a punto</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="tiempos-de-operacion">
+<h3>Tiempos de Operación<a class="headerlink" href="#tiempos-de-operacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Inicialización:</strong> &lt;200ms</p></li>
+<li><p><strong>Envío de Mensaje:</strong> &lt;100ms</p></li>
+<li><p><strong>Recepción:</strong> &lt;50ms</p></li>
+<li><p><strong>Timeout Típico:</strong> 2-5 segundos</p></li>
+</ul>
+</section>
+<section id="capacidades-de-red">
+<h3>Capacidades de Red<a class="headerlink" href="#capacidades-de-red" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Nodos Máximos:</strong> 250 nodos</p></li>
+<li><p><strong>Alcance:</strong> Hasta 10km (condiciones óptimas)</p></li>
+<li><p><strong>Throughput:</strong> Hasta 37.5 kbps</p></li>
+<li><p><strong>Latencia:</strong> &lt;2 segundos</p></li>
+</ul>
+</section>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~5KB por instancia</p></li>
+<li><p><strong>Flash:</strong> ~20KB (librerías)</p></li>
+<li><p><strong>CPU:</strong> Bajo impacto en operación</p></li>
+</ul>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>1. Configuración de Hardware<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Pines SPI:</strong> Configuración específica para ESP8266</p></li>
+<li><p><strong>Niveles de Voltaje:</strong> Compatibilidad 3.3V</p></li>
+<li><p><strong>Antena:</strong> Requerida para comunicación</p></li>
+<li><p><strong>Interferencias:</strong> Evitar fuentes de ruido</p></li>
+</ul>
+</section>
+<section id="gestion-de-errores">
+<h3>2. Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Timeouts:</strong> Configuración apropiada</p></li>
+<li><p><strong>Retransmisiones:</strong> Manejo automático</p></li>
+<li><p><strong>Congestión:</strong> Detección y manejo</p></li>
+<li><p><strong>Fallos de Hardware:</strong> Recuperación automática</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-red">
+<h3>3. Optimización de Red<a class="headerlink" href="#optimizacion-de-red" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Frecuencia:</strong> Selección de canal libre</p></li>
+<li><p><strong>Potencia:</strong> Ajuste según distancia</p></li>
+<li><p><strong>Spreading Factor:</strong> Balance velocidad/alcance</p></li>
+<li><p><strong>Coding Rate:</strong> Optimización de robustez</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-optimizaciones">
+<h3>Fase 1: Optimizaciones<a class="headerlink" href="#fase-1-optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Configuración Dinámica:</strong> Cambio de parámetros en tiempo real</p></li>
+<li><p><strong>Monitoreo de Red:</strong> Métricas de rendimiento</p></li>
+<li><p><strong>Optimización Automática:</strong> Ajuste de parámetros</p></li>
+</ul>
+</section>
+<section id="fase-2-nuevas-funcionalidades">
+<h3>Fase 2: Nuevas Funcionalidades<a class="headerlink" href="#fase-2-nuevas-funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Encryption:</strong> Cifrado de mensajes</p></li>
+<li><p><strong>QoS:</strong> Calidad de servicio</p></li>
+<li><p><strong>Multi-frecuencia:</strong> Cambio dinámico de frecuencia</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cloud Sync:</strong> Sincronización con la nube</p></li>
+<li><p><strong>Analytics:</strong> Análisis de tráfico de red</p></li>
+<li><p><strong>Machine Learning:</strong> Optimización automática</p></li>
+</ul>
+</section>
+</section>
+<section id="ejemplos-de-uso">
+<h2>📋 Ejemplos de Uso<a class="headerlink" href="#ejemplos-de-uso" title="Link to this heading"></a></h2>
+<section id="ejemplo-1-inicializacion-basica">
+<h3>Ejemplo 1: Inicialización Básica<a class="headerlink" href="#ejemplo-1-inicializacion-basica" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RadioManager</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="mh">0x01</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Radio inicializado correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error en inicialización de radio&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-2-envio-de-mensaje">
+<h3>Ejemplo 2: Envío de Mensaje<a class="headerlink" href="#ejemplo-2-envio-de-mensaje" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">message</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Mensaje enviado exitosamente&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al enviar mensaje&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-3-recepcion-con-timeout">
+<h3>Ejemplo 3: Recepción con Timeout<a class="headerlink" href="#ejemplo-3-recepcion-con-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">recvMessageTimeout</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Mensaje recibido de 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Timeout - no se recibió mensaje&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-4-bucle-de-comunicacion">
+<h3>Ejemplo 4: Bucle de Comunicación<a class="headerlink" href="#ejemplo-4-bucle-de-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Enviar mensaje periódico</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastSend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastSend</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">};</span>
+<span class="w">        </span><span class="n">radio</span><span class="p">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">);</span>
+<span class="w">        </span><span class="n">lastSend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Recibir mensajes</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">recvMessage</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Procesar mensaje recibido</span>
+<span class="w">        </span><span class="n">processMessage</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Actualizar estado de red</span>
+<span class="w">    </span><span class="n">radio</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> La clase RadioManager representa una implementación robusta y eficiente de comunicación LoRa mesh, proporcionando una interfaz clara y funcional para la gestión de redes IoT agrícolas con capacidades de enrutamiento automático y manejo de errores avanzado.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

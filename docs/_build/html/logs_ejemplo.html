@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📋 Logs de Ejemplo - Sistema Gateway Agrícola &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">📋 Logs de Ejemplo - Sistema Gateway Agrícola</a><ul>
+<li><a class="reference internal" href="#logs-de-inicializacion-del-sistema">🔍 Logs de Inicialización del Sistema</a></li>
+<li><a class="reference internal" href="#logs-de-comunicacion-con-nodos">📡 Logs de Comunicación con Nodos</a><ul>
+<li><a class="reference internal" href="#registro-de-nuevos-nodos">Registro de Nuevos Nodos</a></li>
+<li><a class="reference internal" href="#solicitud-de-datos-atmosfericos">Solicitud de Datos Atmosféricos</a></li>
+<li><a class="reference internal" href="#solicitud-de-datos-de-suelo-gps">Solicitud de Datos de Suelo/GPS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logs-de-errores-y-advertencias">⚠️ Logs de Errores y Advertencias</a><ul>
+<li><a class="reference internal" href="#timeout-en-comunicacion">Timeout en Comunicación</a></li>
+<li><a class="reference internal" href="#error-en-datos-recibidos">Error en Datos Recibidos</a></li>
+<li><a class="reference internal" href="#error-de-rtc">Error de RTC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logs-de-estado-del-sistema">📊 Logs de Estado del Sistema</a><ul>
+<li><a class="reference internal" href="#estado-de-memoria">Estado de Memoria</a></li>
+<li><a class="reference internal" href="#resumen-diario">Resumen Diario</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logs-de-debug">🔧 Logs de Debug</a><ul>
+<li><a class="reference internal" href="#debug-de-comparacion-de-tiempo">Debug de Comparación de Tiempo</a></li>
+<li><a class="reference internal" href="#debug-de-almacenamiento-de-datos">Debug de Almacenamiento de Datos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📋 Logs de Ejemplo - Sistema Gateway Agrícola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/logs_ejemplo.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logs-de-ejemplo-sistema-gateway-agricola">
+<h1>📋 Logs de Ejemplo - Sistema Gateway Agrícola<a class="headerlink" href="#logs-de-ejemplo-sistema-gateway-agricola" title="Link to this heading"></a></h1>
+<section id="logs-de-inicializacion-del-sistema">
+<h2>🔍 Logs de Inicialización del Sistema<a class="headerlink" href="#logs-de-inicializacion-del-sistema" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="o">========================================</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">SISTEMA</span> <span class="n">GATEWAY</span> <span class="n">AGRÍCOLA</span> <span class="n">INICIANDO</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="o">========================================</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Configuración</span> <span class="n">de</span> <span class="n">hardware</span> <span class="n">detectada</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">ESP8266</span> <span class="o">-</span> <span class="n">Frecuencia</span> <span class="n">CPU</span><span class="p">:</span> <span class="mi">80</span><span class="n">MHz</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Memoria</span> <span class="n">disponible</span><span class="p">:</span> <span class="mi">32</span><span class="n">KB</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">LittleFS</span> <span class="n">inicializado</span> <span class="n">correctamente</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">NodeIdentity</span> <span class="n">inicializado</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">MAC</span> <span class="n">Address</span><span class="p">:</span> <span class="n">AA</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">CC</span><span class="p">:</span><span class="n">DD</span><span class="p">:</span><span class="n">EE</span><span class="p">:</span><span class="n">FF</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Node</span> <span class="n">ID</span> <span class="n">generado</span><span class="p">:</span> <span class="mh">0x42</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RadioManager</span> <span class="n">inicializando</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RFM95</span> <span class="n">detectado</span> <span class="n">en</span> <span class="n">SPI</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Frecuencia</span> <span class="n">configurada</span><span class="p">:</span> <span class="mi">915</span><span class="n">MHz</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Potencia</span> <span class="n">TX</span><span class="p">:</span> <span class="mi">23</span><span class="n">dBm</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RHMesh</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">Address</span><span class="p">:</span> <span class="mh">0x42</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RTC</span> <span class="n">inicializando</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">DS1302</span> <span class="n">detectado</span> <span class="n">en</span> <span class="n">pines</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RTC</span> <span class="n">sincronizado</span> <span class="o">-</span> <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">AppLogic</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">Modo</span> <span class="n">Gateway</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Sistema</span> <span class="n">listo</span> <span class="n">para</span> <span class="n">operación</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Enviando</span> <span class="n">ANNOUNCE</span> <span class="n">inicial</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">ANNOUNCE</span> <span class="n">enviado</span> <span class="n">exitosamente</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">========================================</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">SISTEMA</span> <span class="n">INICIADO</span> <span class="n">CORRECTAMENTE</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">========================================</span>
+</pre></div>
+</div>
+</section>
+<section id="logs-de-comunicacion-con-nodos">
+<h2>📡 Logs de Comunicación con Nodos<a class="headerlink" href="#logs-de-comunicacion-con-nodos" title="Link to this heading"></a></h2>
+<section id="registro-de-nuevos-nodos">
+<h3>Registro de Nuevos Nodos<a class="headerlink" href="#registro-de-nuevos-nodos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">HELLO</span> <span class="n">recibido</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">MAC</span> <span class="k">del</span> <span class="n">nodo</span><span class="p">:</span> <span class="mi">11</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">66</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Validando</span> <span class="n">clave</span> <span class="n">compartida</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Clave</span> <span class="n">válida</span> <span class="o">-</span> <span class="n">Nodo</span> <span class="n">autenticado</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Nodo</span> <span class="mh">0x7A</span> <span class="n">registrado</span> <span class="n">exitosamente</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Total</span> <span class="n">de</span> <span class="n">nodos</span> <span class="n">registrados</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">HELLO</span> <span class="n">recibido</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x3B</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">MAC</span> <span class="k">del</span> <span class="n">nodo</span><span class="p">:</span> <span class="n">AA</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">CC</span><span class="p">:</span><span class="n">DD</span><span class="p">:</span><span class="n">EE</span><span class="p">:</span><span class="n">FF</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Validando</span> <span class="n">clave</span> <span class="n">compartida</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Clave</span> <span class="n">válida</span> <span class="o">-</span> <span class="n">Nodo</span> <span class="n">autenticado</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Nodo</span> <span class="mh">0x3B</span> <span class="n">registrado</span> <span class="n">exitosamente</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Total</span> <span class="n">de</span> <span class="n">nodos</span> <span class="n">registrados</span><span class="p">:</span> <span class="mi">2</span>
+
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">HELLO</span> <span class="n">recibido</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x9C</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">MAC</span> <span class="k">del</span> <span class="n">nodo</span><span class="p">:</span> <span class="mi">33</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">66</span><span class="p">:</span><span class="mi">77</span><span class="p">:</span><span class="mi">88</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Validando</span> <span class="n">clave</span> <span class="n">compartida</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Clave</span> <span class="n">inválida</span> <span class="o">-</span> <span class="n">Nodo</span> <span class="n">rechazado</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">45</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Nodo</span> <span class="mh">0x9C</span> <span class="n">no</span> <span class="n">autenticado</span>
+</pre></div>
+</div>
+</section>
+<section id="solicitud-de-datos-atmosfericos">
+<h3>Solicitud de Datos Atmosféricos<a class="headerlink" href="#solicitud-de-datos-atmosfericos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 08:35:00] INFO: Iniciando ciclo de solicitud de datos atmosféricos
+[2025-01-15 08:35:00] INFO: Procesando nodo 0x7A...
+[2025-01-15 08:35:00] INFO: Enviando REQUEST_DATA_ATMOSPHERIC a nodo 0x7A
+[2025-01-15 08:35:02] INFO: Respuesta recibida de nodo 0x7A
+[2025-01-15 08:35:02] INFO: Tamaño de datos: 48 bytes (8 muestras)
+[2025-01-15 08:35:02] INFO: Datos atmosféricos almacenados:
+[2025-01-15 08:35:02] INFO:   Muestra 1: Temp=25.3°C, Hum=65.2%
+[2025-01-15 08:35:02] INFO:   Muestra 2: Temp=25.1°C, Hum=65.8%
+[2025-01-15 08:35:02] INFO:   Muestra 3: Temp=24.9°C, Hum=66.1%
+[2025-01-15 08:35:02] INFO:   Muestra 4: Temp=25.2°C, Hum=65.5%
+[2025-01-15 08:35:02] INFO:   Muestra 5: Temp=25.0°C, Hum=65.9%
+[2025-01-15 08:35:02] INFO:   Muestra 6: Temp=24.8°C, Hum=66.3%
+[2025-01-15 08:35:02] INFO:   Muestra 7: Temp=25.1°C, Hum=65.7%
+[2025-01-15 08:35:02] INFO:   Muestra 8: Temp=25.4°C, Hum=65.1%
+
+[2025-01-15 08:35:05] INFO: Procesando nodo 0x3B...
+[2025-01-15 08:35:05] INFO: Enviando REQUEST_DATA_ATMOSPHERIC a nodo 0x3B
+[2025-01-15 08:35:07] INFO: Respuesta recibida de nodo 0x3B
+[2025-01-15 08:35:07] INFO: Tamaño de datos: 48 bytes (8 muestras)
+[2025-01-15 08:35:07] INFO: Datos atmosféricos almacenados:
+[2025-01-15 08:35:07] INFO:   Muestra 1: Temp=24.8°C, Hum=68.1%
+[2025-01-15 08:35:07] INFO:   Muestra 2: Temp=24.6°C, Hum=68.5%
+[2025-01-15 08:35:07] INFO:   Muestra 3: Temp=24.9°C, Hum=67.8%
+[2025-01-15 08:35:07] INFO:   Muestra 4: Temp=24.7°C, Hum=68.2%
+[2025-01-15 08:35:07] INFO:   Muestra 5: Temp=24.5°C, Hum=68.7%
+[2025-01-15 08:35:07] INFO:   Muestra 6: Temp=24.8°C, Hum=68.0%
+[2025-01-15 08:35:07] INFO:   Muestra 7: Temp=24.6°C, Hum=68.4%
+[2025-01-15 08:35:07] INFO:   Muestra 8: Temp=24.9°C, Hum=67.9%
+</pre></div>
+</div>
+</section>
+<section id="solicitud-de-datos-de-suelo-gps">
+<h3>Solicitud de Datos de Suelo/GPS<a class="headerlink" href="#solicitud-de-datos-de-suelo-gps" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 12:00:00] INFO: Iniciando ciclo de solicitud de datos suelo/GPS
+[2025-01-15 12:00:00] INFO: Verificando horario para solicitud suelo/GPS...
+[2025-01-15 12:00:00] INFO: Horario válido - 12:00:00
+[2025-01-15 12:00:00] INFO: Procesando nodo 0x7A...
+[2025-01-15 12:00:00] INFO: Enviando REQUEST_DATA_GPS_GROUND a nodo 0x7A
+[2025-01-15 12:00:03] INFO: Respuesta recibida de nodo 0x7A
+[2025-01-15 12:00:03] INFO: Tamaño de datos: 48 bytes (2 muestras)
+[2025-01-15 12:00:03] INFO: Datos suelo/GPS almacenados:
+[2025-01-15 12:00:03] INFO:   Muestra 1:
+[2025-01-15 12:00:03] INFO:     Humedad suelo: 45.2%
+[2025-01-15 12:00:03] INFO:     Temperatura suelo: 18.5°C
+[2025-01-15 12:00:03] INFO:     pH: 6.8
+[2025-01-15 12:00:03] INFO:     Conductividad: 1250 µS/cm
+[2025-01-15 12:00:03] INFO:     GPS: Lat=-34.6037, Lon=-58.3816
+[2025-01-15 12:00:03] INFO:   Muestra 2:
+[2025-01-15 12:00:03] INFO:     Humedad suelo: 44.8%
+[2025-01-15 12:00:03] INFO:     Temperatura suelo: 18.3°C
+[2025-01-15 12:00:03] INFO:     pH: 6.9
+[2025-01-15 12:00:03] INFO:     Conductividad: 1280 µS/cm
+[2025-01-15 12:00:03] INFO:     GPS: Lat=-34.6038, Lon=-58.3817
+
+[2025-01-15 12:00:05] INFO: Procesando nodo 0x3B...
+[2025-01-15 12:00:05] INFO: Enviando REQUEST_DATA_GPS_GROUND a nodo 0x3B
+[2025-01-15 12:00:08] INFO: Respuesta recibida de nodo 0x3B
+[2025-01-15 12:00:08] INFO: Tamaño de datos: 48 bytes (2 muestras)
+[2025-01-15 12:00:08] INFO: Datos suelo/GPS almacenados:
+[2025-01-15 12:00:08] INFO:   Muestra 1:
+[2025-01-15 12:00:08] INFO:     Humedad suelo: 52.1%
+[2025-01-15 12:00:08] INFO:     Temperatura suelo: 19.2°C
+[2025-01-15 12:00:08] INFO:     pH: 7.1
+[2025-01-15 12:00:08] INFO:     Conductividad: 1380 µS/cm
+[2025-01-15 12:00:08] INFO:     GPS: Lat=-34.6042, Lon=-58.3821
+[2025-01-15 12:00:08] INFO:   Muestra 2:
+[2025-01-15 12:00:08] INFO:     Humedad suelo: 51.8%
+[2025-01-15 12:00:08] INFO:     Temperatura suelo: 19.0°C
+[2025-01-15 12:00:08] INFO:     pH: 7.2
+[2025-01-15 12:00:08] INFO:     Conductividad: 1410 µS/cm
+[2025-01-15 12:00:08] INFO:     GPS: Lat=-34.6043, Lon=-58.3822
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logs-de-errores-y-advertencias">
+<h2>⚠️ Logs de Errores y Advertencias<a class="headerlink" href="#logs-de-errores-y-advertencias" title="Link to this heading"></a></h2>
+<section id="timeout-en-comunicacion">
+<h3>Timeout en Comunicación<a class="headerlink" href="#timeout-en-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Timeout</span> <span class="n">en</span> <span class="n">solicitud</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Reintentando</span> <span class="n">solicitud</span> <span class="p">(</span><span class="n">intento</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Enviando</span> <span class="n">REQUEST_DATA_ATMOSPHERIC</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">03</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Timeout</span> <span class="n">en</span> <span class="n">reintento</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">03</span><span class="p">]</span> <span class="n">ERROR</span><span class="p">:</span> <span class="n">Nodo</span> <span class="mh">0x7A</span> <span class="n">no</span> <span class="n">responde</span> <span class="n">después</span> <span class="n">de</span> <span class="mi">2</span> <span class="n">intentos</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">03</span><span class="p">]</span> <span class="n">ERROR</span><span class="p">:</span> <span class="n">Agregando</span> <span class="n">nodo</span> <span class="mh">0x7A</span> <span class="n">a</span> <span class="n">lista</span> <span class="n">nodesDown</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">03</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Continuando</span> <span class="n">con</span> <span class="n">siguiente</span> <span class="n">nodo</span><span class="o">...</span>
+
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Procesando</span> <span class="n">nodo</span> <span class="mh">0x3B</span><span class="o">...</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Enviando</span> <span class="n">REQUEST_DATA_ATMOSPHERIC</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x3B</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">07</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Respuesta</span> <span class="n">recibida</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x3B</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">07</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Datos</span> <span class="n">atmosféricos</span> <span class="n">recibidos</span> <span class="n">exitosamente</span>
+</pre></div>
+</div>
+</section>
+<section id="error-en-datos-recibidos">
+<h3>Error en Datos Recibidos<a class="headerlink" href="#error-en-datos-recibidos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Enviando</span> <span class="n">REQUEST_DATA_ATMOSPHERIC</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Respuesta</span> <span class="n">recibida</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Tamaño</span> <span class="n">de</span> <span class="n">datos</span> <span class="n">incorrecto</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Esperado</span><span class="p">:</span> <span class="mi">48</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">Recibido</span><span class="p">:</span> <span class="mi">24</span> <span class="nb">bytes</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Datos</span> <span class="n">incompletos</span> <span class="o">-</span> <span class="n">descartando</span> <span class="n">paquete</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Reintentando</span> <span class="n">solicitud</span> <span class="n">a</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Respuesta</span> <span class="n">recibida</span> <span class="n">de</span> <span class="n">nodo</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Tamaño</span> <span class="n">de</span> <span class="n">datos</span> <span class="n">correcto</span><span class="p">:</span> <span class="mi">48</span> <span class="nb">bytes</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Datos</span> <span class="n">atmosféricos</span> <span class="n">procesados</span> <span class="n">exitosamente</span>
+</pre></div>
+</div>
+</section>
+<section id="error-de-rtc">
+<h3>Error de RTC<a class="headerlink" href="#error-de-rtc" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">Error</span> <span class="n">al</span> <span class="n">leer</span> <span class="n">RTC</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">WARN</span><span class="p">:</span> <span class="n">RTC</span> <span class="n">no</span> <span class="n">responde</span> <span class="o">-</span> <span class="n">usando</span> <span class="n">tiempo</span> <span class="k">del</span> <span class="n">sistema</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Tiempo</span> <span class="n">actual</span><span class="p">:</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="p">(</span><span class="n">sistema</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Continuando</span> <span class="n">operación</span> <span class="n">normal</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RTC</span> <span class="n">recuperado</span> <span class="o">-</span> <span class="n">sincronizando</span> <span class="n">tiempo</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Tiempo</span> <span class="n">RTC</span><span class="p">:</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Sistema</span> <span class="n">sincronizado</span> <span class="n">correctamente</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logs-de-estado-del-sistema">
+<h2>📊 Logs de Estado del Sistema<a class="headerlink" href="#logs-de-estado-del-sistema" title="Link to this heading"></a></h2>
+<section id="estado-de-memoria">
+<h3>Estado de Memoria<a class="headerlink" href="#estado-de-memoria" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="o">=====</span> <span class="n">ESTADO</span> <span class="n">DEL</span> <span class="n">SISTEMA</span> <span class="o">=====</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Memoria</span> <span class="n">libre</span><span class="p">:</span> <span class="mf">15.2</span><span class="n">KB</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Memoria</span> <span class="n">utilizada</span><span class="p">:</span> <span class="mf">16.8</span><span class="n">KB</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Nodos</span> <span class="n">registrados</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Nodos</span> <span class="n">activos</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Nodos</span> <span class="n">inactivos</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Muestras</span> <span class="n">atmosféricas</span> <span class="n">almacenadas</span><span class="p">:</span> <span class="mi">16</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Muestras</span> <span class="n">suelo</span><span class="o">/</span><span class="n">GPS</span> <span class="n">almacenadas</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Tiempo</span> <span class="n">de</span> <span class="n">funcionamiento</span><span class="p">:</span> <span class="mi">1</span><span class="n">h</span> <span class="mi">30</span><span class="n">m</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">ANNOUNCE</span> <span class="n">enviados</span><span class="p">:</span> <span class="mi">180</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Solicitudes</span> <span class="n">exitosas</span><span class="p">:</span> <span class="mi">24</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Solicitudes</span> <span class="n">fallidas</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Tasa</span> <span class="n">de</span> <span class="n">éxito</span><span class="p">:</span> <span class="mf">92.3</span><span class="o">%</span>
+</pre></div>
+</div>
+</section>
+<section id="resumen-diario">
+<h3>Resumen Diario<a class="headerlink" href="#resumen-diario" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 23:59:59] INFO: ===== RESUMEN DIARIO =====
+[2025-01-15 23:59:59] INFO: Fecha: 2025-01-15
+[2025-01-15 23:59:59] INFO: Tiempo total de funcionamiento: 15h 29m
+[2025-01-15 23:59:59] INFO: Nodos únicos conectados: 3
+[2025-01-15 23:59:59] INFO: Total de muestras atmosféricas: 288
+[2025-01-15 23:59:59] INFO: Total de muestras suelo/GPS: 6
+[2025-01-15 23:59:59] INFO: Promedio temperatura: 25.1°C
+[2025-01-15 23:59:59] INFO: Promedio humedad: 66.2%
+[2025-01-15 23:59:59] INFO: Promedio humedad suelo: 48.7%
+[2025-01-15 23:59:59] INFO: Promedio pH: 7.0
+[2025-01-15 23:59:59] INFO: Promedio conductividad: 1315 µS/cm
+[2025-01-15 23:59:59] INFO: ANNOUNCE enviados: 1,860
+[2025-01-15 23:59:59] INFO: Solicitudes exitosas: 312
+[2025-01-15 23:59:59] INFO: Solicitudes fallidas: 8
+[2025-01-15 23:59:59] INFO: Tasa de éxito general: 97.5%
+[2025-01-15 23:59:59] INFO: ================================
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logs-de-debug">
+<h2>🔧 Logs de Debug<a class="headerlink" href="#logs-de-debug" title="Link to this heading"></a></h2>
+<section id="debug-de-comparacion-de-tiempo">
+<h3>Debug de Comparación de Tiempo<a class="headerlink" href="#debug-de-comparacion-de-tiempo" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">compareHsAndMs</span><span class="p">()</span> <span class="o">-</span> <span class="n">Verificando</span> <span class="n">horario</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Hora</span> <span class="n">actual</span><span class="p">:</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Horarios</span> <span class="n">configurados</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Coincidencia</span> <span class="n">encontrada</span><span class="p">:</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Solicitud</span> <span class="n">suelo</span><span class="o">/</span><span class="n">GPS</span> <span class="n">autorizada</span>
+</pre></div>
+</div>
+</section>
+<section id="debug-de-almacenamiento-de-datos">
+<h3>Debug de Almacenamiento de Datos<a class="headerlink" href="#debug-de-almacenamiento-de-datos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Almacenando</span> <span class="n">datos</span> <span class="n">atmosféricos</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Nodo</span> <span class="n">ID</span><span class="p">:</span> <span class="mh">0x7A</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Posición</span> <span class="n">en</span> <span class="n">array</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Tamaño</span> <span class="n">de</span> <span class="n">muestra</span><span class="p">:</span> <span class="mi">6</span> <span class="nb">bytes</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Datos</span> <span class="n">copiados</span> <span class="n">exitosamente</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">02</span><span class="p">]</span> <span class="n">DEBUG</span><span class="p">:</span> <span class="n">Mapa</span> <span class="n">actualizado</span> <span class="n">correctamente</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><em>Estos logs son ejemplos representativos del funcionamiento del Sistema Gateway Agrícola. Los logs reales pueden variar según la configuración específica y las condiciones de operación.</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

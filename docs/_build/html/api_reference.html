@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Referencia de API &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Referencia de API</a><ul>
+<li><a class="reference internal" href="#nodeidentity-api">NodeIdentity API</a><ul>
+<li><a class="reference internal" href="#constructor">Constructor</a></li>
+<li><a class="reference internal" href="#getnodeid">getNodeID()</a></li>
+<li><a class="reference internal" href="#getdevicemac">getDeviceMAC()</a></li>
+<li><a class="reference internal" href="#savegetway">saveGetway()</a></li>
+<li><a class="reference internal" href="#getgetway">getGetway()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#radiomanager-api">RadioManager API</a><ul>
+<li><a class="reference internal" href="#id1">Constructor</a></li>
+<li><a class="reference internal" href="#init">init()</a></li>
+<li><a class="reference internal" href="#sendmessage">sendMessage()</a></li>
+<li><a class="reference internal" href="#recvmessage">recvMessage()</a></li>
+<li><a class="reference internal" href="#recvmessagetimeout">recvMessageTimeout()</a></li>
+<li><a class="reference internal" href="#update">update()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rtcmanager-api">RtcManager API</a><ul>
+<li><a class="reference internal" href="#id2">Constructor</a></li>
+<li><a class="reference internal" href="#begin">begin()</a></li>
+<li><a class="reference internal" href="#getdatetime">getDateTime()</a></li>
+<li><a class="reference internal" href="#setdatetime">setDateTime()</a></li>
+<li><a class="reference internal" href="#isdatetimevalid">isDateTimeValid()</a></li>
+<li><a class="reference internal" href="#gettimestring">getTimeString()</a></li>
+<li><a class="reference internal" href="#comparecurrenttimewith">compareCurrentTimeWith()</a></li>
+<li><a class="reference internal" href="#isrunning">isRunning()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#applogic-api">AppLogic API</a><ul>
+<li><a class="reference internal" href="#id3">Constructor</a></li>
+<li><a class="reference internal" href="#id4">begin()</a></li>
+<li><a class="reference internal" href="#id5">update()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructuras-de-datos">Estructuras de Datos</a><ul>
+<li><a class="reference internal" href="#atmosphericsample">AtmosphericSample</a></li>
+<li><a class="reference internal" href="#groundgpspacket">GroundGpsPacket</a></li>
+<li><a class="reference internal" href="#messageheader">MessageHeader</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constantes-del-sistema">Constantes del Sistema</a><ul>
+<li><a class="reference internal" href="#tipos-de-mensaje">Tipos de Mensaje</a></li>
+<li><a class="reference internal" href="#configuracion-de-red">Configuración de Red</a></li>
+<li><a class="reference internal" href="#timeouts-y-delays">Timeouts y Delays</a></li>
+<li><a class="reference internal" href="#pines-de-hardware">Pines de Hardware</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-uso">Ejemplos de Uso</a><ul>
+<li><a class="reference internal" href="#inicializacion-completa">Inicialización Completa</a></li>
+<li><a class="reference internal" href="#comunicacion-basica">Comunicación Básica</a></li>
+<li><a class="reference internal" href="#programacion-temporal">Programación Temporal</a></li>
+<li><a class="reference internal" href="#gestion-de-datos">Gestión de Datos</a></li>
+<li><a class="reference internal" href="#manejo-de-errores">Manejo de Errores</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Referencia de API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_reference.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="referencia-de-api">
+<h1>Referencia de API<a class="headerlink" href="#referencia-de-api" title="Link to this heading"></a></h1>
+<p>Esta sección proporciona la referencia completa de la API del Sistema Gateway Agrícola.</p>
+<section id="nodeidentity-api">
+<h2>NodeIdentity API<a class="headerlink" href="#nodeidentity-api" title="Link to this heading"></a></h2>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Constructor de la clase NodeIdentity.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> Instancia de NodeIdentity</p>
+</section>
+<section id="getnodeid">
+<h3>getNodeID()<a class="headerlink" href="#getnodeid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">getNodeID</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">blacklist_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">blacklist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">defaultBlacklist</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Obtiene el identificador único del nodo.</p>
+<p><strong>Parámetros:</strong>
+- <cite>blacklist_len</cite>: Tamaño de la lista negra (default: 2)
+- <cite>blacklist</cite>: Array de valores prohibidos (default: [0x00, 0xFF])</p>
+<p><strong>Retorno:</strong> ID único entre 1-254</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>NodeIdentity identity;
+uint8_t nodeID = identity.getNodeID();</p>
+</div></blockquote>
+</section>
+<section id="getdevicemac">
+<h3>getDeviceMAC()<a class="headerlink" href="#getdevicemac" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">getDeviceMAC</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Recupera la dirección MAC del hardware.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> MAC address en formato «XX:XX:XX:XX:XX:XX»</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>String mac = identity.getDeviceMAC();</p>
+</div></blockquote>
+</section>
+<section id="savegetway">
+<h3>saveGetway()<a class="headerlink" href="#savegetway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">saveGetway</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">getwayAdress</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Guarda la dirección del gateway asociado.</p>
+<p><strong>Parámetros:</strong>
+- <cite>getwayAdress</cite>: Dirección del gateway a guardar</p>
+<p><strong>Retorno:</strong> void</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>identity.saveGetway(0x10);</p>
+</div></blockquote>
+</section>
+<section id="getgetway">
+<h3>getGetway()<a class="headerlink" href="#getgetway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">getGetway</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stored_getway</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Recupera la dirección del gateway guardada.</p>
+<p><strong>Parámetros:</strong>
+- <cite>stored_getway</cite>: Referencia donde se guardará la dirección</p>
+<p><strong>Retorno:</strong> true si existe gateway guardado, false en caso contrario</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>uint8_t gatewayAddr;
+if (identity.getGetway(gatewayAddr)) {</p>
+<blockquote>
+<div><p>Serial.print(«Gateway: 0x»);
+Serial.println(gatewayAddr, HEX);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="radiomanager-api">
+<h2>RadioManager API<a class="headerlink" href="#radiomanager-api" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Constructor<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RadioManager</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Constructor de la clase RadioManager.</p>
+<p><strong>Parámetros:</strong>
+- <cite>address</cite>: Dirección única del nodo en la red</p>
+<p><strong>Retorno:</strong> Instancia de RadioManager</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>RadioManager radio(0x01);</p>
+</div></blockquote>
+</section>
+<section id="init">
+<h3>init()<a class="headerlink" href="#init" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">init</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Inicializa el módulo de radio RFM95.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> true si la inicialización fue exitosa</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (!radio.init()) {</dt><dd><p>Serial.println(«Error al inicializar radio»);</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="sendmessage">
+<h3>sendMessage()<a class="headerlink" href="#sendmessage" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sendMessage</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Envía mensaje a dirección específica.</p>
+<p><strong>Parámetros:</strong>
+- <cite>to</cite>: Dirección de destino
+- <cite>data</cite>: Puntero a datos a enviar
+- <cite>len</cite>: Longitud del mensaje
+- <cite>flag</cite>: Tipo de mensaje (protocolo)</p>
+<p><strong>Retorno:</strong> true si el envío fue exitoso</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>uint8_t data[] = {0x01, 0x02, 0x03};
+if (radio.sendMessage(0x10, data, 3, 0x01)) {</p>
+<blockquote>
+<div><p>Serial.println(«Mensaje enviado exitosamente»);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="recvmessage">
+<h3>recvMessage()<a class="headerlink" href="#recvmessage" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">recvMessage</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">flag</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Recibe mensaje de la red.</p>
+<p><strong>Parámetros:</strong>
+- <cite>buf</cite>: Buffer para datos recibidos
+- <cite>len</cite>: Puntero a longitud (entrada: máximo, salida: real)
+- <cite>from</cite>: Puntero a dirección del remitente
+- <cite>flag</cite>: Puntero a tipo de mensaje</p>
+<p><strong>Retorno:</strong> true si se recibió mensaje</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>uint8_t buffer[50];
+uint8_t len = 50;
+uint8_t from, flag;
+if (radio.recvMessage(buffer, &amp;len, &amp;from, &amp;flag)) {</p>
+<blockquote>
+<div><p>Serial.print(«Mensaje de 0x»);
+Serial.print(from, HEX);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="recvmessagetimeout">
+<h3>recvMessageTimeout()<a class="headerlink" href="#recvmessagetimeout" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">recvMessageTimeout</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">timeout</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Recibe mensaje con timeout específico.</p>
+<p><strong>Parámetros:</strong>
+- <cite>buf</cite>: Buffer para datos recibidos
+- <cite>len</cite>: Puntero a longitud
+- <cite>from</cite>: Puntero a dirección del remitente
+- <cite>flag</cite>: Puntero a tipo de mensaje
+- <cite>timeout</cite>: Tiempo máximo de espera en ms</p>
+<p><strong>Retorno:</strong> true si se recibió mensaje dentro del timeout</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>uint8_t buffer[50];
+uint8_t len = 50;
+uint8_t from, flag;
+if (radio.recvMessageTimeout(buffer, &amp;len, &amp;from, &amp;flag, 5000)) {</p>
+<blockquote>
+<div><p>Serial.println(«Mensaje recibido en 5 segundos»);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="update">
+<h3>update()<a class="headerlink" href="#update" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Actualiza estado interno del gestor.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> void</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>radio.update();</p>
+</div></blockquote>
+</section>
+</section>
+<section id="rtcmanager-api">
+<h2>RtcManager API<a class="headerlink" href="#rtcmanager-api" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>Constructor<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcManager</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ioPin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sclkPin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cePin</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Constructor de la clase RtcManager.</p>
+<p><strong>Parámetros:</strong>
+- <cite>ioPin</cite>: Pin de datos bidireccional
+- <cite>sclkPin</cite>: Pin de reloj
+- <cite>cePin</cite>: Pin de habilitación</p>
+<p><strong>Retorno:</strong> Instancia de RtcManager</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>RtcManager rtc(RTC_DAT, RTC_CLK, RTC_RST);</p>
+</div></blockquote>
+</section>
+<section id="begin">
+<h3>begin()<a class="headerlink" href="#begin" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Inicializa el módulo RTC DS1302.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> true si la inicialización fue exitosa</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (rtc.begin()) {</dt><dd><p>Serial.println(«RTC inicializado correctamente»);</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="getdatetime">
+<h3>getDateTime()<a class="headerlink" href="#getdatetime" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="nf">getDateTime</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Obtiene fecha y hora actual del RTC.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> Fecha y hora actual como RtcDateTime</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>RtcDateTime now = rtc.getDateTime();
+Serial.print(«Fecha: «);
+Serial.print(now.Year());
+Serial.print(«/»);
+Serial.print(now.Month());
+Serial.print(«/»);
+Serial.println(now.Day());</p>
+</div></blockquote>
+</section>
+<section id="setdatetime">
+<h3>setDateTime()<a class="headerlink" href="#setdatetime" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">setDateTime</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RtcDateTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dateTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Establece fecha y hora en el RTC.</p>
+<p><strong>Parámetros:</strong>
+- <cite>dateTime</cite>: Nueva fecha/hora a establecer</p>
+<p><strong>Retorno:</strong> true si se estableció correctamente</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>RtcDateTime newTime(2025, 7, 20, 14, 30, 0);
+if (rtc.setDateTime(newTime)) {</p>
+<blockquote>
+<div><p>Serial.println(«Fecha/hora establecida correctamente»);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="isdatetimevalid">
+<h3>isDateTimeValid()<a class="headerlink" href="#isdatetimevalid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isDateTimeValid</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Verifica si la fecha/hora del RTC es válida.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> true si la fecha/hora es válida</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (rtc.isDateTimeValid()) {</dt><dd><p>Serial.println(«RTC funcionando correctamente»);</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="gettimestring">
+<h3>getTimeString()<a class="headerlink" href="#gettimestring" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">getTimeString</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Obtiene hora actual en formato string.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> Hora en formato «HH:MM»</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>String currentTime = rtc.getTimeString();
+Serial.print(«Hora actual: «);
+Serial.println(currentTime);</p>
+</div></blockquote>
+</section>
+<section id="comparecurrenttimewith">
+<h3>compareCurrentTimeWith()<a class="headerlink" href="#comparecurrenttimewith" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">compareCurrentTimeWith</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">targetTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Compara hora actual con horario objetivo.</p>
+<p><strong>Parámetros:</strong>
+- <cite>targetTime</cite>: Horario objetivo («HH:MM»)</p>
+<p><strong>Retorno:</strong> true si coincide con hora actual</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (rtc.compareCurrentTimeWith(«12:00»)) {</dt><dd><p>Serial.println(«Es mediodía»);</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="isrunning">
+<h3>isRunning()<a class="headerlink" href="#isrunning" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isRunning</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Verifica si el RTC está funcionando.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> true si el RTC está funcionando</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if (rtc.isRunning()) {</dt><dd><p>Serial.println(«RTC funcionando correctamente»);</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="applogic-api">
+<h2>AppLogic API<a class="headerlink" href="#applogic-api" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Constructor<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">AppLogic</span><span class="p">(</span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">RadioManager</span><span class="w"> </span><span class="n">radioMgr</span><span class="p">,</span><span class="w"> </span><span class="n">RtcManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtcMgr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Constructor de la clase AppLogic.</p>
+<p><strong>Parámetros:</strong>
+- <cite>identity</cite>: Gestor de identidad del nodo
+- <cite>radioMgr</cite>: Gestor de comunicación LoRa
+- <cite>rtcMgr</cite>: Gestor de tiempo real</p>
+<p><strong>Retorno:</strong> Instancia de AppLogic</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>AppLogic logic(identity, radio, rtc);</p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>begin()<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Inicializa la lógica de aplicación.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> void</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>logic.begin();</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>update()<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Descripción:</strong> Actualiza la lógica de aplicación.</p>
+<p><strong>Parámetros:</strong> Ninguno</p>
+<p><strong>Retorno:</strong> void</p>
+<p><strong>Ejemplo:</strong>
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl class="simple">
+<dt>void loop() {</dt><dd><p>logic.update();</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+</section>
+<section id="estructuras-de-datos">
+<h2>Estructuras de Datos<a class="headerlink" href="#estructuras-de-datos" title="Link to this heading"></a></h2>
+<section id="atmosphericsample">
+<h3>AtmosphericSample<a class="headerlink" href="#atmosphericsample" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">AtmosphericSample</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">temperature</span><span class="p">;</span><span class="w">    </span><span class="c1">// Temperatura en °C</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">humidity</span><span class="p">;</span><span class="w">       </span><span class="c1">// Humedad en %</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pressure</span><span class="p">;</span><span class="w">       </span><span class="c1">// Presión en hPa</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">  </span><span class="c1">// Timestamp de la muestra</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="groundgpspacket">
+<h3>GroundGpsPacket<a class="headerlink" href="#groundgpspacket" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">GroundGpsPacket</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">soilTemperature</span><span class="p">;</span><span class="w">  </span><span class="c1">// Temperatura del suelo en °C</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">soilHumidity</span><span class="p">;</span><span class="w">     </span><span class="c1">// Humedad del suelo en %</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pH</span><span class="p">;</span><span class="w">               </span><span class="c1">// pH del suelo</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">conductivity</span><span class="p">;</span><span class="w">     </span><span class="c1">// Conductividad en μS/cm</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">latitude</span><span class="p">;</span><span class="w">         </span><span class="c1">// Latitud GPS</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">longitude</span><span class="p">;</span><span class="w">        </span><span class="c1">// Longitud GPS</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">     </span><span class="c1">// Timestamp de la muestra</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="messageheader">
+<h3>MessageHeader<a class="headerlink" href="#messageheader" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">MessageHeader</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">          </span><span class="c1">// Tipo de mensaje</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w">        </span><span class="c1">// Dirección origen</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">destination</span><span class="p">;</span><span class="w">   </span><span class="c1">// Dirección destino</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w">        </span><span class="c1">// Longitud de datos</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">    </span><span class="c1">// Timestamp</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="constantes-del-sistema">
+<h2>Constantes del Sistema<a class="headerlink" href="#constantes-del-sistema" title="Link to this heading"></a></h2>
+<section id="tipos-de-mensaje">
+<h3>Tipos de Mensaje<a class="headerlink" href="#tipos-de-mensaje" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MSG_TYPE_HELLO 0x01            </span><span class="c1">// Mensaje HELLO</span>
+<span class="cp">#define MSG_TYPE_ANNOUNCE 0x02         </span><span class="c1">// Mensaje ANNOUNCE</span>
+<span class="cp">#define MSG_TYPE_DATA_REQUEST 0x03     </span><span class="c1">// Solicitud de datos</span>
+<span class="cp">#define MSG_TYPE_DATA_RESPONSE 0x04    </span><span class="c1">// Respuesta de datos</span>
+<span class="cp">#define MSG_TYPE_CHANGE_ID 0x05        </span><span class="c1">// Cambio de ID</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-red">
+<h3>Configuración de Red<a class="headerlink" href="#configuracion-de-red" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MAX_NODES 250                    </span><span class="c1">// Número máximo de nodos</span>
+<span class="cp">#define NUMERO_MUESTRAS_ATMOSFERICAS 8   </span><span class="c1">// Muestras atmosféricas por nodo</span>
+<span class="cp">#define CANTIDAD_MUESTRAS_SUELO 2        </span><span class="c1">// Muestras de suelo por nodo</span>
+<span class="cp">#define RH_MESH_MAX_MESSAGE_LEN 50       </span><span class="c1">// Longitud máxima de mensaje</span>
+</pre></div>
+</div>
+</section>
+<section id="timeouts-y-delays">
+<h3>Timeouts y Delays<a class="headerlink" href="#timeouts-y-delays" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define TIMEOUTGRAL 2000                 </span><span class="c1">// Timeout general (2 segundos)</span>
+<span class="cp">#define INTERVALOANNOUNCE 5000           </span><span class="c1">// Intervalo de announce (5 segundos)</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 30000       </span><span class="c1">// Intervalo atmosférico (30 segundos)</span>
+<span class="cp">#define DELAY_BETWEEN_NODES 200          </span><span class="c1">// Delay entre nodos (200ms)</span>
+</pre></div>
+</div>
+</section>
+<section id="pines-de-hardware">
+<h3>Pines de Hardware<a class="headerlink" href="#pines-de-hardware" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RFM95_CS 2   </span><span class="c1">// Pin Chip Select (D4 en ESP8266)</span>
+<span class="cp">#define RFM95_INT 5  </span><span class="c1">// Pin Interrupción (D1 en ESP8266)</span>
+<span class="cp">#define RTC_CLK 18   </span><span class="c1">// Pin CLK del DS1302 (D3 en ESP8266)</span>
+<span class="cp">#define RTC_DAT 19   </span><span class="c1">// Pin DAT del DS1302 (D2 en ESP8266)</span>
+<span class="cp">#define RTC_RST 4    </span><span class="c1">// Pin RST del DS1302 (D0 en ESP8266)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ejemplos-de-uso">
+<h2>Ejemplos de Uso<a class="headerlink" href="#ejemplos-de-uso" title="Link to this heading"></a></h2>
+<section id="inicializacion-completa">
+<h3>Inicialización Completa<a class="headerlink" href="#inicializacion-completa" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;node_identity.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;radio_manager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rtc_manager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;app_logic.h&quot;</span>
+
+<span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">;</span>
+<span class="n">RadioManager</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="n">identity</span><span class="p">.</span><span class="n">getNodeID</span><span class="p">());</span>
+<span class="n">RtcManager</span><span class="w"> </span><span class="nf">rtc</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+<span class="n">AppLogic</span><span class="w"> </span><span class="nf">logic</span><span class="p">(</span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">rtc</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar radio&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar RTC&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="comunicacion-basica">
+<h3>Comunicación Básica<a class="headerlink" href="#comunicacion-basica" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Enviar mensaje</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">};</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_TYPE_DATA_REQUEST</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Mensaje enviado exitosamente&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Recibir mensaje</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">recvMessage</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Mensaje recibido de 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; con flag 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="programacion-temporal">
+<h3>Programación Temporal<a class="headerlink" href="#programacion-temporal" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Verificar si es hora de muestreo</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;08:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Solicitar datos atmosféricos</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">requestAtmosphericData</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;12:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Solicitar datos de suelo</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">requestGroundGpsData</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gestion-de-datos">
+<h3>Gestión de Datos<a class="headerlink" href="#gestion-de-datos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Acceder a datos almacenados</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">AtmosphericSampleNodes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Datos del nodo 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">nodeID</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUMERO_MUESTRAS_ATMOSFERICAS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Muestra %d: Temp=%.1f°C, Hum=%.1f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="n">temperature</span><span class="p">,</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="n">humidity</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="manejo-de-errores">
+<h3>Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Verificar estado del sistema</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">isDateTimeValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC con problemas de integridad&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">isRunning</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC detenido&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar radio&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Para más información sobre el uso específico de cada API, consulta la documentación detallada de cada clase en las secciones correspondientes.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

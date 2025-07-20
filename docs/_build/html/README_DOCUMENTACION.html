@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación del Sistema Gateway Agrícola &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Documentación del Sistema Gateway Agrícola</a><ul>
+<li><a class="reference internal" href="#documentacion-generada">📚 Documentación Generada</a><ul>
+<li><a class="reference internal" href="#estructura-de-archivos">📁 Estructura de Archivos</a></li>
+<li><a class="reference internal" href="#documentacion-html">🌐 Documentación HTML</a></li>
+<li><a class="reference internal" href="#generacion-de-pdf">📄 Generación de PDF</a></li>
+<li><a class="reference internal" href="#comandos-de-sphinx">🔧 Comandos de Sphinx</a><ul>
+<li><a class="reference internal" href="#generar-html">Generar HTML:</a></li>
+<li><a class="reference internal" href="#generar-latex">Generar LaTeX:</a></li>
+<li><a class="reference internal" href="#generar-pdf-requiere-latex">Generar PDF (requiere LaTeX):</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contenido-de-la-documentacion">📖 Contenido de la Documentación</a><ul>
+<li><a class="reference internal" href="#documentacion-tecnica-markdown">Documentación Técnica (Markdown):</a></li>
+<li><a class="reference internal" href="#guias-de-usuario-restructuredtext">Guías de Usuario (reStructuredText):</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-de-la-documentacion">🎨 Características de la Documentación</a></li>
+<li><a class="reference internal" href="#funcionalidades">🔍 Funcionalidades</a></li>
+<li><a class="reference internal" href="#notas-importantes">📝 Notas Importantes</a></li>
+<li><a class="reference internal" href="#proximos-pasos">🚀 Próximos Pasos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentación del Sistema Gateway Agrícola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_DOCUMENTACION.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentacion-del-sistema-gateway-agricola">
+<h1>Documentación del Sistema Gateway Agrícola<a class="headerlink" href="#documentacion-del-sistema-gateway-agricola" title="Link to this heading"></a></h1>
+<section id="documentacion-generada">
+<h2>📚 Documentación Generada<a class="headerlink" href="#documentacion-generada" title="Link to this heading"></a></h2>
+<p>Esta carpeta contiene la documentación completa del Sistema Gateway Agrícola generada con Sphinx.</p>
+<section id="estructura-de-archivos">
+<h3>📁 Estructura de Archivos<a class="headerlink" href="#estructura-de-archivos" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+├── _build/
+│   ├── html/          # Documentación HTML
+│   └── latex/         # Archivos LaTeX para PDF
+├── *.md               # Documentación en Markdown
+├── *.rst              # Documentación en reStructuredText
+├── conf.py            # Configuración de Sphinx
+└── index.rst          # Página principal
+</pre></div>
+</div>
+</section>
+<section id="documentacion-html">
+<h3>🌐 Documentación HTML<a class="headerlink" href="#documentacion-html" title="Link to this heading"></a></h3>
+<p>La documentación HTML está disponible en la carpeta <code class="docutils literal notranslate"><span class="pre">_build/html/</span></code>. Para verla:</p>
+<ol class="arabic simple">
+<li><p>Abre el archivo <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code> en tu navegador web</p></li>
+<li><p>Navega por la documentación usando el menú lateral</p></li>
+<li><p>Usa la función de búsqueda para encontrar contenido específico</p></li>
+</ol>
+</section>
+<section id="generacion-de-pdf">
+<h3>📄 Generación de PDF<a class="headerlink" href="#generacion-de-pdf" title="Link to this heading"></a></h3>
+<p>Para generar el PDF desde los archivos LaTeX:</p>
+<ol class="arabic simple">
+<li><p>Instala LaTeX en tu sistema (MiKTeX, TeX Live, etc.)</p></li>
+<li><p>Navega a la carpeta <code class="docutils literal notranslate"><span class="pre">_build/latex/</span></code></p></li>
+<li><p>Ejecuta: <code class="docutils literal notranslate"><span class="pre">make</span></code> o <code class="docutils literal notranslate"><span class="pre">pdflatex</span> <span class="pre">GatewayAgricola.tex</span></code></p></li>
+</ol>
+</section>
+<section id="comandos-de-sphinx">
+<h3>🔧 Comandos de Sphinx<a class="headerlink" href="#comandos-de-sphinx" title="Link to this heading"></a></h3>
+<section id="generar-html">
+<h4>Generar HTML:<a class="headerlink" href="#generar-html" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</section>
+<section id="generar-latex">
+<h4>Generar LaTeX:<a class="headerlink" href="#generar-latex" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>latex<span class="w"> </span>.<span class="w"> </span>_build/latex
+</pre></div>
+</div>
+</section>
+<section id="generar-pdf-requiere-latex">
+<h4>Generar PDF (requiere LaTeX):<a class="headerlink" href="#generar-pdf-requiere-latex" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/_build/latex
+make
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contenido-de-la-documentacion">
+<h3>📖 Contenido de la Documentación<a class="headerlink" href="#contenido-de-la-documentacion" title="Link to this heading"></a></h3>
+<section id="documentacion-tecnica-markdown">
+<h4>Documentación Técnica (Markdown):<a class="headerlink" href="#documentacion-tecnica-markdown" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>README.md</strong>: Resumen ejecutivo del sistema</p></li>
+<li><p><strong>main_gateway.md</strong>: Punto de entrada y inicialización</p></li>
+<li><p><strong>config.md</strong>: Configuración central y parámetros</p></li>
+<li><p><strong>node_identity.md</strong>: Gestión de identidad del nodo</p></li>
+<li><p><strong>radio_manager.md</strong>: Comunicación LoRa</p></li>
+<li><p><strong>rtc_manager.md</strong>: Gestión del RTC DS1302</p></li>
+<li><p><strong>app_logic.md</strong>: Lógica de aplicación</p></li>
+</ul>
+</section>
+<section id="guias-de-usuario-restructuredtext">
+<h4>Guías de Usuario (reStructuredText):<a class="headerlink" href="#guias-de-usuario-restructuredtext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>installation.rst</strong>: Guía de instalación</p></li>
+<li><p><strong>configuration.rst</strong>: Guía de configuración</p></li>
+<li><p><strong>troubleshooting.rst</strong>: Solución de problemas</p></li>
+<li><p><strong>api_reference.rst</strong>: Referencia de API</p></li>
+<li><p><strong>contributing.rst</strong>: Guía de contribución</p></li>
+</ul>
+</section>
+</section>
+<section id="caracteristicas-de-la-documentacion">
+<h3>🎨 Características de la Documentación<a class="headerlink" href="#caracteristicas-de-la-documentacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Tema</strong>: Read the Docs (sphinx_rtd_theme)</p></li>
+<li><p><strong>Idioma</strong>: Español</p></li>
+<li><p><strong>Formato</strong>: HTML y PDF</p></li>
+<li><p><strong>Búsqueda</strong>: Integrada en HTML</p></li>
+<li><p><strong>Navegación</strong>: Menú lateral y breadcrumbs</p></li>
+<li><p><strong>Responsive</strong>: Compatible con móviles</p></li>
+</ul>
+</section>
+<section id="funcionalidades">
+<h3>🔍 Funcionalidades<a class="headerlink" href="#funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Búsqueda en tiempo real</strong></p></li>
+<li><p><strong>Navegación por secciones</strong></p></li>
+<li><p><strong>Enlaces internos</strong></p></li>
+<li><p><strong>Resaltado de sintaxis</strong></p></li>
+<li><p><strong>Índice automático</strong></p></li>
+<li><p><strong>Referencias cruzadas</strong></p></li>
+</ul>
+</section>
+<section id="notas-importantes">
+<h3>📝 Notas Importantes<a class="headerlink" href="#notas-importantes" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Advertencias</strong>: Algunas advertencias de formato en archivos RST son normales y no afectan la funcionalidad</p></li>
+<li><p><strong>Dependencias</strong>: La generación de PDF requiere LaTeX instalado</p></li>
+<li><p><strong>Actualización</strong>: Para actualizar la documentación, ejecuta los comandos de Sphinx nuevamente</p></li>
+<li><p><strong>Personalización</strong>: Edita <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> para cambiar la configuración</p></li>
+</ol>
+</section>
+<section id="proximos-pasos">
+<h3>🚀 Próximos Pasos<a class="headerlink" href="#proximos-pasos" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Revisar la documentación HTML generada</p></li>
+<li><p>Generar PDF si es necesario</p></li>
+<li><p>Publicar la documentación en un servidor web</p></li>
+<li><p>Configurar actualizaciones automáticas</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Equipo de Desarrollo Agrícola</strong><br />
+<em>Documentación generada con Sphinx v8.2.3</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

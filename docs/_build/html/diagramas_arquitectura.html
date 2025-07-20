@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📊 Diagramas de Arquitectura - Sistema Gateway Agrícola &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">📊 Diagramas de Arquitectura - Sistema Gateway Agrícola</a><ul>
+<li><a class="reference internal" href="#arquitectura-general-del-sistema">🏗️ Arquitectura General del Sistema</a></li>
+<li><a class="reference internal" href="#flujo-de-datos-del-gateway">🔄 Flujo de Datos del Gateway</a></li>
+<li><a class="reference internal" href="#estructura-modular-del-codigo">🧩 Estructura Modular del Código</a></li>
+<li><a class="reference internal" href="#protocolo-de-comunicacion">📡 Protocolo de Comunicación</a></li>
+<li><a class="reference internal" href="#estructura-de-datos">🗂️ Estructura de Datos</a></li>
+<li><a class="reference internal" href="#logs-del-sistema">📊 Logs del Sistema</a><ul>
+<li><a class="reference internal" href="#ejemplo-de-log-de-inicializacion">Ejemplo de Log de Inicialización</a></li>
+<li><a class="reference internal" href="#ejemplo-de-log-de-comunicacion">Ejemplo de Log de Comunicación</a></li>
+<li><a class="reference internal" href="#ejemplo-de-log-de-errores">Ejemplo de Log de Errores</a></li>
+<li><a class="reference internal" href="#ejemplo-de-log-de-datos-de-suelo-gps">Ejemplo de Log de Datos de Suelo/GPS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-hardware">🔧 Configuración de Hardware</a></li>
+<li><a class="reference internal" href="#metricas-del-sistema">📈 Métricas del Sistema</a><ul>
+<li><a class="reference internal" href="#capacidades-del-gateway">Capacidades del Gateway</a></li>
+<li><a class="reference internal" href="#consumo-de-memoria">Consumo de Memoria</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📊 Diagramas de Arquitectura - Sistema Gateway Agrícola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/diagramas_arquitectura.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagramas-de-arquitectura-sistema-gateway-agricola">
+<h1>📊 Diagramas de Arquitectura - Sistema Gateway Agrícola<a class="headerlink" href="#diagramas-de-arquitectura-sistema-gateway-agricola" title="Link to this heading"></a></h1>
+<section id="arquitectura-general-del-sistema">
+<h2>🏗️ Arquitectura General del Sistema<a class="headerlink" href="#arquitectura-general-del-sistema" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TB
+    subgraph &quot;Hardware Layer&quot;
+        ESP8266[ESP8266 Microcontroller]
+        SX1278[SX1278 LoRa Module]
+        DS1302[DS1302 RTC Module]
+        ANT[Antena LoRa]
+    end
+
+    subgraph &quot;Software Layer&quot;
+        subgraph &quot;Core Modules&quot;
+            NI[NodeIdentity]
+            RM[RadioManager]
+            RTCM[RtcManager]
+            AL[AppLogic]
+        end
+
+        subgraph &quot;Protocol Layer&quot;
+            PROTO[Protocol]
+            MSG[Message Types]
+        end
+
+        subgraph &quot;Data Management&quot;
+            ATMOS[Atmospheric Data]
+            GROUND[Ground/GPS Data]
+            LOGS[System Logs]
+        end
+    end
+
+    subgraph &quot;Network Layer&quot;
+        MESH[LoRa Mesh Network]
+        NODES[Sensor Nodes]
+    end
+
+    ESP8266 --&gt; NI
+    ESP8266 --&gt; RM
+    ESP8266 --&gt; RTCM
+    ESP8266 --&gt; AL
+
+    SX1278 --&gt; RM
+    DS1302 --&gt; RTCM
+    ANT --&gt; SX1278
+
+    NI --&gt; PROTO
+    RM --&gt; PROTO
+    AL --&gt; PROTO
+    PROTO --&gt; MSG
+
+    AL --&gt; ATMOS
+    AL --&gt; GROUND
+    AL --&gt; LOGS
+
+    RM --&gt; MESH
+    MESH --&gt; NODES
+</pre></div>
+</div>
+</section>
+<section id="flujo-de-datos-del-gateway">
+<h2>🔄 Flujo de Datos del Gateway<a class="headerlink" href="#flujo-de-datos-del-gateway" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>sequenceDiagram
+    participant Gateway as Gateway
+    participant Node1 as Sensor Node 1
+    participant Node2 as Sensor Node 2
+    participant RTC as RTC Module
+    participant Log as System Log
+
+    Note over Gateway: Inicialización del Sistema
+    Gateway-&gt;&gt;RTC: Inicializar RTC
+    Gateway-&gt;&gt;Log: Log: Sistema iniciado
+    Gateway-&gt;&gt;Gateway: Enviar ANNOUNCE
+
+    loop Cada 30 segundos
+        Gateway-&gt;&gt;Gateway: Enviar ANNOUNCE
+        Gateway-&gt;&gt;Log: Log: ANNOUNCE enviado
+    end
+
+    Node1-&gt;&gt;Gateway: HELLO
+    Gateway-&gt;&gt;Log: Log: Nodo 1 registrado
+    Node2-&gt;&gt;Gateway: HELLO
+    Gateway-&gt;&gt;Log: Log: Nodo 2 registrado
+
+    loop Cada 5 minutos
+        Gateway-&gt;&gt;Node1: REQUEST_DATA_ATMOSPHERIC
+        Node1-&gt;&gt;Gateway: DATA_ATMOSPHERIC
+        Gateway-&gt;&gt;Log: Log: Datos atmosféricos recibidos
+        Gateway-&gt;&gt;Gateway: Almacenar datos
+
+        Gateway-&gt;&gt;Node2: REQUEST_DATA_ATMOSPHERIC
+        Node2-&gt;&gt;Gateway: DATA_ATMOSPHERIC
+        Gateway-&gt;&gt;Log: Log: Datos atmosféricos recibidos
+        Gateway-&gt;&gt;Gateway: Almacenar datos
+    end
+
+    loop Cada 12/24 horas
+        Gateway-&gt;&gt;Node1: REQUEST_DATA_GPS_GROUND
+        Node1-&gt;&gt;Gateway: DATA_GPS_GROUND
+        Gateway-&gt;&gt;Log: Log: Datos suelo/GPS recibidos
+        Gateway-&gt;&gt;Gateway: Almacenar datos
+    end
+</pre></div>
+</div>
+</section>
+<section id="estructura-modular-del-codigo">
+<h2>🧩 Estructura Modular del Código<a class="headerlink" href="#estructura-modular-del-codigo" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+    subgraph &quot;Main Gateway&quot;
+        MAIN[main_gateway.ino]
+    end
+
+    subgraph &quot;Core Classes&quot;
+        NI[NodeIdentity]
+        RM[RadioManager]
+        RTCM[RtcManager]
+        AL[AppLogic]
+    end
+
+    subgraph &quot;Support&quot;
+        CONFIG[config.h]
+        PROTO[protocol.h]
+    end
+
+    MAIN --&gt; NI
+    MAIN --&gt; RM
+    MAIN --&gt; RTCM
+    MAIN --&gt; AL
+
+    NI --&gt; CONFIG
+    RM --&gt; CONFIG
+    RTCM --&gt; CONFIG
+    AL --&gt; CONFIG
+
+    AL --&gt; PROTO
+    RM --&gt; PROTO
+</pre></div>
+</div>
+</section>
+<section id="protocolo-de-comunicacion">
+<h2>📡 Protocolo de Comunicación<a class="headerlink" href="#protocolo-de-comunicacion" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>stateDiagram-v2
+    [*] --&gt; Inicialización
+    Inicialización --&gt; EnviandoANNOUNCE
+    EnviandoANNOUNCE --&gt; EsperandoHELLO
+    EsperandoHELLO --&gt; RegistrandoNodos
+    RegistrandoNodos --&gt; SolicitandoDatosAtmosféricos
+    SolicitandoDatosAtmosféricos --&gt; RecibiendoDatosAtmosféricos
+    RecibiendoDatosAtmosféricos --&gt; SolicitandoDatosSuelo
+    SolicitandoDatosSuelo --&gt; RecibiendoDatosSuelo
+    RecibiendoDatosSuelo --&gt; EsperandoHELLO
+
+    EsperandoHELLO --&gt; ErrorComunicación
+    ErrorComunicación --&gt; EsperandoHELLO
+
+    RecibiendoDatosAtmosféricos --&gt; ErrorDatos
+    ErrorDatos --&gt; SolicitandoDatosAtmosféricos
+
+    RecibiendoDatosSuelo --&gt; ErrorDatos
+    ErrorDatos --&gt; SolicitandoDatosSuelo
+</pre></div>
+</div>
+</section>
+<section id="estructura-de-datos">
+<h2>🗂️ Estructura de Datos<a class="headerlink" href="#estructura-de-datos" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>classDiagram
+    class AtmosphericSample {
+        +float temperature
+        +float humidity
+        +uint32_t timestamp
+    }
+
+    class GroundGpsPacket {
+        +float soilMoisture
+        +float soilTemperature
+        +float pH
+        +float conductivity
+        +float latitude
+        +float longitude
+        +uint32_t timestamp
+    }
+
+    class AppLogic {
+        -map~uint8_t, array~ atmosphericSamples
+        -map~uint8_t, array~ groundGpsSamples
+        -map~uint8_t, string~ nodeMacs
+        +begin()
+        +update()
+        -requestAtmosphericData()
+        -requestGroundGpsData()
+    }
+
+    class NodeIdentity {
+        -uint8_t nodeId
+        -string macAddress
+        +getNodeID()
+        +validateKey()
+    }
+
+    class RadioManager {
+        -RH_RF95 radio
+        -RHMesh manager
+        +init()
+        +sendMessage()
+        +recvMessage()
+    }
+
+    class RtcManager {
+        -RtcDS1302 rtc
+        +begin()
+        +getDateTime()
+        +setDateTime()
+    }
+
+    AppLogic --&gt; AtmosphericSample
+    AppLogic --&gt; GroundGpsPacket
+    AppLogic --&gt; NodeIdentity
+    AppLogic --&gt; RadioManager
+    AppLogic --&gt; RtcManager
+</pre></div>
+</div>
+</section>
+<section id="logs-del-sistema">
+<h2>📊 Logs del Sistema<a class="headerlink" href="#logs-del-sistema" title="Link to this heading"></a></h2>
+<section id="ejemplo-de-log-de-inicializacion">
+<h3>Ejemplo de Log de Inicialización<a class="headerlink" href="#ejemplo-de-log-de-inicializacion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Sistema</span> <span class="n">Gateway</span> <span class="n">Agrícola</span> <span class="n">iniciado</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">NodeIdentity</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">MAC</span><span class="p">:</span> <span class="n">AA</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="n">CC</span><span class="p">:</span><span class="n">DD</span><span class="p">:</span><span class="n">EE</span><span class="p">:</span><span class="n">FF</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RadioManager</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">Frecuencia</span><span class="p">:</span> <span class="mi">915</span><span class="n">MHz</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">RTC</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">Fecha</span><span class="p">:</span> <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">16</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">AppLogic</span> <span class="n">inicializado</span> <span class="o">-</span> <span class="n">Modo</span> <span class="n">Gateway</span>
+<span class="p">[</span><span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span> <span class="mi">08</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">ANNOUNCE</span> <span class="n">enviado</span> <span class="o">-</span> <span class="n">Broadcast</span> <span class="n">a</span> <span class="n">la</span> <span class="n">red</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-de-log-de-comunicacion">
+<h3>Ejemplo de Log de Comunicación<a class="headerlink" href="#ejemplo-de-log-de-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 08:30:45] INFO: HELLO recibido de nodo 0x42 - MAC: 11:22:33:44:55:66
+[2025-01-15 08:30:45] INFO: Nodo registrado - ID: 0x42, MAC: 11:22:33:44:55:66
+[2025-01-15 08:30:50] INFO: HELLO recibido de nodo 0x7A - MAC: AA:BB:CC:DD:EE:FF
+[2025-01-15 08:30:50] INFO: Nodo registrado - ID: 0x7A, MAC: AA:BB:CC:DD:EE:FF
+[2025-01-15 08:35:00] INFO: Solicitando datos atmosféricos a nodo 0x42
+[2025-01-15 08:35:02] INFO: Datos atmosféricos recibidos de nodo 0x42
+[2025-01-15 08:35:02] INFO: Temperatura: 25.3°C, Humedad: 65.2%
+[2025-01-15 08:35:05] INFO: Solicitando datos atmosféricos a nodo 0x7A
+[2025-01-15 08:35:07] INFO: Datos atmosféricos recibidos de nodo 0x7A
+[2025-01-15 08:35:07] INFO: Temperatura: 24.8°C, Humedad: 68.1%
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-de-log-de-errores">
+<h3>Ejemplo de Log de Errores<a class="headerlink" href="#ejemplo-de-log-de-errores" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 08:40:00] WARN: Timeout en solicitud a nodo 0x42
+[2025-01-15 08:40:00] WARN: Reintentando solicitud a nodo 0x42
+[2025-01-15 08:40:03] ERROR: Nodo 0x42 no responde - Agregado a nodesDown
+[2025-01-15 08:40:05] INFO: Datos atmosféricos recibidos de nodo 0x7A
+[2025-01-15 08:40:05] INFO: Temperatura: 25.1°C, Humedad: 66.3%
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-de-log-de-datos-de-suelo-gps">
+<h3>Ejemplo de Log de Datos de Suelo/GPS<a class="headerlink" href="#ejemplo-de-log-de-datos-de-suelo-gps" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2025-01-15 12:00:00] INFO: Solicitando datos suelo/GPS a nodo 0x42
+[2025-01-15 12:00:03] INFO: Datos suelo/GPS recibidos de nodo 0x42
+[2025-01-15 12:00:03] INFO: Humedad suelo: 45.2%, Temp suelo: 18.5°C
+[2025-01-15 12:00:03] INFO: pH: 6.8, Conductividad: 1250 µS/cm
+[2025-01-15 12:00:03] INFO: GPS: Lat: -34.6037, Lon: -58.3816
+[2025-01-15 12:00:05] INFO: Solicitando datos suelo/GPS a nodo 0x7A
+[2025-01-15 12:00:08] INFO: Datos suelo/GPS recibidos de nodo 0x7A
+[2025-01-15 12:00:08] INFO: Humedad suelo: 52.1%, Temp suelo: 19.2°C
+[2025-01-15 12:00:08] INFO: pH: 7.1, Conductividad: 1380 µS/cm
+[2025-01-15 12:00:08] INFO: GPS: Lat: -34.6042, Lon: -58.3821
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-hardware">
+<h2>🔧 Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h2>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TB
+    subgraph &quot;ESP8266 Pins&quot;
+        D1[D1 - GPIO5 - RTC_CLK]
+        D2[D2 - GPIO4 - RTC_DAT]
+        D3[D3 - GPIO0 - RTC_RST]
+        D4[D4 - GPIO2 - RFM95_CS]
+        D5[D5 - GPIO14 - RFM95_INT]
+        D6[D6 - GPIO12 - RFM95_RST]
+    end
+
+    subgraph &quot;Connections&quot;
+        ESP8266[ESP8266 NodeMCU]
+        RFM95[RFM95 LoRa Module]
+        RTC[DS1302 RTC Module]
+        ANT[Antena LoRa]
+    end
+
+    ESP8266 --&gt;|SPI| RFM95
+    RFM95 --&gt; ANT
+
+    ESP8266 --&gt;|3-Wire| RTC
+</pre></div>
+</div>
+</section>
+<section id="metricas-del-sistema">
+<h2>📈 Métricas del Sistema<a class="headerlink" href="#metricas-del-sistema" title="Link to this heading"></a></h2>
+<section id="capacidades-del-gateway">
+<h3>Capacidades del Gateway<a class="headerlink" href="#capacidades-del-gateway" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Nodos máximos</strong>: 250 nodos</p></li>
+<li><p><strong>Muestras atmosféricas por nodo</strong>: 8 muestras</p></li>
+<li><p><strong>Muestras suelo/GPS por nodo</strong>: 2 muestras</p></li>
+<li><p><strong>Intervalo ANNOUNCE</strong>: 5 segundos (debug) / 2 minutos (producción)</p></li>
+<li><p><strong>Intervalo datos atmosféricos</strong>: 30 segundos (debug) / 8 minutos (producción)</p></li>
+<li><p><strong>Intervalo datos suelo/GPS</strong>: 12 y 24 horas</p></li>
+</ul>
+</section>
+<section id="consumo-de-memoria">
+<h3>Consumo de Memoria<a class="headerlink" href="#consumo-de-memoria" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>AtmosphericSample</strong>: 6 bytes por muestra</p></li>
+<li><p><strong>GroundGpsPacket</strong>: 24 bytes por muestra</p></li>
+<li><p><strong>Total por nodo</strong>: 8 × 6 + 2 × 24 = 96 bytes</p></li>
+<li><p><strong>Total 250 nodos</strong>: 24 KB de datos</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Diagramas generados con Mermaid para la documentación del Sistema Gateway Agrícola</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuración del Sistema Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Configuración del Sistema Gateway</a><ul>
+<li><a class="reference internal" href="#configuracion-de-hardware">Configuración de Hardware</a><ul>
+<li><a class="reference internal" href="#pines-de-conexion">Pines de Conexión</a><ul>
+<li><a class="reference internal" href="#esp8266-sx1278-lora">ESP8266 - SX1278 LoRa</a></li>
+<li><a class="reference internal" href="#esp8266-ds1302-rtc">ESP8266 - DS1302 RTC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-red">Configuración de Red</a><ul>
+<li><a class="reference internal" href="#parametros-lora">Parámetros LoRa</a></li>
+<li><a class="reference internal" href="#parametros-de-red-mesh">Parámetros de Red Mesh</a></li>
+<li><a class="reference internal" href="#timeouts-y-delays">Timeouts y Delays</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-datos">Configuración de Datos</a><ul>
+<li><a class="reference internal" href="#muestras-por-nodo">Muestras por Nodo</a></li>
+<li><a class="reference internal" href="#delays-de-procesamiento">Delays de Procesamiento</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-debugging">Configuración de Debugging</a><ul>
+<li><a class="reference internal" href="#modo-debug">Modo Debug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-nodeidentity">Configuración de NodeIdentity</a><ul>
+<li><a class="reference internal" href="#archivos-de-persistencia">Archivos de Persistencia</a></li>
+<li><a class="reference internal" href="#valores-por-defecto">Valores por Defecto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-radiomanager">Configuración de RadioManager</a><ul>
+<li><a class="reference internal" href="#parametros-de-inicializacion">Parámetros de Inicialización</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-rtcmanager">Configuración de RtcManager</a><ul>
+<li><a class="reference internal" href="#id1">Parámetros de Inicialización</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-applogic">Configuración de AppLogic</a><ul>
+<li><a class="reference internal" href="#horarios-de-muestreo">Horarios de Muestreo</a></li>
+<li><a class="reference internal" href="#parametros-de-reintentos">Parámetros de Reintentos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-avanzada">Configuración Avanzada</a><ul>
+<li><a class="reference internal" href="#optimizacion-de-memoria">Optimización de Memoria</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">Optimización de Energía</a></li>
+<li><a class="reference internal" href="#configuracion-de-seguridad">Configuración de Seguridad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-por-entorno">Configuración por Entorno</a><ul>
+<li><a class="reference internal" href="#desarrollo">Desarrollo</a></li>
+<li><a class="reference internal" href="#produccion">Producción</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-monitoreo">Configuración de Monitoreo</a><ul>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#metricas">Métricas</a></li>
+<li><a class="reference internal" href="#alertas">Alertas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-red-mesh">Configuración de Red Mesh</a><ul>
+<li><a class="reference internal" href="#topologia">Topología</a></li>
+<li><a class="reference internal" href="#enrutamiento">Enrutamiento</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-protocolo">Configuración de Protocolo</a><ul>
+<li><a class="reference internal" href="#tipos-de-mensaje">Tipos de Mensaje</a></li>
+<li><a class="reference internal" href="#estructura-de-mensaje">Estructura de Mensaje</a></li>
+<li><a class="reference internal" href="#validacion">Validación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-persistencia">Configuración de Persistencia</a><ul>
+<li><a class="reference internal" href="#littlefs">LittleFS</a></li>
+<li><a class="reference internal" href="#backup">Backup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-actualizaciones">Configuración de Actualizaciones</a><ul>
+<li><a class="reference internal" href="#ota-over-the-air">OTA (Over-The-Air)</a></li>
+<li><a class="reference internal" href="#verificacion">Verificación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-integracion">Configuración de Integración</a><ul>
+<li><a class="reference internal" href="#apis-externas">APIs Externas</a></li>
+<li><a class="reference internal" href="#webhooks">Webhooks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-diagnostico">Configuración de Diagnóstico</a><ul>
+<li><a class="reference internal" href="#diagnostico-de-hardware">Diagnóstico de Hardware</a></li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">Métricas de Rendimiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Configuración del Sistema Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configuration.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuracion-del-sistema-gateway">
+<h1>Configuración del Sistema Gateway<a class="headerlink" href="#configuracion-del-sistema-gateway" title="Link to this heading"></a></h1>
+<p>Esta guía detalla la configuración completa del Sistema Gateway Agrícola, incluyendo parámetros de red, hardware y software.</p>
+<section id="configuracion-de-hardware">
+<h2>Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h2>
+<section id="pines-de-conexion">
+<h3>Pines de Conexión<a class="headerlink" href="#pines-de-conexion" title="Link to this heading"></a></h3>
+<section id="esp8266-sx1278-lora">
+<h4>ESP8266 - SX1278 LoRa<a class="headerlink" href="#esp8266-sx1278-lora" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de pines LoRa</span>
+<span class="cp">#define RFM95_CS 2   </span><span class="c1">// Pin Chip Select (D4 en ESP8266)</span>
+<span class="cp">#define RFM95_INT 5  </span><span class="c1">// Pin Interrupción (D1 en ESP8266)</span>
+</pre></div>
+</div>
+</section>
+<section id="esp8266-ds1302-rtc">
+<h4>ESP8266 - DS1302 RTC<a class="headerlink" href="#esp8266-ds1302-rtc" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de pines RTC (3-wire interface)</span>
+<span class="cp">#define RTC_CLK 18   </span><span class="c1">// Pin CLK del DS1302 (D3 en ESP8266)</span>
+<span class="cp">#define RTC_DAT 19   </span><span class="c1">// Pin DAT del DS1302 (D2 en ESP8266)</span>
+<span class="cp">#define RTC_RST 4    </span><span class="c1">// Pin RST del DS1302 (D0 en ESP8266)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="configuracion-de-red">
+<h2>Configuración de Red<a class="headerlink" href="#configuracion-de-red" title="Link to this heading"></a></h2>
+<section id="parametros-lora">
+<h3>Parámetros LoRa<a class="headerlink" href="#parametros-lora" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de frecuencia y potencia</span>
+<span class="cp">#define LORA_FREQUENCY 433.0    </span><span class="c1">// Frecuencia en MHz</span>
+<span class="cp">#define LORA_TX_POWER 20        </span><span class="c1">// Potencia en dBm (0-20)</span>
+<span class="cp">#define LORA_SPREADING_FACTOR 7 </span><span class="c1">// SF7-SF12</span>
+<span class="cp">#define LORA_BANDWIDTH 125000   </span><span class="c1">// Ancho de banda en Hz</span>
+<span class="cp">#define LORA_CODING_RATE 5      </span><span class="c1">// Coding rate (4/5, 4/6, 4/7, 4/8)</span>
+</pre></div>
+</div>
+</section>
+<section id="parametros-de-red-mesh">
+<h3>Parámetros de Red Mesh<a class="headerlink" href="#parametros-de-red-mesh" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de red</span>
+<span class="cp">#define MAX_NODES 250                    </span><span class="c1">// Número máximo de nodos</span>
+<span class="cp">#define RH_MESH_MAX_MESSAGE_LEN 50       </span><span class="c1">// Longitud máxima de mensaje</span>
+<span class="cp">#define MAC_STR_LEN_WITH_NULL 18         </span><span class="c1">// Longitud de MAC con null</span>
+</pre></div>
+</div>
+</section>
+<section id="timeouts-y-delays">
+<h3>Timeouts y Delays<a class="headerlink" href="#timeouts-y-delays" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Modo Debug</span>
+<span class="cp">#define TIMEOUTGRAL 2000                 </span><span class="c1">// Timeout general (2 segundos)</span>
+<span class="cp">#define INTERVALOANNOUNCE 5000           </span><span class="c1">// Intervalo de announce (5 segundos)</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 30000       </span><span class="c1">// Intervalo atmosférico (30 segundos)</span>
+
+<span class="c1">// Modo Producción</span>
+<span class="cp">#define TIMEOUTGRAL 1500                 </span><span class="c1">// Timeout general (1.5 segundos)</span>
+<span class="cp">#define INTERVALOANNOUNCE 120000         </span><span class="c1">// Intervalo de announce (2 minutos)</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 480000      </span><span class="c1">// Intervalo atmosférico (8 minutos)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-datos">
+<h2>Configuración de Datos<a class="headerlink" href="#configuracion-de-datos" title="Link to this heading"></a></h2>
+<section id="muestras-por-nodo">
+<h3>Muestras por Nodo<a class="headerlink" href="#muestras-por-nodo" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de muestras</span>
+<span class="cp">#define NUMERO_MUESTRAS_ATMOSFERICAS 8   </span><span class="c1">// Muestras atmosféricas por nodo</span>
+<span class="cp">#define CANTIDAD_MUESTRAS_SUELO 2        </span><span class="c1">// Muestras de suelo por nodo</span>
+</pre></div>
+</div>
+</section>
+<section id="delays-de-procesamiento">
+<h3>Delays de Procesamiento<a class="headerlink" href="#delays-de-procesamiento" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Delays entre operaciones</span>
+<span class="cp">#define DELAY_BETWEEN_NODES 200          </span><span class="c1">// Delay entre nodos (200ms)</span>
+<span class="cp">#define DELAY_BEFORE_RETRY_ATMOSPHERIC 2000  </span><span class="c1">// Retry atmosférico (2 segundos)</span>
+<span class="cp">#define DELAY_BEFORE_RETRY_GROUND 4000   </span><span class="c1">// Retry suelo/GPS (4 segundos)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-debugging">
+<h2>Configuración de Debugging<a class="headerlink" href="#configuracion-de-debugging" title="Link to this heading"></a></h2>
+<section id="modo-debug">
+<h3>Modo Debug<a class="headerlink" href="#modo-debug" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DEBUG_MODE</span>
+
+<span class="cp">#ifdef DEBUG_MODE</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x) Serial.print(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x) Serial.println(x)</span>
+<span class="w">    </span><span class="c1">// Configuraciones optimizadas para desarrollo</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x)</span>
+<span class="w">    </span><span class="c1">// Configuraciones optimizadas para producción</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-nodeidentity">
+<h2>Configuración de NodeIdentity<a class="headerlink" href="#configuracion-de-nodeidentity" title="Link to this heading"></a></h2>
+<section id="archivos-de-persistencia">
+<h3>Archivos de Persistencia<a class="headerlink" href="#archivos-de-persistencia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Nombres de archivos para LittleFS</span>
+<span class="cp">#define NODE_ID_FILE &quot;/node_id.json&quot;      </span><span class="c1">// Archivo para ID del nodo</span>
+<span class="cp">#define GATEWAY_ADDR_FILE &quot;/gateway.json&quot; </span><span class="c1">// Archivo para dirección del gateway</span>
+</pre></div>
+</div>
+</section>
+<section id="valores-por-defecto">
+<h3>Valores por Defecto<a class="headerlink" href="#valores-por-defecto" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define HASH_NOT_SET 255   </span><span class="c1">// Valor no inicializado</span>
+<span class="cp">#define GETWAY_NOT_SET 255 </span><span class="c1">// Gateway no configurado</span>
+
+<span class="c1">// Lista negra por defecto</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">defaultBlacklist</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// [0x00, 0xFF]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-radiomanager">
+<h2>Configuración de RadioManager<a class="headerlink" href="#configuracion-de-radiomanager" title="Link to this heading"></a></h2>
+<section id="parametros-de-inicializacion">
+<h3>Parámetros de Inicialización<a class="headerlink" href="#parametros-de-inicializacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración del driver RFM95</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setFrequency</span><span class="p">(</span><span class="mf">433.0</span><span class="p">);</span><span class="w">           </span><span class="c1">// Frecuencia en MHz</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setTxPower</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">         </span><span class="c1">// Potencia en dBm</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setSignalBandwidth</span><span class="p">(</span><span class="mf">125E3</span><span class="p">);</span><span class="w">     </span><span class="c1">// Ancho de banda</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setCodingRate4</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">             </span><span class="c1">// Coding rate</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setSpreadingFactor</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span><span class="w">         </span><span class="c1">// Spreading factor</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-rtcmanager">
+<h2>Configuración de RtcManager<a class="headerlink" href="#configuracion-de-rtcmanager" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Parámetros de Inicialización<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración del RTC DS1302</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span><span class="w">                          </span><span class="c1">// Inicializar RTC</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">SetIsWriteProtected</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w">       </span><span class="c1">// Habilitar escritura</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">SetIsRunning</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">               </span><span class="c1">// Iniciar oscilador</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-applogic">
+<h2>Configuración de AppLogic<a class="headerlink" href="#configuracion-de-applogic" title="Link to this heading"></a></h2>
+<section id="horarios-de-muestreo">
+<h3>Horarios de Muestreo<a class="headerlink" href="#horarios-de-muestreo" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Horarios para muestreo de suelo</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">intervaloHorasSuelo</span><span class="p">[</span><span class="n">CANTIDAD_MUESTRAS_SUELO</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="parametros-de-reintentos">
+<h3>Parámetros de Reintentos<a class="headerlink" href="#parametros-de-reintentos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">connectionRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// Reintentos para pedir datos</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-avanzada">
+<h2>Configuración Avanzada<a class="headerlink" href="#configuracion-avanzada" title="Link to this heading"></a></h2>
+<section id="optimizacion-de-memoria">
+<h3>Optimización de Memoria<a class="headerlink" href="#optimizacion-de-memoria" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración para optimizar uso de RAM</span>
+<span class="cp">#define BUFFER_SIZE 50                 </span><span class="c1">// Tamaño de buffer</span>
+<span class="cp">#define MAX_MESSAGE_LENGTH 50          </span><span class="c1">// Longitud máxima de mensaje</span>
+<span class="cp">#define MAX_RETRIES 3                  </span><span class="c1">// Máximo número de reintentos</span>
+</pre></div>
+</div>
+</section>
+<section id="optimizacion-de-energia">
+<h3>Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración para ahorro de energía</span>
+<span class="cp">#define SLEEP_DURATION 1000            </span><span class="c1">// Duración de sleep en ms</span>
+<span class="cp">#define WAKEUP_INTERVAL 5000           </span><span class="c1">// Intervalo de wakeup en ms</span>
+<span class="cp">#define LOW_POWER_MODE true            </span><span class="c1">// Habilitar modo de baja potencia</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-seguridad">
+<h3>Configuración de Seguridad<a class="headerlink" href="#configuracion-de-seguridad" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de seguridad</span>
+<span class="cp">#define ENABLE_ENCRYPTION false        </span><span class="c1">// Habilitar cifrado</span>
+<span class="cp">#define ENABLE_AUTHENTICATION true     </span><span class="c1">// Habilitar autenticación</span>
+<span class="cp">#define MAX_FAILED_ATTEMPTS 3          </span><span class="c1">// Máximo intentos fallidos</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-por-entorno">
+<h2>Configuración por Entorno<a class="headerlink" href="#configuracion-por-entorno" title="Link to this heading"></a></h2>
+<section id="desarrollo">
+<h3>Desarrollo<a class="headerlink" href="#desarrollo" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración para desarrollo</span>
+<span class="cp">#define DEBUG_MODE true</span>
+<span class="cp">#define LOG_LEVEL DEBUG</span>
+<span class="cp">#define ENABLE_SERIAL_OUTPUT true</span>
+<span class="cp">#define SHORT_TIMEOUTS true</span>
+</pre></div>
+</div>
+</section>
+<section id="produccion">
+<h3>Producción<a class="headerlink" href="#produccion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración para producción</span>
+<span class="cp">#define DEBUG_MODE false</span>
+<span class="cp">#define LOG_LEVEL INFO</span>
+<span class="cp">#define ENABLE_SERIAL_OUTPUT false</span>
+<span class="cp">#define SHORT_TIMEOUTS false</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración para testing</span>
+<span class="cp">#define DEBUG_MODE true</span>
+<span class="cp">#define LOG_LEVEL DEBUG</span>
+<span class="cp">#define ENABLE_SERIAL_OUTPUT true</span>
+<span class="cp">#define SHORT_TIMEOUTS true</span>
+<span class="cp">#define MOCK_HARDWARE true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-monitoreo">
+<h2>Configuración de Monitoreo<a class="headerlink" href="#configuracion-de-monitoreo" title="Link to this heading"></a></h2>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de logging</span>
+<span class="cp">#define LOG_LEVEL DEBUG                </span><span class="c1">// Nivel de logging</span>
+<span class="cp">#define LOG_TO_SERIAL true             </span><span class="c1">// Logging a Serial</span>
+<span class="cp">#define LOG_TO_FILE false              </span><span class="c1">// Logging a archivo</span>
+<span class="cp">#define LOG_BUFFER_SIZE 100            </span><span class="c1">// Tamaño de buffer de log</span>
+</pre></div>
+</div>
+</section>
+<section id="metricas">
+<h3>Métricas<a class="headerlink" href="#metricas" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de métricas</span>
+<span class="cp">#define ENABLE_METRICS true            </span><span class="c1">// Habilitar métricas</span>
+<span class="cp">#define METRICS_INTERVAL 60000         </span><span class="c1">// Intervalo de métricas (1 min)</span>
+<span class="cp">#define METRICS_RETENTION 24           </span><span class="c1">// Retención de métricas (horas)</span>
+</pre></div>
+</div>
+</section>
+<section id="alertas">
+<h3>Alertas<a class="headerlink" href="#alertas" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de alertas</span>
+<span class="cp">#define ENABLE_ALERTS true             </span><span class="c1">// Habilitar alertas</span>
+<span class="cp">#define ALERT_TEMPERATURE_HIGH 35      </span><span class="c1">// Temperatura alta (°C)</span>
+<span class="cp">#define ALERT_TEMPERATURE_LOW 5        </span><span class="c1">// Temperatura baja (°C)</span>
+<span class="cp">#define ALERT_HUMIDITY_HIGH 90         </span><span class="c1">// Humedad alta (%)</span>
+<span class="cp">#define ALERT_HUMIDITY_LOW 20          </span><span class="c1">// Humedad baja (%)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-red-mesh">
+<h2>Configuración de Red Mesh<a class="headerlink" href="#configuracion-de-red-mesh" title="Link to this heading"></a></h2>
+<section id="topologia">
+<h3>Topología<a class="headerlink" href="#topologia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de topología</span>
+<span class="cp">#define MESH_MAX_HOPS 5                </span><span class="c1">// Máximo número de saltos</span>
+<span class="cp">#define MESH_ROUTE_TIMEOUT 30000       </span><span class="c1">// Timeout de ruta (30s)</span>
+<span class="cp">#define MESH_BROADCAST_INTERVAL 60000  </span><span class="c1">// Intervalo de broadcast (1min)</span>
+</pre></div>
+</div>
+</section>
+<section id="enrutamiento">
+<h3>Enrutamiento<a class="headerlink" href="#enrutamiento" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de enrutamiento</span>
+<span class="cp">#define ROUTING_ALGORITHM AODV         </span><span class="c1">// Algoritmo de enrutamiento</span>
+<span class="cp">#define ROUTE_DISCOVERY_TIMEOUT 10000  </span><span class="c1">// Timeout de descubrimiento</span>
+<span class="cp">#define ROUTE_MAINTENANCE_INTERVAL 30000 </span><span class="c1">// Intervalo de mantenimiento</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-protocolo">
+<h2>Configuración de Protocolo<a class="headerlink" href="#configuracion-de-protocolo" title="Link to this heading"></a></h2>
+<section id="tipos-de-mensaje">
+<h3>Tipos de Mensaje<a class="headerlink" href="#tipos-de-mensaje" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Tipos de mensaje del protocolo</span>
+<span class="cp">#define MSG_TYPE_HELLO 0x01            </span><span class="c1">// Mensaje HELLO</span>
+<span class="cp">#define MSG_TYPE_ANNOUNCE 0x02         </span><span class="c1">// Mensaje ANNOUNCE</span>
+<span class="cp">#define MSG_TYPE_DATA_REQUEST 0x03     </span><span class="c1">// Solicitud de datos</span>
+<span class="cp">#define MSG_TYPE_DATA_RESPONSE 0x04    </span><span class="c1">// Respuesta de datos</span>
+<span class="cp">#define MSG_TYPE_CHANGE_ID 0x05        </span><span class="c1">// Cambio de ID</span>
+</pre></div>
+</div>
+</section>
+<section id="estructura-de-mensaje">
+<h3>Estructura de Mensaje<a class="headerlink" href="#estructura-de-mensaje" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Estructura de mensaje</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">MessageHeader</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">                      </span><span class="c1">// Tipo de mensaje</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w">                    </span><span class="c1">// Dirección origen</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">destination</span><span class="p">;</span><span class="w">               </span><span class="c1">// Dirección destino</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w">                    </span><span class="c1">// Longitud de datos</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span><span class="w">                </span><span class="c1">// Timestamp</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="validacion">
+<h3>Validación<a class="headerlink" href="#validacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de validación</span>
+<span class="cp">#define ENABLE_CRC_CHECK true          </span><span class="c1">// Habilitar verificación CRC</span>
+<span class="cp">#define ENABLE_TIMESTAMP_CHECK true    </span><span class="c1">// Habilitar verificación timestamp</span>
+<span class="cp">#define MAX_MESSAGE_AGE 300000         </span><span class="c1">// Edad máxima de mensaje (5min)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-persistencia">
+<h2>Configuración de Persistencia<a class="headerlink" href="#configuracion-de-persistencia" title="Link to this heading"></a></h2>
+<section id="littlefs">
+<h3>LittleFS<a class="headerlink" href="#littlefs" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de LittleFS</span>
+<span class="cp">#define LITTLEFS_MAX_FILES 10          </span><span class="c1">// Máximo número de archivos</span>
+<span class="cp">#define LITTLEFS_MAX_FILE_SIZE 1024    </span><span class="c1">// Tamaño máximo de archivo</span>
+<span class="cp">#define LITTLEFS_ENABLE_FORMAT false   </span><span class="c1">// Habilitar formateo automático</span>
+</pre></div>
+</div>
+</section>
+<section id="backup">
+<h3>Backup<a class="headerlink" href="#backup" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de backup</span>
+<span class="cp">#define ENABLE_AUTO_BACKUP true        </span><span class="c1">// Habilitar backup automático</span>
+<span class="cp">#define BACKUP_INTERVAL 3600000        </span><span class="c1">// Intervalo de backup (1h)</span>
+<span class="cp">#define BACKUP_RETENTION 7             </span><span class="c1">// Retención de backups (días)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-actualizaciones">
+<h2>Configuración de Actualizaciones<a class="headerlink" href="#configuracion-de-actualizaciones" title="Link to this heading"></a></h2>
+<section id="ota-over-the-air">
+<h3>OTA (Over-The-Air)<a class="headerlink" href="#ota-over-the-air" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de actualizaciones OTA</span>
+<span class="cp">#define ENABLE_OTA true                </span><span class="c1">// Habilitar actualizaciones OTA</span>
+<span class="cp">#define OTA_PORT 8266                  </span><span class="c1">// Puerto para OTA</span>
+<span class="cp">#define OTA_PASSWORD &quot;gateway123&quot;      </span><span class="c1">// Contraseña OTA</span>
+<span class="cp">#define OTA_HOSTNAME &quot;gateway-agricola&quot; </span><span class="c1">// Hostname OTA</span>
+</pre></div>
+</div>
+</section>
+<section id="verificacion">
+<h3>Verificación<a class="headerlink" href="#verificacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de verificación</span>
+<span class="cp">#define ENABLE_FIRMWARE_VERIFICATION true  </span><span class="c1">// Verificación de firmware</span>
+<span class="cp">#define FIRMWARE_VERSION &quot;1.0.0&quot;           </span><span class="c1">// Versión de firmware</span>
+<span class="cp">#define FIRMWARE_CHECKSUM_SIZE 32          </span><span class="c1">// Tamaño de checksum</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-integracion">
+<h2>Configuración de Integración<a class="headerlink" href="#configuracion-de-integracion" title="Link to this heading"></a></h2>
+<section id="apis-externas">
+<h3>APIs Externas<a class="headerlink" href="#apis-externas" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de APIs</span>
+<span class="cp">#define ENABLE_CLOUD_SYNC false        </span><span class="c1">// Habilitar sincronización con nube</span>
+<span class="cp">#define CLOUD_API_URL &quot;https:</span><span class="c1">//api.agro-iot.com&quot;  // URL de API</span>
+<span class="cp">#define CLOUD_API_KEY &quot;your-api-key&quot;   </span><span class="c1">// Clave de API</span>
+<span class="cp">#define CLOUD_SYNC_INTERVAL 300000     </span><span class="c1">// Intervalo de sincronización (5min)</span>
+</pre></div>
+</div>
+</section>
+<section id="webhooks">
+<h3>Webhooks<a class="headerlink" href="#webhooks" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de webhooks</span>
+<span class="cp">#define ENABLE_WEBHOOKS false          </span><span class="c1">// Habilitar webhooks</span>
+<span class="cp">#define WEBHOOK_URL &quot;https:</span><span class="c1">//webhook.site/your-url&quot;  // URL de webhook</span>
+<span class="cp">#define WEBHOOK_TIMEOUT 5000           </span><span class="c1">// Timeout de webhook (5s)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-diagnostico">
+<h2>Configuración de Diagnóstico<a class="headerlink" href="#configuracion-de-diagnostico" title="Link to this heading"></a></h2>
+<section id="diagnostico-de-hardware">
+<h3>Diagnóstico de Hardware<a class="headerlink" href="#diagnostico-de-hardware" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de diagnóstico</span>
+<span class="cp">#define ENABLE_HARDWARE_DIAGNOSTIC true    </span><span class="c1">// Habilitar diagnóstico</span>
+<span class="cp">#define DIAGNOSTIC_INTERVAL 60000          </span><span class="c1">// Intervalo de diagnóstico (1min)</span>
+<span class="cp">#define DIAGNOSTIC_TIMEOUT 5000            </span><span class="c1">// Timeout de diagnóstico (5s)</span>
+</pre></div>
+</div>
+</section>
+<section id="metricas-de-rendimiento">
+<h3>Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de métricas</span>
+<span class="cp">#define ENABLE_PERFORMANCE_METRICS true    </span><span class="c1">// Habilitar métricas</span>
+<span class="cp">#define METRICS_SAMPLE_INTERVAL 1000       </span><span class="c1">// Intervalo de muestreo (1s)</span>
+<span class="cp">#define METRICS_RETENTION_PERIOD 3600      </span><span class="c1">// Período de retención (1h)</span>
+</pre></div>
+</div>
+<p>Para aplicar cambios en la configuración, edita los archivos correspondientes y recompila el proyecto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recompilar después de cambios</span>
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>clean
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>build
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>upload<span class="w"> </span>--upload-port<span class="w"> </span>COM7
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

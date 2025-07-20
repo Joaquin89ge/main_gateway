@@ -1,5 +1,6 @@
 // RadioManager.cpp
 #include "radio_manager.h"
+
 /**
  * @brief Pin Chip Select (CS) para el módulo LoRa RFM95.
  *
@@ -16,12 +17,25 @@
  */
 #define RFM95_INT 5 // d1
 
+/**
+ * @brief Constructor de RadioManager
+ * @param address Dirección de red única para este nodo
+ * 
+ * @details Inicializa el driver RFM95 y el gestor de red RHMesh
+ * @note La dirección es utilizada por RHMesh para enrutar mensajes
+ */
 RadioManager::RadioManager(uint8_t address)
     : driver(RFM95_CS, RFM95_INT), manager(driver, address)
 {
     init();
 }
 
+/**
+ * @brief Inicializa el módulo de radio RFM95 y el gestor de red RHMesh
+ * @return true si la inicialización fue exitosa, false en caso contrario
+ * 
+ * @details Configura el módulo RFM95 y inicializa RHMesh para comunicación mesh
+ */
 bool RadioManager::init()
 {
    if (!manager.init())
@@ -30,9 +44,20 @@ DEBUG_PRINT("RF95 MESH init okay");
  
     return true;
 }
+
+/**
+ * @brief Envía un mensaje a un nodo específico
+ * @param to Dirección del nodo destino
+ * @param data Datos a enviar
+ * @param len Longitud de los datos
+ * @param flag Flags del mensaje
+ * @return true si el envío fue exitoso, false en caso contrario
+ * 
+ * @details Envía mensaje unicast con espera de ACK
+ * @note Timeout configurado en config.h
+ */
 bool RadioManager::sendMessage(uint8_t to, uint8_t *data, uint8_t len, uint8_t flag)
 {
-
     // Envía el mensaje y espera un acuse de recibo.
     // RH_ROUTER_ERROR_NONE indica una transmisión y acuse de recibo exitosos.
     if (manager.sendtoWait(data, len, to, flag) == RH_ROUTER_ERROR_NONE)
@@ -42,6 +67,17 @@ bool RadioManager::sendMessage(uint8_t to, uint8_t *data, uint8_t len, uint8_t f
     return false;
 }
 
+/**
+ * @brief Recibe un mensaje de cualquier nodo
+ * @param buf Buffer para almacenar los datos recibidos
+ * @param len Puntero a longitud de datos recibidos
+ * @param from Puntero a dirección del nodo origen
+ * @param flag Puntero a flags del mensaje
+ * @return true si se recibió un mensaje, false en caso contrario
+ * 
+ * @details Recibe mensaje con ACK automático
+ * @note No bloqueante, retorna inmediatamente si no hay mensajes
+ */
 bool RadioManager::recvMessage(uint8_t *buf, uint8_t *len, uint8_t *from, uint8_t *flag)
 {
     uint8_t dest;
@@ -54,6 +90,18 @@ bool RadioManager::recvMessage(uint8_t *buf, uint8_t *len, uint8_t *from, uint8_
     return false; // No se recibió ningún mensaje o falló el acuse de recibo.
 }
 
+/**
+ * @brief Recibe un mensaje con timeout
+ * @param buf Buffer para almacenar los datos recibidos
+ * @param len Puntero a longitud de datos recibidos
+ * @param from Puntero a dirección del nodo origen
+ * @param flag Puntero a flags del mensaje
+ * @param timeout Tiempo de espera en milisegundos
+ * @return true si se recibió un mensaje, false en caso contrario
+ * 
+ * @details Recibe mensaje con timeout y ACK automático
+ * @note Bloqueante hasta timeout o mensaje recibido
+ */
 bool RadioManager::recvMessageTimeout(uint8_t *buf, uint8_t *len, uint8_t *from, uint8_t *flag, uint16_t timeout)
 {
     //uint8_t dest;      // Variable interna para la dirección de destino
@@ -92,4 +140,4 @@ void RadioManager::update()
 {
     // RHMesh maneja internamente el reintento y enrutamiento.
     // Este método se reserva para futuras ampliaciones si se requiere.
-}
+} 

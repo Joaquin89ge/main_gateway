@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎨 Herramientas para Generar Diagramas de Código &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">🎨 Herramientas para Generar Diagramas de Código</a><ul>
+<li><a class="reference internal" href="#scripts-python-disponibles">🐍 <strong>Scripts Python Disponibles</strong></a><ul>
+<li><a class="reference internal" href="#generate-flowcharts-py">📊 <strong>generate_flowcharts.py</strong></a></li>
+<li><a class="reference internal" href="#generate-advanced-diagrams-py">🚀 <strong>generate_advanced_diagrams.py</strong></a></li>
+<li><a class="reference internal" href="#install-diagram-deps-py">📦 <strong>install_diagram_deps.py</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tipos-de-diagramas-generados">🎯 <strong>Tipos de Diagramas Generados</strong></a><ul>
+<li><a class="reference internal" href="#diagramas-de-flujo">🔄 <strong>Diagramas de Flujo</strong></a></li>
+<li><a class="reference internal" href="#diagramas-de-clases">🏗️ <strong>Diagramas de Clases</strong></a></li>
+<li><a class="reference internal" href="#diagramas-de-secuencia">⏱️ <strong>Diagramas de Secuencia</strong></a></li>
+<li><a class="reference internal" href="#graficos-de-llamadas">📞 <strong>Gráficos de Llamadas</strong></a></li>
+<li><a class="reference internal" href="#diagramas-de-flujo-de-datos">📊 <strong>Diagramas de Flujo de Datos</strong></a></li>
+<li><a class="reference internal" href="#diagramas-de-estados">🎯 <strong>Diagramas de Estados</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#herramientas-externas">🛠️ <strong>Herramientas Externas</strong></a><ul>
+<li><a class="reference internal" href="#mermaid">📈 <strong>Mermaid</strong></a></li>
+<li><a class="reference internal" href="#graphviz">🎨 <strong>Graphviz</strong></a></li>
+<li><a class="reference internal" href="#pyflowchart">📊 <strong>PyFlowchart</strong></a></li>
+<li><a class="reference internal" href="#networkx">🔍 <strong>NetworkX</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comandos-utiles">📋 <strong>Comandos Útiles</strong></a><ul>
+<li><a class="reference internal" href="#instalar-dependencias">🔧 <strong>Instalar Dependencias</strong></a></li>
+<li><a class="reference internal" href="#generar-diagramas">📊 <strong>Generar Diagramas</strong></a></li>
+<li><a class="reference internal" href="#convertir-formatos">🎨 <strong>Convertir Formatos</strong></a></li>
+<li><a class="reference internal" href="#regenerar-documentacion">📖 <strong>Regenerar Documentación</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#casos-de-uso">🎯 <strong>Casos de Uso</strong></a><ul>
+<li><a class="reference internal" href="#analisis-de-codigo">🔍 <strong>Análisis de Código</strong></a></li>
+<li><a class="reference internal" href="#documentacion">📚 <strong>Documentación</strong></a></li>
+<li><a class="reference internal" href="#mantenimiento">🛠️ <strong>Mantenimiento</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integracion-con-sphinx">🚀 <strong>Integración con Sphinx</strong></a><ul>
+<li><a class="reference internal" href="#configuracion">📄 <strong>Configuración</strong></a></li>
+<li><a class="reference internal" href="#uso-en-documentacion">📝 <strong>Uso en Documentación</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#en-archivos-rst">En archivos .rst</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🎨 Herramientas para Generar Diagramas de Código</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/herramientas_diagramas.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="herramientas-para-generar-diagramas-de-codigo">
+<h1>🎨 Herramientas para Generar Diagramas de Código<a class="headerlink" href="#herramientas-para-generar-diagramas-de-codigo" title="Link to this heading"></a></h1>
+<section id="scripts-python-disponibles">
+<h2>🐍 <strong>Scripts Python Disponibles</strong><a class="headerlink" href="#scripts-python-disponibles" title="Link to this heading"></a></h2>
+<section id="generate-flowcharts-py">
+<h3>📊 <strong>generate_flowcharts.py</strong><a class="headerlink" href="#generate-flowcharts-py" title="Link to this heading"></a></h3>
+<p>Genera diagramas básicos de flujo del código:</p>
+<ul class="simple">
+<li><p><strong>Diagrama de flujo principal</strong></p></li>
+<li><p><strong>Diagrama de clases</strong></p></li>
+<li><p><strong>Diagrama de secuencia</strong></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_flowcharts.py
+</pre></div>
+</div>
+</section>
+<section id="generate-advanced-diagrams-py">
+<h3>🚀 <strong>generate_advanced_diagrams.py</strong><a class="headerlink" href="#generate-advanced-diagrams-py" title="Link to this heading"></a></h3>
+<p>Genera diagramas avanzados con múltiples formatos:</p>
+<ul class="simple">
+<li><p><strong>Flujo avanzado con estilos</strong></p></li>
+<li><p><strong>Gráfico de llamadas de funciones</strong></p></li>
+<li><p><strong>Diagrama de flujo de datos</strong></p></li>
+<li><p><strong>Diagrama de estados del sistema</strong></p></li>
+<li><p><strong>Archivo Graphviz DOT</strong></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_advanced_diagrams.py
+</pre></div>
+</div>
+</section>
+<section id="install-diagram-deps-py">
+<h3>📦 <strong>install_diagram_deps.py</strong><a class="headerlink" href="#install-diagram-deps-py" title="Link to this heading"></a></h3>
+<p>Instala dependencias necesarias para diagramas:</p>
+<ul class="simple">
+<li><p><strong>graphviz</strong>: Diagramas vectoriales</p></li>
+<li><p><strong>pyflowchart</strong>: Diagramas de flujo</p></li>
+<li><p><strong>pydot</strong>: Manipulación DOT</p></li>
+<li><p><strong>matplotlib</strong>: Gráficos</p></li>
+<li><p><strong>networkx</strong>: Análisis de redes</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>install_diagram_deps.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tipos-de-diagramas-generados">
+<h2>🎯 <strong>Tipos de Diagramas Generados</strong><a class="headerlink" href="#tipos-de-diagramas-generados" title="Link to this heading"></a></h2>
+<section id="diagramas-de-flujo">
+<h3>🔄 <strong>Diagramas de Flujo</strong><a class="headerlink" href="#diagramas-de-flujo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid Flowchart</p></li>
+<li><p><strong>Contenido</strong>: Flujo del programa principal</p></li>
+<li><p><strong>Características</strong>: Decisiones, bucles, procesos</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_codigo/flujo_principal.md</span></code></p></li>
+</ul>
+</section>
+<section id="diagramas-de-clases">
+<h3>🏗️ <strong>Diagramas de Clases</strong><a class="headerlink" href="#diagramas-de-clases" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid Class Diagram</p></li>
+<li><p><strong>Contenido</strong>: Estructura de clases y relaciones</p></li>
+<li><p><strong>Características</strong>: Atributos, métodos, herencia</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_codigo/diagrama_clases.md</span></code></p></li>
+</ul>
+</section>
+<section id="diagramas-de-secuencia">
+<h3>⏱️ <strong>Diagramas de Secuencia</strong><a class="headerlink" href="#diagramas-de-secuencia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid Sequence Diagram</p></li>
+<li><p><strong>Contenido</strong>: Interacción entre componentes</p></li>
+<li><p><strong>Características</strong>: Mensajes, temporización</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_codigo/diagrama_secuencia.md</span></code></p></li>
+</ul>
+</section>
+<section id="graficos-de-llamadas">
+<h3>📞 <strong>Gráficos de Llamadas</strong><a class="headerlink" href="#graficos-de-llamadas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid Graph</p></li>
+<li><p><strong>Contenido</strong>: Dependencias entre funciones</p></li>
+<li><p><strong>Características</strong>: Subgráficos por módulo</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_avanzados/llamadas_funciones.md</span></code></p></li>
+</ul>
+</section>
+<section id="diagramas-de-flujo-de-datos">
+<h3>📊 <strong>Diagramas de Flujo de Datos</strong><a class="headerlink" href="#diagramas-de-flujo-de-datos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid Graph</p></li>
+<li><p><strong>Contenido</strong>: Flujo de datos entre componentes</p></li>
+<li><p><strong>Características</strong>: Entrada, procesamiento, salida</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_avanzados/flujo_datos.md</span></code></p></li>
+</ul>
+</section>
+<section id="diagramas-de-estados">
+<h3>🎯 <strong>Diagramas de Estados</strong><a class="headerlink" href="#diagramas-de-estados" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Formato</strong>: Mermaid State Diagram</p></li>
+<li><p><strong>Contenido</strong>: Estados del sistema</p></li>
+<li><p><strong>Características</strong>: Transiciones, eventos</p></li>
+<li><p><strong>Archivo</strong>: <code class="docutils literal notranslate"><span class="pre">docs/diagramas_avanzados/estados_sistema.md</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="herramientas-externas">
+<h2>🛠️ <strong>Herramientas Externas</strong><a class="headerlink" href="#herramientas-externas" title="Link to this heading"></a></h2>
+<section id="mermaid">
+<h3>📈 <strong>Mermaid</strong><a class="headerlink" href="#mermaid" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sitio</strong>: https://mermaid-js.github.io/mermaid/</p></li>
+<li><p><strong>Editor</strong>: https://mermaid.live/</p></li>
+<li><p><strong>Integración</strong>: GitHub, GitLab, Sphinx</p></li>
+<li><p><strong>Formato</strong>: Markdown con bloques de código</p></li>
+</ul>
+</section>
+<section id="graphviz">
+<h3>🎨 <strong>Graphviz</strong><a class="headerlink" href="#graphviz" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sitio</strong>: https://graphviz.org/</p></li>
+<li><p><strong>Formato</strong>: DOT language</p></li>
+<li><p><strong>Salida</strong>: PNG, SVG, PDF</p></li>
+<li><p><strong>Comando</strong>: <code class="docutils literal notranslate"><span class="pre">dot</span> <span class="pre">-Tpng</span> <span class="pre">archivo.dot</span> <span class="pre">-o</span> <span class="pre">salida.png</span></code></p></li>
+</ul>
+</section>
+<section id="pyflowchart">
+<h3>📊 <strong>PyFlowchart</strong><a class="headerlink" href="#pyflowchart" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Documentación</strong>: https://github.com/cdfmlr/pyflowchart</p></li>
+<li><p><strong>Uso</strong>: Convierte código Python a diagramas</p></li>
+<li><p><strong>Formato</strong>: Mermaid, DOT</p></li>
+<li><p><strong>Instalación</strong>: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyflowchart</span></code></p></li>
+</ul>
+</section>
+<section id="networkx">
+<h3>🔍 <strong>NetworkX</strong><a class="headerlink" href="#networkx" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Documentación</strong>: https://networkx.org/</p></li>
+<li><p><strong>Uso</strong>: Análisis de redes y grafos</p></li>
+<li><p><strong>Visualización</strong>: Matplotlib</p></li>
+<li><p><strong>Instalación</strong>: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">networkx</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="comandos-utiles">
+<h2>📋 <strong>Comandos Útiles</strong><a class="headerlink" href="#comandos-utiles" title="Link to this heading"></a></h2>
+<section id="instalar-dependencias">
+<h3>🔧 <strong>Instalar Dependencias</strong><a class="headerlink" href="#instalar-dependencias" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar todas las dependencias</span>
+python<span class="w"> </span>install_diagram_deps.py
+
+<span class="c1"># Instalar manualmente</span>
+pip<span class="w"> </span>install<span class="w"> </span>graphviz<span class="w"> </span>pyflowchart<span class="w"> </span>pydot<span class="w"> </span>matplotlib<span class="w"> </span>networkx
+</pre></div>
+</div>
+</section>
+<section id="generar-diagramas">
+<h3>📊 <strong>Generar Diagramas</strong><a class="headerlink" href="#generar-diagramas" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Diagramas básicos</span>
+python<span class="w"> </span>generate_flowcharts.py
+
+<span class="c1"># Diagramas avanzados</span>
+python<span class="w"> </span>generate_advanced_diagrams.py
+
+<span class="c1"># Ambos</span>
+python<span class="w"> </span>generate_flowcharts.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>generate_advanced_diagrams.py
+</pre></div>
+</div>
+</section>
+<section id="convertir-formatos">
+<h3>🎨 <strong>Convertir Formatos</strong><a class="headerlink" href="#convertir-formatos" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># DOT a PNG</span>
+dot<span class="w"> </span>-Tpng<span class="w"> </span>docs/diagramas_avanzados/graphviz.dot<span class="w"> </span>-o<span class="w"> </span>diagrama.png
+
+<span class="c1"># DOT a SVG</span>
+dot<span class="w"> </span>-Tsvg<span class="w"> </span>docs/diagramas_avanzados/graphviz.dot<span class="w"> </span>-o<span class="w"> </span>diagrama.svg
+
+<span class="c1"># DOT a PDF</span>
+dot<span class="w"> </span>-Tpdf<span class="w"> </span>docs/diagramas_avanzados/graphviz.dot<span class="w"> </span>-o<span class="w"> </span>diagrama.pdf
+</pre></div>
+</div>
+</section>
+<section id="regenerar-documentacion">
+<h3>📖 <strong>Regenerar Documentación</strong><a class="headerlink" href="#regenerar-documentacion" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar HTML</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs<span class="w"> </span>docs/_build/html
+
+<span class="c1"># Servir localmente</span>
+python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8000</span><span class="w"> </span>--directory<span class="w"> </span>docs/_build/html
+</pre></div>
+</div>
+</section>
+</section>
+<section id="casos-de-uso">
+<h2>🎯 <strong>Casos de Uso</strong><a class="headerlink" href="#casos-de-uso" title="Link to this heading"></a></h2>
+<section id="analisis-de-codigo">
+<h3>🔍 <strong>Análisis de Código</strong><a class="headerlink" href="#analisis-de-codigo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Identificar funciones</strong> principales</p></li>
+<li><p><strong>Mapear dependencias</strong> entre módulos</p></li>
+<li><p><strong>Visualizar flujo</strong> de datos</p></li>
+<li><p><strong>Detectar complejidad</strong> ciclomática</p></li>
+</ul>
+</section>
+<section id="documentacion">
+<h3>📚 <strong>Documentación</strong><a class="headerlink" href="#documentacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Explicar arquitectura</strong> del sistema</p></li>
+<li><p><strong>Mostrar interacciones</strong> entre componentes</p></li>
+<li><p><strong>Ilustrar flujos</strong> de trabajo</p></li>
+<li><p><strong>Documentar estados</strong> del sistema</p></li>
+</ul>
+</section>
+<section id="mantenimiento">
+<h3>🛠️ <strong>Mantenimiento</strong><a class="headerlink" href="#mantenimiento" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Identificar puntos</strong> de fallo</p></li>
+<li><p><strong>Optimizar rutas</strong> críticas</p></li>
+<li><p><strong>Refactorizar código</strong> complejo</p></li>
+<li><p><strong>Planificar mejoras</strong> futuras</p></li>
+</ul>
+</section>
+</section>
+<section id="integracion-con-sphinx">
+<h2>🚀 <strong>Integración con Sphinx</strong><a class="headerlink" href="#integracion-con-sphinx" title="Link to this heading"></a></h2>
+<section id="configuracion">
+<h3>📄 <strong>Configuración</strong><a class="headerlink" href="#configuracion" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.py</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;myst_parser&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx_mermaid&#39;</span><span class="p">,</span>  <span class="c1"># Si está disponible</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="uso-en-documentacion">
+<h3>📝 <strong>Uso en Documentación</strong><a class="headerlink" href="#uso-en-documentacion" title="Link to this heading"></a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># En archivos .md</span>
+
+<span class="sb">```mermaid</span>
+<span class="s">flowchart TD</span>
+<span class="s">    A[Inicio] --&gt; B[Proceso]</span>
+<span class="s">    B --&gt; C[Fin]</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="en-archivos-rst">
+<h1>En archivos .rst<a class="headerlink" href="#en-archivos-rst" title="Link to this heading"></a></h1>
+<p>.. mermaid::</p>
+<p>flowchart TD
+A[Inicio] –&gt; B[Proceso]
+B –&gt; C[Fin]</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+## 🎉 **Ventajas de esta Aproximación**
+
+### ✅ **Automático**
+- **Generación automática** desde código fuente
+- **Actualización automática** al cambiar código
+- **Consistencia** entre código y documentación
+
+### ✅ **Múltiples Formatos**
+- **Mermaid**: Para web y documentación
+- **Graphviz**: Para publicaciones
+- **PNG/SVG**: Para presentaciones
+- **PDF**: Para impresión
+
+### ✅ **Integrado**
+- **Sphinx**: Documentación técnica
+- **GitHub**: Visualización automática
+- **GitLab**: Soporte nativo
+- **Markdown**: Compatibilidad universal
+
+---
+
+*Herramientas para generar diagramas de código automáticamente desde Python* 🐍✨
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

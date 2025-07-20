@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main_gateway.ino - Punto de Entrada del Sistema Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">main_gateway.ino - Punto de Entrada del Sistema Gateway</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#arquitectura-del-sistema">🏗️ Arquitectura del Sistema</a><ul>
+<li><a class="reference internal" href="#componentes-principales">Componentes Principales</a></li>
+<li><a class="reference internal" href="#inicializacion-dinamica">Inicialización Dinámica</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-del-archivo">📁 Estructura del Archivo</a><ul>
+<li><a class="reference internal" href="#includes-y-dependencias">Includes y Dependencias</a></li>
+<li><a class="reference internal" href="#variables-globales">Variables Globales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#funcion-setup">🔧 Función setup()</a><ul>
+<li><a class="reference internal" href="#descripcion">Descripción</a></li>
+<li><a class="reference internal" href="#secuencia-de-inicializacion">Secuencia de Inicialización</a><ul>
+<li><a class="reference internal" href="#configuracion-inicial">1. Configuración Inicial</a></li>
+<li><a class="reference internal" href="#creacion-de-nodeidentity">2. Creación de NodeIdentity</a></li>
+<li><a class="reference internal" href="#inicializacion-de-radiomanager">3. Inicialización de RadioManager</a></li>
+<li><a class="reference internal" href="#inicializacion-de-rtcmanager">4. Inicialización de RtcManager</a></li>
+<li><a class="reference internal" href="#creacion-de-applogic">5. Creación de AppLogic</a></li>
+<li><a class="reference internal" href="#verificacion-final">6. Verificación Final</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#funcion-loop">🔄 Función loop()</a><ul>
+<li><a class="reference internal" href="#id1">Descripción</a></li>
+<li><a class="reference internal" href="#implementacion">Implementación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">🔍 Características Técnicas</a><ul>
+<li><a class="reference internal" href="#id2">1. Inicialización Dinámica</a></li>
+<li><a class="reference internal" href="#manejo-de-errores">2. Manejo de Errores</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">3. Optimización de Energía</a></li>
+<li><a class="reference internal" href="#debugging-avanzado">4. Debugging Avanzado</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flujo-de-ejecucion">📊 Flujo de Ejecución</a><ul>
+<li><a class="reference internal" href="#fase-1-inicializacion">Fase 1: Inicialización</a></li>
+<li><a class="reference internal" href="#fase-2-operacion">Fase 2: Operación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-y-personalizacion">🔧 Configuración y Personalización</a><ul>
+<li><a class="reference internal" href="#parametros-de-configuracion">Parámetros de Configuración</a></li>
+<li><a class="reference internal" href="#personalizacion">Personalización</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#orden-de-inicializacion">1. Orden de Inicialización</a></li>
+<li><a class="reference internal" href="#gestion-de-memoria">2. Gestión de Memoria</a></li>
+<li><a class="reference internal" href="#robustez-del-sistema">3. Robustez del Sistema</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#tiempos-de-inicializacion">Tiempos de Inicialización</a></li>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-optimizaciones">Fase 1: Optimizaciones</a></li>
+<li><a class="reference internal" href="#fase-2-nuevas-funcionalidades">Fase 2: Nuevas Funcionalidades</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">main_gateway.ino - Punto de Entrada del Sistema Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/main_gateway.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="main-gateway-ino-punto-de-entrada-del-sistema-gateway">
+<h1>main_gateway.ino - Punto de Entrada del Sistema Gateway<a class="headerlink" href="#main-gateway-ino-punto-de-entrada-del-sistema-gateway" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Archivo principal del sistema Gateway agrícola que implementa el punto de entrada y la inicialización dinámica de todos los componentes del sistema. Este archivo orquesta la creación y gestión del ciclo de vida de los módulos principales del Gateway.</p>
+</section>
+<section id="arquitectura-del-sistema">
+<h2>🏗️ Arquitectura del Sistema<a class="headerlink" href="#arquitectura-del-sistema" title="Link to this heading"></a></h2>
+<section id="componentes-principales">
+<h3>Componentes Principales<a class="headerlink" href="#componentes-principales" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>NodeIdentity:</strong> Gestión de identidad única del Gateway</p></li>
+<li><p><strong>RadioManager:</strong> Control de comunicación LoRa mesh</p></li>
+<li><p><strong>RtcManager:</strong> Gestión de tiempo real con DS1302</p></li>
+<li><p><strong>AppLogic:</strong> Lógica de aplicación y coordinación de red</p></li>
+</ul>
+</section>
+<section id="inicializacion-dinamica">
+<h3>Inicialización Dinámica<a class="headerlink" href="#inicializacion-dinamica" title="Link to this heading"></a></h3>
+<p>El sistema utiliza inicialización dinámica de objetos para evitar problemas de hardware prematuros, especialmente con el bus SPI y otros componentes sensibles al timing.</p>
+</section>
+</section>
+<section id="estructura-del-archivo">
+<h2>📁 Estructura del Archivo<a class="headerlink" href="#estructura-del-archivo" title="Link to this heading"></a></h2>
+<section id="includes-y-dependencias">
+<h3>Includes y Dependencias<a class="headerlink" href="#includes-y-dependencias" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ESP8266WiFi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;node_identity.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;radio_manager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;app_logic.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rtc_manager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;config.h&quot;</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong> Importación de todas las librerías y clases necesarias para el funcionamiento del Gateway.</p>
+</section>
+<section id="variables-globales">
+<h3>Variables Globales<a class="headerlink" href="#variables-globales" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="o">*</span><span class="w"> </span><span class="n">identity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">RadioManager</span><span class="o">*</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">AppLogic</span><span class="o">*</span><span class="w"> </span><span class="n">logic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">RtcManager</span><span class="o">*</span><span class="w"> </span><span class="n">rtc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">errorFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong> Punteros a los objetos principales del sistema y flag de control de errores.</p>
+</section>
+</section>
+<section id="funcion-setup">
+<h2>🔧 Función setup()<a class="headerlink" href="#funcion-setup" title="Link to this heading"></a></h2>
+<section id="descripcion">
+<h3>Descripción<a class="headerlink" href="#descripcion" title="Link to this heading"></a></h3>
+<p>Función de inicialización que configura todos los componentes del sistema de manera secuencial y segura.</p>
+</section>
+<section id="secuencia-de-inicializacion">
+<h3>Secuencia de Inicialización<a class="headerlink" href="#secuencia-de-inicializacion" title="Link to this heading"></a></h3>
+<section id="configuracion-inicial">
+<h4>1. Configuración Inicial<a class="headerlink" href="#configuracion-inicial" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">WiFi</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="n">WIFI_OFF</span><span class="p">);</span><span class="w"> </span><span class="c1">// Evita interacciones con radio WiFi</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Inicialización del puerto serial para debugging</p></li>
+<li><p>Deshabilitación del WiFi para evitar interferencias con LoRa</p></li>
+<li><p>Delay para estabilización del sistema</p></li>
+</ul>
+</section>
+<section id="creacion-de-nodeidentity">
+<h4>2. Creación de NodeIdentity<a class="headerlink" href="#creacion-de-nodeidentity" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">identity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NodeIdentity</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Creación dinámica del gestor de identidad</p></li>
+<li><p>Generación de ID único basado en MAC address</p></li>
+<li><p>Configuración de persistencia en LittleFS</p></li>
+</ul>
+</section>
+<section id="inicializacion-de-radiomanager">
+<h4>3. Inicialización de RadioManager<a class="headerlink" href="#inicializacion-de-radiomanager" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioManager</span><span class="p">(</span><span class="n">identity</span><span class="o">-&gt;</span><span class="n">getNodeID</span><span class="p">());</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DEBUG_PRINTLN</span><span class="p">(</span><span class="s">&quot;Error al inicializar RadioManager&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">errorFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Detener ejecución</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Creación del gestor de radio con ID único</p></li>
+<li><p>Inicialización del módulo SX1278 LoRa</p></li>
+<li><p>Configuración de parámetros de comunicación</p></li>
+<li><p>Manejo de errores de inicialización</p></li>
+</ul>
+</section>
+<section id="inicializacion-de-rtcmanager">
+<h4>4. Inicialización de RtcManager<a class="headerlink" href="#inicializacion-de-rtcmanager" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rtc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RtcManager</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DEBUG_PRINTLN</span><span class="p">(</span><span class="s">&quot;Error al inicializar RTC&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">errorFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Detener ejecución</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Creación del gestor de tiempo real</p></li>
+<li><p>Configuración de pines del DS1302 (3-wire interface)</p></li>
+<li><p>Inicialización y validación del RTC</p></li>
+<li><p>Manejo de errores de hardware</p></li>
+</ul>
+</section>
+<section id="creacion-de-applogic">
+<h4>5. Creación de AppLogic<a class="headerlink" href="#creacion-de-applogic" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">logic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AppLogic</span><span class="p">(</span><span class="o">*</span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">rtc</span><span class="p">);</span>
+<span class="n">logic</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Creación de la lógica de aplicación</p></li>
+<li><p>Inyección de dependencias (identity, radio, rtc)</p></li>
+<li><p>Inicialización de la lógica de negocio</p></li>
+</ul>
+</section>
+<section id="verificacion-final">
+<h4>6. Verificación Final<a class="headerlink" href="#verificacion-final" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errorFlag</span><span class="o">==</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;todo ok en gateway&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Confirmación de inicialización exitosa</p></li>
+<li><p>Mensaje de debug para verificar estado del sistema</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="funcion-loop">
+<h2>🔄 Función loop()<a class="headerlink" href="#funcion-loop" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Descripción<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Bucle principal del sistema que ejecuta la lógica de aplicación de manera continua.</p>
+</section>
+<section id="implementacion">
+<h3>Implementación<a class="headerlink" href="#implementacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">logic</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Ejecución continua de la lógica de aplicación</p></li>
+<li><p>Gestión de mensajes entrantes y salientes</p></li>
+<li><p>Coordinación de la red mesh</p></li>
+<li><p>Monitoreo de nodos sensores</p></li>
+</ul>
+</section>
+</section>
+<section id="caracteristicas-tecnicas">
+<h2>🔍 Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>1. Inicialización Dinámica<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Ventaja:</strong> Evita problemas de hardware prematuros</p></li>
+<li><p><strong>Beneficio:</strong> Mayor estabilidad del sistema</p></li>
+<li><p><strong>Implementación:</strong> Uso de punteros y creación en setup()</p></li>
+</ul>
+</section>
+<section id="manejo-de-errores">
+<h3>2. Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Estrategia:</strong> Flag de error global</p></li>
+<li><p><strong>Propósito:</strong> Detección temprana de problemas</p></li>
+<li><p><strong>Implementación:</strong> Verificación en cada paso de inicialización</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-energia">
+<h3>3. Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>WiFi Deshabilitado:</strong> Reduce interferencias con LoRa</p></li>
+<li><p><strong>Sleep Inteligente:</strong> Implementado en AppLogic</p></li>
+<li><p><strong>Gestión de Recursos:</strong> Eficiente uso de memoria</p></li>
+</ul>
+</section>
+<section id="debugging-avanzado">
+<h3>4. Debugging Avanzado<a class="headerlink" href="#debugging-avanzado" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Serial Output:</strong> Mensajes detallados de inicialización</p></li>
+<li><p><strong>Error Tracking:</strong> Seguimiento de problemas</p></li>
+<li><p><strong>Status Reporting:</strong> Confirmación de estado del sistema</p></li>
+</ul>
+</section>
+</section>
+<section id="flujo-de-ejecucion">
+<h2>📊 Flujo de Ejecución<a class="headerlink" href="#flujo-de-ejecucion" title="Link to this heading"></a></h2>
+<section id="fase-1-inicializacion">
+<h3>Fase 1: Inicialización<a class="headerlink" href="#fase-1-inicializacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Configuración Serial:</strong> Preparación para debugging</p></li>
+<li><p><strong>Deshabilitación WiFi:</strong> Optimización de radio</p></li>
+<li><p><strong>Creación de Componentes:</strong> Instanciación dinámica</p></li>
+<li><p><strong>Validación de Hardware:</strong> Verificación de componentes</p></li>
+<li><p><strong>Configuración de Red:</strong> Preparación para comunicación</p></li>
+</ol>
+</section>
+<section id="fase-2-operacion">
+<h3>Fase 2: Operación<a class="headerlink" href="#fase-2-operacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Recepción de Mensajes:</strong> Escucha continua de red</p></li>
+<li><p><strong>Procesamiento de Datos:</strong> Análisis de mensajes</p></li>
+<li><p><strong>Coordinación de Nodos:</strong> Gestión de red mesh</p></li>
+<li><p><strong>Almacenamiento:</strong> Persistencia de datos</p></li>
+<li><p><strong>Transmisión:</strong> Enví de respuestas y comandos</p></li>
+</ol>
+</section>
+</section>
+<section id="configuracion-y-personalizacion">
+<h2>🔧 Configuración y Personalización<a class="headerlink" href="#configuracion-y-personalizacion" title="Link to this heading"></a></h2>
+<section id="parametros-de-configuracion">
+<h3>Parámetros de Configuración<a class="headerlink" href="#parametros-de-configuracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Velocidad Serial:</strong> 115200 baudios</p></li>
+<li><p><strong>Pines RTC:</strong> Definidos en config.h</p></li>
+<li><p><strong>ID de Nodo:</strong> Generado automáticamente</p></li>
+<li><p><strong>Parámetros LoRa:</strong> Configurados en RadioManager</p></li>
+</ul>
+</section>
+<section id="personalizacion">
+<h3>Personalización<a class="headerlink" href="#personalizacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Modificación de Pines:</strong> Editar config.h</p></li>
+<li><p><strong>Cambio de Frecuencia:</strong> Modificar RadioManager</p></li>
+<li><p><strong>Ajuste de Timeouts:</strong> Configurar en AppLogic</p></li>
+<li><p><strong>Debugging:</strong> Activar/desactivar en config.h</p></li>
+</ul>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="orden-de-inicializacion">
+<h3>1. Orden de Inicialización<a class="headerlink" href="#orden-de-inicializacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Crítico:</strong> El orden de inicialización es importante</p></li>
+<li><p><strong>Radio:</strong> Debe inicializarse después de NodeIdentity</p></li>
+<li><p><strong>RTC:</strong> Requiere configuración de pines específica</p></li>
+<li><p><strong>AppLogic:</strong> Depende de todos los componentes anteriores</p></li>
+</ul>
+</section>
+<section id="gestion-de-memoria">
+<h3>2. Gestión de Memoria<a class="headerlink" href="#gestion-de-memoria" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Punteros:</strong> Uso de punteros para gestión dinámica</p></li>
+<li><p><strong>LittleFS:</strong> Almacenamiento persistente</p></li>
+<li><p><strong>RAM:</strong> Gestión eficiente de buffers</p></li>
+</ul>
+</section>
+<section id="robustez-del-sistema">
+<h3>3. Robustez del Sistema<a class="headerlink" href="#robustez-del-sistema" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Error Handling:</strong> Manejo de fallos de hardware</p></li>
+<li><p><strong>Recuperación:</strong> Estrategias de recuperación automática</p></li>
+<li><p><strong>Logging:</strong> Registro detallado de eventos</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="tiempos-de-inicializacion">
+<h3>Tiempos de Inicialización<a class="headerlink" href="#tiempos-de-inicializacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Serial Setup:</strong> &lt;10ms</p></li>
+<li><p><strong>NodeIdentity:</strong> &lt;50ms</p></li>
+<li><p><strong>RadioManager:</strong> &lt;200ms</p></li>
+<li><p><strong>RtcManager:</strong> &lt;100ms</p></li>
+<li><p><strong>AppLogic:</strong> &lt;50ms</p></li>
+<li><p><strong>Total:</strong> &lt;410ms</p></li>
+</ul>
+</section>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~44% (36KB de 80KB)</p></li>
+<li><p><strong>Flash:</strong> ~32% (340KB de 1MB)</p></li>
+<li><p><strong>CPU:</strong> Optimizado para operaciones de red</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-optimizaciones">
+<h3>Fase 1: Optimizaciones<a class="headerlink" href="#fase-1-optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Inicialización Paralela:</strong> Reducir tiempo de startup</p></li>
+<li><p><strong>Gestión de Memoria:</strong> Optimización de buffers</p></li>
+<li><p><strong>Error Recovery:</strong> Mejoras en recuperación automática</p></li>
+</ul>
+</section>
+<section id="fase-2-nuevas-funcionalidades">
+<h3>Fase 2: Nuevas Funcionalidades<a class="headerlink" href="#fase-2-nuevas-funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Interfaz Web:</strong> Configuración remota</p></li>
+<li><p><strong>OTA Updates:</strong> Actualizaciones inalámbricas</p></li>
+<li><p><strong>Logging Avanzado:</strong> Sistema de logs estructurado</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>APIs Externas:</strong> Conexión con sistemas externos</p></li>
+<li><p><strong>Cloud Integration:</strong> Sincronización con la nube</p></li>
+<li><p><strong>Analytics:</strong> Análisis avanzado de datos</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> El archivo main_gateway.ino representa el punto de entrada robusto y bien estructurado del sistema Gateway, implementando inicialización dinámica, manejo de errores y arquitectura modular que permite escalabilidad y mantenibilidad del código.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

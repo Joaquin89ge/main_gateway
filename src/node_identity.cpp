@@ -6,9 +6,12 @@
 
 #include "node_identity.h"
 
-// Definición de la lista de blacklist por defecto.
-const uint8_t NodeIdentity::defaultBlacklist[2] = {0x00, 0xFF};
+// La definición de defaultBlacklist ahora está en el header como static const
 
+/**
+ * @brief Constructor de NodeIdentity
+ * @details Inicializa el sistema de identidad y llama a begin()
+ */
 NodeIdentity::NodeIdentity()
 {
     DEBUG_PRINT("Inicializando ");
@@ -16,6 +19,13 @@ NodeIdentity::NodeIdentity()
 }
 
 
+/**
+ * @brief Obtiene el identificador lógico del nodo
+ * @param blacklist_len Tamaño de la lista negra
+ * @param blacklist Valores prohibidos para el identificador
+ * @return uint8_t Identificador entre 1-254 (0x00 y 0xFF reservados)
+ * @details Genera un hash único o recupera el valor almacenado en LittleFS
+ */
 uint8_t NodeIdentity::getNodeID(size_t blacklist_len, const uint8_t *blacklist)
 {
     DEBUG_PRINTLN("--- NodeIdentity::getNodeID() INICIO ---");

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contribución al Proyecto &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Contribución al Proyecto</a><ul>
+<li><a class="reference internal" href="#como-contribuir">Cómo Contribuir</a><ul>
+<li><a class="reference internal" href="#reportar-problemas">Reportar Problemas</a></li>
+<li><a class="reference internal" href="#proponer-mejoras">Proponer Mejoras</a></li>
+<li><a class="reference internal" href="#enviar-pull-requests">Enviar Pull Requests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estandares-de-codigo">Estándares de Código</a><ul>
+<li><a class="reference internal" href="#formato-de-codigo">Formato de Código</a></li>
+<li><a class="reference internal" href="#estructura-de-archivos">Estructura de Archivos</a></li>
+<li><a class="reference internal" href="#convenciones-de-git">Convenciones de Git</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a><ul>
+<li><a class="reference internal" href="#tests-unitarios">Tests Unitarios</a></li>
+<li><a class="reference internal" href="#tests-de-integracion">Tests de Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentacion">Documentación</a><ul>
+<li><a class="reference internal" href="#estandares-de-documentacion">Estándares de Documentación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#proceso-de-review">Proceso de Review</a><ul>
+<li><a class="reference internal" href="#criterios-de-aceptacion">Criterios de Aceptación</a></li>
+<li><a class="reference internal" href="#id11">Proceso de Review</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comunicacion">Comunicación</a><ul>
+<li><a class="reference internal" href="#canales-de-comunicacion">Canales de Comunicación</a></li>
+<li><a class="reference internal" href="#codigo-de-conducta">Código de Conducta</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reconocimiento">Reconocimiento</a><ul>
+<li><a class="reference internal" href="#contribuidores">Contribuidores</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contribución al Proyecto</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contribucion-al-proyecto">
+<h1>Contribución al Proyecto<a class="headerlink" href="#contribucion-al-proyecto" title="Link to this heading"></a></h1>
+<p>Gracias por tu interés en contribuir al Sistema Gateway Agrícola. Esta guía te ayudará a participar en el desarrollo del proyecto.</p>
+<section id="como-contribuir">
+<h2>Cómo Contribuir<a class="headerlink" href="#como-contribuir" title="Link to this heading"></a></h2>
+<section id="reportar-problemas">
+<h3>Reportar Problemas<a class="headerlink" href="#reportar-problemas" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Buscar Issues Existentes:</strong>
+- Revisar si el problema ya está reportado
+- Verificar si hay una solución en progreso</p></li>
+<li><p><strong>Crear un Issue Detallado:</strong>
+- Usar el template de issue correspondiente
+- Incluir información del sistema
+- Proporcionar logs de error
+- Describir pasos para reproducir</p></li>
+<li><p><strong>Información Requerida:</strong>
+- Versión del firmware
+- Hardware utilizado
+- Configuración actual
+- Logs completos</p></li>
+</ol>
+</section>
+<section id="proponer-mejoras">
+<h3>Proponer Mejoras<a class="headerlink" href="#proponer-mejoras" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Discutir la Idea:</strong>
+- Crear un issue para discutir la mejora
+- Obtener feedback de la comunidad
+- Definir alcance y prioridad</p></li>
+<li><p><strong>Crear una Propuesta:</strong>
+- Documentar la funcionalidad
+- Diseñar la implementación
+- Considerar impacto en rendimiento</p></li>
+<li><p><strong>Implementar:</strong>
+- Seguir las guías de desarrollo
+- Escribir tests unitarios
+- Actualizar documentación</p></li>
+</ol>
+</section>
+<section id="enviar-pull-requests">
+<h3>Enviar Pull Requests<a class="headerlink" href="#enviar-pull-requests" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Fork del Repositorio:</strong>
+- Crear un fork del proyecto
+- Clonar tu fork localmente</p></li>
+<li><p><strong>Crear una Rama:</strong>
+- Usar nombres descriptivos
+- Seguir convenciones de nomenclatura</p></li>
+<li><p><strong>Desarrollar:</strong>
+- Seguir estándares de código
+- Escribir tests
+- Actualizar documentación</p></li>
+<li><p><strong>Enviar PR:</strong>
+- Usar template de pull request
+- Describir cambios realizados
+- Incluir tests y documentación</p></li>
+</ol>
+</section>
+</section>
+<section id="estandares-de-codigo">
+<h2>Estándares de Código<a class="headerlink" href="#estandares-de-codigo" title="Link to this heading"></a></h2>
+<section id="formato-de-codigo">
+<h3>Formato de Código<a class="headerlink" href="#formato-de-codigo" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Indentación:</strong>
+- Usar 2 espacios para indentación
+- No usar tabs</p></li>
+<li><p><strong>Nomenclatura:</strong>
+- Clases: PascalCase (ej: <cite>NodeIdentity</cite>)
+- Métodos: camelCase (ej: <cite>getNodeID()</cite>)
+- Constantes: UPPER_SNAKE_CASE (ej: <cite>MAX_NODES</cite>)
+- Variables: camelCase (ej: <cite>nodeID</cite>)</p></li>
+<li><p><strong>Comentarios:</strong>
+- Usar comentarios descriptivos
+- Documentar funciones complejas
+- Incluir ejemplos cuando sea necesario</p></li>
+</ol>
+<p>Ejemplo de Código:
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl>
+<dt>/**</dt><dd><ul class="simple">
+<li><p>&#64;brief Obtiene el identificador único del nodo</p></li>
+<li><p>&#64;param blacklist_len Tamaño de la lista negra</p></li>
+<li><p>&#64;param blacklist Array de valores prohibidos</p></li>
+<li><p>&#64;return ID único entre 1-254</p></li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</dd>
+<dt>uint8_t getNodeID(size_t blacklist_len = 2,</dt><dd><blockquote>
+<div><p>const uint8_t <a href="#id3"><span class="problematic" id="id4">*</span></a>blacklist = defaultBlacklist) {</p>
+</div></blockquote>
+<p>// Implementación aquí</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="estructura-de-archivos">
+<h3>Estructura de Archivos<a class="headerlink" href="#estructura-de-archivos" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Organización:</strong>
+- Un archivo por clase
+- Headers en <cite>include/</cite>
+- Implementación en <cite>src/</cite>
+- Tests en <cite>test/</cite></p></li>
+<li><p><strong>Nombres de Archivos:</strong>
+- Usar snake_case
+- Ser descriptivos
+- Incluir extensión apropiada</p></li>
+</ol>
+<p>Ejemplo:
+.. code-block:: text</p>
+<blockquote>
+<div><p>src/
+├── main_gateway.ino
+├── node_identity.h
+├── node_identity.cpp
+├── radio_manager.h
+├── radio_manager.cpp
+└── config.h</p>
+</div></blockquote>
+</section>
+<section id="convenciones-de-git">
+<h3>Convenciones de Git<a class="headerlink" href="#convenciones-de-git" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mensajes de Commit:</strong>
+- Usar formato convencional
+- Ser descriptivo y conciso
+- Incluir tipo de cambio</p></li>
+</ol>
+<p>Ejemplos:
+.. code-block:: text</p>
+<blockquote>
+<div><p>feat: agregar soporte para RTC DS1302
+fix: corregir timeout en comunicación LoRa
+docs: actualizar documentación de instalación
+test: agregar tests para NodeIdentity
+refactor: optimizar gestión de memoria</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Ramas:</strong>
+- <cite>main</cite>: código estable
+- <cite>develop</cite>: desarrollo activo
+- <cite>feature/*</cite>: nuevas funcionalidades
+- <cite>fix/*</cite>: correcciones de bugs
+- <cite>docs/*</cite>: documentación</p></li>
+</ol>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<section id="tests-unitarios">
+<h3>Tests Unitarios<a class="headerlink" href="#tests-unitarios" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cobertura:</strong>
+- Tests para todas las clases
+- Cobertura de casos edge
+- Tests de integración</p></li>
+<li><p><strong>Estructura:</strong>
+- Un test por clase
+- Tests independientes
+- Setup y teardown apropiados</p></li>
+</ol>
+<p>Ejemplo:
+.. code-block:: cpp</p>
+<blockquote>
+<div><p>#include &lt;unity.h&gt;
+#include «node_identity.h»</p>
+<dl class="simple">
+<dt>void setUp(void) {</dt><dd><p>// Setup antes de cada test</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="simple">
+<dt>void tearDown(void) {</dt><dd><p>// Cleanup después de cada test</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="simple">
+<dt>void test_getNodeID_returns_valid_id(void) {</dt><dd><p>NodeIdentity identity;
+uint8_t nodeID = identity.getNodeID();
+TEST_ASSERT_GREATER_THAN(0, nodeID);
+TEST_ASSERT_LESS_THAN(255, nodeID);</p>
+</dd>
+</dl>
+<p>}</p>
+<dl class="simple">
+<dt>int main(void) {</dt><dd><p>UNITY_BEGIN();
+RUN_TEST(test_getNodeID_returns_valid_id);
+return UNITY_END();</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</section>
+<section id="tests-de-integracion">
+<h3>Tests de Integración<a class="headerlink" href="#tests-de-integracion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Hardware:</strong>
+- Tests con hardware real
+- Simulación cuando sea posible
+- Validación de comunicación</p></li>
+<li><p><strong>Red:</strong>
+- Tests de comunicación LoRa
+- Validación de protocolo
+- Tests de rendimiento</p></li>
+</ol>
+</section>
+</section>
+<section id="documentacion">
+<h2>Documentación<a class="headerlink" href="#documentacion" title="Link to this heading"></a></h2>
+<section id="estandares-de-documentacion">
+<h3>Estándares de Documentación<a class="headerlink" href="#estandares-de-documentacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Comentarios de Código:</strong>
+- Usar formato Doxygen
+- Documentar parámetros y retornos
+- Incluir ejemplos de uso</p></li>
+<li><p><strong>Documentación de Usuario:</strong>
+- Guías paso a paso
+- Ejemplos prácticos
+- Screenshots cuando sea necesario</p></li>
+<li><p><strong>Documentación Técnica:</strong>
+- Arquitectura del sistema
+- Diagramas de flujo
+- Especificaciones técnicas</p></li>
+</ol>
+<p>Ejemplo de Documentación:
+.. code-block:: cpp</p>
+<blockquote>
+<div><dl>
+<dt>/**</dt><dd><ul class="simple">
+<li><p>&#64;class NodeIdentity</p></li>
+<li><p>&#64;brief Gestiona identificación única de nodos</p></li>
+<li></li>
+<li><p>Esta clase genera un identificador único basado en la dirección MAC</p></li>
+<li><p>del hardware, con protección contra colisiones mediante lista negra.</p></li>
+<li></li>
+<li><p>&#64;example</p></li>
+<li><p>NodeIdentity identity;</p></li>
+<li><p>uint8_t nodeID = identity.getNodeID();</p></li>
+<li><p>Serial.printf(«Node ID: %dn», nodeID);</p></li>
+</ul>
+<p><a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
+</dd>
+</dl>
+<p>class NodeIdentity {
+public:</p>
+<blockquote>
+<div><dl>
+<dt>/**</dt><dd><ul class="simple">
+<li><p>&#64;brief Obtiene el identificador único del nodo</p></li>
+<li><p>&#64;param blacklist_len Tamaño de la lista negra</p></li>
+<li><p>&#64;param blacklist Array de valores prohibidos</p></li>
+<li><p>&#64;return ID único entre 1-254</p></li>
+</ul>
+<p><a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
+</dd>
+<dt>uint8_t getNodeID(size_t blacklist_len = 2,</dt><dd><p>const uint8_t <a href="#id9"><span class="problematic" id="id10">*</span></a>blacklist = defaultBlacklist);</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>};</p>
+</div></blockquote>
+</section>
+</section>
+<section id="proceso-de-review">
+<h2>Proceso de Review<a class="headerlink" href="#proceso-de-review" title="Link to this heading"></a></h2>
+<section id="criterios-de-aceptacion">
+<h3>Criterios de Aceptación<a class="headerlink" href="#criterios-de-aceptacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Funcionalidad:</strong>
+- Código funciona correctamente
+- Tests pasan
+- No introduce regresiones</p></li>
+<li><p><strong>Calidad:</strong>
+- Sigue estándares de código
+- Documentación actualizada
+- Performance aceptable</p></li>
+<li><p><strong>Seguridad:</strong>
+- No introduce vulnerabilidades
+- Manejo seguro de datos
+- Validación apropiada</p></li>
+</ol>
+</section>
+<section id="id11">
+<h3>Proceso de Review<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Automático:</strong>
+- Tests automáticos
+- Análisis de código estático
+- Verificación de formato</p></li>
+<li><p><strong>Manual:</strong>
+- Review de código por pares
+- Verificación de funcionalidad
+- Validación de documentación</p></li>
+<li><p><strong>Aprobación:</strong>
+- Al menos 2 aprobaciones
+- Todos los tests pasan
+- Documentación actualizada</p></li>
+</ol>
+</section>
+</section>
+<section id="comunicacion">
+<h2>Comunicación<a class="headerlink" href="#comunicacion" title="Link to this heading"></a></h2>
+<section id="canales-de-comunicacion">
+<h3>Canales de Comunicación<a class="headerlink" href="#canales-de-comunicacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Issues de GitHub:</strong>
+- Reportar problemas
+- Proponer mejoras
+- Discutir implementación</p></li>
+<li><p><strong>Discussions:</strong>
+- Preguntas generales
+- Compartir experiencias
+- Solicitar ayuda</p></li>
+<li><p><strong>Email:</strong>
+- Contacto directo
+- Asuntos privados
+- Coordinación de desarrollo</p></li>
+</ol>
+</section>
+<section id="codigo-de-conducta">
+<h3>Código de Conducta<a class="headerlink" href="#codigo-de-conducta" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Respeto:</strong>
+- Ser respetuoso con otros
+- Escuchar diferentes opiniones
+- Construir sobre ideas de otros</p></li>
+<li><p><strong>Colaboración:</strong>
+- Ayudar a otros desarrolladores
+- Compartir conocimiento
+- Mentorear nuevos contribuidores</p></li>
+<li><p><strong>Profesionalismo:</strong>
+- Mantener comunicación profesional
+- Ser constructivo en feedback
+- Reconocer contribuciones</p></li>
+</ol>
+</section>
+</section>
+<section id="reconocimiento">
+<h2>Reconocimiento<a class="headerlink" href="#reconocimiento" title="Link to this heading"></a></h2>
+<section id="contribuidores">
+<h3>Contribuidores<a class="headerlink" href="#contribuidores" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Tipos de Contribución:</strong>
+- Código
+- Documentación
+- Testing
+- Diseño
+- Ideas</p></li>
+<li><p><strong>Reconocimiento:</strong>
+- Lista de contribuidores
+- Mención en releases
+- Agradecimientos en documentación</p></li>
+<li><p><strong>Incentivos:</strong>
+- Badges de contribuidor
+- Acceso a features beta
+- Participación en decisiones</p></li>
+</ol>
+<p>Para comenzar a contribuir:</p>
+<ol class="arabic simple">
+<li><p><strong>Leer la Documentación:</strong>
+- Guías de instalación
+- Estándares de código
+- Proceso de desarrollo</p></li>
+<li><p><strong>Explorar el Código:</strong>
+- Entender la arquitectura
+- Revisar issues abiertos
+- Identificar áreas de mejora</p></li>
+<li><p><strong>Empezar Pequeño:</strong>
+- Corregir bugs simples
+- Mejorar documentación
+- Agregar tests</p></li>
+<li><p><strong>Contactar:</strong>
+- Crear un issue
+- Unirse a discussions
+- Solicitar mentoría</p></li>
+</ol>
+<p>¡Gracias por contribuir al Sistema Gateway Agrícola!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

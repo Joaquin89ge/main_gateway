@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RtcManager - Gestión de Tiempo Real con DS1302 &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">RtcManager - Gestión de Tiempo Real con DS1302</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#arquitectura-de-la-clase">🏗️ Arquitectura de la Clase</a><ul>
+<li><a class="reference internal" href="#proposito-principal">Propósito Principal</a></li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">Características Técnicas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-de-la-clase">📁 Estructura de la Clase</a><ul>
+<li><a class="reference internal" href="#variables-de-instancia">Variables de Instancia</a></li>
+<li><a class="reference internal" href="#dependencias">Dependencias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-publicos">🔧 Métodos Públicos</a><ul>
+<li><a class="reference internal" href="#constructor">Constructor</a></li>
+<li><a class="reference internal" href="#begin">begin()</a></li>
+<li><a class="reference internal" href="#getdatetime">getDateTime()</a></li>
+<li><a class="reference internal" href="#setdatetime">setDateTime()</a></li>
+<li><a class="reference internal" href="#isdatetimevalid">isDateTimeValid()</a></li>
+<li><a class="reference internal" href="#gettimestring">getTimeString()</a></li>
+<li><a class="reference internal" href="#gettimestring-estatico">getTimeString() (Estático)</a></li>
+<li><a class="reference internal" href="#comparehsandms">compareHsAndMs()</a></li>
+<li><a class="reference internal" href="#comparecurrenttimewith">compareCurrentTimeWith()</a></li>
+<li><a class="reference internal" href="#printdatetime">printDateTime()</a></li>
+<li><a class="reference internal" href="#isrunning">isRunning()</a></li>
+<li><a class="reference internal" href="#setwriteprotected">setWriteProtected()</a></li>
+<li><a class="reference internal" href="#iswriteprotected">isWriteProtected()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-hardware">📊 Configuración de Hardware</a><ul>
+<li><a class="reference internal" href="#pines-de-conexion">Pines de Conexión</a></li>
+<li><a class="reference internal" href="#caracteristicas-del-ds1302">Características del DS1302</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-de-funcionamiento">🔍 Características de Funcionamiento</a><ul>
+<li><a class="reference internal" href="#inicializacion-robusta">1. Inicialización Robusta</a></li>
+<li><a class="reference internal" href="#gestion-de-tiempo">2. Gestión de Tiempo</a></li>
+<li><a class="reference internal" href="#programacion-de-eventos">3. Programación de Eventos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#tiempos-de-operacion">Tiempos de Operación</a></li>
+<li><a class="reference internal" href="#precision">Precisión</a></li>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#id1">1. Configuración de Hardware</a></li>
+<li><a class="reference internal" href="#gestion-de-errores">2. Gestión de Errores</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">3. Optimización de Energía</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-optimizaciones">Fase 1: Optimizaciones</a></li>
+<li><a class="reference internal" href="#fase-2-nuevas-funcionalidades">Fase 2: Nuevas Funcionalidades</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-uso">📋 Ejemplos de Uso</a><ul>
+<li><a class="reference internal" href="#ejemplo-1-inicializacion-basica">Ejemplo 1: Inicialización Básica</a></li>
+<li><a class="reference internal" href="#ejemplo-2-programacion-de-eventos">Ejemplo 2: Programación de Eventos</a></li>
+<li><a class="reference internal" href="#ejemplo-3-comparacion-de-horarios">Ejemplo 3: Comparación de Horarios</a></li>
+<li><a class="reference internal" href="#ejemplo-4-validacion-de-estado">Ejemplo 4: Validación de Estado</a></li>
+<li><a class="reference internal" href="#ejemplo-5-configuracion-de-fecha-hora">Ejemplo 5: Configuración de Fecha/Hora</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RtcManager - Gestión de Tiempo Real con DS1302</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rtc_manager.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rtcmanager-gestion-de-tiempo-real-con-ds1302">
+<h1>RtcManager - Gestión de Tiempo Real con DS1302<a class="headerlink" href="#rtcmanager-gestion-de-tiempo-real-con-ds1302" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Clase especializada en la gestión de tiempo real utilizando el módulo RTC DS1302 con interfaz 3-wire. Proporciona funcionalidades completas para sincronización temporal, comparación de horarios y gestión de fecha/hora en sistemas IoT agrícolas.</p>
+</section>
+<section id="arquitectura-de-la-clase">
+<h2>🏗️ Arquitectura de la Clase<a class="headerlink" href="#arquitectura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="proposito-principal">
+<h3>Propósito Principal<a class="headerlink" href="#proposito-principal" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sincronización Temporal:</strong> Gestión precisa de fecha y hora</p></li>
+<li><p><strong>Comparación de Horarios:</strong> Validación de eventos programados</p></li>
+<li><p><strong>Configuración Automática:</strong> Inicialización con fecha de compilación</p></li>
+<li><p><strong>Validación de Integridad:</strong> Verificación de funcionamiento del RTC</p></li>
+</ul>
+</section>
+<section id="caracteristicas-tecnicas">
+<h3>Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Hardware:</strong> DS1302 con interfaz 3-wire</p></li>
+<li><p><strong>Librería:</strong> andrewrapp/RtcDS1302</p></li>
+<li><p><strong>Precisión:</strong> ±2ppm a 25°C</p></li>
+<li><p><strong>Batería:</strong> Backup con batería de litio</p></li>
+<li><p><strong>Interfaz:</strong> Serial 3-wire (CLK, DAT, RST)</p></li>
+</ul>
+</section>
+</section>
+<section id="estructura-de-la-clase">
+<h2>📁 Estructura de la Clase<a class="headerlink" href="#estructura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="variables-de-instancia">
+<h3>Variables de Instancia<a class="headerlink" href="#variables-de-instancia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ThreeWire</span><span class="w"> </span><span class="n">myWire</span><span class="p">;</span><span class="w">           </span><span class="c1">///&lt; Interfaz 3-wire para DS1302</span>
+<span class="w">    </span><span class="n">RtcDS1302</span><span class="o">&lt;</span><span class="n">ThreeWire</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rtc</span><span class="p">;</span><span class="w">   </span><span class="c1">///&lt; Instancia del RTC DS1302</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isInitialized</span><span class="p">;</span><span class="w">          </span><span class="c1">///&lt; Estado de inicialización</span>
+</pre></div>
+</div>
+</section>
+<section id="dependencias">
+<h3>Dependencias<a class="headerlink" href="#dependencias" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;RtcDS1302.h&gt;</span><span class="c1">  ///&lt; Librería RtcDS1302</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ThreeWire.h&gt;</span><span class="c1">   ///&lt; Interfaz 3-wire</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metodos-publicos">
+<h2>🔧 Métodos Públicos<a class="headerlink" href="#metodos-publicos" title="Link to this heading"></a></h2>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcManager</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ioPin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sclkPin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cePin</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Inicialización de pines para interfaz 3-wire</p></li>
+<li><p>Configuración de comunicación con DS1302</p></li>
+<li><p>Preparación para operación del RTC</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ioPin</span></code>: Pin de datos bidireccional</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sclkPin</span></code>: Pin de reloj</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cePin</span></code>: Pin de habilitación</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcManager</span><span class="w"> </span><span class="nf">rtc</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="begin">
+<h3>begin()<a class="headerlink" href="#begin" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Inicializa el módulo RTC DS1302</p></li>
+<li><p>Configura fecha/hora con fecha de compilación</p></li>
+<li><p>Verifica integridad del hardware</p></li>
+<li><p>Establece parámetros de funcionamiento</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si la inicialización fue exitosa</p></li>
+</ul>
+<p><strong>Proceso de Inicialización:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Configuración de Pines:</strong> Setup de interfaz 3-wire</p></li>
+<li><p><strong>Inicialización RTC:</strong> Configuración del módulo</p></li>
+<li><p><strong>Verificación de Estado:</strong> Validación de funcionamiento</p></li>
+<li><p><strong>Configuración de Fecha:</strong> Establecimiento de fecha/hora</p></li>
+<li><p><strong>Validación Final:</strong> Confirmación de operación correcta</p></li>
+</ol>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC inicializado correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar RTC&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="getdatetime">
+<h3>getDateTime()<a class="headerlink" href="#getdatetime" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="nf">getDateTime</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Obtiene fecha y hora actual del RTC</p></li>
+<li><p>Retorna estructura RtcDateTime completa</p></li>
+<li><p>Incluye validación de estado</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RtcDateTime</span></code>: Fecha y hora actual</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getDateTime</span><span class="p">();</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Fecha: &quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">Year</span><span class="p">());</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">Month</span><span class="p">());</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">Day</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+<section id="setdatetime">
+<h3>setDateTime()<a class="headerlink" href="#setdatetime" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">setDateTime</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RtcDateTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dateTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Establece fecha y hora en el RTC</p></li>
+<li><p>Valida parámetros de entrada</p></li>
+<li><p>Confirma escritura exitosa</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dateTime</span></code>: Nueva fecha/hora a establecer</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si se estableció correctamente</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="nf">newTime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">setDateTime</span><span class="p">(</span><span class="n">newTime</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Fecha/hora establecida correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="isdatetimevalid">
+<h3>isDateTimeValid()<a class="headerlink" href="#isdatetimevalid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isDateTimeValid</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Verifica si la fecha/hora del RTC es válida</p></li>
+<li><p>Detecta problemas de hardware</p></li>
+<li><p>Valida integridad de datos</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si la fecha/hora es válida</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">isDateTimeValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC funcionando correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC con problemas de integridad&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gettimestring">
+<h3>getTimeString()<a class="headerlink" href="#gettimestring" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">getTimeString</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Obtiene hora actual en formato string</p></li>
+<li><p>Formato: «HH:MM»</p></li>
+<li><p>Incluye validación de estado</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code>: Hora en formato «HH:MM»</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getTimeString</span><span class="p">();</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hora actual: &quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">currentTime</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="gettimestring-estatico">
+<h3>getTimeString() (Estático)<a class="headerlink" href="#gettimestring-estatico" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getTimeString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RtcDateTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dateTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Convierte RtcDateTime a string de hora</p></li>
+<li><p>Formato: «HH:MM»</p></li>
+<li><p>Método estático para uso independiente</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dateTime</span></code>: Fecha/hora a convertir</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code>: Hora en formato «HH:MM»</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="nf">dt</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">timeStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RtcManager</span><span class="o">::</span><span class="n">getTimeString</span><span class="p">(</span><span class="n">dt</span><span class="p">);</span>
+<span class="c1">// timeStr = &quot;14:30&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="comparehsandms">
+<h3>compareHsAndMs()<a class="headerlink" href="#comparehsandms" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">compareHsAndMs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">time1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">time2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Compara dos horarios en formato «HH:MM»</p></li>
+<li><p>Útil para programación de eventos</p></li>
+<li><p>Manejo robusto de errores de formato</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time1</span></code>: Primer horario («HH:MM»)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time2</span></code>: Segundo horario («HH:MM»)</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si los horarios son iguales</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">isTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RtcManager</span><span class="o">::</span><span class="n">compareHsAndMs</span><span class="p">(</span><span class="s">&quot;14:30&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;14:30&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Es la hora programada&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="comparecurrenttimewith">
+<h3>compareCurrentTimeWith()<a class="headerlink" href="#comparecurrenttimewith" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">compareCurrentTimeWith</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">targetTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Compara hora actual con horario objetivo</p></li>
+<li><p>Utiliza getTimeString() internamente</p></li>
+<li><p>Validación de estado del RTC</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">targetTime</span></code>: Horario objetivo («HH:MM»)</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si coincide con hora actual</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;12:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Es mediodía&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="printdatetime">
+<h3>printDateTime()<a class="headerlink" href="#printdatetime" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">printDateTime</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RtcDateTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Imprime fecha/hora en formato legible</p></li>
+<li><p>Formato: «MM/DD/YYYY HH:MM:SS»</p></li>
+<li><p>Útil para debugging y logging</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dt</span></code>: Fecha/hora a imprimir</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcDateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getDateTime</span><span class="p">();</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">printDateTime</span><span class="p">(</span><span class="n">now</span><span class="p">);</span>
+<span class="c1">// Output: &quot;07/20/2025 14:30:25&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="isrunning">
+<h3>isRunning()<a class="headerlink" href="#isrunning" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isRunning</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Verifica si el RTC está funcionando</p></li>
+<li><p>Detecta detenciones del oscilador</p></li>
+<li><p>Valida estado del hardware</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si el RTC está funcionando</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">isRunning</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC funcionando correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC detenido&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="setwriteprotected">
+<h3>setWriteProtected()<a class="headerlink" href="#setwriteprotected" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setWriteProtected</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">writeProtected</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Habilita/deshabilita protección de escritura</p></li>
+<li><p>Previene cambios accidentales</p></li>
+<li><p>Control de seguridad</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">writeProtected</span></code>: true para proteger, false para permitir escritura</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rtc</span><span class="p">.</span><span class="n">setWriteProtected</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w">  </span><span class="c1">// Permitir escritura</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">setDateTime</span><span class="p">(</span><span class="n">newTime</span><span class="p">);</span>
+<span class="n">rtc</span><span class="p">.</span><span class="n">setWriteProtected</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">   </span><span class="c1">// Proteger contra cambios</span>
+</pre></div>
+</div>
+</section>
+<section id="iswriteprotected">
+<h3>isWriteProtected()<a class="headerlink" href="#iswriteprotected" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isWriteProtected</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Verifica si el RTC está protegido contra escritura</p></li>
+<li><p>Útil para validación de operaciones</p></li>
+<li><p>Control de seguridad</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si está protegido contra escritura</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">isWriteProtected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">rtc</span><span class="p">.</span><span class="n">setDateTime</span><span class="p">(</span><span class="n">newTime</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC protegido contra escritura&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-hardware">
+<h2>📊 Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h2>
+<section id="pines-de-conexion">
+<h3>Pines de Conexión<a class="headerlink" href="#pines-de-conexion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RTC_CLK 18   </span><span class="c1">///&lt; Pin CLK del DS1302 (D3 en ESP8266)</span>
+<span class="cp">#define RTC_DAT 19   </span><span class="c1">///&lt; Pin DAT del DS1302 (D2 en ESP8266)</span>
+<span class="cp">#define RTC_RST 4    </span><span class="c1">///&lt; Pin RST del DS1302 (D0 en ESP8266)</span>
+</pre></div>
+</div>
+</section>
+<section id="caracteristicas-del-ds1302">
+<h3>Características del DS1302<a class="headerlink" href="#caracteristicas-del-ds1302" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Voltaje de Operación:</strong> 2.0V a 5.5V</p></li>
+<li><p><strong>Consumo:</strong> &lt;300nA en modo backup</p></li>
+<li><p><strong>Precisión:</strong> ±2ppm a 25°C</p></li>
+<li><p><strong>Interfaz:</strong> Serial 3-wire</p></li>
+<li><p><strong>Memoria:</strong> 31 bytes de RAM</p></li>
+</ul>
+</section>
+</section>
+<section id="caracteristicas-de-funcionamiento">
+<h2>🔍 Características de Funcionamiento<a class="headerlink" href="#caracteristicas-de-funcionamiento" title="Link to this heading"></a></h2>
+<section id="inicializacion-robusta">
+<h3>1. Inicialización Robusta<a class="headerlink" href="#inicializacion-robusta" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Configuración Automática:</strong> Fecha de compilación como fallback</p></li>
+<li><p><strong>Validación de Hardware:</strong> Verificación de funcionamiento</p></li>
+<li><p><strong>Recuperación de Errores:</strong> Manejo de fallos de inicialización</p></li>
+<li><p><strong>Tolerancia a Fallos:</strong> Continuación con advertencias</p></li>
+</ul>
+</section>
+<section id="gestion-de-tiempo">
+<h3>2. Gestión de Tiempo<a class="headerlink" href="#gestion-de-tiempo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Precisión:</strong> Sincronización con oscilador de cristal</p></li>
+<li><p><strong>Backup:</strong> Batería de litio para continuidad</p></li>
+<li><p><strong>Validación:</strong> Verificación de integridad de datos</p></li>
+<li><p><strong>Formato:</strong> Conversión a formatos legibles</p></li>
+</ul>
+</section>
+<section id="programacion-de-eventos">
+<h3>3. Programación de Eventos<a class="headerlink" href="#programacion-de-eventos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Comparación de Horarios:</strong> Validación de eventos programados</p></li>
+<li><p><strong>Formato Estándar:</strong> «HH:MM» para fácil uso</p></li>
+<li><p><strong>Validación de Entrada:</strong> Manejo de formatos incorrectos</p></li>
+<li><p><strong>Flexibilidad:</strong> Métodos estáticos para uso independiente</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="tiempos-de-operacion">
+<h3>Tiempos de Operación<a class="headerlink" href="#tiempos-de-operacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Inicialización:</strong> &lt;100ms</p></li>
+<li><p><strong>Lectura de Fecha/Hora:</strong> &lt;10ms</p></li>
+<li><p><strong>Escritura de Fecha/Hora:</strong> &lt;50ms</p></li>
+<li><p><strong>Comparación de Horarios:</strong> &lt;1ms</p></li>
+</ul>
+</section>
+<section id="precision">
+<h3>Precisión<a class="headerlink" href="#precision" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Oscilador:</strong> ±2ppm a 25°C</p></li>
+<li><p><strong>Drift Anual:</strong> &lt;1 minuto</p></li>
+<li><p><strong>Temperatura:</strong> Compensación automática</p></li>
+<li><p><strong>Backup:</strong> Continuidad durante apagados</p></li>
+</ul>
+</section>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~1KB por instancia</p></li>
+<li><p><strong>Flash:</strong> ~5KB (librería)</p></li>
+<li><p><strong>CPU:</strong> Mínimo impacto en operación</p></li>
+<li><p><strong>Energía:</strong> &lt;300nA en modo backup</p></li>
+</ul>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>1. Configuración de Hardware<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Pines Correctos:</strong> Configuración específica para ESP8266</p></li>
+<li><p><strong>Niveles de Voltaje:</strong> Compatibilidad 3.3V</p></li>
+<li><p><strong>Batería de Backup:</strong> Requerida para continuidad</p></li>
+<li><p><strong>Cristal:</strong> Oscilador de 32.768kHz</p></li>
+</ul>
+</section>
+<section id="gestion-de-errores">
+<h3>2. Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Hardware Fallido:</strong> Detección y manejo</p></li>
+<li><p><strong>Datos Corruptos:</strong> Validación de integridad</p></li>
+<li><p><strong>Batería Agotada:</strong> Indicación de problemas</p></li>
+<li><p><strong>Configuración Inválida:</strong> Recuperación automática</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-energia">
+<h3>3. Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Modo Backup:</strong> Consumo mínimo durante apagados</p></li>
+<li><p><strong>Lecturas Eficientes:</strong> Optimización de acceso</p></li>
+<li><p><strong>Validación Selectiva:</strong> Verificación solo cuando es necesario</p></li>
+<li><p><strong>Gestión de Recursos:</strong> Liberación automática</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-optimizaciones">
+<h3>Fase 1: Optimizaciones<a class="headerlink" href="#fase-1-optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Configuración Dinámica:</strong> Cambio de parámetros en tiempo real</p></li>
+<li><p><strong>Monitoreo de Batería:</strong> Indicación de estado de backup</p></li>
+<li><p><strong>Calibración Automática:</strong> Ajuste de precisión</p></li>
+<li><p><strong>Logging Avanzado:</strong> Registro de eventos temporales</p></li>
+</ul>
+</section>
+<section id="fase-2-nuevas-funcionalidades">
+<h3>Fase 2: Nuevas Funcionalidades<a class="headerlink" href="#fase-2-nuevas-funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Alarmas:</strong> Configuración de alarmas temporales</p></li>
+<li><p><strong>Zonas Horarias:</strong> Soporte para múltiples zonas</p></li>
+<li><p><strong>Sincronización NTP:</strong> Actualización desde servidor</p></li>
+<li><p><strong>Eventos Programados:</strong> Sistema de eventos temporales</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cloud Sync:</strong> Sincronización con servidores de tiempo</p></li>
+<li><p><strong>Analytics:</strong> Análisis de patrones temporales</p></li>
+<li><p><strong>Machine Learning:</strong> Predicción de eventos</p></li>
+<li><p><strong>Multi-device:</strong> Sincronización entre dispositivos</p></li>
+</ul>
+</section>
+</section>
+<section id="ejemplos-de-uso">
+<h2>📋 Ejemplos de Uso<a class="headerlink" href="#ejemplos-de-uso" title="Link to this heading"></a></h2>
+<section id="ejemplo-1-inicializacion-basica">
+<h3>Ejemplo 1: Inicialización Básica<a class="headerlink" href="#ejemplo-1-inicializacion-basica" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RtcManager</span><span class="w"> </span><span class="nf">rtc</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC inicializado correctamente&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Obtener fecha/hora actual</span>
+<span class="w">    </span><span class="n">RtcDateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getDateTime</span><span class="p">();</span>
+<span class="w">    </span><span class="n">rtc</span><span class="p">.</span><span class="n">printDateTime</span><span class="p">(</span><span class="n">now</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al inicializar RTC&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-2-programacion-de-eventos">
+<h3>Ejemplo 2: Programación de Eventos<a class="headerlink" href="#ejemplo-2-programacion-de-eventos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkScheduledEvents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Verificar si es hora de muestreo atmosférico</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;08:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">requestAtmosphericData</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Verificar si es hora de muestreo de suelo</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;12:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">requestGroundData</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Verificar si es hora de announce</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">compareCurrentTimeWith</span><span class="p">(</span><span class="s">&quot;18:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sendAnnounce</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-3-comparacion-de-horarios">
+<h3>Ejemplo 3: Comparación de Horarios<a class="headerlink" href="#ejemplo-3-comparacion-de-horarios" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">isTimeForSampling</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc</span><span class="p">.</span><span class="n">getTimeString</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Comparar con múltiples horarios</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">RtcManager</span><span class="o">::</span><span class="n">compareHsAndMs</span><span class="p">(</span><span class="n">currentTime</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;06:00&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="n">RtcManager</span><span class="o">::</span><span class="n">compareHsAndMs</span><span class="p">(</span><span class="n">currentTime</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;12:00&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="n">RtcManager</span><span class="o">::</span><span class="n">compareHsAndMs</span><span class="p">(</span><span class="n">currentTime</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;18:00&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-4-validacion-de-estado">
+<h3>Ejemplo 4: Validación de Estado<a class="headerlink" href="#ejemplo-4-validacion-de-estado" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">validateRtcStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">isDateTimeValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC con problemas de integridad&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">isRunning</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC detenido&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">isWriteProtected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC protegido contra escritura&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;RTC funcionando correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-5-configuracion-de-fecha-hora">
+<h3>Ejemplo 5: Configuración de Fecha/Hora<a class="headerlink" href="#ejemplo-5-configuracion-de-fecha-hora" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setRtcDateTime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Configurar fecha/hora específica</span>
+<span class="w">    </span><span class="n">RtcDateTime</span><span class="w"> </span><span class="n">newTime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Deshabilitar protección de escritura</span>
+<span class="w">    </span><span class="n">rtc</span><span class="p">.</span><span class="n">setWriteProtected</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Establecer nueva fecha/hora</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rtc</span><span class="p">.</span><span class="n">setDateTime</span><span class="p">(</span><span class="n">newTime</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Fecha/hora establecida correctamente&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error al establecer fecha/hora&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Habilitar protección de escritura</span>
+<span class="w">    </span><span class="n">rtc</span><span class="p">.</span><span class="n">setWriteProtected</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> La clase RtcManager representa una implementación robusta y completa de gestión de tiempo real con DS1302, proporcionando funcionalidades avanzadas de sincronización temporal, programación de eventos y validación de integridad para sistemas IoT agrícolas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

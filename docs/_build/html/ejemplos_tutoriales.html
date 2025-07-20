@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 Ejemplos y Tutoriales - Sistema Gateway Agrícola &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">📚 Ejemplos y Tutoriales - Sistema Gateway Agrícola</a><ul>
+<li><a class="reference internal" href="#enfoque-de-esta-guia">🎯 Enfoque de esta Guía</a></li>
+<li><a class="reference internal" href="#ejemplos-de-codigo">🚀 Ejemplos de Código</a><ul>
+<li><a class="reference internal" href="#configuracion-basica-del-gateway">📡 Configuración Básica del Gateway</a></li>
+<li><a class="reference internal" href="#configuracion-de-hardware">🔧 Configuración de Hardware</a></li>
+<li><a class="reference internal" href="#acceso-a-datos">📊 Acceso a Datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tutoriales-externos">🔗 Tutoriales Externos</a><ul>
+<li><a class="reference internal" href="#arduino-y-esp8266">📚 Arduino y ESP8266</a><ul>
+<li><a class="reference internal" href="#tutoriales-basicos"><strong>Tutoriales Básicos</strong></a></li>
+<li><a class="reference internal" href="#comunicacion-lora"><strong>Comunicación LoRa</strong></a></li>
+<li><a class="reference internal" href="#rtc-y-tiempo"><strong>RTC y Tiempo</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#desarrollo-y-debugging">🛠️ Desarrollo y Debugging</a><ul>
+<li><a class="reference internal" href="#platformio"><strong>PlatformIO</strong></a></li>
+<li><a class="reference internal" href="#git-y-versionado"><strong>Git y Versionado</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentacion-tecnica">📊 Documentación Técnica</a><ul>
+<li><a class="reference internal" href="#sphinx-y-autodoc"><strong>Sphinx y Autodoc</strong></a></li>
+<li><a class="reference internal" href="#markdown-y-restructuredtext"><strong>Markdown y reStructuredText</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#casos-de-uso-comunes">🎯 Casos de Uso Comunes</a><ul>
+<li><a class="reference internal" href="#debugging-de-comunicacion">🔍 Debugging de Comunicación</a></li>
+<li><a class="reference internal" href="#configuracion-de-red">⚙️ Configuración de Red</a></li>
+<li><a class="reference internal" href="#monitoreo-de-memoria">📈 Monitoreo de Memoria</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#herramientas-recomendadas">🔧 Herramientas Recomendadas</a><ul>
+<li><a class="reference internal" href="#ides-y-editores">📱 IDEs y Editores</a></li>
+<li><a class="reference internal" href="#herramientas-de-debugging">🔍 Herramientas de Debugging</a></li>
+<li><a class="reference internal" href="#analisis-de-datos">📊 Análisis de Datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#solucion-de-problemas">🚨 Solución de Problemas</a><ul>
+<li><a class="reference internal" href="#problemas-comunes">❌ Problemas Comunes</a><ul>
+<li><a class="reference internal" href="#radio-no-inicializa"><strong>Radio no inicializa</strong></a></li>
+<li><a class="reference internal" href="#rtc-no-responde"><strong>RTC no responde</strong></a></li>
+<li><a class="reference internal" href="#memoria-insuficiente"><strong>Memoria insuficiente</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#recursos-de-ayuda">🔗 Recursos de Ayuda</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notas-de-desarrollo">📝 Notas de Desarrollo</a><ul>
+<li><a class="reference internal" href="#mejores-practicas">🎯 Mejores Prácticas</a></li>
+<li><a class="reference internal" href="#optimizaciones">⚡ Optimizaciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📚 Ejemplos y Tutoriales - Sistema Gateway Agrícola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ejemplos_tutoriales.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ejemplos-y-tutoriales-sistema-gateway-agricola">
+<h1>📚 Ejemplos y Tutoriales - Sistema Gateway Agrícola<a class="headerlink" href="#ejemplos-y-tutoriales-sistema-gateway-agricola" title="Link to this heading"></a></h1>
+<section id="enfoque-de-esta-guia">
+<h2>🎯 Enfoque de esta Guía<a class="headerlink" href="#enfoque-de-esta-guia" title="Link to this heading"></a></h2>
+<p>Esta sección proporciona ejemplos mínimos pero funcionales, junto con enlaces a recursos externos para tutoriales más detallados.</p>
+</section>
+<section id="ejemplos-de-codigo">
+<h2>🚀 Ejemplos de Código<a class="headerlink" href="#ejemplos-de-codigo" title="Link to this heading"></a></h2>
+<section id="configuracion-basica-del-gateway">
+<h3>📡 Configuración Básica del Gateway<a class="headerlink" href="#configuracion-basica-del-gateway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;app_logic.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;node_identity.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;radio_manager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rtc_manager.h&quot;</span>
+
+<span class="c1">// Configuración básica</span>
+<span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">;</span>
+<span class="n">RadioManager</span><span class="w"> </span><span class="nf">radio</span><span class="p">(</span><span class="n">identity</span><span class="p">.</span><span class="n">getNodeID</span><span class="p">());</span>
+<span class="n">RtcManager</span><span class="w"> </span><span class="nf">rtc</span><span class="p">(</span><span class="n">RTC_DAT</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_RST</span><span class="p">);</span>
+<span class="n">AppLogic</span><span class="w"> </span><span class="nf">logic</span><span class="p">(</span><span class="n">identity</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">rtc</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Inicializar componentes</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">radio</span><span class="p">.</span><span class="n">init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error: Radio no inicializada&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rtc</span><span class="p">.</span><span class="n">begin</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error: RTC no inicializado&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Gateway iniciado correctamente&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logic</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-hardware">
+<h3>🔧 Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// config.h - Configuración de pines</span>
+<span class="cp">#define RFM95_CS 2    </span><span class="c1">// D4</span>
+<span class="cp">#define RFM95_INT 14  </span><span class="c1">// D5</span>
+<span class="cp">#define RFM95_RST 12  </span><span class="c1">// D6</span>
+
+<span class="cp">#define RTC_DAT 4     </span><span class="c1">// D2</span>
+<span class="cp">#define RTC_CLK 5     </span><span class="c1">// D1</span>
+<span class="cp">#define RTC_RST 0     </span><span class="c1">// D3</span>
+</pre></div>
+</div>
+</section>
+<section id="acceso-a-datos">
+<h3>📊 Acceso a Datos<a class="headerlink" href="#acceso-a-datos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Obtener datos atmosféricos de un nodo</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodeData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">AtmosphericSampleNodes</span><span class="p">[</span><span class="mh">0x42</span><span class="p">];</span>
+<span class="n">AtmosphericSample</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodeData</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Temp: %.1f°C, Hum: %.1f%%</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">sample</span><span class="p">.</span><span class="n">temperature</span><span class="p">,</span><span class="w"> </span><span class="n">sample</span><span class="p">.</span><span class="n">humidity</span><span class="p">);</span>
+
+<span class="c1">// Obtener datos de suelo/GPS</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">groundData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logic</span><span class="p">.</span><span class="n">groundGpsSamplesNodes</span><span class="p">[</span><span class="mh">0x42</span><span class="p">];</span>
+<span class="n">GroundGpsPacket</span><span class="w"> </span><span class="n">ground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groundData</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Suelo: %.1f%%, pH: %.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ground</span><span class="p">.</span><span class="n">soilMoisture</span><span class="p">,</span><span class="w"> </span><span class="n">ground</span><span class="p">.</span><span class="n">pH</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tutoriales-externos">
+<h2>🔗 Tutoriales Externos<a class="headerlink" href="#tutoriales-externos" title="Link to this heading"></a></h2>
+<section id="arduino-y-esp8266">
+<h3>📚 Arduino y ESP8266<a class="headerlink" href="#arduino-y-esp8266" title="Link to this heading"></a></h3>
+<section id="tutoriales-basicos">
+<h4><strong>Tutoriales Básicos</strong><a class="headerlink" href="#tutoriales-basicos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Arduino Getting Started</strong>: https://www.arduino.cc/en/Guide</p></li>
+<li><p><strong>ESP8266 Quick Start</strong>: https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/</p></li>
+<li><p><strong>PlatformIO Guide</strong>: https://docs.platformio.org/en/latest/tutorials/</p></li>
+</ul>
+</section>
+<section id="comunicacion-lora">
+<h4><strong>Comunicación LoRa</strong><a class="headerlink" href="#comunicacion-lora" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>RadioHead Tutorial</strong>: https://www.airspayce.com/mikem/arduino/RadioHead/</p></li>
+<li><p><strong>LoRa Basics</strong>: https://lora-alliance.org/resource_hub/what-is-lora/</p></li>
+<li><p><strong>RFM95 Datasheet</strong>: https://www.hoperf.com/rf_transceiver/rfm95.html</p></li>
+</ul>
+</section>
+<section id="rtc-y-tiempo">
+<h4><strong>RTC y Tiempo</strong><a class="headerlink" href="#rtc-y-tiempo" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>DS1302 Library</strong>: https://github.com/andrewrapp/RtcDS1302</p></li>
+<li><p><strong>Time Management</strong>: https://www.arduino.cc/reference/en/language/functions/time/</p></li>
+</ul>
+</section>
+</section>
+<section id="desarrollo-y-debugging">
+<h3>🛠️ Desarrollo y Debugging<a class="headerlink" href="#desarrollo-y-debugging" title="Link to this heading"></a></h3>
+<section id="platformio">
+<h4><strong>PlatformIO</strong><a class="headerlink" href="#platformio" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>PlatformIO IDE</strong>: https://docs.platformio.org/en/latest/integration/ide/</p></li>
+<li><p><strong>Debugging Guide</strong>: https://docs.platformio.org/en/latest/advanced/debugging/</p></li>
+<li><p><strong>Library Management</strong>: https://docs.platformio.org/en/latest/librarymanager/</p></li>
+</ul>
+</section>
+<section id="git-y-versionado">
+<h4><strong>Git y Versionado</strong><a class="headerlink" href="#git-y-versionado" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Git Tutorial</strong>: https://git-scm.com/doc</p></li>
+<li><p><strong>GitHub Guides</strong>: https://guides.github.com/</p></li>
+<li><p><strong>Submodules</strong>: https://git-scm.com/book/en/v2/Git-Tools-Submodules</p></li>
+</ul>
+</section>
+</section>
+<section id="documentacion-tecnica">
+<h3>📊 Documentación Técnica<a class="headerlink" href="#documentacion-tecnica" title="Link to this heading"></a></h3>
+<section id="sphinx-y-autodoc">
+<h4><strong>Sphinx y Autodoc</strong><a class="headerlink" href="#sphinx-y-autodoc" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Sphinx Documentation</strong>: https://www.sphinx-doc.org/</p></li>
+<li><p><strong>Doxygen Manual</strong>: https://www.doxygen.nl/manual/</p></li>
+<li><p><strong>Mermaid Diagrams</strong>: https://mermaid-js.github.io/mermaid/</p></li>
+</ul>
+</section>
+<section id="markdown-y-restructuredtext">
+<h4><strong>Markdown y reStructuredText</strong><a class="headerlink" href="#markdown-y-restructuredtext" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Markdown Guide</strong>: https://www.markdownguide.org/</p></li>
+<li><p><strong>reStructuredText</strong>: https://docutils.sourceforge.io/rst.html</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="casos-de-uso-comunes">
+<h2>🎯 Casos de Uso Comunes<a class="headerlink" href="#casos-de-uso-comunes" title="Link to this heading"></a></h2>
+<section id="debugging-de-comunicacion">
+<h3>🔍 Debugging de Comunicación<a class="headerlink" href="#debugging-de-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Habilitar debug detallado</span>
+<span class="cp">#define DEBUG_MODE</span>
+
+<span class="c1">// En config.h</span>
+<span class="cp">#ifdef DEBUG_MODE</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x) Serial.print(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x) Serial.println(x)</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x)</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-red">
+<h3>⚙️ Configuración de Red<a class="headerlink" href="#configuracion-de-red" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Ajustar parámetros de red</span>
+<span class="cp">#define INTERVALOANNOUNCE 5000      </span><span class="c1">// 5 segundos</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 30000  </span><span class="c1">// 30 segundos</span>
+<span class="cp">#define TIMEOUTGRAL 2000            </span><span class="c1">// 2 segundos</span>
+</pre></div>
+</div>
+</section>
+<section id="monitoreo-de-memoria">
+<h3>📈 Monitoreo de Memoria<a class="headerlink" href="#monitoreo-de-memoria" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Verificar uso de memoria</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Memoria libre: %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ESP</span><span class="p">.</span><span class="n">getFreeHeap</span><span class="p">());</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Memoria total: %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ESP</span><span class="p">.</span><span class="n">getHeapSize</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="herramientas-recomendadas">
+<h2>🔧 Herramientas Recomendadas<a class="headerlink" href="#herramientas-recomendadas" title="Link to this heading"></a></h2>
+<section id="ides-y-editores">
+<h3>📱 IDEs y Editores<a class="headerlink" href="#ides-y-editores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Visual Studio Code</strong>: https://code.visualstudio.com/</p></li>
+<li><p><strong>PlatformIO IDE</strong>: https://platformio.org/ide</p></li>
+<li><p><strong>Arduino IDE</strong>: https://www.arduino.cc/en/software</p></li>
+</ul>
+</section>
+<section id="herramientas-de-debugging">
+<h3>🔍 Herramientas de Debugging<a class="headerlink" href="#herramientas-de-debugging" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Serial Monitor</strong>: Integrado en Arduino IDE</p></li>
+<li><p><strong>PlatformIO Monitor</strong>: <code class="docutils literal notranslate"><span class="pre">pio</span> <span class="pre">device</span> <span class="pre">monitor</span></code></p></li>
+<li><p><strong>Wireshark</strong>: https://www.wireshark.org/ (para análisis de red)</p></li>
+</ul>
+</section>
+<section id="analisis-de-datos">
+<h3>📊 Análisis de Datos<a class="headerlink" href="#analisis-de-datos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Arduino Serial Plotter</strong>: Para visualización en tiempo real</p></li>
+<li><p><strong>Python Matplotlib</strong>: https://matplotlib.org/ (para análisis avanzado)</p></li>
+<li><p><strong>Jupyter Notebooks</strong>: https://jupyter.org/ (para análisis de datos)</p></li>
+</ul>
+</section>
+</section>
+<section id="solucion-de-problemas">
+<h2>🚨 Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h2>
+<section id="problemas-comunes">
+<h3>❌ Problemas Comunes<a class="headerlink" href="#problemas-comunes" title="Link to this heading"></a></h3>
+<section id="radio-no-inicializa">
+<h4><strong>Radio no inicializa</strong><a class="headerlink" href="#radio-no-inicializa" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Verificar conexiones SPI</p></li>
+<li><p>Comprobar alimentación del módulo</p></li>
+<li><p>Revisar configuración de pines</p></li>
+</ul>
+</section>
+<section id="rtc-no-responde">
+<h4><strong>RTC no responde</strong><a class="headerlink" href="#rtc-no-responde" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Verificar conexiones de 3 hilos</p></li>
+<li><p>Comprobar batería del módulo</p></li>
+<li><p>Revisar configuración de pines</p></li>
+</ul>
+</section>
+<section id="memoria-insuficiente">
+<h4><strong>Memoria insuficiente</strong><a class="headerlink" href="#memoria-insuficiente" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Reducir MAX_NODES</p></li>
+<li><p>Optimizar almacenamiento de datos</p></li>
+<li><p>Usar PROGMEM para constantes</p></li>
+</ul>
+</section>
+</section>
+<section id="recursos-de-ayuda">
+<h3>🔗 Recursos de Ayuda<a class="headerlink" href="#recursos-de-ayuda" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Arduino Forum</strong>: https://forum.arduino.cc/</p></li>
+<li><p><strong>ESP8266 Community</strong>: https://community.espressif.com/</p></li>
+<li><p><strong>RadioHead Support</strong>: https://www.airspayce.com/mikem/arduino/RadioHead/</p></li>
+</ul>
+</section>
+</section>
+<section id="notas-de-desarrollo">
+<h2>📝 Notas de Desarrollo<a class="headerlink" href="#notas-de-desarrollo" title="Link to this heading"></a></h2>
+<section id="mejores-practicas">
+<h3>🎯 Mejores Prácticas<a class="headerlink" href="#mejores-practicas" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Siempre verificar inicialización</strong> de componentes</p></li>
+<li><p><strong>Usar DEBUG_MODE</strong> durante desarrollo</p></li>
+<li><p><strong>Monitorear memoria</strong> regularmente</p></li>
+<li><p><strong>Documentar cambios</strong> en el código</p></li>
+<li><p><strong>Probar en hardware real</strong> frecuentemente</p></li>
+</ol>
+</section>
+<section id="optimizaciones">
+<h3>⚡ Optimizaciones<a class="headerlink" href="#optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Usar PROGMEM</strong> para strings largos</p></li>
+<li><p><strong>Minimizar uso de String</strong> en favor de char*</p></li>
+<li><p><strong>Optimizar bucles</strong> críticos</p></li>
+<li><p><strong>Usar interrupciones</strong> cuando sea posible</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Esta guía proporciona ejemplos mínimos y enlaces a recursos externos para tutoriales más detallados.</em> 📚✨</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

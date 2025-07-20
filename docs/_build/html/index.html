@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación del Sistema Gateway Agrícola &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Documentación del Sistema Gateway Agrícola</a><ul>
+<li><a class="reference internal" href="#indice-de-documentacion">📚 Índice de Documentación</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#componentes-principales">🔧 Componentes Principales</a><ul>
+<li><a class="reference internal" href="#archivos-de-sistema">Archivos de Sistema</a></li>
+<li><a class="reference internal" href="#clases-del-sistema">Clases del Sistema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#arquitectura-del-sistema">🏗️ Arquitectura del Sistema</a><ul>
+<li><a class="reference internal" href="#componentes-hardware">Componentes Hardware</a></li>
+<li><a class="reference internal" href="#componentes-software">Componentes Software</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#especificaciones-tecnicas">📊 Especificaciones Técnicas</a><ul>
+<li><a class="reference internal" href="#hardware">Hardware</a></li>
+<li><a class="reference internal" href="#software">Software</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#funcionalidades-principales">🚀 Funcionalidades Principales</a><ul>
+<li><a class="reference internal" href="#gestion-de-identidad">1. Gestión de Identidad</a></li>
+<li><a class="reference internal" href="#comunicacion-mesh">2. Comunicación Mesh</a></li>
+<li><a class="reference internal" href="#gestion-de-tiempo">3. Gestión de Tiempo</a></li>
+<li><a class="reference internal" href="#logica-de-aplicacion">4. Lógica de Aplicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#comunicacion">Comunicación</a></li>
+<li><a class="reference internal" href="#recursos">Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">🔍 Características Técnicas</a><ul>
+<li><a class="reference internal" href="#arquitectura-modular">1. Arquitectura Modular</a></li>
+<li><a class="reference internal" href="#gestion-de-errores">2. Gestión de Errores</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">3. Optimización de Energía</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#casos-de-uso">🎯 Casos de Uso</a><ul>
+<li><a class="reference internal" href="#monitoreo-de-red-agricola">1. Monitoreo de Red Agrícola</a></li>
+<li><a class="reference internal" href="#gestion-de-invernaderos">2. Gestión de Invernaderos</a></li>
+<li><a class="reference internal" href="#agricultura-de-precision">3. Agricultura de Precisión</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#roadmap-tecnico">🔮 Roadmap Técnico</a><ul>
+<li><a class="reference internal" href="#fase-1-completada">Fase 1 (Completada)</a></li>
+<li><a class="reference internal" href="#fase-2-en-desarrollo">Fase 2 (En Desarrollo)</a></li>
+<li><a class="reference internal" href="#fase-3-planificada">Fase 3 (Planificada)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guias-de-uso">📋 Guías de Uso</a><ul>
+<li><a class="reference internal" href="#configuracion-inicial">Configuración Inicial</a></li>
+<li><a class="reference internal" href="#operacion-diaria">Operación Diaria</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enlaces-relacionados">🔗 Enlaces Relacionados</a><ul>
+<li><a class="reference internal" href="#documentacion-externa">Documentación Externa</a></li>
+<li><a class="reference internal" href="#recursos-de-desarrollo">Recursos de Desarrollo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#soporte">📞 Soporte</a><ul>
+<li><a class="reference internal" href="#contacto">Contacto</a></li>
+<li><a class="reference internal" href="#comunidad">Comunidad</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentación del Sistema Gateway Agrícola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentacion-del-sistema-gateway-agricola">
+<h1>Documentación del Sistema Gateway Agrícola<a class="headerlink" href="#documentacion-del-sistema-gateway-agricola" title="Link to this heading"></a></h1>
+<section id="indice-de-documentacion">
+<h2>📚 Índice de Documentación<a class="headerlink" href="#indice-de-documentacion" title="Link to this heading"></a></h2>
+<section id="descripcion-general">
+<h3>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="README.html"><span class="std std-doc">README.md</span></a></strong> - Visión general del sistema Gateway agrícola con red mesh LoRa</p></li>
+</ul>
+</section>
+<section id="componentes-principales">
+<h3>🔧 Componentes Principales<a class="headerlink" href="#componentes-principales" title="Link to this heading"></a></h3>
+<section id="archivos-de-sistema">
+<h4>Archivos de Sistema<a class="headerlink" href="#archivos-de-sistema" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="main_gateway.html"><span class="std std-doc">main_gateway.md</span></a></strong> - Punto de entrada del sistema Gateway</p></li>
+<li><p><strong><a class="reference internal" href="config.html"><span class="std std-doc">config.md</span></a></strong> - Configuración central del sistema</p></li>
+</ul>
+</section>
+<section id="clases-del-sistema">
+<h4>Clases del Sistema<a class="headerlink" href="#clases-del-sistema" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="node_identity.html"><span class="std std-doc">node_identity.md</span></a></strong> - Gestión de identidad única del Gateway</p></li>
+<li><p><strong><a class="reference internal" href="radio_manager.html"><span class="std std-doc">radio_manager.md</span></a></strong> - Gestión de comunicación LoRa mesh</p></li>
+<li><p><strong><a class="reference internal" href="rtc_manager.html"><span class="std std-doc">rtc_manager.md</span></a></strong> - Gestión de tiempo real con DS1302</p></li>
+<li><p><strong><a class="reference internal" href="app_logic.html"><span class="std std-doc">app_logic.md</span></a></strong> - Lógica de aplicación del Gateway</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="arquitectura-del-sistema">
+<h2>🏗️ Arquitectura del Sistema<a class="headerlink" href="#arquitectura-del-sistema" title="Link to this heading"></a></h2>
+<section id="componentes-hardware">
+<h3>Componentes Hardware<a class="headerlink" href="#componentes-hardware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ESP8266:</strong> Microcontrolador principal</p></li>
+<li><p><strong>SX1278 LoRa:</strong> Módulo de comunicación de radio</p></li>
+<li><p><strong>DS1302 RTC:</strong> Reloj de tiempo real</p></li>
+<li><p><strong>LittleFS:</strong> Sistema de archivos para persistencia</p></li>
+</ul>
+</section>
+<section id="componentes-software">
+<h3>Componentes Software<a class="headerlink" href="#componentes-software" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>NodeIdentity:</strong> Gestión de identidad única</p></li>
+<li><p><strong>RadioManager:</strong> Comunicación LoRa mesh</p></li>
+<li><p><strong>RtcManager:</strong> Gestión de tiempo real</p></li>
+<li><p><strong>AppLogic:</strong> Lógica de aplicación central</p></li>
+</ul>
+</section>
+</section>
+<section id="especificaciones-tecnicas">
+<h2>📊 Especificaciones Técnicas<a class="headerlink" href="#especificaciones-tecnicas" title="Link to this heading"></a></h2>
+<section id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Microcontrolador:</strong> ESP8266 80MHz</p></li>
+<li><p><strong>Memoria RAM:</strong> 80KB</p></li>
+<li><p><strong>Memoria Flash:</strong> 4MB</p></li>
+<li><p><strong>Comunicación:</strong> LoRa 433MHz</p></li>
+<li><p><strong>RTC:</strong> DS1302 con interfaz 3-wire</p></li>
+</ul>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Arquitectura:</strong> Modular con principios SOLID</p></li>
+<li><p><strong>Comunicación:</strong> Protocolo LoRa mesh personalizado</p></li>
+<li><p><strong>Persistencia:</strong> LittleFS para configuración</p></li>
+<li><p><strong>Escalabilidad:</strong> Hasta 250 nodos</p></li>
+</ul>
+</section>
+</section>
+<section id="funcionalidades-principales">
+<h2>🚀 Funcionalidades Principales<a class="headerlink" href="#funcionalidades-principales" title="Link to this heading"></a></h2>
+<section id="gestion-de-identidad">
+<h3>1. Gestión de Identidad<a class="headerlink" href="#gestion-de-identidad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Generación de ID único basado en MAC address</p></li>
+<li><p>Protección contra colisiones con lista negra</p></li>
+<li><p>Persistencia en LittleFS</p></li>
+<li><p>Gestión de gateway asociado</p></li>
+</ul>
+</section>
+<section id="comunicacion-mesh">
+<h3>2. Comunicación Mesh<a class="headerlink" href="#comunicacion-mesh" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Protocolo LoRa personalizado</p></li>
+<li><p>Enrutamiento automático con RHMesh</p></li>
+<li><p>Retransmisión automática</p></li>
+<li><p>Gestión de congestión de red</p></li>
+</ul>
+</section>
+<section id="gestion-de-tiempo">
+<h3>3. Gestión de Tiempo<a class="headerlink" href="#gestion-de-tiempo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sincronización con RTC DS1302</p></li>
+<li><p>Comparación de horarios para eventos</p></li>
+<li><p>Configuración automática de fecha/hora</p></li>
+<li><p>Validación de integridad temporal</p></li>
+</ul>
+</section>
+<section id="logica-de-aplicacion">
+<h3>4. Lógica de Aplicación<a class="headerlink" href="#logica-de-aplicacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Coordinación centralizada de nodos</p></li>
+<li><p>Almacenamiento de muestras por nodo</p></li>
+<li><p>Programación temporal de eventos</p></li>
+<li><p>Monitoreo de estado de nodos</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="comunicacion">
+<h3>Comunicación<a class="headerlink" href="#comunicacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Alcance:</strong> Hasta 10km en condiciones óptimas</p></li>
+<li><p><strong>Throughput:</strong> Hasta 37.5 kbps</p></li>
+<li><p><strong>Latencia:</strong> &lt;2 segundos</p></li>
+<li><p><strong>Nodos Máximos:</strong> 250 nodos</p></li>
+</ul>
+</section>
+<section id="recursos">
+<h3>Recursos<a class="headerlink" href="#recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~44% (36KB de 80KB)</p></li>
+<li><p><strong>Flash:</strong> ~32% (340KB de 1MB)</p></li>
+<li><p><strong>Energía:</strong> Optimizado para eficiencia</p></li>
+<li><p><strong>CPU:</strong> Bajo impacto en operación</p></li>
+</ul>
+</section>
+</section>
+<section id="caracteristicas-tecnicas">
+<h2>🔍 Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h2>
+<section id="arquitectura-modular">
+<h3>1. Arquitectura Modular<a class="headerlink" href="#arquitectura-modular" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Single Responsibility:</strong> Cada clase tiene una responsabilidad específica</p></li>
+<li><p><strong>Open/Closed:</strong> Extensible sin modificar código existente</p></li>
+<li><p><strong>Liskov Substitution:</strong> Interfaces consistentes</p></li>
+<li><p><strong>Interface Segregation:</strong> Interfaces específicas por funcionalidad</p></li>
+<li><p><strong>Dependency Inversion:</strong> Dependencias a través de abstracciones</p></li>
+</ul>
+</section>
+<section id="gestion-de-errores">
+<h3>2. Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Validación de rangos</strong> para todos los parámetros</p></li>
+<li><p><strong>Detección de fallos</strong> de hardware</p></li>
+<li><p><strong>Recuperación automática</strong> de errores</p></li>
+<li><p><strong>Logging detallado</strong> para debugging</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-energia">
+<h3>3. Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>WiFi deshabilitado</strong> para reducir interferencias</p></li>
+<li><p><strong>Transmisión selectiva</strong> de datos críticos</p></li>
+<li><p><strong>Gestión de buffer</strong> eficiente</p></li>
+<li><p><strong>Monitoreo continuo</strong> de estado de red</p></li>
+</ul>
+</section>
+</section>
+<section id="casos-de-uso">
+<h2>🎯 Casos de Uso<a class="headerlink" href="#casos-de-uso" title="Link to this heading"></a></h2>
+<section id="monitoreo-de-red-agricola">
+<h3>1. Monitoreo de Red Agrícola<a class="headerlink" href="#monitoreo-de-red-agricola" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Coordinación</strong> de múltiples nodos sensores</p></li>
+<li><p><strong>Consolidación</strong> de datos ambientales</p></li>
+<li><p><strong>Gestión</strong> de muestras de suelo</p></li>
+<li><p><strong>Optimización</strong> de comunicación mesh</p></li>
+</ul>
+</section>
+<section id="gestion-de-invernaderos">
+<h3>2. Gestión de Invernaderos<a class="headerlink" href="#gestion-de-invernaderos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Control centralizado</strong> de sensores</p></li>
+<li><p><strong>Monitoreo</strong> de condiciones críticas</p></li>
+<li><p><strong>Alertas</strong> de problemas de red</p></li>
+<li><p><strong>Registro</strong> histórico de datos</p></li>
+</ul>
+</section>
+<section id="agricultura-de-precision">
+<h3>3. Agricultura de Precisión<a class="headerlink" href="#agricultura-de-precision" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Mapeo</strong> de variabilidad del suelo</p></li>
+<li><p><strong>Coordinación</strong> de sensores distribuidos</p></li>
+<li><p><strong>Optimización</strong> de recursos de red</p></li>
+<li><p><strong>Análisis</strong> de tendencias centralizadas</p></li>
+</ul>
+</section>
+</section>
+<section id="roadmap-tecnico">
+<h2>🔮 Roadmap Técnico<a class="headerlink" href="#roadmap-tecnico" title="Link to this heading"></a></h2>
+<section id="fase-1-completada">
+<h3>Fase 1 (Completada)<a class="headerlink" href="#fase-1-completada" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Arquitectura modular básica</p></li>
+<li><p>✅ Sistema de comunicación LoRa mesh</p></li>
+<li><p>✅ Gestión de identidad única</p></li>
+<li><p>✅ RtcManager con DS1302</p></li>
+</ul>
+</section>
+<section id="fase-2-en-desarrollo">
+<h3>Fase 2 (En Desarrollo)<a class="headerlink" href="#fase-2-en-desarrollo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>🔄 Documentación completa con Sphinx</p></li>
+<li><p>🔄 Optimización de consumo energético</p></li>
+<li><p>🔄 Interfaz web para configuración</p></li>
+<li><p>🔄 Sistema de alertas avanzado</p></li>
+</ul>
+</section>
+<section id="fase-3-planificada">
+<h3>Fase 3 (Planificada)<a class="headerlink" href="#fase-3-planificada" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>📋 Integración con sistemas de riego</p></li>
+<li><p>📋 Interfaz móvil para monitoreo</p></li>
+<li><p>📋 Análisis avanzado de datos</p></li>
+<li><p>📋 Integración con IA para predicciones</p></li>
+</ul>
+</section>
+</section>
+<section id="guias-de-uso">
+<h2>📋 Guías de Uso<a class="headerlink" href="#guias-de-uso" title="Link to this heading"></a></h2>
+<section id="configuracion-inicial">
+<h3>Configuración Inicial<a class="headerlink" href="#configuracion-inicial" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Hardware:</strong> Conectar componentes según diagrama</p></li>
+<li><p><strong>Software:</strong> Compilar y subir firmware</p></li>
+<li><p><strong>Configuración:</strong> Ajustar parámetros en config.h</p></li>
+<li><p><strong>Pruebas:</strong> Verificar comunicación y funcionamiento</p></li>
+</ol>
+</section>
+<section id="operacion-diaria">
+<h3>Operación Diaria<a class="headerlink" href="#operacion-diaria" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Monitoreo:</strong> Verificar estado de nodos</p></li>
+<li><p><strong>Datos:</strong> Revisar muestras recibidas</p></li>
+<li><p><strong>Mantenimiento:</strong> Limpiar buffers y logs</p></li>
+<li><p><strong>Optimización:</strong> Ajustar parámetros según necesidades</p></li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Comunicación:</strong> Verificar pines y antenas</p></li>
+<li><p><strong>RTC:</strong> Validar conexiones y batería</p></li>
+<li><p><strong>Memoria:</strong> Monitorear uso de RAM</p></li>
+<li><p><strong>Energía:</strong> Verificar consumo y estabilidad</p></li>
+</ol>
+</section>
+</section>
+<section id="enlaces-relacionados">
+<h2>🔗 Enlaces Relacionados<a class="headerlink" href="#enlaces-relacionados" title="Link to this heading"></a></h2>
+<section id="documentacion-externa">
+<h3>Documentación Externa<a class="headerlink" href="#documentacion-externa" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RadioHead Library:</strong> Documentación de RHMesh</p></li>
+<li><p><strong>ESP8266 Reference:</strong> Guía del microcontrolador</p></li>
+<li><p><strong>DS1302 Datasheet:</strong> Especificaciones del RTC</p></li>
+<li><p><strong>LoRa Technology:</strong> Información sobre LoRa</p></li>
+</ul>
+</section>
+<section id="recursos-de-desarrollo">
+<h3>Recursos de Desarrollo<a class="headerlink" href="#recursos-de-desarrollo" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>PlatformIO:</strong> Entorno de desarrollo</p></li>
+<li><p><strong>Arduino IDE:</strong> Alternativa de desarrollo</p></li>
+<li><p><strong>GitHub Repository:</strong> Código fuente completo</p></li>
+<li><p><strong>Issue Tracker:</strong> Reporte de problemas</p></li>
+</ul>
+</section>
+</section>
+<section id="soporte">
+<h2>📞 Soporte<a class="headerlink" href="#soporte" title="Link to this heading"></a></h2>
+<section id="contacto">
+<h3>Contacto<a class="headerlink" href="#contacto" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Desarrollador:</strong> Equipo de desarrollo agrícola</p></li>
+<li><p><strong>Email:</strong> soporte&#64;agro-iot.com</p></li>
+<li><p><strong>GitHub:</strong> https://github.com/agro-iot/gateway</p></li>
+<li><p><strong>Documentación:</strong> https://docs.agro-iot.com</p></li>
+</ul>
+</section>
+<section id="comunidad">
+<h3>Comunidad<a class="headerlink" href="#comunidad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Foro:</strong> Comunidad de usuarios</p></li>
+<li><p><strong>Wiki:</strong> Documentación colaborativa</p></li>
+<li><p><strong>Tutoriales:</strong> Guías paso a paso</p></li>
+<li><p><strong>Ejemplos:</strong> Código de ejemplo</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Nota:</strong> Esta documentación está diseñada para ser expandible y mejorable. Cada componente tiene su propia documentación detallada que puede ser actualizada independientemente según las necesidades del proyecto.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

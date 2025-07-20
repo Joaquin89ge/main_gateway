@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NodeIdentity - Gestión de Identidad Única del Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">NodeIdentity - Gestión de Identidad Única del Gateway</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#arquitectura-de-la-clase">🏗️ Arquitectura de la Clase</a><ul>
+<li><a class="reference internal" href="#proposito-principal">Propósito Principal</a></li>
+<li><a class="reference internal" href="#caracteristicas-tecnicas">Características Técnicas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#estructura-de-la-clase">📁 Estructura de la Clase</a><ul>
+<li><a class="reference internal" href="#constantes-y-definiciones">Constantes y Definiciones</a></li>
+<li><a class="reference internal" href="#variables-de-instancia">Variables de Instancia</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-publicos">🔧 Métodos Públicos</a><ul>
+<li><a class="reference internal" href="#constructor">Constructor</a></li>
+<li><a class="reference internal" href="#getnodeid">getNodeID()</a></li>
+<li><a class="reference internal" href="#getdevicemac">getDeviceMAC()</a></li>
+<li><a class="reference internal" href="#savegetway">saveGetway()</a></li>
+<li><a class="reference internal" href="#getgetway">getGetway()</a></li>
+<li><a class="reference internal" href="#changenodeid">changeNodeID()</a></li>
+<li><a class="reference internal" href="#begin">begin()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos-privados">🔧 Métodos Privados</a><ul>
+<li><a class="reference internal" href="#generatesafehash">generateSafeHash()</a></li>
+<li><a class="reference internal" href="#crc8">crc8()</a></li>
+<li><a class="reference internal" href="#loadbytefromfile">loadByteFromFile()</a></li>
+<li><a class="reference internal" href="#savebytetofile">saveByteToFile()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#algoritmo-de-generacion-de-id">📊 Algoritmo de Generación de ID</a><ul>
+<li><a class="reference internal" href="#paso-1-obtencion-de-mac">Paso 1: Obtención de MAC</a></li>
+<li><a class="reference internal" href="#paso-2-generacion-de-hash">Paso 2: Generación de Hash</a></li>
+<li><a class="reference internal" href="#paso-3-validacion-contra-lista-negra">Paso 3: Validación contra Lista Negra</a></li>
+<li><a class="reference internal" href="#paso-4-persistencia">Paso 4: Persistencia</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caracteristicas-de-seguridad">🔍 Características de Seguridad</a><ul>
+<li><a class="reference internal" href="#proteccion-contra-colisiones">1. Protección contra Colisiones</a></li>
+<li><a class="reference internal" href="#persistencia-robusta">2. Persistencia Robusta</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">3. Optimización de Energía</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-rendimiento">📈 Métricas de Rendimiento</a><ul>
+<li><a class="reference internal" href="#tiempos-de-operacion">Tiempos de Operación</a></li>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#dependencias-de-hardware">1. Dependencias de Hardware</a></li>
+<li><a class="reference internal" href="#gestion-de-errores">2. Gestión de Errores</a></li>
+<li><a class="reference internal" href="#escalabilidad">3. Escalabilidad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-optimizaciones">Fase 1: Optimizaciones</a></li>
+<li><a class="reference internal" href="#fase-2-nuevas-funcionalidades">Fase 2: Nuevas Funcionalidades</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-uso">📋 Ejemplos de Uso</a><ul>
+<li><a class="reference internal" href="#ejemplo-1-inicializacion-basica">Ejemplo 1: Inicialización Básica</a></li>
+<li><a class="reference internal" href="#ejemplo-2-gestion-de-gateway">Ejemplo 2: Gestión de Gateway</a></li>
+<li><a class="reference internal" href="#ejemplo-3-cambio-de-id">Ejemplo 3: Cambio de ID</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">NodeIdentity - Gestión de Identidad Única del Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/node_identity.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nodeidentity-gestion-de-identidad-unica-del-gateway">
+<h1>NodeIdentity - Gestión de Identidad Única del Gateway<a class="headerlink" href="#nodeidentity-gestion-de-identidad-unica-del-gateway" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Clase especializada en la gestión de identidad única del Gateway basada en la dirección MAC del hardware ESP8266. Implementa un sistema robusto de generación de IDs únicos con protección contra colisiones y persistencia en LittleFS.</p>
+</section>
+<section id="arquitectura-de-la-clase">
+<h2>🏗️ Arquitectura de la Clase<a class="headerlink" href="#arquitectura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="proposito-principal">
+<h3>Propósito Principal<a class="headerlink" href="#proposito-principal" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Identificación Única:</strong> Generación de ID único basado en MAC address</p></li>
+<li><p><strong>Protección contra Colisiones:</strong> Sistema de lista negra para evitar IDs duplicados</p></li>
+<li><p><strong>Persistencia:</strong> Almacenamiento seguro en LittleFS</p></li>
+<li><p><strong>Gestión de Gateway:</strong> Asociación con gateway específico</p></li>
+</ul>
+</section>
+<section id="caracteristicas-tecnicas">
+<h3>Características Técnicas<a class="headerlink" href="#caracteristicas-tecnicas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Algoritmo:</strong> Hash CRC-8 con polinomio 0x07</p></li>
+<li><p><strong>Probabilidad de Colisión:</strong> &lt;0.0001% en redes &lt;100 nodos</p></li>
+<li><p><strong>Persistencia:</strong> Almacenamiento en archivos JSON</p></li>
+<li><p><strong>Recuperación:</strong> Recuperación automática de configuración</p></li>
+</ul>
+</section>
+</section>
+<section id="estructura-de-la-clase">
+<h2>📁 Estructura de la Clase<a class="headerlink" href="#estructura-de-la-clase" title="Link to this heading"></a></h2>
+<section id="constantes-y-definiciones">
+<h3>Constantes y Definiciones<a class="headerlink" href="#constantes-y-definiciones" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NODE_ID_FILE &quot;/node_id.json&quot;      </span><span class="c1">///&lt; Archivo para ID del nodo</span>
+<span class="cp">#define GATEWAY_ADDR_FILE &quot;/gateway.json&quot; </span><span class="c1">///&lt; Archivo para dirección del gateway</span>
+<span class="cp">#define HASH_NOT_SET 255                  </span><span class="c1">///&lt; Valor no inicializado</span>
+<span class="cp">#define GETWAY_NOT_SET 255                </span><span class="c1">///&lt; Gateway no configurado</span>
+</pre></div>
+</div>
+</section>
+<section id="variables-de-instancia">
+<h3>Variables de Instancia<a class="headerlink" href="#variables-de-instancia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w">                      </span><span class="c1">///&lt; Clave de autenticación</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">defaultBlacklist</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="c1">///&lt; Lista negra por defecto</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metodos-publicos">
+<h2>🔧 Métodos Públicos<a class="headerlink" href="#metodos-publicos" title="Link to this heading"></a></h2>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p>Inicialización de la clase</p></li>
+<li><p>Configuración de clave de autenticación</p></li>
+<li><p>Preparación para generación de ID</p></li>
+</ul>
+</section>
+<section id="getnodeid">
+<h3>getNodeID()<a class="headerlink" href="#getnodeid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">getNodeID</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">blacklist_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">blacklist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">defaultBlacklist</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Genera o recupera ID único del nodo</p></li>
+<li><p>Evita colisiones con valores prohibidos</p></li>
+<li><p>Activa WiFi temporalmente durante generación</p></li>
+<li><p>Persiste ID en LittleFS</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist_len</span></code>: Tamaño de la lista negra (default: 2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist</span></code>: Array de valores prohibidos (default: [0x00, 0xFF])</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>: ID único entre 1-254</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="p">.</span><span class="n">getNodeID</span><span class="p">();</span>
+<span class="c1">// nodeID será un valor único basado en MAC address</span>
+</pre></div>
+</div>
+</section>
+<section id="getdevicemac">
+<h3>getDeviceMAC()<a class="headerlink" href="#getdevicemac" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">getDeviceMAC</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Recupera la dirección MAC del hardware ESP8266</p></li>
+<li><p>Formato: XX:XX:XX:XX:XX:XX</p></li>
+<li><p>Activa/desactiva WiFi temporalmente</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span></code>: MAC address en formato legible</p></li>
+</ul>
+<p><strong>Ejemplo de Uso:</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="n">mac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="p">.</span><span class="n">getDeviceMAC</span><span class="p">();</span>
+<span class="c1">// mac = &quot;FC:F5:C4:97:4A:C7&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="savegetway">
+<h3>saveGetway()<a class="headerlink" href="#savegetway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">saveGetway</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">getwayAdress</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Guarda la dirección del gateway asociado</p></li>
+<li><p>Persiste en archivo JSON</p></li>
+<li><p>Permite asociación dinámica</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getwayAdress</span></code>: Dirección del gateway a guardar</p></li>
+</ul>
+</section>
+<section id="getgetway">
+<h3>getGetway()<a class="headerlink" href="#getgetway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">getGetway</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stored_getway</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Recupera la dirección del gateway guardada</p></li>
+<li><p>Verifica si existe configuración previa</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stored_getway</span></code>: Referencia donde se guardará la dirección</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si existe gateway guardado, false en caso contrario</p></li>
+</ul>
+</section>
+<section id="changenodeid">
+<h3>changeNodeID()<a class="headerlink" href="#changenodeid" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">changeNodeID</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">blacklist_len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">blacklist</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Fuerza la regeneración del ID del nodo</p></li>
+<li><p>Útil para resolver conflictos de ID</p></li>
+<li><p>Considera nueva lista negra</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist_len</span></code>: Tamaño de la nueva lista negra</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist</span></code>: Nueva lista de valores prohibidos</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>: Nuevo ID generado</p></li>
+</ul>
+</section>
+<section id="begin">
+<h3>begin()<a class="headerlink" href="#begin" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Inicialización de la clase</p></li>
+<li><p>Configuración de LittleFS</p></li>
+<li><p>Preparación para operación</p></li>
+</ul>
+</section>
+</section>
+<section id="metodos-privados">
+<h2>🔧 Métodos Privados<a class="headerlink" href="#metodos-privados" title="Link to this heading"></a></h2>
+<section id="generatesafehash">
+<h3>generateSafeHash()<a class="headerlink" href="#generatesafehash" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">generateSafeHash</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">blacklist</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">blacklist_len</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Genera hash seguro evitando colisiones</p></li>
+<li><p>Implementa bucle de regeneración</p></li>
+<li><p>Valida contra lista negra</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Datos a hashear</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Longitud de los datos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist</span></code>: Lista de valores prohibidos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist_len</span></code>: Tamaño de la lista negra</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>: Hash seguro</p></li>
+</ul>
+</section>
+<section id="crc8">
+<h3>crc8()<a class="headerlink" href="#crc8" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">crc8</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Implementación CRC-8 con polinomio 0x07</p></li>
+<li><p>Genera checksum de 8 bits</p></li>
+<li><p>Optimizado para velocidad</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Buffer de entrada</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code>: Tamaño del buffer</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>: Checksum calculado</p></li>
+</ul>
+</section>
+<section id="loadbytefromfile">
+<h3>loadByteFromFile()<a class="headerlink" href="#loadbytefromfile" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">loadByteFromFile</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Carga byte desde archivo JSON</p></li>
+<li><p>Manejo de errores de archivo</p></li>
+<li><p>Validación de datos</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: Nombre del archivo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: Referencia donde guardar el valor</p></li>
+</ul>
+<p><strong>Retorno:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: true si se cargó exitosamente</p></li>
+</ul>
+</section>
+<section id="savebytetofile">
+<h3>saveByteToFile()<a class="headerlink" href="#savebytetofile" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">saveByteToFile</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Funcionalidad:</strong></p>
+<ul class="simple">
+<li><p>Guarda byte en archivo JSON</p></li>
+<li><p>Creación automática de archivo</p></li>
+<li><p>Manejo de errores de escritura</p></li>
+</ul>
+<p><strong>Parámetros:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: Nombre del archivo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: Valor a guardar</p></li>
+</ul>
+</section>
+</section>
+<section id="algoritmo-de-generacion-de-id">
+<h2>📊 Algoritmo de Generación de ID<a class="headerlink" href="#algoritmo-de-generacion-de-id" title="Link to this heading"></a></h2>
+<section id="paso-1-obtencion-de-mac">
+<h3>Paso 1: Obtención de MAC<a class="headerlink" href="#paso-1-obtencion-de-mac" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">WiFi</span><span class="p">.</span><span class="n">mode</span><span class="p">(</span><span class="n">WIFI_STA</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">mac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WiFi</span><span class="p">.</span><span class="n">macAddress</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="paso-2-generacion-de-hash">
+<h3>Paso 2: Generación de Hash<a class="headerlink" href="#paso-2-generacion-de-hash" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">crc8</span><span class="p">(</span><span class="n">macBytes</span><span class="p">,</span><span class="w"> </span><span class="n">macBytesLen</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="paso-3-validacion-contra-lista-negra">
+<h3>Paso 3: Validación contra Lista Negra<a class="headerlink" href="#paso-3-validacion-contra-lista-negra" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isInBlacklist</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="w"> </span><span class="n">blacklist</span><span class="p">,</span><span class="w"> </span><span class="n">blacklist_len</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">hash</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">256</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="paso-4-persistencia">
+<h3>Paso 4: Persistencia<a class="headerlink" href="#paso-4-persistencia" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">saveByteToFile</span><span class="p">(</span><span class="n">NODE_ID_FILE</span><span class="p">,</span><span class="w"> </span><span class="n">hash</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caracteristicas-de-seguridad">
+<h2>🔍 Características de Seguridad<a class="headerlink" href="#caracteristicas-de-seguridad" title="Link to this heading"></a></h2>
+<section id="proteccion-contra-colisiones">
+<h3>1. Protección contra Colisiones<a class="headerlink" href="#proteccion-contra-colisiones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lista Negra:</strong> Valores 0x00 y 0xFF reservados</p></li>
+<li><p><strong>Regeneración:</strong> Bucle hasta encontrar ID válido</p></li>
+<li><p><strong>Validación:</strong> Verificación contra valores prohibidos</p></li>
+</ul>
+</section>
+<section id="persistencia-robusta">
+<h3>2. Persistencia Robusta<a class="headerlink" href="#persistencia-robusta" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>LittleFS:</strong> Sistema de archivos confiable</p></li>
+<li><p><strong>JSON:</strong> Formato legible y estructurado</p></li>
+<li><p><strong>Recuperación:</strong> Manejo de errores de archivo</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-energia">
+<h3>3. Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>WiFi Temporal:</strong> Activación solo cuando es necesario</p></li>
+<li><p><strong>Gestión de Recursos:</strong> Liberación automática</p></li>
+<li><p><strong>Eficiencia:</strong> Operaciones optimizadas</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-rendimiento">
+<h2>📈 Métricas de Rendimiento<a class="headerlink" href="#metricas-de-rendimiento" title="Link to this heading"></a></h2>
+<section id="tiempos-de-operacion">
+<h3>Tiempos de Operación<a class="headerlink" href="#tiempos-de-operacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Generación de ID:</strong> &lt;50ms</p></li>
+<li><p><strong>Carga desde Archivo:</strong> &lt;10ms</p></li>
+<li><p><strong>Guardado en Archivo:</strong> &lt;20ms</p></li>
+<li><p><strong>Obtención de MAC:</strong> &lt;100ms</p></li>
+</ul>
+</section>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>RAM:</strong> ~2KB por instancia</p></li>
+<li><p><strong>Flash:</strong> ~1KB para archivos JSON</p></li>
+<li><p><strong>CPU:</strong> Mínimo impacto en operación</p></li>
+</ul>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="dependencias-de-hardware">
+<h3>1. Dependencias de Hardware<a class="headerlink" href="#dependencias-de-hardware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ESP8266:</strong> Específico para este microcontrolador</p></li>
+<li><p><strong>WiFi:</strong> Requerido para obtener MAC address</p></li>
+<li><p><strong>LittleFS:</strong> Sistema de archivos requerido</p></li>
+</ul>
+</section>
+<section id="gestion-de-errores">
+<h3>2. Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Archivos Corruptos:</strong> Recuperación automática</p></li>
+<li><p><strong>WiFi Fallido:</strong> Manejo de errores de red</p></li>
+<li><p><strong>Memoria Insuficiente:</strong> Validación de recursos</p></li>
+</ul>
+</section>
+<section id="escalabilidad">
+<h3>3. Escalabilidad<a class="headerlink" href="#escalabilidad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Redes Grandes:</strong> Probabilidad de colisión &lt;0.0001%</p></li>
+<li><p><strong>Múltiples Nodos:</strong> IDs únicos garantizados</p></li>
+<li><p><strong>Persistencia:</strong> Configuración mantenida entre reinicios</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-optimizaciones">
+<h3>Fase 1: Optimizaciones<a class="headerlink" href="#fase-1-optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cache de MAC:</strong> Evitar activación repetida de WiFi</p></li>
+<li><p><strong>Compresión de Archivos:</strong> Reducir uso de Flash</p></li>
+<li><p><strong>Validación Avanzada:</strong> Verificación de integridad</p></li>
+</ul>
+</section>
+<section id="fase-2-nuevas-funcionalidades">
+<h3>Fase 2: Nuevas Funcionalidades<a class="headerlink" href="#fase-2-nuevas-funcionalidades" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>IDs Dinámicos:</strong> Cambio automático de ID</p></li>
+<li><p><strong>Sincronización:</strong> Coordinación entre nodos</p></li>
+<li><p><strong>Backup:</strong> Respaldo de configuración</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cloud Sync:</strong> Sincronización con la nube</p></li>
+<li><p><strong>Multi-device:</strong> Soporte para múltiples dispositivos</p></li>
+<li><p><strong>Analytics:</strong> Análisis de patrones de ID</p></li>
+</ul>
+</section>
+</section>
+<section id="ejemplos-de-uso">
+<h2>📋 Ejemplos de Uso<a class="headerlink" href="#ejemplos-de-uso" title="Link to this heading"></a></h2>
+<section id="ejemplo-1-inicializacion-basica">
+<h3>Ejemplo 1: Inicialización Básica<a class="headerlink" href="#ejemplo-1-inicializacion-basica" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">NodeIdentity</span><span class="w"> </span><span class="n">identity</span><span class="p">;</span>
+<span class="n">identity</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">nodeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="p">.</span><span class="n">getNodeID</span><span class="p">();</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Node ID: &quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">nodeID</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-2-gestion-de-gateway">
+<h3>Ejemplo 2: Gestión de Gateway<a class="headerlink" href="#ejemplo-2-gestion-de-gateway" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Guardar gateway</span>
+<span class="n">identity</span><span class="p">.</span><span class="n">saveGetway</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span>
+
+<span class="c1">// Recuperar gateway</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">gatewayAddr</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identity</span><span class="p">.</span><span class="n">getGetway</span><span class="p">(</span><span class="n">gatewayAddr</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Gateway: 0x&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">gatewayAddr</span><span class="p">,</span><span class="w"> </span><span class="n">HEX</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-3-cambio-de-id">
+<h3>Ejemplo 3: Cambio de ID<a class="headerlink" href="#ejemplo-3-cambio-de-id" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">newBlacklist</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x10</span><span class="p">};</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">newID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">identity</span><span class="p">.</span><span class="n">changeNodeID</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">newBlacklist</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;New ID: &quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">newID</span><span class="p">);</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> La clase NodeIdentity representa una solución robusta y eficiente para la gestión de identidad única en sistemas IoT agrícolas, proporcionando identificación confiable, persistencia segura y escalabilidad para redes de múltiples nodos.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

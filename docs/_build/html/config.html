@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>config.h - Configuración Central del Sistema Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">config.h - Configuración Central del Sistema Gateway</a><ul>
+<li><a class="reference internal" href="#descripcion-general">📋 Descripción General</a></li>
+<li><a class="reference internal" href="#estructura-de-configuracion">🏗️ Estructura de Configuración</a><ul>
+<li><a class="reference internal" href="#modos-de-operacion">Modos de Operación</a><ul>
+<li><a class="reference internal" href="#modo-debug">Modo Debug</a></li>
+<li><a class="reference internal" href="#modo-produccion">Modo Producción</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parametros-de-red">📊 Parámetros de Red</a><ul>
+<li><a class="reference internal" href="#configuracion-de-nodos">Configuración de Nodos</a></li>
+<li><a class="reference internal" href="#timeouts-y-delays">Timeouts y Delays</a></li>
+<li><a class="reference internal" href="#delays-de-procesamiento">Delays de Procesamiento</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-hardware">🔧 Configuración de Hardware</a><ul>
+<li><a class="reference internal" href="#comunicacion-lora">Comunicación LoRa</a></li>
+<li><a class="reference internal" href="#rtc-ds1302-3-wire-interface">RTC DS1302 (3-wire interface)</a></li>
+<li><a class="reference internal" href="#configuracion-de-comunicacion">Configuración de Comunicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#macros-de-debugging">🔍 Macros de Debugging</a><ul>
+<li><a class="reference internal" href="#sistema-de-logging">Sistema de Logging</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuraciones-avanzadas">📈 Configuraciones Avanzadas</a><ul>
+<li><a class="reference internal" href="#parametros-de-comunicacion">Parámetros de Comunicación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#personalizacion-y-optimizacion">🔧 Personalización y Optimización</a><ul>
+<li><a class="reference internal" href="#modificacion-de-parametros">Modificación de Parámetros</a><ul>
+<li><a class="reference internal" href="#cambio-de-pines">1. Cambio de Pines</a></li>
+<li><a class="reference internal" href="#ajuste-de-timeouts">2. Ajuste de Timeouts</a></li>
+<li><a class="reference internal" href="#configuracion-de-red">3. Configuración de Red</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#consideraciones-importantes">🚨 Consideraciones Importantes</a><ul>
+<li><a class="reference internal" href="#compatibilidad-de-hardware">1. Compatibilidad de Hardware</a></li>
+<li><a class="reference internal" href="#optimizacion-de-energia">2. Optimización de Energía</a></li>
+<li><a class="reference internal" href="#escalabilidad">3. Escalabilidad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metricas-de-configuracion">📊 Métricas de Configuración</a><ul>
+<li><a class="reference internal" href="#uso-de-recursos">Uso de Recursos</a></li>
+<li><a class="reference internal" href="#optimizaciones">Optimizaciones</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mejoras-futuras">🔮 Mejoras Futuras</a><ul>
+<li><a class="reference internal" href="#fase-1-configuracion-dinamica">Fase 1: Configuración Dinámica</a></li>
+<li><a class="reference internal" href="#fase-2-optimizaciones-avanzadas">Fase 2: Optimizaciones Avanzadas</a></li>
+<li><a class="reference internal" href="#fase-3-integracion">Fase 3: Integración</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#checklist-de-configuracion">📋 Checklist de Configuración</a><ul>
+<li><a class="reference internal" href="#antes-del-despliegue">Antes del Despliegue</a></li>
+<li><a class="reference internal" href="#durante-la-operacion">Durante la Operación</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">config.h - Configuración Central del Sistema Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/config.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="config-h-configuracion-central-del-sistema-gateway">
+<h1>config.h - Configuración Central del Sistema Gateway<a class="headerlink" href="#config-h-configuracion-central-del-sistema-gateway" title="Link to this heading"></a></h1>
+<section id="descripcion-general">
+<h2>📋 Descripción General<a class="headerlink" href="#descripcion-general" title="Link to this heading"></a></h2>
+<p>Archivo de configuración central que define todos los parámetros, constantes y configuraciones del sistema Gateway agrícola. Este archivo actúa como punto único de configuración para facilitar el mantenimiento y personalización del sistema.</p>
+</section>
+<section id="estructura-de-configuracion">
+<h2>🏗️ Estructura de Configuración<a class="headerlink" href="#estructura-de-configuracion" title="Link to this heading"></a></h2>
+<section id="modos-de-operacion">
+<h3>Modos de Operación<a class="headerlink" href="#modos-de-operacion" title="Link to this heading"></a></h3>
+<p>El sistema soporta dos modos de operación principales:</p>
+<section id="modo-debug">
+<h4>Modo Debug<a class="headerlink" href="#modo-debug" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DEBUG_MODE</span>
+<span class="cp">#ifdef DEBUG_MODE</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x) Serial.print(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x) Serial.println(x)</span>
+<span class="w">    </span><span class="c1">// Configuraciones optimizadas para desarrollo</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Debugging Activo:</strong> Salida detallada por Serial</p></li>
+<li><p><strong>Timeouts Reducidos:</strong> Para desarrollo rápido</p></li>
+<li><p><strong>Intervalos Cortos:</strong> Para testing intensivo</p></li>
+<li><p><strong>Logging Detallado:</strong> Información completa del sistema</p></li>
+</ul>
+</section>
+<section id="modo-produccion">
+<h4>Modo Producción<a class="headerlink" href="#modo-produccion" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x)</span>
+<span class="w">    </span><span class="c1">// Configuraciones optimizadas para producción</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Debugging Deshabilitado:</strong> Sin salida Serial</p></li>
+<li><p><strong>Timeouts Extendidos:</strong> Para operación estable</p></li>
+<li><p><strong>Intervalos Largos:</strong> Para conservación de energía</p></li>
+<li><p><strong>Logging Mínimo:</strong> Solo información crítica</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="parametros-de-red">
+<h2>📊 Parámetros de Red<a class="headerlink" href="#parametros-de-red" title="Link to this heading"></a></h2>
+<section id="configuracion-de-nodos">
+<h3>Configuración de Nodos<a class="headerlink" href="#configuracion-de-nodos" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MAX_NODES 250                    </span><span class="c1">///&lt; Número máximo de nodos en la red</span>
+<span class="cp">#define NUMERO_MUESTRAS_ATMOSFERICAS 8   </span><span class="c1">///&lt; Muestras atmosféricas por nodo</span>
+<span class="cp">#define CANTIDAD_MUESTRAS_SUELO 2        </span><span class="c1">///&lt; Muestras de suelo por nodo</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p><strong>Escalabilidad:</strong> Soporte para redes grandes</p></li>
+<li><p><strong>Almacenamiento:</strong> Optimización de memoria</p></li>
+<li><p><strong>Flexibilidad:</strong> Configuración por tipo de dato</p></li>
+</ul>
+</section>
+<section id="timeouts-y-delays">
+<h3>Timeouts y Delays<a class="headerlink" href="#timeouts-y-delays" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Modo Debug</span>
+<span class="cp">#define TIMEOUTGRAL 2000                 </span><span class="c1">///&lt; Timeout general (2 segundos)</span>
+<span class="cp">#define INTERVALOANNOUNCE 5000           </span><span class="c1">///&lt; Intervalo de announce (5 segundos)</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 30000       </span><span class="c1">///&lt; Intervalo atmosférico (30 segundos)</span>
+
+<span class="c1">// Modo Producción</span>
+<span class="cp">#define TIMEOUTGRAL 1500                 </span><span class="c1">///&lt; Timeout general (1.5 segundos)</span>
+<span class="cp">#define INTERVALOANNOUNCE 120000         </span><span class="c1">///&lt; Intervalo de announce (2 minutos)</span>
+<span class="cp">#define INTERVALOATMOSPHERIC 480000      </span><span class="c1">///&lt; Intervalo atmosférico (8 minutos)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Adaptabilidad:</strong> Diferentes valores según modo</p></li>
+<li><p><strong>Optimización:</strong> Balance entre responsividad y energía</p></li>
+<li><p><strong>Escalabilidad:</strong> Configuración por tipo de operación</p></li>
+</ul>
+</section>
+<section id="delays-de-procesamiento">
+<h3>Delays de Procesamiento<a class="headerlink" href="#delays-de-procesamiento" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DELAY_BETWEEN_NODES 200          </span><span class="c1">///&lt; Delay entre nodos (200ms)</span>
+<span class="cp">#define DELAY_BEFORE_RETRY_ATMOSPHERIC 2000  </span><span class="c1">///&lt; Retry atmosférico (2 segundos)</span>
+<span class="cp">#define DELAY_BEFORE_RETRY_GROUND 4000   </span><span class="c1">///&lt; Retry suelo/GPS (4 segundos)</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p><strong>Gestión de Red:</strong> Evitar congestión</p></li>
+<li><p><strong>Recuperación:</strong> Estrategias de retry</p></li>
+<li><p><strong>Optimización:</strong> Balance entre velocidad y estabilidad</p></li>
+</ul>
+</section>
+</section>
+<section id="configuracion-de-hardware">
+<h2>🔧 Configuración de Hardware<a class="headerlink" href="#configuracion-de-hardware" title="Link to this heading"></a></h2>
+<section id="comunicacion-lora">
+<h3>Comunicación LoRa<a class="headerlink" href="#comunicacion-lora" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RFM95_CS 2   </span><span class="c1">///&lt; Pin Chip Select (D4 en ESP8266)</span>
+<span class="cp">#define RFM95_INT 5  </span><span class="c1">///&lt; Pin Interrupción (D1 en ESP8266)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Configuración SPI:</strong> Pines específicos para ESP8266</p></li>
+<li><p><strong>Optimización:</strong> Selección de pines para mejor rendimiento</p></li>
+<li><p><strong>Compatibilidad:</strong> Mapeo correcto de pines</p></li>
+</ul>
+</section>
+<section id="rtc-ds1302-3-wire-interface">
+<h3>RTC DS1302 (3-wire interface)<a class="headerlink" href="#rtc-ds1302-3-wire-interface" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RTC_CLK 18   </span><span class="c1">///&lt; Pin CLK del DS1302 (D3 en ESP8266)</span>
+<span class="cp">#define RTC_DAT 19   </span><span class="c1">///&lt; Pin DAT del DS1302 (D2 en ESP8266)</span>
+<span class="cp">#define RTC_RST 4    </span><span class="c1">///&lt; Pin RST del DS1302 (D0 en ESP8266)</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Interfaz 3-wire:</strong> Configuración específica para DS1302</p></li>
+<li><p><strong>Mapeo de Pines:</strong> Compatibilidad con ESP8266</p></li>
+<li><p><strong>Optimización:</strong> Selección de pines para estabilidad</p></li>
+</ul>
+</section>
+<section id="configuracion-de-comunicacion">
+<h3>Configuración de Comunicación<a class="headerlink" href="#configuracion-de-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define RH_MESH_MAX_MESSAGE_LEN 50       </span><span class="c1">///&lt; Longitud máxima de mensaje</span>
+<span class="cp">#define MAC_STR_LEN_WITH_NULL 18         </span><span class="c1">///&lt; Longitud de MAC con null</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p><strong>Optimización de Memoria:</strong> Buffers eficientes</p></li>
+<li><p><strong>Compatibilidad:</strong> Con librerías RadioHead</p></li>
+<li><p><strong>Escalabilidad:</strong> Configuración para redes grandes</p></li>
+</ul>
+</section>
+</section>
+<section id="macros-de-debugging">
+<h2>🔍 Macros de Debugging<a class="headerlink" href="#macros-de-debugging" title="Link to this heading"></a></h2>
+<section id="sistema-de-logging">
+<h3>Sistema de Logging<a class="headerlink" href="#sistema-de-logging" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef DEBUG_MODE</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x) Serial.print(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x) Serial.println(x)</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINT(x)</span>
+<span class="w">    </span><span class="cp">#define DEBUG_PRINTLN(x)</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Compilación Condicional:</strong> Optimización automática</p></li>
+<li><p><strong>Flexibilidad:</strong> Fácil activación/desactivación</p></li>
+<li><p><strong>Eficiencia:</strong> Sin overhead en producción</p></li>
+</ul>
+</section>
+</section>
+<section id="configuraciones-avanzadas">
+<h2>📈 Configuraciones Avanzadas<a class="headerlink" href="#configuraciones-avanzadas" title="Link to this heading"></a></h2>
+<section id="parametros-de-comunicacion">
+<h3>Parámetros de Comunicación<a class="headerlink" href="#parametros-de-comunicacion" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuraciones comentadas para futuras implementaciones</span>
+<span class="c1">//#define DELAY_BETWEEN_ATMOSPHERIC_REQUESTS 2000</span>
+<span class="c1">//#define DELAY_BETWEEN_GROUND_REQUESTS 5000</span>
+</pre></div>
+</div>
+<p><strong>Propósito:</strong></p>
+<ul class="simple">
+<li><p><strong>Extensibilidad:</strong> Preparación para futuras funcionalidades</p></li>
+<li><p><strong>Documentación:</strong> Referencia para desarrolladores</p></li>
+<li><p><strong>Flexibilidad:</strong> Configuración granular</p></li>
+</ul>
+</section>
+</section>
+<section id="personalizacion-y-optimizacion">
+<h2>🔧 Personalización y Optimización<a class="headerlink" href="#personalizacion-y-optimizacion" title="Link to this heading"></a></h2>
+<section id="modificacion-de-parametros">
+<h3>Modificación de Parámetros<a class="headerlink" href="#modificacion-de-parametros" title="Link to this heading"></a></h3>
+<section id="cambio-de-pines">
+<h4>1. Cambio de Pines<a class="headerlink" href="#cambio-de-pines" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Para cambiar pines LoRa</span>
+<span class="cp">#define RFM95_CS 15   </span><span class="c1">// Nuevo pin CS</span>
+<span class="cp">#define RFM95_INT 13  </span><span class="c1">// Nuevo pin INT</span>
+
+<span class="c1">// Para cambiar pines RTC</span>
+<span class="cp">#define RTC_CLK 14    </span><span class="c1">// Nuevo pin CLK</span>
+<span class="cp">#define RTC_DAT 12    </span><span class="c1">// Nuevo pin DAT</span>
+<span class="cp">#define RTC_RST 16    </span><span class="c1">// Nuevo pin RST</span>
+</pre></div>
+</div>
+</section>
+<section id="ajuste-de-timeouts">
+<h4>2. Ajuste de Timeouts<a class="headerlink" href="#ajuste-de-timeouts" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Para redes más lentas</span>
+<span class="cp">#define TIMEOUTGRAL 3000</span>
+<span class="cp">#define INTERVALOANNOUNCE 10000</span>
+
+<span class="c1">// Para redes más rápidas</span>
+<span class="cp">#define TIMEOUTGRAL 1000</span>
+<span class="cp">#define INTERVALOANNOUNCE 3000</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-de-red">
+<h4>3. Configuración de Red<a class="headerlink" href="#configuracion-de-red" title="Link to this heading"></a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Para redes pequeñas</span>
+<span class="cp">#define MAX_NODES 50</span>
+<span class="cp">#define NUMERO_MUESTRAS_ATMOSFERICAS 4</span>
+
+<span class="c1">// Para redes grandes</span>
+<span class="cp">#define MAX_NODES 500</span>
+<span class="cp">#define NUMERO_MUESTRAS_ATMOSFERICAS 16</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="consideraciones-importantes">
+<h2>🚨 Consideraciones Importantes<a class="headerlink" href="#consideraciones-importantes" title="Link to this heading"></a></h2>
+<section id="compatibilidad-de-hardware">
+<h3>1. Compatibilidad de Hardware<a class="headerlink" href="#compatibilidad-de-hardware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ESP8266:</strong> Configuración específica para este microcontrolador</p></li>
+<li><p><strong>Pines:</strong> Selección cuidadosa para evitar conflictos</p></li>
+<li><p><strong>Voltajes:</strong> Compatibilidad con niveles lógicos de 3.3V</p></li>
+</ul>
+</section>
+<section id="optimizacion-de-energia">
+<h3>2. Optimización de Energía<a class="headerlink" href="#optimizacion-de-energia" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Modo Debug:</strong> Mayor consumo para desarrollo</p></li>
+<li><p><strong>Modo Producción:</strong> Optimización para baterías</p></li>
+<li><p><strong>Sleep Modes:</strong> Configuración para ahorro energético</p></li>
+</ul>
+</section>
+<section id="escalabilidad">
+<h3>3. Escalabilidad<a class="headerlink" href="#escalabilidad" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Memoria:</strong> Consideración de límites de RAM</p></li>
+<li><p><strong>Red:</strong> Configuración para número de nodos</p></li>
+<li><p><strong>Comunicación:</strong> Balance entre velocidad y estabilidad</p></li>
+</ul>
+</section>
+</section>
+<section id="metricas-de-configuracion">
+<h2>📊 Métricas de Configuración<a class="headerlink" href="#metricas-de-configuracion" title="Link to this heading"></a></h2>
+<section id="uso-de-recursos">
+<h3>Uso de Recursos<a class="headerlink" href="#uso-de-recursos" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Debug</p></th>
+<th class="head"><p>Producción</p></th>
+<th class="head"><p>Impacto</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>RAM</strong></p></td>
+<td><p>~50%</p></td>
+<td><p>~44%</p></td>
+<td><p>Memoria de buffers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Flash</strong></p></td>
+<td><p>~35%</p></td>
+<td><p>~32%</p></td>
+<td><p>Código de debug</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Energía</strong></p></td>
+<td><p>Alto</p></td>
+<td><p>Bajo</p></td>
+<td><p>Intervalos y timeouts</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Velocidad</strong></p></td>
+<td><p>Rápida</p></td>
+<td><p>Moderada</p></td>
+<td><p>Responsividad</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optimizaciones">
+<h3>Optimizaciones<a class="headerlink" href="#optimizaciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Debug Mode:</strong> +15% RAM, +10% Flash</p></li>
+<li><p><strong>Producción:</strong> Optimizado para eficiencia</p></li>
+<li><p><strong>Flexibilidad:</strong> Configuración por requerimientos</p></li>
+</ul>
+</section>
+</section>
+<section id="mejoras-futuras">
+<h2>🔮 Mejoras Futuras<a class="headerlink" href="#mejoras-futuras" title="Link to this heading"></a></h2>
+<section id="fase-1-configuracion-dinamica">
+<h3>Fase 1: Configuración Dinámica<a class="headerlink" href="#fase-1-configuracion-dinamica" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Configuración por UART:</strong> Cambio de parámetros en tiempo real</p></li>
+<li><p><strong>Configuración por Web:</strong> Interfaz web para configuración</p></li>
+<li><p><strong>Configuración por LoRa:</strong> Actualización remota de parámetros</p></li>
+</ul>
+</section>
+<section id="fase-2-optimizaciones-avanzadas">
+<h3>Fase 2: Optimizaciones Avanzadas<a class="headerlink" href="#fase-2-optimizaciones-avanzadas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Auto-tuning:</strong> Ajuste automático de parámetros</p></li>
+<li><p><strong>Machine Learning:</strong> Optimización basada en uso</p></li>
+<li><p><strong>Adaptive Timeouts:</strong> Timeouts dinámicos según condiciones</p></li>
+</ul>
+</section>
+<section id="fase-3-integracion">
+<h3>Fase 3: Integración<a class="headerlink" href="#fase-3-integracion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Cloud Configuration:</strong> Sincronización con la nube</p></li>
+<li><p><strong>Multi-environment:</strong> Configuraciones por ambiente</p></li>
+<li><p><strong>Versioning:</strong> Control de versiones de configuración</p></li>
+</ul>
+</section>
+</section>
+<section id="checklist-de-configuracion">
+<h2>📋 Checklist de Configuración<a class="headerlink" href="#checklist-de-configuracion" title="Link to this heading"></a></h2>
+<section id="antes-del-despliegue">
+<h3>Antes del Despliegue<a class="headerlink" href="#antes-del-despliegue" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] <strong>Verificar Pines:</strong> Compatibilidad con hardware</p></li>
+<li><p>[ ] <strong>Ajustar Timeouts:</strong> Según condiciones de red</p></li>
+<li><p>[ ] <strong>Configurar Modo:</strong> Debug vs Producción</p></li>
+<li><p>[ ] <strong>Validar Parámetros:</strong> Rango de valores correctos</p></li>
+<li><p>[ ] <strong>Probar Comunicación:</strong> Verificar conectividad</p></li>
+</ul>
+</section>
+<section id="durante-la-operacion">
+<h3>Durante la Operación<a class="headerlink" href="#durante-la-operacion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] <strong>Monitorear Recursos:</strong> Uso de RAM y Flash</p></li>
+<li><p>[ ] <strong>Verificar Estabilidad:</strong> Timeouts y delays</p></li>
+<li><p>[ ] <strong>Optimizar Parámetros:</strong> Según rendimiento observado</p></li>
+<li><p>[ ] <strong>Actualizar Configuración:</strong> Según necesidades</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Conclusión:</strong> El archivo config.h representa el centro de configuración del sistema Gateway, proporcionando flexibilidad, optimización y escalabilidad a través de parámetros bien definidos y documentados que permiten adaptar el sistema a diferentes entornos y requerimientos.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

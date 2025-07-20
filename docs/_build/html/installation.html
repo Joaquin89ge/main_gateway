@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalación del Sistema Gateway &mdash; documentación de Sistema Gateway Agrícola - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sistema Gateway Agrícola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Instalación del Sistema Gateway</a><ul>
+<li><a class="reference internal" href="#requisitos-del-sistema">Requisitos del Sistema</a><ul>
+<li><a class="reference internal" href="#hardware-requerido">Hardware Requerido</a></li>
+<li><a class="reference internal" href="#software-requerido">Software Requerido</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalacion-del-entorno-de-desarrollo">Instalación del Entorno de Desarrollo</a><ul>
+<li><a class="reference internal" href="#instalar-platformio">1. Instalar PlatformIO</a></li>
+<li><a class="reference internal" href="#clonar-el-repositorio">2. Clonar el Repositorio</a></li>
+<li><a class="reference internal" href="#instalar-dependencias">3. Instalar Dependencias</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-del-hardware">Configuración del Hardware</a><ul>
+<li><a class="reference internal" href="#diagrama-de-conexiones">Diagrama de Conexiones</a></li>
+<li><a class="reference internal" href="#pasos-de-conexion">Pasos de Conexión</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-del-software">Configuración del Software</a><ul>
+<li><a class="reference internal" href="#configurar-platformio">1. Configurar PlatformIO</a></li>
+<li><a class="reference internal" href="#configurar-parametros">2. Configurar Parámetros</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#compilacion-y-subida">Compilación y Subida</a><ul>
+<li><a class="reference internal" href="#compilar-el-proyecto">1. Compilar el Proyecto</a></li>
+<li><a class="reference internal" href="#subir-firmware">2. Subir Firmware</a></li>
+<li><a class="reference internal" href="#verificar-instalacion">3. Verificar Instalación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-red">Configuración de Red</a><ul>
+<li><a class="reference internal" href="#configurar-frecuencia-lora">1. Configurar Frecuencia LoRa</a></li>
+<li><a class="reference internal" href="#configurar-potencia-de-transmision">2. Configurar Potencia de Transmisión</a></li>
+<li><a class="reference internal" href="#configurar-parametros-de-red">3. Configurar Parámetros de Red</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verificacion-del-sistema">Verificación del Sistema</a><ul>
+<li><a class="reference internal" href="#pruebas-basicas">1. Pruebas Básicas</a></li>
+<li><a class="reference internal" href="#pruebas-de-red">2. Pruebas de Red</a></li>
+<li><a class="reference internal" href="#pruebas-de-datos">3. Pruebas de Datos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#solucion-de-problemas">Solución de Problemas</a><ul>
+<li><a class="reference internal" href="#problemas-comunes">Problemas Comunes</a></li>
+<li><a class="reference internal" href="#comandos-de-diagnostico">Comandos de Diagnóstico</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sistema Gateway Agrícola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instalación del Sistema Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instalacion-del-sistema-gateway">
+<h1>Instalación del Sistema Gateway<a class="headerlink" href="#instalacion-del-sistema-gateway" title="Link to this heading"></a></h1>
+<p>Esta guía te ayudará a instalar y configurar el Sistema Gateway Agrícola en tu entorno de desarrollo.</p>
+<section id="requisitos-del-sistema">
+<h2>Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Link to this heading"></a></h2>
+<section id="hardware-requerido">
+<h3>Hardware Requerido<a class="headerlink" href="#hardware-requerido" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ESP8266</strong> (NodeMCU, Wemos D1 Mini, o similar)</p></li>
+<li><p><strong>Módulo LoRa SX1278</strong> (RFM95W)</p></li>
+<li><p><strong>RTC DS1302</strong> con interfaz 3-wire</p></li>
+<li><p><strong>Antena LoRa</strong> (433MHz)</p></li>
+<li><p><strong>Cables de conexión</strong></p></li>
+<li><p><strong>Fuente de alimentación</strong> (3.3V, 500mA mínimo)</p></li>
+</ul>
+</section>
+<section id="software-requerido">
+<h3>Software Requerido<a class="headerlink" href="#software-requerido" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>PlatformIO</strong> o <strong>Arduino IDE</strong></p></li>
+<li><p><strong>Python 3.7+</strong> (para documentación)</p></li>
+<li><p><strong>Git</strong> (para control de versiones)</p></li>
+</ul>
+</section>
+</section>
+<section id="instalacion-del-entorno-de-desarrollo">
+<h2>Instalación del Entorno de Desarrollo<a class="headerlink" href="#instalacion-del-entorno-de-desarrollo" title="Link to this heading"></a></h2>
+<section id="instalar-platformio">
+<h3>1. Instalar PlatformIO<a class="headerlink" href="#instalar-platformio" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar PlatformIO Core</span>
+pip<span class="w"> </span>install<span class="w"> </span>platformio
+
+<span class="c1"># Verificar instalación</span>
+pio<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+<section id="clonar-el-repositorio">
+<h3>2. Clonar el Repositorio<a class="headerlink" href="#clonar-el-repositorio" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clonar el repositorio</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/agro-iot/gateway.git
+<span class="nb">cd</span><span class="w"> </span>gateway
+
+<span class="c1"># Cambiar a la rama de desarrollo</span>
+git<span class="w"> </span>checkout<span class="w"> </span>doc_generate
+</pre></div>
+</div>
+</section>
+<section id="instalar-dependencias">
+<h3>3. Instalar Dependencias<a class="headerlink" href="#instalar-dependencias" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar dependencias de Python para documentación</span>
+pip<span class="w"> </span>install<span class="w"> </span>sphinx<span class="w"> </span>sphinx-rtd-theme<span class="w"> </span>myst-parser
+
+<span class="c1"># Instalar dependencias del proyecto</span>
+pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;RadioHead&quot;</span>
+pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;CRC32&quot;</span>
+pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;LittleFS&quot;</span>
+pio<span class="w"> </span>lib<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;andrewrapp/RtcDS1302&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-del-hardware">
+<h2>Configuración del Hardware<a class="headerlink" href="#configuracion-del-hardware" title="Link to this heading"></a></h2>
+<section id="diagrama-de-conexiones">
+<h3>Diagrama de Conexiones<a class="headerlink" href="#diagrama-de-conexiones" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ESP8266          SX1278 LoRa
+--------         -----------
+D2 (GPIO4)  --&gt;  NSS (CS)
+D1 (GPIO5)  --&gt;  DIO0 (INT)
+D5 (GPIO14) --&gt;  SCK
+D7 (GPIO13) --&gt;  MOSI
+D6 (GPIO12) --&gt;  MISO
+GND         --&gt;  GND
+3.3V        --&gt;  VCC
+
+ESP8266          DS1302 RTC
+--------         -----------
+D0 (GPIO16) --&gt;  RST
+D2 (GPIO4)  --&gt;  DAT
+D3 (GPIO0)  --&gt;  CLK
+GND         --&gt;  GND
+3.3V        --&gt;  VCC
+</pre></div>
+</div>
+</section>
+<section id="pasos-de-conexion">
+<h3>Pasos de Conexión<a class="headerlink" href="#pasos-de-conexion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Conectar SX1278 LoRa:</strong>
+- Conectar pines SPI según diagrama
+- Asegurar conexión de antena
+- Verificar alimentación 3.3V</p></li>
+<li><p><strong>Conectar DS1302 RTC:</strong>
+- Conectar pines 3-wire según diagrama
+- Verificar batería de backup
+- Confirmar niveles de voltaje</p></li>
+<li><p><strong>Verificar Conexiones:</strong>
+- Usar multímetro para verificar continuidad
+- Confirmar que no hay cortocircuitos
+- Verificar polaridad de componentes</p></li>
+</ol>
+</section>
+</section>
+<section id="configuracion-del-software">
+<h2>Configuración del Software<a class="headerlink" href="#configuracion-del-software" title="Link to this heading"></a></h2>
+<section id="configurar-platformio">
+<h3>1. Configurar PlatformIO<a class="headerlink" href="#configurar-platformio" title="Link to this heading"></a></h3>
+<p>Editar el archivo <code class="docutils literal notranslate"><span class="pre">platformio.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:esp12e]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">espressif8266</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">esp12e</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arduino</span>
+<span class="na">monitor_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">115200</span>
+<span class="na">upload_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">921600</span>
+<span class="na">lib_deps</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">RadioHead</span>
+<span class="w">    </span><span class="na">CRC32</span>
+<span class="w">    </span><span class="na">LittleFS</span>
+<span class="w">    </span><span class="na">andrewrapp/RtcDS1302</span>
+</pre></div>
+</div>
+</section>
+<section id="configurar-parametros">
+<h3>2. Configurar Parámetros<a class="headerlink" href="#configurar-parametros" title="Link to this heading"></a></h3>
+<p>Editar el archivo <code class="docutils literal notranslate"><span class="pre">src/config.h</span></code> según tus necesidades:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configuración de pines</span>
+<span class="cp">#define RFM95_CS 2</span>
+<span class="cp">#define RFM95_INT 5</span>
+<span class="cp">#define RTC_CLK 18</span>
+<span class="cp">#define RTC_DAT 19</span>
+<span class="cp">#define RTC_RST 4</span>
+
+<span class="c1">// Configuración de red</span>
+<span class="cp">#define MAX_NODES 250</span>
+<span class="cp">#define TIMEOUTGRAL 2000</span>
+<span class="cp">#define INTERVALOANNOUNCE 5000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compilacion-y-subida">
+<h2>Compilación y Subida<a class="headerlink" href="#compilacion-y-subida" title="Link to this heading"></a></h2>
+<section id="compilar-el-proyecto">
+<h3>1. Compilar el Proyecto<a class="headerlink" href="#compilar-el-proyecto" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compilar para ESP8266</span>
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>build
+</pre></div>
+</div>
+</section>
+<section id="subir-firmware">
+<h3>2. Subir Firmware<a class="headerlink" href="#subir-firmware" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subir firmware (reemplazar COM7 con tu puerto)</span>
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>upload<span class="w"> </span>--upload-port<span class="w"> </span>COM7
+</pre></div>
+</div>
+</section>
+<section id="verificar-instalacion">
+<h3>3. Verificar Instalación<a class="headerlink" href="#verificar-instalacion" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Abrir monitor serial</span>
+pio<span class="w"> </span>device<span class="w"> </span>monitor<span class="w"> </span>--port<span class="w"> </span>COM7
+
+<span class="c1"># Deberías ver mensajes como:</span>
+<span class="c1"># &quot;Inicializando LittleFS en sketch principal...&quot;</span>
+<span class="c1"># &quot;RF95 MESH init okay&quot;</span>
+<span class="c1"># &quot;RTC inicializado correctamente&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-de-red">
+<h2>Configuración de Red<a class="headerlink" href="#configuracion-de-red" title="Link to this heading"></a></h2>
+<section id="configurar-frecuencia-lora">
+<h3>1. Configurar Frecuencia LoRa<a class="headerlink" href="#configurar-frecuencia-lora" title="Link to this heading"></a></h3>
+<p>Editar en <code class="docutils literal notranslate"><span class="pre">src/radio_manager.cpp</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configurar frecuencia (433MHz para Europa)</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setFrequency</span><span class="p">(</span><span class="mf">433.0</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="configurar-potencia-de-transmision">
+<h3>2. Configurar Potencia de Transmisión<a class="headerlink" href="#configurar-potencia-de-transmision" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configurar potencia (hasta 20dBm)</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setTxPower</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="configurar-parametros-de-red">
+<h3>3. Configurar Parámetros de Red<a class="headerlink" href="#configurar-parametros-de-red" title="Link to this heading"></a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configurar spreading factor (SF7-SF12)</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setSignalBandwidth</span><span class="p">(</span><span class="mf">125E3</span><span class="p">);</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setCodingRate4</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">driver</span><span class="p">.</span><span class="n">setSpreadingFactor</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verificacion-del-sistema">
+<h2>Verificación del Sistema<a class="headerlink" href="#verificacion-del-sistema" title="Link to this heading"></a></h2>
+<section id="pruebas-basicas">
+<h3>1. Pruebas Básicas<a class="headerlink" href="#pruebas-basicas" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar comunicación LoRa</span>
+pio<span class="w"> </span>device<span class="w"> </span>monitor<span class="w"> </span>--port<span class="w"> </span>COM7
+<span class="c1"># Buscar mensajes: &quot;RF95 MESH init okay&quot;</span>
+
+<span class="c1"># Verificar RTC</span>
+<span class="c1"># Buscar mensajes: &quot;RTC inicializado correctamente&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="pruebas-de-red">
+<h3>2. Pruebas de Red<a class="headerlink" href="#pruebas-de-red" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar anuncios de red</span>
+<span class="c1"># Buscar mensajes: &quot;enviando announce KEY&quot;</span>
+
+<span class="c1"># Verificar recepción de HELLO</span>
+<span class="c1"># Buscar mensajes: &quot;AppLogic::handleHello()&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="pruebas-de-datos">
+<h3>3. Pruebas de Datos<a class="headerlink" href="#pruebas-de-datos" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar solicitud de datos</span>
+<span class="c1"># Buscar mensajes: &quot;requestAtmosphericData()&quot;</span>
+
+<span class="c1"># Verificar almacenamiento</span>
+<span class="c1"># Buscar mensajes: &quot;Datos almacenados correctamente&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="solucion-de-problemas">
+<h2>Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h2>
+<section id="problemas-comunes">
+<h3>Problemas Comunes<a class="headerlink" href="#problemas-comunes" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Error de Compilación:</strong>
+- Verificar dependencias instaladas
+- Verificar versión de PlatformIO
+- Limpiar cache: <code class="docutils literal notranslate"><span class="pre">pio</span> <span class="pre">run</span> <span class="pre">--target</span> <span class="pre">clean</span></code></p></li>
+<li><p><strong>Error de Subida:</strong>
+- Verificar puerto COM correcto
+- Mantener botón FLASH presionado durante subida
+- Verificar drivers de USB</p></li>
+<li><p><strong>Error de Comunicación LoRa:</strong>
+- Verificar conexiones de pines
+- Verificar antena conectada
+- Verificar alimentación estable</p></li>
+<li><p><strong>Error de RTC:</strong>
+- Verificar conexiones 3-wire
+- Verificar batería de backup
+- Verificar niveles de voltaje</p></li>
+</ol>
+</section>
+<section id="comandos-de-diagnostico">
+<h3>Comandos de Diagnóstico<a class="headerlink" href="#comandos-de-diagnostico" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar estado del sistema</span>
+pio<span class="w"> </span>device<span class="w"> </span>monitor<span class="w"> </span>--port<span class="w"> </span>COM7<span class="w"> </span>--baud<span class="w"> </span><span class="m">115200</span>
+
+<span class="c1"># Limpiar y recompilar</span>
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>clean
+pio<span class="w"> </span>run<span class="w"> </span>--target<span class="w"> </span>build
+
+<span class="c1"># Verificar dependencias</span>
+pio<span class="w"> </span>lib<span class="w"> </span>list
+
+<span class="c1"># Actualizar dependencias</span>
+pio<span class="w"> </span>lib<span class="w"> </span>update
+</pre></div>
+</div>
+</section>
+</section>
+<section id="proximos-pasos">
+<h2>Próximos Pasos<a class="headerlink" href="#proximos-pasos" title="Link to this heading"></a></h2>
+<p>Una vez que el sistema esté instalado y funcionando:</p>
+<ol class="arabic simple">
+<li><p><strong>Configurar Nodos Sensores:</strong> Conectar nodos a la red</p></li>
+<li><p><strong>Configurar Monitoreo:</strong> Implementar sistema de logging</p></li>
+<li><p><strong>Configurar Alertas:</strong> Implementar notificaciones</p></li>
+<li><p><strong>Optimizar Parámetros:</strong> Ajustar según condiciones específicas</p></li>
+</ol>
+<p>Para más información, consulta la documentación completa en las siguientes secciones.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Equipo de Desarrollo Agrícola.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
