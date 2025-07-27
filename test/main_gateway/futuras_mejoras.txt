@@ -1,0 +1,3 @@
+implementar persistencia de mapas en modulo sd para no deteriorar tanto memoria de la esp.
+posible alimentacion autonoma (baeria emergencia) de modulo gateway y rasberrry py
+implementación registro de posibles nodos desconectados 

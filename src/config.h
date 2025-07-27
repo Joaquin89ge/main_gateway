@@ -3,8 +3,8 @@
 
 #ifdef DEBUG_MODE
 
-#define DEBUG_PRINT(x) Serial.print(x)
-#define DEBUG_PRINTLN(x) Serial.println(x)
+#define DEBUG_PRINT(x) Serial.printf("%s", x)
+#define DEBUG_PRINTLN(x) Serial.printf("%s\n", x)
 #define MAX_NODES 250
 #define NUMERO_MUESTRAS_ATMOSFERICAS 8
 
@@ -33,10 +33,9 @@
 //#define DELAY_BETWEEN_GROUND_REQUESTS 5000       /**< @brief Delay entre solicitudes de suelo/GPS en milisegundos (5 segundos) */
 #define DELAY_BETWEEN_NODES 200                 /**< @brief Delay entre procesamiento de nodos en milisegundos (1.5 segundos) */
 #define DELAY_BEFORE_RETRY_ATMOSPHERIC 2000       /**< @brief Delay antes de reintentar solicitudes atmosféricas (500ms) */
-#define DELAY_BEFORE_RETRY_GROUND 4000           /**< @brief Delay antes de reintentar solicitudes de suelo/GPS (1.5 segundos) */
+#define DELAY_BEFORE_RETRY_GROUND 10000           /**< @brief Delay antes de reintentar solicitudes de suelo/GPS (1.5 segundos) */
 
-#define RH_MESH_MAX_MESSAGE_LEN 50
-#define MAC_STR_LEN_WITH_NULL 18 
+
 
 // lora
 /**
@@ -53,7 +52,21 @@
  * Este pin es utilizado por el módulo RFM95 para señalar eventos (por ejemplo, paquete recibido)
  * al microcontrolador. Corresponde al pin digital D1 en algunas placas de desarrollo.
  */
-#define RFM95_INT 5 // d1
+#define RFM95_INT 15 // d8
+
+#define RFM95_RST 16 // d0
+
+/**
+ * @def RADIO_RESET_DELAY_MS
+ * @brief Tiempo de espera después del reset del módulo radio en milisegundos.
+ */
+#define RADIO_RESET_DELAY_MS 1000 // 1 segundo
+
+/**
+ * @def RADIO_MAX_FAILURES
+ * @brief Número máximo de fallos de transmisión antes de resetear el módulo radio.
+ */
+#define RADIO_MAX_FAILURES 5  
 
 
 // RTC DS1302 (3-wire interface)

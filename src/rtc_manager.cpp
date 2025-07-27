@@ -15,7 +15,7 @@ bool RtcManager::begin() {
     
     // Obtener fecha y hora de compilación
     RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
-    Serial.print("RtcManager::begin() - Fecha de compilación: ");
+    Serial.printf("RtcManager::begin() - Fecha de compilación: ");
     printDateTime(compiled);
     Serial.println();
     
@@ -40,7 +40,7 @@ bool RtcManager::begin() {
     
     // Obtener fecha/hora actual y verificar
     RtcDateTime now = rtc.GetDateTime();
-    Serial.print("RtcManager::begin() - Fecha/hora actual del RTC: ");
+    Serial.printf("RtcManager::begin() - Fecha/hora actual del RTC: ");
     printDateTime(now);
     Serial.println();
     
@@ -126,11 +126,7 @@ String RtcManager::getTimeString(const RtcDateTime& dateTime) {
 
 // Compara dos horas en formato HH:MM
 bool RtcManager::compareHsAndMs(const String& time1, const String& time2) {
-    Serial.print("RtcManager::compareHsAndMs: Comparando '");
-    Serial.print(time1);
-    Serial.print("' con '");
-    Serial.print(time2);
-    Serial.println("'");
+    Serial.printf("RtcManager::compareHsAndMs: Comparando '%s' con '%s'\n", time1.c_str(), time2.c_str());
     
     // Extraer horas y minutos de time1
     int colon1 = time1.indexOf(':');
@@ -142,10 +138,7 @@ bool RtcManager::compareHsAndMs(const String& time1, const String& time2) {
     int hour1 = time1.substring(0, colon1).toInt();
     int minute1 = time1.substring(colon1 + 1).toInt();
     
-    Serial.print("RtcManager::compareHsAndMs: time1 = ");
-    Serial.print(hour1);
-    Serial.print(":");
-    Serial.println(minute1);
+    Serial.printf("RtcManager::compareHsAndMs: time1 = %d:%d\n", hour1, minute1);
     
     // Extraer horas y minutos de time2
     int colon2 = time2.indexOf(':');
@@ -157,23 +150,16 @@ bool RtcManager::compareHsAndMs(const String& time1, const String& time2) {
     int hour2 = time2.substring(0, colon2).toInt();
     int minute2 = time2.substring(colon2 + 1).toInt();
     
-    Serial.print("RtcManager::compareHsAndMs: time2 = ");
-    Serial.print(hour2);
-    Serial.print(":");
-    Serial.println(minute2);
+    Serial.printf("RtcManager::compareHsAndMs: time2 = %d:%d\n", hour2, minute2);
     
     // Convertir a minutos totales para comparación
     int totalMinutes1 = hour1 * 60 + minute1;
     int totalMinutes2 = hour2 * 60 + minute2;
     
-    Serial.print("RtcManager::compareHsAndMs: totalMinutes1 = ");
-    Serial.print(totalMinutes1);
-    Serial.print(", totalMinutes2 = ");
-    Serial.println(totalMinutes2);
+    Serial.printf("RtcManager::compareHsAndMs: totalMinutes1 = %d, totalMinutes2 = %d\n", totalMinutes1, totalMinutes2);
     
     bool result = (totalMinutes1 == totalMinutes2);
-    Serial.print("RtcManager::compareHsAndMs: Resultado = ");
-    Serial.println(result);
+    Serial.printf("RtcManager::compareHsAndMs: Resultado = %s\n", result ? "true" : "false");
     
     return result;
 }
@@ -192,7 +178,7 @@ void RtcManager::printDateTime(const RtcDateTime& dt) {
     char datestring[26];
     snprintf_P(datestring, sizeof(datestring), PSTR("%02u/%02u/%04u %02u:%02u:%02u"),
                dt.Month(), dt.Day(), dt.Year(), dt.Hour(), dt.Minute(), dt.Second());
-    Serial.print(datestring);
+    Serial.printf("%s", datestring);
 }
 
 // Verifica si el RTC está funcionando

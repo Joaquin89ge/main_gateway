@@ -9,7 +9,7 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include <LittleFS.h> // ¡Cambiamos de EEPROM.h a LittleFS.h!
+// #include <LittleFS.h> // Comentado: LittleFS deshabilitado
 #include "config.h"
 
 // Nombres de archivos para LittleFS (más descriptivo que direcciones de EEPROM)
@@ -26,9 +26,9 @@ static const uint8_t defaultBlacklist[2] = {0x00, 0xFF}; ///< lista por defecto 
  * @brief Gestiona identificación única de nodos basada en hardware
  *
  * Genera un identificador de nodo (1 byte) mediante hash CRC-8 de la dirección MAC,
- * con protección contra colisiones mediante lista negra. Almacena el estado en LittleFS.
+ * con protección contra colisiones mediante lista negra. Genera ID basado en MAC sin persistencia.
  *
- * @warning Específico para ESP8266. Requiere inicialización de LittleFS externa.
+ * @warning Específico para ESP8266. LittleFS deshabilitado.
  * @note Probabilidad de colisión: <0.0001% en redes <100 nodos
  * 
  * @example
@@ -57,8 +57,8 @@ public:
     /**
      * @brief Obtiene el identificador lógico del nodo
      *
-     * Genera un hash único o recupera el valor almacenado en LittleFS,
-     * evitando colisiones con valores prohibidos.
+      * Genera un hash único basado en la MAC del dispositivo,
+ * evitando colisiones con valores prohibidos.
      *
      * @param blacklist_len Tamaño de la lista negra (opcional, default: 2)
      * @param blacklist Valores prohibidos para el identificador (opcional, default: defaultBlacklist)
@@ -92,7 +92,7 @@ public:
      * @brief Guarda dirección de gateway
      * @param getwayAdress Dirección del gateway a guardar
      * 
-     * @details Almacena la dirección del gateway en LittleFS para comunicación
+     * @details Gateway no persistente (LittleFS deshabilitado)
      * 
      * @example
      * ```cpp
@@ -126,7 +126,7 @@ public:
      * @param blacklist Valores prohibidos para el identificador
      * @return uint8_t Nuevo ID generado
      * 
-     * @details Regenera el ID del nodo y lo guarda en LittleFS
+     * @details Regenera el ID del nodo sin persistencia
      * @warning Esto cambiará el ID del nodo permanentemente
      */
     uint8_t changeNodeID(const size_t blacklist_len, uint8_t *blacklist);
@@ -184,7 +184,7 @@ private:
     uint8_t crc8(const uint8_t *data, size_t len);
 
     /**
-     * @brief Carga un byte desde archivo de LittleFS
+     * @brief Carga un byte desde archivo de LittleFS (DESHABILITADO)
      * @param filename Nombre del archivo
      * @param value Referencia donde se guarda el valor leído
      * @return true si se leyó correctamente, false en caso contrario
@@ -197,10 +197,10 @@ private:
      * }
      * ```
      */
-    bool loadByteFromFile(const char *filename, uint8_t &value);
+    // bool loadByteFromFile(const char *filename, uint8_t &value);
 
     /**
-     * @brief Guarda un byte en archivo de LittleFS
+     * @brief Guarda un byte en archivo de LittleFS (DESHABILITADO)
      * @param filename Nombre del archivo
      * @param value Valor a guardar
      * 
@@ -209,6 +209,6 @@ private:
      * saveByteToFile("/config.dat", 42);
      * ```
      */
-    void saveByteToFile(const char *filename, uint8_t value);
+    // void saveByteToFile(const char *filename, uint8_t value);
 };
 #endif

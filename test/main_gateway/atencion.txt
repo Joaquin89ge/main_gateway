@@ -1,1 +1,166 @@
-falta comentar y corregir errores
+=== RTC MANAGER DS1302 - INSTRUCCIONES DE USO ===
+
+## Configuración de Hardware
+
+### Conexiones del DS1302:
+- DAT (Pin 12/D6 en ESP8266) -> Pin DAT del DS1302
+- CLK (Pin 14/D5 en ESP8266) -> Pin CLK del DS1302  
+- RST (Pin 13/D7 en ESP8266) -> Pin RST del DS1302
+- VCC -> 3.3V o 5V (el DS1302 funciona con ambos)
+- GND -> GND
+
+### Notas importantes:
+- El DS1302 usa comunicación serial de 3 hilos (no I2C)
+- Incluye batería de respaldo (CR2032)
+- Funciona con 3.3V y 5V
+- Muy preciso y confiable
+- **Librería confiable**: Usa la librería andrewrapp/RtcDS1302 (muy estable y ampliamente utilizada)
+
+## Uso en el código
+
+### 1. Inicialización:
+```cpp
+RtcManager rtc(RTC_DAT, RTC_CLK, RTC_RST);  // Crear instancia con pines
+
+void setup() {
+    if (!rtc.begin()) {
+        DEBUG_PRINTLN("Error al inicializar RTC");
+        return;
+    }
+}
+```
+
+### 2. Obtener fecha y hora:
+```cpp
+// Obtener fecha y hora completa
+RtcDateTime now = rtc.getDateTime();
+
+// Obtener solo hora y minutos como string
+String currentTime = rtc.getTimeString();  // "14:30"
+
+// Obtener componentes individuales
+uint8_t hora = now.Hour();        // 0-23
+uint8_t minuto = now.Minute();    // 0-59
+uint8_t segundo = now.Second();   // 0-59
+uint8_t dia = now.Day();          // 1-31
+uint8_t mes = now.Month();        // 1-12
+uint16_t anio = now.Year();       // 2000+
+```
+
+### 3. Configurar fecha y hora:
+```cpp
+// Crear fecha y hora
+RtcDateTime newDateTime(2025, 12, 25, 14, 30, 0);
+bool exito = rtc.setDateTime(newDateTime);
+if (exito) {
+    DEBUG_PRINTLN("Fecha configurada correctamente");
+}
+```
+
+### 4. Verificar funcionamiento:
+```cpp
+if (rtc.isRunning()) {
+    DEBUG_PRINTLN("RTC funcionando correctamente");
+} else {
+    DEBUG_PRINTLN("RTC no está funcionando");
+}
+```
+
+### 5. Comparación de tiempo:
+```cpp
+// Comparar dos horas en formato HH:MM
+bool coincide = rtc.compareHsAndMs("14:30", "14:30");
+
+// Comparar hora actual con hora específica
+bool coincide = rtc.compareCurrentTimeWith("14:30");
+```
+
+## Diferencias con la implementación anterior (DS3231):
+
+1. **Comunicación**: DS1302 usa 3 hilos, DS3231 usa I2C
+2. **Precisión**: DS3231 es más preciso, DS1302 es suficiente para la mayoría de aplicaciones
+3. **Costo**: DS1302 es más económico
+4. **Librería**: Usa la librería makuna/RTC (confiable y estable)
+5. **Pines**: Configuración específica para cada módulo
+6. **Simplicidad**: API limpia y fácil de usar
+
+## Configuración automática de fecha:
+
+En la función `begin()`, si el RTC no tiene fecha válida, se configura automáticamente con:
+- Hora: 12:00:00
+- Fecha: 01/01/2025
+
+**IMPORTANTE**: Comenta la línea de configuración automática después de la primera subida para que el reloj mantenga su hora.
+
+## Compatibilidad ESP32:
+
+Para usar con ESP32, solo cambia los pines en config.h:
+```cpp
+#define RTC_CLK 14  // Pin CLK del DS1302
+#define RTC_DAT 12  // Pin DAT del DS1302  
+#define RTC_RST 13  // Pin RST del DS1302
+```
+
+El resto del código funciona igual en ESP8266 y ESP32.
+
+## Integración con AppLogic:
+
+La clase `AppLogic` ahora recibe una referencia al `RtcManager` en su constructor:
+
+```cpp
+// En AppLogic.h
+RtcManager& rtc;  // Referencia al RtcManager
+
+// En AppLogic.cpp
+AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr, RtcManager& rtcMgr)
+    : nodeIdentity(identity), radio(radioMgr), rtc(rtcMgr) {
+    // ...
+}
+
+bool AppLogic::compareHsAndMs() {
+    // Obtener la hora actual del RTC
+    String currentTime = rtc.getTimeString();
+    
+    // Comparar con cada intervalo de horas configurado
+    for (int i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++) {
+        String targetTime = String(intervaloHorasSuelo[i]) + ":00";
+        if (rtc.compareHsAndMs(currentTime, targetTime)) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+Esto permite que `AppLogic` use las funcionalidades de tiempo del `RtcManager` de manera centralizada y eficiente.
+
+## Implementación basada en ejemplo oficial
+
+La implementación sigue el patrón recomendado por el autor de la librería `andrewrapp/RtcDS1302`:
+
+```cpp
+#include <RtcDS1302.h>
+
+ThreeWire myWire(12,14,13); // DAT, CLK, RST
+RtcDS1302<ThreeWire> Rtc(myWire);
+
+void setup() {
+    Rtc.Begin();
+    
+    RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
+    
+    if (!Rtc.IsDateTimeValid()) {
+        Rtc.SetDateTime(compiled);
+    }
+    
+    if (Rtc.GetIsWriteProtected()) {
+        Rtc.SetIsWriteProtected(false);
+    }
+    
+    if (!Rtc.GetIsRunning()) {
+        Rtc.SetIsRunning(true);
+    }
+}
+```
+
+Nuestra clase `RtcManager` encapsula esta funcionalidad y proporciona una API más limpia y fácil de usar.

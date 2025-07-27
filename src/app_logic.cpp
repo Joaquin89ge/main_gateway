@@ -78,36 +78,31 @@ void AppLogic::handleHello() {
   uint8_t from;                          // Sender address
   uint8_t flag;                          // Protocol detection FLAG
 
-  bool triSend = radio.recvMessageTimeout(buf, &len, &from, &flag,100);
+  bool triSend = radio.recvMessage(buf, &len, &from, &flag);
   if (triSend) {
-    DEBUG_PRINTLN("AppLogic::handleHello(): Entering.");
-    // Message successfully received
-    DEBUG_PRINT("AppLogic::handleHello(): Message received. Sender: 0x");
-    DEBUG_PRINT(String(from, HEX));
-    DEBUG_PRINT(", Length: ");
-    DEBUG_PRINT(String(len));
-    DEBUG_PRINT(", Flag: 0x");
-    DEBUG_PRINTLN(String(flag, HEX));
+    Serial.printf("AppLogic::handleHello(): Message received. Sender: 0x%02X, Length: %d, Flag: 0x%02X\n", from, len, flag);
 
     // Check if the FLAG corresponds to the HELLO message type
-    if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO && len == MAC_STR_LEN_WITH_NULL) {
-      DEBUG_PRINTLN("AppLogic::handleHello(): Message is of type HELLO.");
-      char receivedMac[MAC_STR_LEN_WITH_NULL];
+            if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::HELLO && len == MAC_STR_LEN_WITH_NULL) {
+      Serial.printf("AppLogic::handleHello(): Message is of type HELLO.\n");
+              char receivedMac[MAC_STR_LEN_WITH_NULL];
       // Copiar los bytes recibidos al buffer de la MAC
-      memcpy(receivedMac, buf, MAC_STR_LEN_WITH_NULL);
+              memcpy(receivedMac, buf, MAC_STR_LEN_WITH_NULL);
       // Check if it's the very first node being registered
-      DEBUG_PRINTLN("AppLogic::handleHello(): start the proses to registerNewNode.");
+      Serial.printf("AppLogic::handleHello(): start the proses to registerNewNode.\n");
       registerNewNode(*receivedMac, from);
-      DEBUG_PRINTLN("AppLogic::handleHello(): Exiting.");
+      Serial.printf("AppLogic::handleHello(): Exiting.\n");
+      return;
     }
-   else  // The flag is not HELLO
-  {
-    DEBUG_PRINT("AppLogic::handleHello(): Message received, but FLAG (0x");
-    DEBUG_PRINT(String(flag, HEX));
-    DEBUG_PRINT(" or  Length: ");
-    DEBUG_PRINT(String(len));
-    DEBUG_PRINTLN(") is not HELLO. Ignoring message.");
-  }}
+      else  // The flag is not HELLO
+    {
+    Serial.printf("AppLogic::handleHello(): Message received, but FLAG (0x%02X or Length: %d", flag, len);
+  
+    Serial.printf(") is not HELLO. Ignoring message.\n");
+    return;
+  }
+  
+}
 }
 
 bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
@@ -115,41 +110,33 @@ bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
   if (mapNodesIDsMac.empty())  // registro de una
   {
 
-    DEBUG_PRINT("AppLogic::handleHello(): First node detected. Registering 0x");
-    DEBUG_PRINT(String(from, HEX));
-    DEBUG_PRINTLN(" as node 0.");
+    Serial.printf("AppLogic::handleHello(): First node detected. Registering 0x%02X as node 0.\n", from);
     mapNodesIDsMac[from] = String(receivedMac);
-    DEBUG_PRINTLN("AppLogic::handleHello(): First node registered. Exiting.");
+    Serial.printf("AppLogic::handleHello(): First node registered. Exiting.\n");
     //return true;  // Exit the function as the first node has been processed succesful.
   }
 
   // If not the first node, check if it's already registered
-  DEBUG_PRINT("AppLogic::handleHello(): Searching if node 0x");
-  DEBUG_PRINT(String(from, HEX));
-  DEBUG_PRINT(" is already registered among ");
-  DEBUG_PRINT(String(mapNodesIDsMac.size()));
-  DEBUG_PRINTLN(" existing nodes.");
+  Serial.printf("AppLogic::handleHello(): Searching if node 0x%02X is already registered among %d existing nodes.\n", from, mapNodesIDsMac.size());
 
   // 'it' será un iterador al elemento si se encuentra
   auto it1 = mapNodesIDsMac.find(from);
 
   // Comprobar si el iterador no es el final del mapa (es decir, la clave se encontró)
   if (it1 != mapNodesIDsMac.end()) {
-    DEBUG_PRINT("  ¡Clave encontrada!");
-    if (it1->second == String(receivedMac)) {
-      DEBUG_PRINT("nodo ya registrado");
+    Serial.printf("  ¡Clave encontrada!\n");
+            if (it1->second == String(receivedMac, MAC_STR_LEN_WITH_NULL)) {
+      Serial.printf("nodo ya registrado\n");
       //return true;  // Exit the function as the first node has been processed succesful.
-    } else if (it1->second != String(receivedMac)) {
-      DEBUG_PRINT("nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: ");
-      DEBUG_PRINT(it1->second);  // it1->second es el valor (la String de la MAC)
-      DEBUG_PRINTLN("AppLogic::handleHello(): envio send change ID.");
+            } else if (it1->second != String(receivedMac, MAC_STR_LEN_WITH_NULL)) {
+      Serial.printf("nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: ");
+      Serial.printf(it1->second.c_str());  // it1->second es el valor (la String de la MAC)
+      Serial.printf("AppLogic::handleHello(): envio send change ID.\n");
       sendChangeID(from);
       return false;  // Exit the function as the first node hasn't been processed .
     }
   } else {
-    DEBUG_PRINT("AppLogic::handleHello(): Nuevo Nodo ya que no esta registrado su key. Registering 0x");
-    DEBUG_PRINT(String(from, HEX));
-    DEBUG_PRINTLN(" as node 0.");
+    Serial.printf("AppLogic::handleHello(): Nuevo Nodo ya que no esta registrado su key. Registering 0x%02X as node 0.\n", from);
     mapNodesIDsMac[from] = String(receivedMac);
     //return true;  // Exit the function as the first node has been processed succesful.
   }
@@ -160,12 +147,9 @@ void AppLogic::sendChangeID(uint8_t from) {
   // Esto asegura que el búfer local es lo suficientemente grande.
   uint8_t IDsAcotados[RH_MESH_MAX_MESSAGE_LEN];
   uint8_t counterNodes = mapNodesIDsMac.size();
-  DEBUG_PRINT("AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x");
-  DEBUG_PRINTLN(String(from, HEX));
-  DEBUG_PRINT("AppLogic::sendChangeID(): counterNodes actual: ");
-  DEBUG_PRINTLN(String(counterNodes));
-  DEBUG_PRINT("AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: ");
-  DEBUG_PRINTLN(String(RH_MESH_MAX_MESSAGE_LEN));
+  Serial.printf("AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x%02X\n", from);
+  Serial.printf("AppLogic::sendChangeID(): counterNodes actual: %d\n", counterNodes);
+  Serial.printf("AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: %d\n", RH_MESH_MAX_MESSAGE_LEN);
 
   // Calcula la cantidad de bytes que realmente necesitamos copiar de nodeIDs.
   // Esto debe ser el menor entre:
@@ -185,11 +169,10 @@ void AppLogic::sendChangeID(uint8_t from) {
         i++;
       }
     }
-    DEBUG_PRINT("AppLogic::sendChangeID(): Se copiaron ");
-    DEBUG_PRINT(String(bytesToCopy));
-    DEBUG_PRINTLN(" bytes de nodeIDs a IDsAcotados.");
+    Serial.printf("AppLogic::sendChangeID(): Se copiaron ");
+    Serial.printf("Se copiaron %d bytes de nodeIDs a IDsAcotados.\n", bytesToCopy);
   } else {
-    DEBUG_PRINTLN("AppLogic::sendChangeID(): No hay IDs de nodos para copiar (counterNodes es 0).");
+    Serial.printf("AppLogic::sendChangeID(): No hay IDs de nodos para copiar (counterNodes es 0).\n");
     // Si no hay nodos, el mensaje puede ser solo el 'from' o un mensaje vacío si tiene sentido.
     // En este caso, IDsAcotados ya está "vacío" o con basura, así que solo pondremos 'from'.
   }
@@ -198,8 +181,7 @@ void AppLogic::sendChangeID(uint8_t from) {
   // Esto sobrescribe el primer byte si se copió algo de nodeIDs.
   // Asegúrate de que esto sea el comportamiento deseado.
   IDsAcotados[0] = from;
-  DEBUG_PRINT("AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x");
-  DEBUG_PRINTLN(String(IDsAcotados[0], HEX));
+      Serial.printf("AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x%02X\n", IDsAcotados[0]);
 
   // Envía el mensaje. La longitud del mensaje es bytesToCopy, ya que eso es lo que copiamos de nodeIDs
   // y lo que queremos enviar (más el ajuste del primer byte).
@@ -209,7 +191,7 @@ void AppLogic::sendChangeID(uint8_t from) {
   // Si el mensaje es "cambia tu ID a X", el contenido y la longitud serían diferentes.
   // Asumiendo que el mensaje es una lista de IDs de nodos registrados para que 'from' sepa con quién no colisionar.
   radio.sendMessage(from, IDsAcotados, bytesToCopy, Protocol::MessageType::ERROR_DIRECCION);
-  DEBUG_PRINTLN("AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.");
+  Serial.printf("AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.\n");
 }
 
 void AppLogic::timer() {
@@ -221,11 +203,11 @@ void AppLogic::timer() {
     sendAnnounce();
   } else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false) {
     temBuf1 = tiempoActual;
-    DEBUG_PRINTLN("salto timer requestAtmosphericData");
+    Serial.printf("salto timer requestAtmosphericData\n");
     requestGroundGpsData();
   }
   if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
-    DEBUG_PRINTLN("salto hora requestGroundGpsData");
+    Serial.printf("salto hora requestGroundGpsData\n");
     requestGroundGpsData();
   }
 }
@@ -235,10 +217,10 @@ void AppLogic::timer() {
  *
  */
 void AppLogic::sendAnnounce() {
-  DEBUG_PRINTLN("enviando announce KEY:");
+  Serial.printf("enviando announce KEY:\n");
   uint8_t key = Protocol::KEY;
-  DEBUG_PRINTLN(String(key));
-  DEBUG_PRINTLN(String(radio.sendMessage(RH_BROADCAST_ADDRESS, &key, sizeof(key), static_cast<uint8_t>(Protocol::MessageType::ANNOUNCE))));
+      Serial.printf("enviando announce KEY: %d\n", key);
+    Serial.printf("Resultado envío: %d\n", radio.sendMessage(RH_BROADCAST_ADDRESS, &key, sizeof(key), static_cast<uint8_t>(Protocol::MessageType::ANNOUNCE)));
   return;
 }
 
@@ -248,35 +230,41 @@ void AppLogic::sendAnnounce() {
  */
 void AppLogic::requestAtmosphericData() {
 
-  DEBUG_PRINTLN("DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.");
+  Serial.printf("DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.\n");
 
-  std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> atmosSamples;
+  // Verificar memoria disponible antes de crear arrays grandes
+  if (ESP.getFreeHeap() < 2048) {
+    Serial.printf("DEBUG: ADVERTENCIA: Memoria baja antes de procesar datos atmosféricos\n");
+    return; // Salir si la memoria es muy baja
+  }
+
+  std::array<Protocol::AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> atmosSamples;
   uint8_t buf[RH_MESH_MAX_MESSAGE_LEN];  // Búfer para el mensaje recibido
   uint8_t key = Protocol::KEY;
-  uint8_t len;                                                                           // Longitud máxima del búfer
+  uint8_t len = 0;                                                                       // Longitud máxima del búfer
   uint8_t from;                                                                          // Dirección del remitente
   uint8_t flag = static_cast<uint8_t>(Protocol::MessageType::REQUEST_DATA_ATMOSPHERIC);  // FLAG de detecccion protocolo
   uint8_t nodeId = 0;
 
   // Calcula el tamaño esperado de los datos atmosféricos para validación
-  size_t expectedAtmosphericDataSize = sizeof(AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS;
-  DEBUG_PRINT("DEBUG: Tamano de buffer para recv: ");
-  DEBUG_PRINT(RH_MESH_MAX_MESSAGE_LEN);
-  DEBUG_PRINT(", Tamano esperado de muestras: ");
-  DEBUG_PRINTLN(expectedAtmosphericDataSize);
+      size_t expectedAtmosphericDataSize = sizeof(Protocol::AtmosphericSample) * NUMERO_MUESTRAS_ATMOSFERICAS;
+  Serial.printf("DEBUG: Tamano de buffer para recv: ");
+  Serial.printf("%d", RH_MESH_MAX_MESSAGE_LEN);
+  Serial.printf(", Tamano esperado de muestras: ");
+  Serial.printf("%d\n", expectedAtmosphericDataSize);
 
 
   for (const auto &pair : mapNodesIDsMac) {
     nodeId = pair.first;
-    DEBUG_PRINT("DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x");
-    DEBUG_PRINTLN(String(nodeId, HEX));
+    Serial.printf("DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x");
+    Serial.printf("%02X\n", nodeId);
 
-    DEBUG_PRINT("DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x");
+    Serial.printf("DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x");
     // Envio de la solicitud
-    DEBUG_PRINT(String(nodeId, HEX));
-    DEBUG_PRINT(" con payload de ");
-    DEBUG_PRINT(len);  // Aquí 'len' es el tamaño completo del buffer de recepción, no el payload del REQUEST
-    DEBUG_PRINTLN(" bytes (manager.sendMessage).");
+    Serial.printf("%02X", nodeId);
+    Serial.printf(" con payload de ");
+    Serial.printf("%d", len);  // Aquí 'len' es el tamaño completo del buffer de recepción, no el payload del REQUEST
+    Serial.printf(" bytes (manager.sendMessage).\n");
 
     // NOTA: Si el mensaje REQUEST_DATA_ATMOSPHERIC no lleva payload,
     // es posible que quieras usar `0` para `len` o pasar un puntero nulo como `data`.
@@ -292,107 +280,96 @@ void AppLogic::requestAtmosphericData() {
     uint8_t intentos = 0;
     while (t == false && intentos <= connectionRetries) {
       intentos++;
-      DEBUG_PRINT("DEBUG: Intento ");
-      DEBUG_PRINT(intentos);
-      DEBUG_PRINT(" de recepcion para nodo 0x");
-      DEBUG_PRINT(String(nodeId, HEX));
-      DEBUG_PRINT(" (Timeout: ");
-      DEBUG_PRINT(TIMEOUTGRAL);
-      DEBUG_PRINTLN("ms).");
+      Serial.printf("DEBUG: Intento %d de recepcion para nodo 0x%02X (Timeout: %d ms).\n", intentos, nodeId, TIMEOUTGRAL);
 
       uint8_t current_recv_len = sizeof(buf);  // Reiniciar len para cada llamada a recvMessageTimeout
 
       // Intenta recibir un mensaje.
       if (radio.recvMessageTimeout(buf, &current_recv_len, &from, &flag, TIMEOUTGRAL)) {
-        DEBUG_PRINT("DEBUG: Mensaje recibido. Remitente: 0x");
-        DEBUG_PRINT(String(from, HEX));
-        DEBUG_PRINT(", Tipo: 0x");
-        DEBUG_PRINT(String(flag, HEX));
-        DEBUG_PRINT(", Longitud: ");
-        DEBUG_PRINTLN(current_recv_len);
+        Serial.printf("DEBUG: Mensaje recibido. Remitente: 0x%02X, Tipo: 0x%02X, Longitud: %d\n", from, flag, current_recv_len);
 
         // Verifica tipo de mensaje y remitente
         if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_ATMOSPHERIC && from == nodeId) {
-          DEBUG_PRINTLN("DEBUG: Tipo de mensaje y remitente coinciden.");
+          Serial.printf("DEBUG: Tipo de mensaje y remitente coinciden.\n");
 
           // 1. Verificar tamaño del payload recibido
           if (current_recv_len != expectedAtmosphericDataSize) {
-            DEBUG_PRINT("DEBUG: ERROR: Tamano de payload INCORRECTO. Recibido: ");
-            DEBUG_PRINT(current_recv_len);
-            DEBUG_PRINT(" bytes, Esperado: ");
-            DEBUG_PRINT(expectedAtmosphericDataSize);
-            DEBUG_PRINTLN(" bytes.");
+            Serial.printf("DEBUG: ERROR: Tamano de payload INCORRECTO. Recibido: ");
+            Serial.printf("%d", current_recv_len);
+            Serial.printf(" bytes, Esperado: ");
+            Serial.printf("%d", expectedAtmosphericDataSize);
+            Serial.printf(" bytes.\n");
 
 
             // No se modifica 't', el bucle continuará si hay reintentos.
           } else {
-            DEBUG_PRINTLN("DEBUG: Tamano de payload CORRECTO. Realizando memcpy.");
+            Serial.printf("DEBUG: Tamano de payload CORRECTO. Realizando memcpy.\n");
             // 2. Convertir a nuestra estructura
             memcpy(atmosSamples.data(), buf, current_recv_len);
             AtmosphericSampleNodes[nodeId] = atmosSamples;
-            DEBUG_PRINT("DEBUG: Datos de nodo 0x");
-            DEBUG_PRINT(String(nodeId, HEX));
-            DEBUG_PRINTLN(" almacenados.");
+            Serial.printf("DEBUG: Datos de nodo ");
+            Serial.printf("%02X", nodeId);
+            Serial.printf(" almacenados.\n");
             t = true;  // Marca como exitoso
 
 
 
             //_--------------------------------borrar
             if (1 == 1) {
-              DEBUG_PRINTLN("--- DEBUG: Imprimiendo muestras atmosfericas almacenadas ---");
+              Serial.printf("--- DEBUG: Imprimiendo muestras atmosfericas almacenadas ---\n");
 
               if (AtmosphericSampleNodes.empty()) {
-                DEBUG_PRINTLN("DEBUG: El mapa AtmosphericSampleNodes esta vacio.");
+                Serial.printf("DEBUG: El mapa AtmosphericSampleNodes esta vacio.\n");
                 return;
               }
 
               // Itera sobre cada entrada (par clave-valor) en el mapa
               for (const auto &pair : AtmosphericSampleNodes) {
                 uint8_t nodeId = pair.first;  // La clave es el ID del nodo
-                // Accedemos al std::array de AtmosphericSample usando .second
-                const std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> &samples = pair.second;
+                            // Accedemos al std::array de AtmosphericSample usando .second
+            const std::array<Protocol::AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS> &samples = pair.second;
 
-                DEBUG_PRINT("DEBUG: Nodo ID: 0x");
-                DEBUG_PRINT(String(nodeId, HEX));  // Convierte el ID a String hexadecimal para imprimir
-                DEBUG_PRINTLN(" ----");
+                Serial.printf("DEBUG: Nodo ID: ");
+                Serial.printf("%02X", nodeId);  // Convierte el ID a String hexadecimal para imprimir
+                Serial.printf(" ----\n");
 
                 // Itera sobre cada AtmosphericSample dentro del array para este nodo
                 for (size_t i = 0; i < samples.size(); ++i) {
-                  const AtmosphericSample &sample = samples[i];  // Obtén una referencia a la muestra actual
+                  const Protocol::AtmosphericSample &sample = samples[i];  // Obtén una referencia a la muestra actual
 
-                  DEBUG_PRINT("DEBUG:   Muestra ");
-                  DEBUG_PRINT(i + 1);  // Para empezar a contar desde 1
-                  DEBUG_PRINT(": ");
+                  Serial.printf("DEBUG:   Muestra ");
+                  Serial.printf("%d", i + 1);  // Para empezar a contar desde 1
+                  Serial.printf(": ");
 
                   // Temperatura: Se divide por 10.0 para obtener el valor flotante
-                  DEBUG_PRINT("Temp=");
-                  DEBUG_PRINT((float)sample.temp / 10.0);  // Imprimir float
-                  DEBUG_PRINT("C, ");
+                  Serial.printf("Temp=");
+                  Serial.printf("%.1f", (float)sample.temp / 10.0);  // Imprimir float
+                  Serial.printf("C, ");
 
                   // Humedad: Se divide por 10.0 para obtener el valor flotante
-                  DEBUG_PRINT("Hum=");
-                  DEBUG_PRINT((float)sample.moisture / 10.0);  // Imprimir float
-                  DEBUG_PRINT("%");
+                  Serial.printf("Hum=");
+                  Serial.printf("%.1f", (float)sample.moisture / 10.0);  // Imprimir float
+                  Serial.printf("%%");
 
                   // Hora y Minuto: Requiere lógica de formato manual para el cero inicial
-                  DEBUG_PRINT(", Hora=");
+                  Serial.printf(", Hora=");
                   if (sample.hour < 10) {
-                    DEBUG_PRINT("0");  // Rellena con cero si es necesario
+                    Serial.printf("0");  // Rellena con cero si es necesario
                   }
-                  DEBUG_PRINT(sample.hour);
-                  DEBUG_PRINT(":");
+                  Serial.printf("%d", sample.hour);
+                  Serial.printf(":");
                   if (sample.minute < 10) {
-                    DEBUG_PRINT("0");  // Rellena con cero si es necesario
+                    Serial.printf("0");  // Rellena con cero si es necesario
                   }
-                  DEBUG_PRINT(sample.minute);
+                  Serial.printf("%d", sample.minute);
 
-                  DEBUG_PRINTLN("");  // Nueva línea para la siguiente muestra
+                  Serial.printf("\n");  // Nueva línea para la siguiente muestra
                 }
-                DEBUG_PRINT("DEBUG: ---- Fin de muestras para Nodo ID: 0x");
-                DEBUG_PRINT(String(nodeId, HEX));
-                DEBUG_PRINTLN(" ----");
+                Serial.printf("DEBUG: ---- Fin de muestras para Nodo ID: 0x");
+                Serial.printf("%02X", nodeId);
+                Serial.printf(" ----\n");
               }
-              DEBUG_PRINTLN("--- DEBUG: Fin de impresion de muestras atmosfericas ---");
+              Serial.printf("--- DEBUG: Fin de impresion de muestras atmosfericas ---\n");
             }
 
 
@@ -401,7 +378,7 @@ void AppLogic::requestAtmosphericData() {
             break;  // Salir del bucle while
           }
         } else {
-          DEBUG_PRINT("DEBUG: Mensaje recibido pero NO ES LA RESPUESTA ESPERADA (tipo o remitente incorrecto).");
+          Serial.printf("DEBUG: Mensaje recibido pero NO ES LA RESPUESTA ESPERADA (tipo o remitente incorrecto).\n");
         }
       }
       if (t == false) {
@@ -413,16 +390,16 @@ void AppLogic::requestAtmosphericData() {
     }  // Fin del while de reintentos
 
     if (!t) {
-      DEBUG_PRINT("DEBUG: Fallo al obtener datos de nodo 0x");
-      DEBUG_PRINT(String(nodeId, HEX));
-      DEBUG_PRINTLN(" despues de todos los intentos.");
+      Serial.printf("DEBUG: Fallo al obtener datos de nodo 0x");
+      Serial.printf("%02X", nodeId);
+      Serial.printf(" despues de todos los intentos.\n");
     }
-    DEBUG_PRINTLN("DEBUG: ---");  // Separador entre nodos
+    Serial.printf("DEBUG: ---\n");  // Separador entre nodos
     
     // Delay entre procesamiento de nodos
     delay(DELAY_BETWEEN_NODES);
   }                               // Fin del for de nodos
-  DEBUG_PRINTLN("DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.");
+  Serial.printf("DEBUG: [requestAtmosphericData] Finalizado el ciclo de solicitud.\n");
 }
 
 
@@ -432,7 +409,7 @@ void AppLogic::requestAtmosphericData() {
 void AppLogic::requestGroundGpsData() {
 
   // DEBUG: Inicio de la función principal de solicitud de datos de suelo y GPS.
-  DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- INICIO --");
+  Serial.printf("DEBUG: [requestGroundGpsData] -- INICIO --\n");
 
   // std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> groundSamples; // Ya está definido como miembro del mapa
   uint8_t buf[RH_MESH_MAX_MESSAGE_LEN] = { 0 };  // Búfer para el mensaje recibido
@@ -442,25 +419,28 @@ void AppLogic::requestGroundGpsData() {
   uint8_t nodeId;  // FLAG de detección protocolo
   uint8_t key = Protocol::KEY;
 
-  size_t expectedGroundcDataSize = sizeof(GroundGpsPacket);
+      size_t expectedGroundcDataSize = sizeof(Protocol::GroundGpsPacket);
 
   // DEBUG: Mostrar tamaño esperado de los datos.
-  DEBUG_PRINT("DEBUG: Tamano esperado de datos: ");
-  DEBUG_PRINT(String(expectedGroundcDataSize));
-  DEBUG_PRINTLN(" bytes.");
+  Serial.printf("DEBUG: Tamano esperado de datos: ");
+  Serial.printf("%d", expectedGroundcDataSize);
+  Serial.printf(" bytes.\n");
 
 
   for (const auto &pair : mapNodesIDsMac) {
     nodeId = pair.first;
 
-    // DEBUG: Procesando un nuevo nodo.
-    DEBUG_PRINT("DEBUG: Procesando nodo ID: 0x");
-    DEBUG_PRINT(String(nodeId, HEX));
-    DEBUG_PRINTLN("");
+    // Inicio del contador de tiempo para este nodo
+    unsigned long tiempoInicioNodo = millis();
 
-    DEBUG_PRINT("DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x");
-    DEBUG_PRINT(String(nodeId, HEX));
-    DEBUG_PRINTLN(".");
+    // DEBUG: Procesando un nuevo nodo.
+    Serial.printf("DEBUG: Procesando nodo ID: 0x");
+    Serial.printf("%02X\n", nodeId);
+    Serial.printf("\n");
+
+    Serial.printf("DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x");
+    Serial.printf("%02X", nodeId);
+    Serial.printf(".\n");
 
     radio.sendMessage(nodeId, &key, sizeof(key), flag);
 
@@ -473,37 +453,46 @@ void AppLogic::requestGroundGpsData() {
 
       intentos++;
       // DEBUG: Mostrar el número de intento actual.
-      DEBUG_PRINT("DEBUG: Intento de recepcion #");
-      DEBUG_PRINT(String(intentos));
-      DEBUG_PRINT(" para nodo 0x");
-      DEBUG_PRINT(String(nodeId, HEX));
-      DEBUG_PRINTLN(".");
+      Serial.printf("DEBUG: Intento de recepcion #");
+      Serial.printf("%d", intentos);
+      Serial.printf(" para nodo 0x");
+      Serial.printf("%02X", nodeId);
+      Serial.printf(".\n");
 
+      // Inicio del contador de tiempo para este intento
+      unsigned long tiempoInicio = millis();
+      Serial.printf("DEBUG: Iniciando espera de respuesta... \n");
 
       // Intenta recibir un mensaje.
       if (radio.recvMessageTimeout(buf, &len, &from, &flag, TIMEOUTGRAL)) {
 
+        // Calcular tiempo transcurrido
+        unsigned long tiempoTranscurrido = millis() - tiempoInicio;
+        Serial.printf("DEBUG: Respuesta recibida en ");
+        Serial.printf("%lu", tiempoTranscurrido);
+        Serial.printf(" ms.\n");
+
         // DEBUG: Mensaje recibido. Mostrar remitente, tipo y longitud.
-        DEBUG_PRINT("DEBUG: Mensaje recibido de 0x");
-        DEBUG_PRINT(String(from, HEX));
-        DEBUG_PRINT(", Tipo: 0x");
-        DEBUG_PRINT(String(flag, HEX));
-        DEBUG_PRINT(", Longitud: ");
-        DEBUG_PRINTLN(String(len));
+        Serial.printf("DEBUG: Mensaje recibido de 0x");
+        Serial.printf("%02X", from);
+        Serial.printf(", Tipo: 0x");
+        Serial.printf("%02X", flag);
+        Serial.printf(", Longitud: ");
+        Serial.printf("%d\n", len);
 
         if (static_cast<Protocol::MessageType>(flag) == Protocol::MessageType::DATA_GPS_CROUND && from == nodeId) {
           // DEBUG: El mensaje es el esperado.
-          DEBUG_PRINTLN("DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.");
+          Serial.printf("DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.\n");
 
           // 1. Verificar tamaño
           if (len != expectedGroundcDataSize) {
 
             // DEBUG: Mensaje de error por tamaño incorrecto.
-            DEBUG_PRINT("DEBUG: ERROR: Tamano incorrecto. Recibido: ");
-            DEBUG_PRINT(String(len));
-            DEBUG_PRINT(", Esperado: ");
-            DEBUG_PRINT(String(expectedGroundcDataSize));
-            DEBUG_PRINTLN(".");
+            Serial.printf("DEBUG: ERROR: Tamano incorrecto. Recibido: ");
+            Serial.printf("%d", len);
+            Serial.printf(", Esperado: ");
+            Serial.printf("%d", expectedGroundcDataSize);
+            Serial.printf(".\n");
 
             t = false;
             continue;  // Continúa al siguiente intento
@@ -513,11 +502,11 @@ void AppLogic::requestGroundGpsData() {
                 // Paso 1: Asegurarse de que el nodo ya existe en el mapa o crearlo con un array por defecto.
                 // Si el nodo no existe, groundGpsSamplesNodes[nodeId] lo creará con un array inicializado.
                 // Si ya existe, obtendrá una referencia a ese array.
-                std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO>& nodeSamples = groundGpsSamplesNodes[nodeId];
+                std::array<Protocol::GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO>& nodeSamples = groundGpsSamplesNodes[nodeId];
 
                 // Paso 2: Copia los bytes del búfer 'buf' directamente a una variable temporal de GroundGpsPacket.
                 // Esto es necesario para asegurar una copia limpia y manejable.
-                GroundGpsPacket receivedPacket;
+                Protocol::GroundGpsPacket receivedPacket;
                 memcpy(&receivedPacket, buf, expectedGroundcDataSize); // Copia el contenido del búfer al paquete temporal
 
                 // Paso 3: Define la 'count' (posición) donde quieres almacenar este paquete.
@@ -525,20 +514,20 @@ void AppLogic::requestGroundGpsData() {
                 // Verificar que la posición 'count' sea válida
                 if (countGroundSamples < CANTIDAD_MUESTRAS_SUELO) {
                     nodeSamples[countGroundSamples] = receivedPacket; // Asigna el paquete recibido a la posición 'count'
-                    DEBUG_PRINT("DEBUG: Paquete de nodo 0x");
-                    DEBUG_PRINT(String(nodeId, HEX));
-                    DEBUG_PRINT(" almacenado en posicion ");
-                    DEBUG_PRINT(String(countGroundSamples));
-                    DEBUG_PRINTLN(".");
+                    Serial.printf("DEBUG: Paquete de nodo 0x");
+                    Serial.printf("%02X", nodeId);
+                    Serial.printf(" almacenado en posicion ");
+                    Serial.printf("%d", countGroundSamples);
+                    Serial.printf(".\n");
                     countGroundSamples ++;
                     t = true; // Marca como exitoso
                     
                 } else {
-                    DEBUG_PRINT("DEBUG: ERROR: Posicion 'count' (");
-                    DEBUG_PRINT(String(countGroundSamples));
-                    DEBUG_PRINT(") excede el tamano del array (");
-                    DEBUG_PRINT(String(CANTIDAD_MUESTRAS_SUELO));
-                    DEBUG_PRINTLN("). Paquete no almacenado.");
+                    Serial.printf("DEBUG: ERROR: Posicion 'count' (");
+                    Serial.printf("%d", countGroundSamples);
+                    Serial.printf(") excede el tamano del array (");
+                    Serial.printf("%d", CANTIDAD_MUESTRAS_SUELO);
+                    Serial.printf("). Paquete no almacenado.\n");
                     break;
                 }
 
@@ -546,77 +535,77 @@ void AppLogic::requestGroundGpsData() {
             //----------------------------borrar -----------------
             // Este bloque de debug está aquí en tu código original. No lo muevo para no alterar la lógica.
             if (1 == 1) {  // Esto es siempre verdadero, por lo que siempre se ejecuta.
-              DEBUG_PRINTLN("--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---");
+              Serial.printf("--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---\n");
 
               if (groundGpsSamplesNodes.empty()) {
-                DEBUG_PRINTLN("DEBUG: El mapa groundGpsSamplesNodes esta vacio.");
+                Serial.printf("DEBUG: El mapa groundGpsSamplesNodes esta vacio.\n");
                 // return; // Esta línea podría salir de la función principal, lo cual afectaría la lógica.
                 // Mantengo tu código, pero si se llama aquí, no debería salir de la función requestGroundGpsData.
               }
 
               for (const auto &pair_inner : groundGpsSamplesNodes) {  // Usar 'pair_inner' para evitar conflicto de nombre
                 uint8_t nodeId_inner = pair_inner.first;
-                const std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> &packets_inner = pair_inner.second;
+                const std::array<Protocol::GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO> &packets_inner = pair_inner.second;
 
-                DEBUG_PRINT("DEBUG: Nodo ID (interno): 0x");
-                DEBUG_PRINT(String(nodeId_inner, HEX));
-                DEBUG_PRINTLN(" ----");
+                Serial.printf("DEBUG: Nodo ID (interno): 0x");
+                Serial.printf("%02X", nodeId_inner);
+                Serial.printf(" ----\n");
 
                 for (size_t i_inner = 0; i_inner < packets_inner.size(); ++i_inner) {
-                  const GroundGpsPacket &packet_inner = packets_inner[i_inner];
-                  const GroundSensor &ground_inner = packet_inner.ground;
-                  const GpsSensor &gps_inner = packet_inner.gps;
+                                  const Protocol::GroundGpsPacket &packet_inner = packets_inner[i_inner];
+                const Protocol::GroundSensor &ground_inner = packet_inner.ground;
+                const Protocol::GpsSensor &gps_inner = packet_inner.gps;
 
-                  DEBUG_PRINT("DEBUG:   Paquete ");
-                  DEBUG_PRINT(String(i_inner + 1));
-                  DEBUG_PRINT(" (Suelo + GPS): ");
-                  DEBUG_PRINTLN("");
+                  Serial.printf("DEBUG:   Paquete ");
+                  Serial.printf("%d", i_inner + 1);
+                  Serial.printf(" (Suelo + GPS): ");
+                  Serial.printf("\n");
 
-                  DEBUG_PRINT("DEBUG:     [SUELO] Temp=");
-                  DEBUG_PRINT(String((float)ground_inner.temp / 10.0, 1));
-                  DEBUG_PRINT("C, Hum=");
-                  DEBUG_PRINT(String((float)ground_inner.moisture / 10.0, 1));
-                  DEBUG_PRINT("%, N=");
-                  DEBUG_PRINT(String(ground_inner.n));
-                  DEBUG_PRINT(", P=");
-                  DEBUG_PRINT(String(ground_inner.p));
-                  DEBUG_PRINT(", K=");
-                  DEBUG_PRINT(String(ground_inner.k));
-                  DEBUG_PRINT(", EC=");
-                  DEBUG_PRINT(String(ground_inner.EC));
-                  DEBUG_PRINT(", PH=");
-                  DEBUG_PRINT(String((float)ground_inner.PH / 10.0, 1));
-                  DEBUG_PRINTLN("");
+                  Serial.printf("DEBUG:     [SUELO] Temp=");
+                  Serial.printf("%.1f", (float)ground_inner.temp / 10.0);
+                  Serial.printf("C, Hum=");
+                  Serial.printf("%.1f", (float)ground_inner.moisture / 10.0);
+                  Serial.printf("%%, N=");
+                  Serial.printf("%d", ground_inner.n);
+                  Serial.printf(", P=");
+                  Serial.printf("%d", ground_inner.p);
+                  Serial.printf(", K=");
+                  Serial.printf("%d", ground_inner.k);
+                  Serial.printf(", EC=");
+                  Serial.printf("%d", ground_inner.EC);
+                  Serial.printf(", PH=");
+                  Serial.printf("%.1f", (float)ground_inner.PH / 10.0);
+                  Serial.printf("\n");
 
-                  DEBUG_PRINT("DEBUG:     [GPS] Lat=");
-                  DEBUG_PRINT(String((float)gps_inner.latitude / 10000000.0, 7));
-                  DEBUG_PRINT(", Lon=");
-                  DEBUG_PRINT(String((float)gps_inner.longitude / 10000000.0, 7));
-                  DEBUG_PRINT(", Alt=");
-                  DEBUG_PRINT(String(gps_inner.altitude));
-                  DEBUG_PRINT("m, Hora=");
+                  Serial.printf("DEBUG:     [GPS] Lat=");
+                  Serial.printf("%.7f", (float)gps_inner.latitude / 10000000.0);
+                  Serial.printf(", Lon=");
+                  Serial.printf("%.7f", (float)gps_inner.longitude / 10000000.0);
+                  Serial.printf(", Alt=");
+                  Serial.printf("%d", gps_inner.altitude);
+                  Serial.printf("m, Hora=");
 
-                  if (gps_inner.hour < 10) { DEBUG_PRINT("0"); }
-                  DEBUG_PRINT(String(gps_inner.hour));
-                  DEBUG_PRINT(":");
-                  if (gps_inner.minute < 10) { DEBUG_PRINT("0"); }
-                  DEBUG_PRINT(String(gps_inner.minute));
+                  if (gps_inner.hour < 10) { Serial.printf("0"); }
+                  Serial.printf("%d", gps_inner.hour);
+                  Serial.printf(":");
+                  if (gps_inner.minute < 10) { Serial.printf("0"); }
+                  Serial.printf("%d", gps_inner.minute);
 
-                  DEBUG_PRINT(", Flags=0x");
-                  DEBUG_PRINT(String(gps_inner.flags, HEX));
+                  Serial.printf(", Flags=");
+                  Serial.printf("%02X", gps_inner.flags);
 
-                  if (gps_inner.flags & 0x01) { DEBUG_PRINT(" (Ubicacion Valida)"); }
-                  if (gps_inner.flags & 0x02) { DEBUG_PRINT(" (Altitud Valida)"); }
-                  if (gps_inner.flags & 0x04) { DEBUG_PRINT(" (Hora Valida)"); }
+                  if (gps_inner.flags & 0x01) { Serial.printf(" (Ubicacion Valida)"); }
+                  if (gps_inner.flags & 0x02) { Serial.printf(" (Altitud Valida)"); }
+                  if (gps_inner.flags & 0x04) { Serial.printf(" (Hora Valida)"); }
 
-                  DEBUG_PRINTLN("");
-                  DEBUG_PRINTLN("DEBUG:   --------------------");
+                  Serial.printf("\n");
+                  Serial.printf("DEBUG:   --------------------\n");
                 }
-                DEBUG_PRINT("DEBUG: ---- Fin de muestras para Nodo ID (interno): 0x");
-                DEBUG_PRINT(String(nodeId_inner, HEX));
-                DEBUG_PRINTLN(" ----");
+                Serial.printf("DEBUG: ---- Fin de muestras para Nodo ID (interno): ");
+                Serial.printf("%02X", nodeId_inner);
+                Serial.printf(" ----\n");
               }
-              DEBUG_PRINTLN("--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---");
+              Serial.printf("--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---\n");
             }  // Fin del if (1 == 1)
             //----------------------------borrar -----------------
 
@@ -624,23 +613,26 @@ void AppLogic::requestGroundGpsData() {
           }
         } else {
           // DEBUG: Mensaje recibido pero no coincide con el tipo o remitente esperado.
-          DEBUG_PRINT("DEBUG: Mensaje inesperado. Tipo recibido: 0x");
-          DEBUG_PRINT(String(flag, HEX));
-          DEBUG_PRINT(", Remitente recibido: 0x");
-          DEBUG_PRINT(String(from, HEX));
-          DEBUG_PRINTLN(".");
+          Serial.printf("DEBUG: Mensaje inesperado. Tipo recibido: 0x");
+          Serial.printf("%02X", flag);
+          Serial.printf(", Remitente recibido: 0x");
+          Serial.printf("%02X", from);
+          Serial.printf(".\n");
         }
       } else {
-        // DEBUG: No se recibió respuesta en el timeout.
-        DEBUG_PRINT("DEBUG: Timeout. No se recibio respuesta de 0x");
-        DEBUG_PRINT(String(nodeId, HEX));
-        DEBUG_PRINTLN(".");
+        // Calcular tiempo transcurrido en caso de timeout
+        unsigned long tiempoTranscurrido = millis() - tiempoInicio;
+        Serial.printf("DEBUG: Timeout despues de ");
+        Serial.printf("%lu", tiempoTranscurrido);
+        Serial.printf(" ms. No se recibio respuesta de ");
+        Serial.printf("%02X", nodeId);
+        Serial.printf(".\n");
       }
       if (t == false) {
         // DEBUG: Se reenvía el mensaje si no hubo éxito.
-        DEBUG_PRINT("DEBUG: No exitoso. Reenviando solicitud a 0x");
-        DEBUG_PRINT(String(nodeId, HEX));
-        DEBUG_PRINTLN(".");
+        Serial.printf("DEBUG: No exitoso. Reenviando solicitud a ");
+        Serial.printf("%02X", nodeId);
+        Serial.printf(".\n");
         // Delay antes de reintentar
         delay(DELAY_BEFORE_RETRY_GROUND);
         radio.sendMessage(nodeId, &key, sizeof(key), flag);
@@ -649,18 +641,27 @@ void AppLogic::requestGroundGpsData() {
 
     if (!t) {
       // DEBUG: Fallo final al obtener datos.
-      DEBUG_PRINT("DEBUG: Fallo definitivo para nodo 0x");
-      DEBUG_PRINT(String(nodeId, HEX));
-      DEBUG_PRINTLN(".");
+      Serial.printf("DEBUG: Fallo definitivo para nodo ");
+      Serial.printf("%02X", nodeId);
+      Serial.printf(".\n");
     }
-    DEBUG_PRINTLN("DEBUG: --- Fin de procesamiento para nodo ---");
+    
+    // Resumen del tiempo total para este nodo
+    unsigned long tiempoTotalNodo = millis() - tiempoInicioNodo;
+    Serial.printf("DEBUG: Tiempo total para nodo ");
+    Serial.printf("%02X", nodeId);
+    Serial.printf(": ");
+    Serial.printf("%lu", tiempoTotalNodo);
+    Serial.printf(" ms.\n");
+    
+    Serial.printf("DEBUG: --- Fin de procesamiento para nodo ---\n");
     
     // Delay entre procesamiento de nodos
     delay(DELAY_BETWEEN_NODES);
   }  // Fin del for de nodos
 
   // DEBUG: Fin de la función principal.
-  DEBUG_PRINTLN("DEBUG: [requestGroundGpsData] -- FIN --");
+  Serial.printf("DEBUG: [requestGroundGpsData] -- FIN --\n");
 }
 bool AppLogic::compareHsAndMs() {
     //DEBUG_PRINTLN("compareHsAndMs: Iniciando función");
@@ -677,42 +678,42 @@ bool AppLogic::compareHsAndMs() {
     }
     
     // Obtener la hora actual del RTC
-    DEBUG_PRINTLN("compareHsAndMs: Obteniendo hora actual");
+    Serial.printf("compareHsAndMs: Obteniendo hora actual\n");
     String currentTime = rtc.getTimeString();
-    DEBUG_PRINT("compareHsAndMs: Hora actual obtenida: ");
-    DEBUG_PRINTLN(currentTime);
+    Serial.printf("compareHsAndMs: Hora actual obtenida: ");
+    Serial.printf("%s\n", currentTime.c_str());
     
     // Verificar que la hora obtenida sea válida (no "00:00" que indica error)
     if (currentTime == "00:00") {
-        DEBUG_PRINTLN("compareHsAndMs: Hora inválida obtenida del RTC, retornando false");
+        Serial.printf("compareHsAndMs: Hora inválida obtenida del RTC, retornando false\n");
         return false;
     }
     
     // Comparar con cada intervalo de horas configurado
-    DEBUG_PRINT("compareHsAndMs: Comparando con ");
-    DEBUG_PRINT(CANTIDAD_MUESTRAS_SUELO);
-    DEBUG_PRINTLN(" intervalos");
+    Serial.printf("compareHsAndMs: Comparando con ");
+    Serial.printf("%d", CANTIDAD_MUESTRAS_SUELO);
+    Serial.printf(" intervalos\n");
     
     for (int i = 0; i < CANTIDAD_MUESTRAS_SUELO; i++) {
-        DEBUG_PRINT("compareHsAndMs: Procesando intervalo ");
-        DEBUG_PRINTLN(i);
+        Serial.printf("compareHsAndMs: Procesando intervalo ");
+        Serial.printf("%d\n", i);
         
         String targetTime = String(intervaloHorasSuelo[i]) + ":00";
-        DEBUG_PRINT("compareHsAndMs: Hora objetivo: ");
-        DEBUG_PRINTLN(targetTime);
+        Serial.printf("compareHsAndMs: Hora objetivo: ");
+        Serial.printf("%s\n", targetTime.c_str());
         
-        DEBUG_PRINTLN("compareHsAndMs: Llamando a compareHsAndMs del RTC");
+        Serial.printf("compareHsAndMs: Llamando a compareHsAndMs del RTC\n");
         if (rtc.compareHsAndMs(currentTime, targetTime)) {
-            DEBUG_PRINT("compareHsAndMs: Coincidencia encontrada - Hora actual: ");
-            DEBUG_PRINT(currentTime);
-            DEBUG_PRINT(" con intervalo: ");
-            DEBUG_PRINTLN(targetTime);
+            Serial.printf("compareHsAndMs: Coincidencia encontrada - Hora actual: ");
+            Serial.printf("%s", currentTime.c_str());
+            Serial.printf(" con intervalo: ");
+            Serial.printf("%s\n", targetTime.c_str());
             return true;
         }
-        DEBUG_PRINTLN("compareHsAndMs: No coincidencia para este intervalo");
+        Serial.printf("compareHsAndMs: No coincidencia para este intervalo\n");
     }
     
-    DEBUG_PRINTLN("compareHsAndMs: No se encontraron coincidencias");
+    Serial.printf("compareHsAndMs: No se encontraron coincidencias\n");
     return false;
 }
 

@@ -1,0 +1,2324 @@
+sd␀$��|␀�l�|␃␌␌␄�␄l�␄c|��␃�␒�;�c�␄c��g'�lng���␌b␜x��l;l{lp�n�␘␃␄␌�␌d␄��␌␄␄c␄o�|␃�␄�␜�␄c��'o�␀d��$`␃�␛␒'o␌d`␃␎␃gs���o␌␄bd�␎$p�'�␐␃␄␌s�ܜ�␜��␃␄c␄o�<␃␌�␄c��'o�␀␄␌d`␃�␛␛'o␌d`␂␇␃gs�ۓo␌␄#��`␃␏;��g␄␌cĒ ␃�␃␄␌␄�p␘␃␌d`␂��g�␇d��␃�␓�o�r��g|�␌d␄�␄l`␃␜b�␛␃␄�|␂{�␃l�n�␄�o�␀␄l`␃��s�l�l␛�␌␄␌�Memoria libre: 43328 bytes
+Tamaño de sketch: 314752 bytes
+Tamaño máximo de sketch: 2830336 bytes
+Inicializando 
+NodeIdentity inicializado (LittleFS deshabilitado)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/27/2025 17:29:34
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+todo ok en gatewayenviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+;l␀d��|␀�$�|␃␄␌␄�␌d�␄c<ǃ␃�␛�{�c�␌b��og�l'o���␌#␜p��${ls$p�'�␐␂␄␌�␄l␄��␄␌␄c␌o�|␃�␌�␜�␄c��g'�␀lćd`␂�␓␛gn␌d`␃␇␃or���n␌␄cl�␇dp�g�␐␃␄␄r��ܜ␜��␃␌c␌'�|␃␄�␄c��g'�␀␌␄l ␃�␓␛g'␌l`␃␇␃orǛ�'␌␌c��`␂␇{��o␌␄b��`␃�␂␄␄␌�x␘␃␄l`␃��o�␇l��␂�␛�o�;��o|�␄l␄�␌d`␃␜c�␛␃␌�<␃s�␃d�'�␌�'�␀␌d`␃��r�l�$␓�␄␌␄�Memoria libre: 43328 bytes
+Tamaño de sketch: 314752 bytes
+Tamaño máximo de sketch: 2830336 bytes
+Inicializando 
+NodeIdentity inicializado (LittleFS deshabilitado)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/27/2025 17:29:34
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+todo ok en gatewayenviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+Memoria libre: 41432 bytes
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+[RadioManager] Fallo de transmisión #1/5
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Respuesta recibida en 175 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x06, Longitud: 18
+DEBUG: Mensaje inesperado. Tipo recibido: 0x06, Remitente recibido: 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 12.
+[DEBUG] RadioManager::sendMessage INICIO
+[RadioManager] Reset contador de fallos (era 1)
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Timeout despues de 2001 ms. No se recibio respuesta de 12.
+DEBUG: No exitoso. Reenviando solicitud a 12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 12.
+DEBUG: No exitoso. Reenviando solicitud a 12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Fallo definitivo para nodo 12.
+DEBUG: Tiempo total para nodo 12: 46034 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+Memoria libre: 41384 bytes
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 12.
+DEBUG: No exitoso. Reenviando solicitud a 12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Respuesta recibida en 266 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x05, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: Paquete de nodo 0x12 almacenado en posicion 0.
+--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---
+DEBUG: Nodo ID (interno): 0x12 ----
+DEBUG:   Paquete 1 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6478624, Lon=-58.6867840, Alt=9m, Hora=20:45, Flags=07 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG:   Paquete 2 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=0.0C, Hum=0.0%, N=0, P=0, K=0, EC=0, PH=0.0
+DEBUG:     [GPS] Lat=0.0000000, Lon=0.0000000, Alt=0m, Hora=00:00, Flags=00
+DEBUG:   --------------------
+DEBUG: ---- Fin de muestras para Nodo ID (interno): 12 ----
+--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---
+DEBUG: Tiempo total para nodo 12: 22498 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 1, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 1) is not HELLO. Ignoring message.
+Memoria libre: 41016 bytes
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x05, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: Paquete de nodo 0x12 almacenado en posicion 1.
+--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---
+DEBUG: Nodo ID (interno): 0x12 ----
+DEBUG:   Paquete 1 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6478624, Lon=-58.6867840, Alt=9m, Hora=20:45, Flags=07 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG:   Paquete 2 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6478560, Lon=-58.6867968, Alt=15m, Hora=20:46, Flags=07 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG: ---- Fin de muestras para Nodo ID (interno): 12 ----
+--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---
+DEBUG: Tiempo total para nodo 12: 10194 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 15, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 15) is not HELLO. Ignoring message.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 14, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 14) is not HELLO. Ignoring message.
+Memoria libre: 41016 bytes
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x05, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 12.
+DEBUG: Tiempo total para nodo 12: 10130 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 15, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 15) is not HELLO. Ignoring message.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 1, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 1) is not HELLO. Ignoring message.
+Memoria libre: 41016 bytes
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 
+DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x05, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 12.
+DEBUG: Tiempo total para nodo 12: 10130 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 7, Flag: 0x06
+AppLogic::handleHello(): Message received, but FLAG (0x06 or Length: 7) is not HELLO. Ignoring message.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+Memoria libre: 41016 bytes
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::sendChangeID(): Enviando solicitud de cambio de ID a 0x12
+AppLogic::sendChangeID(): counterNodes actual: 1
+AppLogic::sendChangeID(): RH_MESH_MAX_MESSAGE_LEN: 249
+AppLogic::sendChangeID(): Se copiaron Se copiaron 1 bytes de nodeIDs a IDsAcotados.
+AppLogic::sendChangeID(): Primer byte de IDsAcotados establecido a 0x12
+[DEBUG] RadioManager::sendMessage INICIO
+AppLogic::sendChangeID(): Mensaje de cambio de ID enviado.
+AppLogic::handleHello(): Exiting.
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+[DEBUG] RadioManager::sendMessage INICIO
+[RadioManager] Fallo de transmisión #1/5
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... 

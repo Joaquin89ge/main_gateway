@@ -1,0 +1,204 @@
+s$␀l��<␀�l�|␃␌␄␌�␄l�␌#|��␃�␓�r�#�␄c��'o�do'���␄c␜8ćlsd;lx�o�␘␃␌␄�␌$␌��␌␄␌#␌g�|␂�␌�␜�␌#��ng�␀l��l ␃�␛␓og␄l ␃␏␂n{���g␄␌c$�␏lx�o�␘␃␌␌{����␜��␃␌c␄g�|␃␌�␌#��ng�␀␌␌$`␃�␛␓ng␄$`␃␏␂'{���g␄␄c�� ␃␇s��'␄␌c��`␃�␃␌␄$�␜␃�␄$`␃��'�␎${l␀l��|␀�d�|␂␄␌␌�␌d�␌b<��␃�␛�s�c�␌#��ng�$gn���␄c␜p��d{$sdp�g�␐␃␄␄�␄l␄��␄␌␄c␌n�|␃�␌�␜�␄c��o'�␀l��d`␃�␓␛g'␄l`␃␇␃orǛ�'␄␌cl�␇l8�o�␐␃␌␄;��ܜ␜��␃␌b␌'�|␂␄�␄c��o'�␀␌␄l ␃�␒␛o'␄l ␃␇␃o;���g␄␌c��`␃␇{ۓo␌␄#��`␃�␃␌␄l�␜␃�␄l ␃��n�␏l��␃�␒�o�r��g|�␌l␄�␄$`␃␜#�␛␂␄�|␃{�␃$�n�␄�n�␀␄$`␃��s�l�l␛�␌␄␄�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okayRtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/26/2025 17:05:30
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayLength: 18AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Tamano incorrecto. Recibido: 30, Esperado: 26.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 1945 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x6, Longitud: 18
+DEBUG: Mensaje inesperado. Tipo recibido: 0x6, Remitente recibido: 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2001 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 35665 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 267 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Tamano incorrecto. Recibido: 30, Esperado: 26.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2004 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 34778 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 267 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Tamano incorrecto. Recibido: 30, Esperado: 26.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2004 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 34514 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 175 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x6, Longitud: 18
+DEBUG: Mensaje inesperado. Tipo recibido: 0x6, Remitente recibido: 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 45871 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 267 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Tamano incorrecto. Recibido: 30, Esperado: 26.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2004 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 34515 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 176 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x6, Longitud: 18
+DEBUG: Mensaje inesperado. Tipo recibido: 0x6, Remitente recibido: 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 45584 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 26 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.

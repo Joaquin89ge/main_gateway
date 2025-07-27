@@ -14,7 +14,7 @@
  */
 NodeIdentity::NodeIdentity()
 {
-    DEBUG_PRINT("Inicializando ");
+    Serial.printf("Inicializando \n");
     begin();
 }
 
@@ -24,45 +24,43 @@ NodeIdentity::NodeIdentity()
  * @param blacklist_len Tamaño de la lista negra
  * @param blacklist Valores prohibidos para el identificador
  * @return uint8_t Identificador entre 1-254 (0x00 y 0xFF reservados)
- * @details Genera un hash único o recupera el valor almacenado en LittleFS
+ * @details Genera un hash único basado en la MAC del dispositivo
  */
 uint8_t NodeIdentity::getNodeID(size_t blacklist_len, const uint8_t *blacklist)
 {
-    DEBUG_PRINTLN("--- NodeIdentity::getNodeID() INICIO ---");
-    DEBUG_PRINT("Parámetros recibidos: blacklist_len = ");
-    DEBUG_PRINTLN(String(blacklist_len));
-    // No imprimimos el 'blacklist' completo aquí, ya que puede ser largo.
-    // Si necesitas depurarlo, puedes iterar sobre él y DEBUG_PRINTLN() cada byte.
+    Serial.printf("--- NodeIdentity::getNodeID() INICIO ---\n");
+    Serial.printf("Parámetros recibidos: blacklist_len = %d\n", blacklist_len);
 
+    // Comentado: Código de LittleFS
+    /*
     uint8_t storedHash = HASH_NOT_SET;
-    DEBUG_PRINT("Intentando cargar NODE_ID desde el archivo '");
-    DEBUG_PRINT(NODE_ID_FILE);
-    DEBUG_PRINT("'. Valor inicial: 0x");
-    DEBUG_PRINTLN(String(storedHash, HEX));
+    Serial.printf("Intentando cargar NODE_ID desde el archivo '");
+    Serial.printf(NODE_ID_FILE);
+    Serial.printf("'. Valor inicial: 0x");
+    Serial.printf(String(storedHash, HEX));
 
     // Llama a la función para cargar el byte desde el archivo
     loadByteFromFile(NODE_ID_FILE, storedHash);
 
-    DEBUG_PRINT("Valor cargado desde archivo: 0x");
-    DEBUG_PRINTLN(String(storedHash, HEX));
-    DEBUG_PRINT("HASH_NOT_SET es: 0x");
-    DEBUG_PRINTLN(String(HASH_NOT_SET, HEX));
-
+    Serial.printf("Valor cargado desde archivo: 0x");
+    Serial.printf(storedHash, HEX);
+    Serial.printf("HASH_NOT_SET es: 0x");
+    Serial.printf(HASH_NOT_SET, HEX);
 
     if (storedHash != HASH_NOT_SET && storedHash != 0)
     {
-        DEBUG_PRINTLN("HASH encontrado en el archivo (no es HASH_NOT_SET).");
-        DEBUG_PRINT("Devolviendo ID almacenado: 0x");
-        DEBUG_PRINTLN(String(storedHash, HEX));
-        DEBUG_PRINTLN("--- NodeIdentity::getNodeID() FIN (ID existente) ---");
+        Serial.printf("HASH encontrado en el archivo (no es HASH_NOT_SET).\n");
+        Serial.printf("Devolviendo ID almacenado: 0x");
+        Serial.printf(storedHash, HEX);
+        Serial.printf("--- NodeIdentity::getNodeID() FIN (ID existente) ---\n");
         return storedHash; // Si hay un hash guardado, lo devuelve
     }
+    */
 
-    DEBUG_PRINTLN("No hay HASH almacenado o es HASH_NOT_SET. Generando nuevo ID...");
+    Serial.printf("Generando nuevo ID basado en MAC...\n");
 
     String mac = getDeviceMAC();
-    DEBUG_PRINT("MAC del dispositivo obtenida: ");
-    DEBUG_PRINTLN(mac);
+    Serial.printf("MAC del dispositivo obtenida: %s\n", mac.c_str());
 
     uint8_t macBytes[6];
     int values[6];
@@ -72,37 +70,34 @@ uint8_t NodeIdentity::getNodeID(size_t blacklist_len, const uint8_t *blacklist)
                               &values[0], &values[1], &values[2],
                               &values[3], &values[4], &values[5]);
 
-    DEBUG_PRINT("sscanf(): Numero de items convertidos: ");
-    DEBUG_PRINTLN(String(sscanfResult));
+    Serial.printf("sscanf(): Numero de items convertidos: %d\n", sscanfResult);
 
     // Verifica si sscanf fue exitoso (debe convertir 6 valores)
     if (sscanfResult != 6) {
-        DEBUG_PRINTLN("ERROR: Fallo al parsear la MAC. Se generara un hash con MAC invalida.");
+        Serial.printf("ERROR: Fallo al parsear la MAC. Se generara un hash con MAC invalida.\n");
         // Considera aquí un manejo de error más robusto, como retornar un ID por defecto o reiniciar.
     } else {
-        DEBUG_PRINT("Bytes MAC parseados (HEX): ");
+        Serial.printf("Bytes MAC parseados (HEX): ");
         for (int i = 0; i < 6; ++i)
         {
             macBytes[i] = (uint8_t)values[i];
-            DEBUG_PRINT(String(macBytes[i], HEX));
-            DEBUG_PRINT(" ");
+            Serial.printf("%02X ", macBytes[i]);
         }
-        DEBUG_PRINTLN(""); // Nueva línea después de imprimir los bytes
+        Serial.printf("\n"); // Nueva línea después de imprimir los bytes
     }
-
 
     uint8_t hash = generateSafeHash(macBytes, 6, blacklist, blacklist_len);
 
-    DEBUG_PRINT("Hash generado: 0x");
-    DEBUG_PRINTLN(String(hash, HEX));
+    Serial.printf("Hash generado: 0x%02X\n", hash);
 
+    // Comentado: Guardado en LittleFS
+    /*
     // Guarda el nuevo hash generado en el archivo
     saveByteToFile(NODE_ID_FILE, hash);
-    DEBUG_PRINT("Nuevo ID (0x");
-    DEBUG_PRINT(String(hash, HEX));
-    DEBUG_PRINTLN(") guardado en el archivo.");
+    Serial.printf("Nuevo ID (0x%02X) guardado en el archivo.\n", hash);
+    */
 
-    DEBUG_PRINTLN("--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---");
+    Serial.printf("--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---\n");
     return hash; // Devuelve el hash recién generado
 }
 
@@ -122,11 +117,13 @@ uint8_t NodeIdentity::changeNodeID(const size_t blacklist_len, uint8_t *blacklis
 
     uint8_t hash = generateSafeHash(mac_bytes, 6, blacklist, blacklist_len);
 
-    saveByteToFile(NODE_ID_FILE, hash);
+    // Comentado: Guardado en LittleFS
+    // saveByteToFile(NODE_ID_FILE, hash);
     return hash;
 }
 
-// Carga un solo byte desde un archivo de LittleFS
+// Comentado: Carga un solo byte desde un archivo de LittleFS
+/*
 bool NodeIdentity::loadByteFromFile(const char *filename, uint8_t &value)
 {
     File file = LittleFS.open(filename, "r");
@@ -146,8 +143,10 @@ bool NodeIdentity::loadByteFromFile(const char *filename, uint8_t &value)
     file.close();
     return false;
 }
+*/
 
-// Guarda un solo byte en un archivo de LittleFS
+// Comentado: Guarda un solo byte en un archivo de LittleFS
+/*
 void NodeIdentity::saveByteToFile(const char *filename, uint8_t value)
 {
     File file = LittleFS.open(filename, "w"); // "w" sobrescribe el archivo existente
@@ -162,6 +161,7 @@ void NodeIdentity::saveByteToFile(const char *filename, uint8_t value)
 
     // Serial.printf("NodeIdentity: Valor %d guardado en '%s'.\n", value, filename);
 }
+*/
 
 uint8_t NodeIdentity::generateSafeHash(
     const uint8_t *data,
@@ -218,10 +218,12 @@ String NodeIdentity::getDeviceMAC()
 
 bool NodeIdentity::getGetway(uint8_t &getwayAdress)
 {
+    // Comentado: Código de LittleFS
+    /*
     uint8_t value = GETWAY_NOT_SET;
     if (loadByteFromFile(GATEWAY_ADDR_FILE, value) == false)
     {
-        DEBUG_PRINTLN("error en load memori");
+        Serial.printf("error en load memori\n");
         return false;
     }
     if (value != GETWAY_NOT_SET)
@@ -229,27 +231,37 @@ bool NodeIdentity::getGetway(uint8_t &getwayAdress)
         getwayAdress = value;
         return true;
     }
+    */
+    
+    // Por ahora, retornar false ya que no hay persistencia
+    Serial.printf("Gateway no configurado (LittleFS deshabilitado)\n");
     return false;
 }
 
 void NodeIdentity::saveGetway(uint8_t getwayAdress)
 {
-    saveByteToFile(GATEWAY_ADDR_FILE, getwayAdress);
+    // Comentado: Guardado en LittleFS
+    // saveByteToFile(GATEWAY_ADDR_FILE, getwayAdress);
+    Serial.printf("Gateway address no guardado (LittleFS deshabilitado): 0x%02X\n", getwayAdress);
 }
 
 void NodeIdentity::begin()
 {
- 
+    // Comentado: Inicialización de LittleFS
+    /*
     // --- ¡IMPORTANTE! Inicializar LittleFS una sola vez en setup() ---
-    DEBUG_PRINTLN("Inicializando LittleFS en sketch principal...");
+    Serial.printf("Inicializando LittleFS en sketch principal...\n");
     if (!LittleFS.begin())
     {
-        DEBUG_PRINTLN("Fallo al montar LittleFS. Intentando formatear...");
+        Serial.printf("Fallo al montar LittleFS. Intentando formatear...\n");
         // LittleFS.format(); // ¡Ten precaución! Esto borra todos los archivos.
         if (!LittleFS.begin())
         {
-            DEBUG_PRINTLN("Fallo crítico: LittleFS no se pudo montar.");
+            Serial.printf("Fallo crítico: LittleFS no se pudo montar.\n");
             return; // Detener la ejecución si LittleFS no está listo
         }
     }
+    */
+    
+    Serial.printf("NodeIdentity inicializado (LittleFS deshabilitado)\n");
 }

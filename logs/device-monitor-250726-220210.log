@@ -1,0 +1,1240 @@
+sd␀$ܟ<␀�l�<␃␌␄␄�␄l�␄c|��␃�␓�;�c�␄c��gn�dog���␄c␜8��lrl;lx�o�␘␃␌␄�␌d␌��␌␄␌c␄g�|␃�␄�␜�␌c��'o�␀$��l`␃�␛␓no␄$`␃␏␃'{���o␄␄bd�␏lp�n�␘␃␄␌{�ܜ�␜��␃␄c␄o�<␃␌�␌c��'o�␀␄␌d`␂�␛␒'o␌$`␃␎␃gs���o␌␄b��`␃␏r��g␄␌cē`␃�␃␄␌d�␜␂�␌d`␃��g�␇d��␃�␓�g�r��g|�␌d␄�␄l ␃␜b�␛␃␄�|␂{�␃l�n�␄�o�␀␄l`␃��s�l�l␛�␌␄␌�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okayRtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/26/2025 21:45:54
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayLength: 18AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x6
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!nodo ya registradoAppLogic::handleHello(): Exiting.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: Paquete de nodo 0x12 almacenado en posicion 0.
+--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---
+DEBUG: Nodo ID (interno): 0x12 ----
+DEBUG:   Paquete 1 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6047712, Lon=-58.9797056, Alt=22m, Hora=01:02, Flags=0x7 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG:   Paquete 2 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=0.0C, Hum=0.0%, N=0, P=0, K=0, EC=0, PH=0.0
+DEBUG:     [GPS] Lat=0.0000000, Lon=0.0000000, Alt=0m, Hora=00:00, Flags=0x0
+DEBUG:   --------------------
+DEBUG: ---- Fin de muestras para Nodo ID (interno): 0x12 ----
+--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---
+DEBUG: Tiempo total para nodo 0x12: 10186 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: Paquete de nodo 0x12 almacenado en posicion 1.
+--- DEBUG: Imprimiendo muestras de suelo y GPS almacenadas (DEBUG INTERNO) ---
+DEBUG: Nodo ID (interno): 0x12 ----
+DEBUG:   Paquete 1 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6047712, Lon=-58.9797056, Alt=22m, Hora=01:02, Flags=0x7 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG:   Paquete 2 (Suelo + GPS): 
+DEBUG:     [SUELO] Temp=-2.0C, Hum=7.5%, N=1000, P=150, K=133, EC=2556, PH=6.8
+DEBUG:     [GPS] Lat=-34.6047712, Lon=-58.9797120, Alt=22m, Hora=01:02, Flags=0x7 (Ubicacion Valida) (Altitud Valida) (Hora Valida)
+DEBUG:   --------------------
+DEBUG: ---- Fin de muestras para Nodo ID (interno): 0x12 ----
+--- DEBUG: Fin de impresion de muestras de suelo y GPS (DEBUG INTERNO) ---
+DEBUG: Tiempo total para nodo 0x12: 10191 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 31 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10128 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10127 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10127 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10127 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+Length: 0AppLogic::handleHello(): Entering.
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 0, Flag: 0x6
+AppLogic::handleHello(): Message received, but FLAG (0x6 or  Length: 0) is not HELLO. Ignoring message.
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 51667 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10131 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #3 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 46432 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 266 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 22437 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10127 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2001 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+DEBUG: Intento de recepcion #2 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 149 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 22320 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Respuesta recibida en 32 ms.
+DEBUG: Mensaje recibido de 0x12, Tipo: 0x5, Longitud: 30
+DEBUG: Mensaje es DATA_GPS_CROUND del nodo correcto.
+DEBUG: ERROR: Posicion 'count' (2) excede el tamano del array (2). Paquete no almacenado.
+DEBUG: Fallo definitivo para nodo 0x12.
+DEBUG: Tiempo total para nodo 0x12: 10127 ms.
+DEBUG: --- Fin de procesamiento para nodo ---
+DEBUG: [requestGroundGpsData] -- FIN --
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+salto timer requestAtmosphericData
+DEBUG: [requestGroundGpsData] -- INICIO --
+DEBUG: Tamano esperado de datos: 30 bytes.
+DEBUG: Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_GPC_GROUND a 0x12.
+DEBUG: Intento de recepcion #1 para nodo 0x12.
+DEBUG: Iniciando espera de respuesta... DEBUG: Timeout despues de 2000 ms. No se recibio respuesta de 0x12.
+DEBUG: No exitoso. Reenviando solicitud a 0x12.
+rd␀$��|␀�l�|␃␌␌␄�␄l�␄c|��␃�␒�;�c�␄c��g'�lng���␌b␜x��l;l{lp�n�␘␃␄␌�␌d␄��␌␄␄c␄o�|␃�␄�␜�␄c��'o�␀d��$`␃�␛␒'o␌d`␃␎␃gs�ۓo␌␄#d�␎$p�'�␐␃␄␌s�ܜ�␜��␂␄c␄o�<␃␌�␄c��'o�␀␄␌d`␃�␛␛go␌d`␂␇␃gs�ۓo␌␄#��`␃␏;��g␄␌cĒ ␃�␃␄␌d�␜␃�␌d`␂��g�␇d��␂�␛�n�{��o|�␄l␄�␌d`␃␜c�␛␃␌�<␃s�␃d�g�␌�'�␀␌d`␃��r�l�d␓�␄␌␄�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okayRtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/26/2025 21:45:54
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayenviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+sd␀lܟ<␀�l�<␃␌␄␌�␄l�␌c|��␃�␓�r�#�␄c��gn�dog���␄c␜8��lrd;lx�o�␘␃␌␄�␌d␌��␌␄␌#␄g�|␃�␄�␜�␌#��no�␀$��l ␃�␛␓ng␄l`␃␏␂'{���g␄␄cd�␏lx�n�␘␃␄␌{����␜��␃␄c␄o�|␃␌�␌#��no�␀␄␌d`␂�␛␒no␄$`␃␏␃'{���o␄␄b�� ␃␏r��g␄␌c��`␃�␃␌␌$�␜␃�␌$`␃��g�␎dsd␀$ܟ|␀�l�<␃␌␄␄�␄l�␄c|��␃�␒�;�c�␄c��gn�log���␌c␜x��l;l{lx�o�␘␃␌␌�␌d␌��␌␄␌c␄g�|␃�␄�␜�␌c��'o�␀d��$`␃�␛␒no␌$`␃␏␃g{���o␌␄bd�␏$p�'�␘␃␄␌s�ܜ�␜��␃␄c␄o�<␃␌�␌c��'o�␀␄␌d`␂�␛␒'o␌d`␃␎␃gs���o␌␄#��`␃␏;��g␄␌cē`␃�␃␄␌d�␜␂�␌d`␂��g�␇d��␃�␒�o�r��g|�␌l␄�␄$`␃␜#�␛␂␄�|␃{�␃$�n�␄�n�␀␄$`␃��s�l�l␛�␌␄␄�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+RF95 MESH init okayRF95 MESH init okayRtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/26/2025 21:45:54
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0x1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0x1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayenviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105
+1
+enviando announce KEY:
+105

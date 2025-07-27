@@ -188,7 +188,7 @@ public:
      * GroundGpsPacket sample = nodeData[0]; // Primera muestra del día
      * ```
      */
-    std::map<std::uint8_t, std::array<GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO>> groundGpsSamplesNodes;
+    std::map<std::uint8_t, std::array<Protocol::GroundGpsPacket, CANTIDAD_MUESTRAS_SUELO>> groundGpsSamplesNodes;
 
     /**
      * @brief Almacenamiento de datos atmosféricos por nodo
@@ -203,7 +203,7 @@ public:
      * AtmosphericSample sample = nodeData[0]; // Primera muestra
      * ```
      */
-    std::map<std::uint8_t, std::array<AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS>> AtmosphericSampleNodes;
+    std::map<std::uint8_t, std::array<Protocol::AtmosphericSample, NUMERO_MUESTRAS_ATMOSFERICAS>> AtmosphericSampleNodes;
 
     /**
      * @brief Lista de nodos inactivos o con fallos

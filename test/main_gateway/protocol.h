@@ -4,114 +4,136 @@
 #ifndef PROTOCOL_H
 #define PROTOCOL_H
 
+
 #include <Arduino.h> // Para tipos como String, uint8_t
 #include <vector>    // Para std::vector
 
-// #define RH_MESH_MAX_MESSAGE_LEN 50
 /**
- * @brief Espacio de nombres para las definiciones del protocolo de comunicación.
+ * @file protocol.h
+ * @brief Define los tipos de mensajes, estructuras de datos y constantes del protocolo de comunicación mesh LoRa.
  *
- * Este espacio de nombres encapsula las estructuras de datos y funciones
- * para la serialización y deserialización de mensajes entre nodos.
+ * Este archivo contiene los enums, estructuras y constantes que definen el formato y tipo de los mensajes intercambiados entre nodos y el gateway en la red mesh agrícola.
+ * Facilita la interoperabilidad y el parsing de mensajes en la lógica de aplicación.
+ *
+ * Los rangos de cada variable están documentados en los comentarios de las estructuras.
+ * Se utilizan enteros en vez de float para optimizar el uso de memoria y facilitar la transmisión por radio.
  */
-namespace Protocol
-{
 
-    const uint8_t KEY = 0x69; /**< @brief Longitud de la clave de seguridad del protocolo. */
+namespace Protocol {
 
     /**
-     * @brief Enumeración que define los tipos de mensajes soportados por el protocolo.
-     *
-     * Cada valor representa un propósito específico para el mensaje, permitiendo
-     * a los nodos interpretar y procesar el contenido del payload JSON adecuadamente.
+     * @brief Clave de seguridad del protocolo para validación de mensajes.
      */
-    enum MessageType : uint8_t
-    {
-        ANNOUNCE = 0x01,                 /**< @brief Mensaje de anuncio de un nodo. */
-        REQUEST_DATA_ATMOSPHERIC = 0x02, /**< @brief Protocolo para  solicitud de datos atmosfericos.*/
-        REQUEST_DATA_GPC_GROUND = 0x03,  /**< @brief Protocolo para  solicitud de datos gps y ground */
-        DATA_ATMOSPHERIC = 0x04,         /**< @brief Protocolo para  envio de datos atmosfericos. */
-        DATA_GPS_CROUND = 0x05,          /**< @brief Protocolo para  envio de datos gps y ground. */
-        HELLO = 0x06,                    /**< @brief Mensaje de saludo/conexión inicial. */
-        ERROR_DIRECCION = 0x07           /**< @brief Mensaje de direccion de nodo repetida volver hacer hash mac. */
+    const uint8_t KEY = 0x69;
+
+    /**
+     * @enum MessageType
+     * @brief Tipos de mensajes soportados por el protocolo mesh.
+     *
+     * Define los códigos de mensaje para ANNOUNCE, HELLO, REQUEST_DATA, DATA, ERROR, etc.
+     */
+    enum MessageType : uint8_t {
+        ANNOUNCE = 0x01,                 /**< Mensaje de anuncio de un nodo. */
+        REQUEST_DATA_ATMOSPHERIC = 0x02, /**< Solicitud de datos atmosféricos. */
+        REQUEST_DATA_GPC_GROUND = 0x03,  /**< Solicitud de datos gps y ground. */
+        DATA_ATMOSPHERIC = 0x04,         /**< Envío de datos atmosféricos. */
+        DATA_GPS_CROUND = 0x05,          /**< Envío de datos gps y ground. */
+        HELLO = 0x06,                    /**< Mensaje de saludo/conexión inicial. */
+        ERROR_DIRECCION = 0x07           /**< Mensaje de dirección de nodo repetida. */
     };
+
+    #pragma pack(push, 1)
+    /**
+     * @struct AtmosphericSample
+     * @brief Estructura para almacenar una muestra de datos atmosféricos.
+     *
+     * - temp: Temperatura en décimas de grado Celsius [-400 a 800] (-40.0°C a 80.0°C)
+     * - moisture: Humedad en décimas de porcentaje [0 a 1000] (0.0% a 100.0%)
+     * - hour: Hora de la muestra [0-23]
+     * - minute: Minuto de la muestra [0-59]
+     */
+    struct AtmosphericSample {
+        int16_t temp;      ///< Temperatura en décimas de grado [-400 a 800]
+        uint16_t moisture; ///< Humedad en décimas de porcentaje [0 a 1000]
+        uint8_t hour;      ///< Hora de medición [0-23]
+        uint8_t minute;    ///< Minuto de medición [0-59]
+    };
+
+    /**
+     * @struct GroundSensor
+     * @brief Estructura para almacenar datos de sensores de suelo.
+     *
+     * - temp: Temperatura del suelo en décimas de grado [-400 a 800] (-40.0°C a 80.0°C)
+     * - moisture: Humedad del suelo en décimas de porcentaje [0 a 1000] (0.0% a 100.0%)
+     * - n, p, k: Nitrógeno, Fósforo, Potasio [0-1999] mg/kg
+     * - EC: Conductividad eléctrica [0-20000] μS/cm
+     * - PH: pH en décimas [30-90] (3.0 a 9.0)
+     */
+    struct GroundSensor {
+        int16_t temp;      ///< Temperatura en décimas de grado [-400 a 800]
+        uint16_t moisture; ///< Humedad en décimas de porcentaje [0 a 1000]
+        uint16_t n;        ///< Nitrógeno [0-1999] mg/kg
+        uint16_t p;        ///< Fósforo [0-1999] mg/kg
+        uint16_t k;        ///< Potasio [0-1999] mg/kg
+        uint16_t EC;       ///< Conductividad eléctrica [0-20000] μS/cm
+        uint8_t PH;        ///< pH en décimas [30-90] (3.0 a 9.0)
+    };
+
+    /**
+     * @struct GpsSensor
+     * @brief Estructura para almacenar datos GPS.
+     *
+     * - latitude, longitude: Coordenadas en grados * 10^7 [-1800000000 a 1800000000]
+     * - altitude: Altitud en metros [-1000 a 9000]
+     * - hour, minute: Hora y minuto UTC
+     * - flags: Flags de validez de datos (bitmask)
+     */
+    struct GpsSensor {
+        int32_t latitude;   ///< Latitud en grados * 10^7 [-1800000000 a 1800000000]
+        int32_t longitude;  ///< Longitud en grados * 10^7 [-1800000000 a 1800000000]
+        int16_t altitude;   ///< Altitud en metros [-1000 a 9000]
+        uint8_t hour;       ///< Hora GPS [0-23]
+        uint8_t minute;     ///< Minuto GPS [0-59]
+        uint8_t flags;      ///< Flags de validación (bitmask)
+    };
+
+    /**
+     * @struct EnergyData
+     * @brief Estructura para almacenar datos energéticos del nodo.
+     *
+     * - volt: Voltaje en centésimas de voltio [0-65535] (0.00V a 655.35V)
+     * - amp: Corriente en centésimas de amperio [0-65535] (0.00A a 655.35A)
+     * 
+     * Los valores se almacenan como enteros sin signo multiplicados por 100
+     * para mantener 2 decimales de precisión sin usar float.
+     * Ejemplo: 12.34V -> 1234, 5.67A -> 567
+     */
+    struct EnergyData {
+        uint16_t volt; ///< Voltaje en centésimas de voltio
+        uint16_t amp;  ///< Corriente en centésimas de amperio
+    };
+
+    /**
+     * @struct GroundGpsPacket
+     * @brief Paquete combinado de datos de suelo y GPS para transmisión.
+     */
+    struct GroundGpsPacket {
+        GroundSensor ground; ///< Datos de suelo
+        GpsSensor gps;      ///< Datos GPS
+        EnergyData energy;  ///< Datos energéticos
+    };
+    #pragma pack(pop)
 
 } // namespace Protocol
 
-#pragma pack(push, 1) // Eliminar padding entre miembros de estructuras
-
-/* Muestra atmosférica (DHT22)
- * Rango temperatura: -40.0°C a 80.0°C (con precisión ±0.5°C)
- * Rango humedad: 0.0% a 100.0% (con precisión ±3%)
- * Total: 6 bytes por muestra
- */
-struct AtmosphericSample
-{
-    int16_t temp;      // Temperatura en décimas de grado [-400 a 800]
-                       // (-400 = -40.0°C, 800 = 80.0°C)
-    uint16_t moisture; // Humedad en décimas de porcentaje [0 a 1000]
-                       // (0 = 0.0%, 1000 = 100.0%)
-    uint8_t hour;      // Hora de medición [0-23]
-    uint8_t minute;    // Minuto de medición [0-59]
-};
-
 /**
- * Sensor de suelo (NPK/PH/EC)
- * Total: 13 bytes
+ * @def MAC_STR_LEN_WITH_NULL
+ * @brief Longitud de la cadena MAC (incluyendo null terminator).
  */
-struct GroundSensor
-{
-    int16_t temp;      // Temperatura en décimas de grado [-400 a 800]
-    uint16_t moisture; // Humedad en décimas de porcentaje [0 a 1000]
-    uint16_t n;        // Nitrógeno [0-1999] mg/kg (entero)
-    uint16_t p;        // Fósforo [0-1999] mg/kg (entero)
-    uint16_t k;        // Potasio [0-1999] mg/kg (entero)
-    uint16_t EC;       // Conductividad eléctrica [0-20000] μS/cm (entero)
-    uint8_t PH;        // PH en décimas [30-90] (30 = 3.0, 90 = 9.0)
-};
+#define MAC_STR_LEN_WITH_NULL 18
 
-/**
- * Datos GPS (Gy-neo6mv2)
- * Total: 13 bytes
- */
-struct GpsSensor
-{
-    int32_t latitude;  // Latitud en grados * 10^7 [-1800000000 a 1800000000]
-                       // (Valores negativos = Sur, Positivos = Norte)
-    int32_t longitude; // Longitud en grados * 10^7 [-1800000000 a 1800000000]
-                       // (Valores negativos = Oeste, Positivos = Este)
-    int16_t altitude;  // Altitud en metros [-1000 a 9000]
-    uint8_t hour;      // Hora GPS [0-23]
-    uint8_t minute;    // Minuto GPS [0-59]
-    uint8_t flags;     // Flags de validación (bitmask):
-                       //   bit0 (0x01): Ubicación válida
-                       //   bit1 (0x02): Altitud válida
-                       //   bit2 (0x04): Hora válida
-                       //   bits 3-7: Reservados
-};
+#endif // PROTOCOL_H
 
-#pragma pack(pop) // Restaurar alineación normal
-
-#pragma pack(push, 1) // Asegurar empaquetamiento sin padding
-
-/**
- * Paquete combinado Suelo + GPS
- * Total: 26 bytes
- */
-struct GroundGpsPacket
-{
-    GroundSensor ground; // 13 bytes
-    GpsSensor gps;       // 13 bytes
-
-}; // Total: 26 bytes
-
-#pragma pack(pop) // Restaurar alineación normal
-// clase propia para gestion consumo interno no se trasnmite
-struct EnergyData
-{
-    float volt;
-    float amp;
-};
 
 //* posible agrandamiento de gps para contemplar datos defecha (año mes dia)
 /*
@@ -141,4 +163,3 @@ para sensor ground Sensor Suelo Npk Ph T/h Ec Modbus Rs485 Nutrientes Tierra
 - Resolución: 1 [mg/kg]
 */
 
-#endif // PROTOCOL_H

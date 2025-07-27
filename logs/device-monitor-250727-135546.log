@@ -1,0 +1,30 @@
+{$␀l��|␀�d�|␃␌␄␌�␄l�␌#|��␃�␓�s�#�␄c��'o�do'���␄c␜8ćlsd;lx�o�␘␃␌␄�␌$␌��␌␄␌#␌g�|␂�␄�␜�␌#��ng�␀$��l ␃�␛␓ng␄l`␃␏␂'{���g␄␄cd�␏lp�n�␘␃␄␌{����␜��␃␄c␄o�|␃␌�␌#��no�␀␄␌d`␂�␛␒'o␌$`␃␎␃gs���o␌␄b��`␃␏r��g␄␌cē`␃�␃␄␌d�␜␂�␌d`␃��g�␇d��␃�␓�g�s��g|�␌d␄�␄l ␃␜b�␛␃␄�|␂{�␃l�n�␄�o�␀␄l`␃��s�l�l␛�␌␄␌�Inicializando Inicializando LittleFS en sketch principal...
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0xff
+HASH_NOT_SET es: 0xff
+No hay HASH almacenado o es HASH_NOT_SET. Generando nuevo ID...
+MAC del dispositivo obtenida: D8:BF:C0:0D:3F:6F
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): d8 bf c0 d 3f 6f 
+Hash generado: 0xb1
+Nuevo ID (0xb1) guardado en el archivo.
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+RF95 MESH init failedRF95 MESH init okayRF95 MESH init failedRF95 MESH init okayRtcManager::begin() - Iniciando inicialización
+RtcManager::begin() - RTC.Begin() completado
+RtcManager::begin() - Fecha de compilación: 07/26/2025 21:45:54
+RtcManager::begin() - Configurando RTC con fecha de compilación
+RtcManager::begin() - Fecha/hora actual del RTC: 00/00/2000 00:00:00
+RtcManager::begin() - RTC no es válido, pero continuando de todas formas
+RtcManager::begin() - RTC inicializado (con advertencias)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Intentando cargar NODE_ID desde el archivo '/node_id.json'. Valor inicial: 0xff
+Valor cargado desde archivo: 0xb1
+HASH_NOT_SET es: 0xff
+HASH encontrado en el archivo (no es HASH_NOT_SET).
+Devolviendo ID almacenado: 0xb1
+--- NodeIdentity::getNodeID() FIN (ID existente) ---
+todo ok en gatewayenviando announce KEY:
+105
