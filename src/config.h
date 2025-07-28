@@ -13,6 +13,10 @@
 #define INTERVALOANNOUNCE 5000     /**< @brief Intervalo en milisegundos (5 seg) para announce*/
 #define INTERVALOATMOSPHERIC 30000 /**< @brief Intervalo en milisegundos (1 minutos) para request atmospheric*/
 
+// Configuración para modo debug: usar temporizador en lugar de comparación de horas
+#define USE_TIMER_FOR_GROUND_REQUEST 1  /**< @brief Flag para usar temporizador (1) o comparación de horas (0) para requestGroundGpsData */
+#define INTERVALO_GROUND_REQUEST 60000   /**< @brief Intervalo en milisegundos (1 minuto) para request ground data en modo debug */
+
 
 #else
 
@@ -25,6 +29,9 @@
 #define TIMEOUTGRAL 1500            /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
 #define INTERVALOANNOUNCE 120000    /**< @brief Intervalo en milisegundos (2 min) para announce*/
 #define INTERVALOATMOSPHERIC 480000 /**< @brief Intervalo en milisegundos (8 minutos) para request atmospheric*/
+
+// Configuración para modo producción: usar comparación de horas
+#define USE_TIMER_FOR_GROUND_REQUEST 0  /**< @brief Flag para usar temporizador (1) o comparación de horas (0) para requestGroundGpsData */
 
 #endif
 
@@ -83,7 +90,7 @@
 #define WIFI_PASSWORD "vdjn8544"
 
 // Configuración MQTT
-#define MQTT_SERVER "10.157.89.208"
+#define MQTT_SERVER "10.209.39.208"
 #define MQTT_PORT 1883
 #define MQTT_CLIENT_ID "esp8266_gateway"
 #define MQTT_TOPIC_ATMOSPHERIC "sensor/atmospheric"

@@ -212,11 +212,24 @@ void AppLogic::timer() {
   } else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false) {
     temBuf1 = tiempoActual;
     Serial.printf("salto timer requestAtmosphericData\n");
-    requestGroundGpsData();
+    requestAtmosphericData();
   }
-  if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
-    Serial.printf("salto hora requestGroundGpsData\n");
-    requestGroundGpsData();
+  
+  // Lógica condicional para requestGroundGpsData basada en USE_TIMER_FOR_GROUND_REQUEST
+  if (USE_TIMER_FOR_GROUND_REQUEST == 1) {
+    // Modo temporizador: usar millis() como atmospheric
+    static unsigned long temBufGround = 0;
+    if (tiempoActual - temBufGround >= INTERVALO_GROUND_REQUEST && mapNodesIDsMac.empty() == false) {
+      temBufGround = tiempoActual;
+      Serial.printf("salto timer requestGroundGpsData (modo temporizador)\n");
+      requestGroundGpsData();
+    }
+  } else {
+    // Modo comparación de horas: usar compareHsAndMs() como antes
+    if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
+      Serial.printf("salto hora requestGroundGpsData (modo comparación de horas)\n");
+      requestGroundGpsData();
+    }
   }
 }
 
@@ -545,7 +558,8 @@ void AppLogic::requestGroundGpsData() {
                     Serial.printf("%d", countGroundSamples);
                     Serial.printf(") excede el tamano del array (");
                     Serial.printf("%d", CANTIDAD_MUESTRAS_SUELO);
-                    Serial.printf("). Paquete no almacenado.\n");
+                    Serial.printf("). Paquete no almacenado. reinicio contador.\n");
+                    countGroundSamples = 0;
                     break;
                 }
 
@@ -840,5 +854,6 @@ void AppLogic::publishGroundData(uint8_t nodeId, const Protocol::GroundGpsPacket
         Serial.printf("Datos de suelo publicados para nodo 0x%02X\n", nodeId);
     } else {
         Serial.printf("Error al publicar datos de suelo para nodo 0x%02X\n", nodeId);
+        
     }
 }

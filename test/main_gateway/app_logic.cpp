@@ -227,7 +227,7 @@ void AppLogic::timer() {
   } else if (tiempoActual - temBuf1 >= INTERVALOATMOSPHERIC && mapNodesIDsMac.empty() == false) {
     temBuf1 = tiempoActual;
     DEBUG_PRINTLN("salto timer requestAtmosphericData");
-    requestGroundGpsData();
+    requestAtmosphericData();
   }
   if(compareHsAndMs() && mapNodesIDsMac.empty() == false) {
     DEBUG_PRINTLN("salto hora requestGroundGpsData");

@@ -1,0 +1,95 @@
+��␃�␛�n�r��n|�␌$␌�␌$`␂␜#�␛␂␌�|␃r�␂l�o�␌�N�␀␄l ␃��{�l�l␒�␄␌␄�Memoria libre: 43128 bytes
+Tamaño de sketch: 326112 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): Searching if node 0x12 is already registered among 1 existing nodes.
+  ¡Clave encontrada!
+nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: fAppLogic::handleHello(): envio send change ID.
+AppLogic::handleHello(): Exiting.
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+salto timer requestAtmosphericData
+DEBUG: [requestAtmosphericData] Iniciando ciclo de solicitud a nodos.
+DEBUG: Tamano de buffer para recv: 249, Tamano esperado de muestras: 48
+DEBUG: [requestAtmosphericData] Procesando nodo ID: 0x12
+DEBUG: Enviando REQUEST_DATA_ATMOSPHERIC a 0x12 con payload de 0 bytes (manager.sendMessage).
+[DEBUG] RadioManager::sendMessage INICIO
+DEBUG: Intento 1 de recepcion para nodo 0x12 (Timeout: 2000 ms).
+DEBUG: Mensaje recibido. Remitente: 0x12, Tipo: 0x04, Longitud: 48
+DEBUG: Tipo de mensaje y remitente coinciden.
+DEBUG: Tamano de payload CORRECTO. Realizando memcpy.
+DEBUG: Datos de nodo 12 almacenados.
+Conectando a WiFi: Galaxy A32 F8E2
+...........
+Conectado a WiFi! IP: 10.209.39.94
+Conectando a MQTT: 10.209.39.208:1880
+Error al conectar MQTT
+No se pudo conectar MQTT para publicar datos atmosféricos
+Conectando a MQTT: 10.209.39.208:1880
+Error al conectar MQTT
+No se pudo conectar MQTT para publicar datos atmosféricos
+Conectando a MQTT: 10.209.39.208:1880
+Error al conectar MQTT
+No se pudo conectar MQTT para publicar datos atmosféricos
+Conectando a MQTT: 10.209.39.208:1880
