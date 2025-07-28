@@ -18,6 +18,8 @@
 #define APP_LOGIC_H
 
 #include <map>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
 #include "node_identity.h" // Para NodeIdentity (dirección MAC, clave)
 #include "radio_manager.h" // Para RadioManager (gestión de radio LoRa)
 #include "protocol.h"      // Para Protocol (serialización/deserialización de mensajes)
@@ -67,6 +69,12 @@ private:
     RadioManager radio;        /**< @brief Gestor de comunicación LoRa */
     RtcManager& rtc;          /**< @brief Referencia al gestor de tiempo real */
     uint8_t gatewayAddress;   /**< @brief Dirección de red del Gateway */
+
+    // Variables WiFi y MQTT
+    WiFiClient wifiClient;    /**< @brief Cliente WiFi */
+    PubSubClient mqttClient;  /**< @brief Cliente MQTT */
+    bool wifiConnected;       /**< @brief Estado de conexión WiFi */
+    bool mqttConnected;       /**< @brief Estado de conexión MQTT */
 
     std::map<uint8_t, String> mapNodesIDsMac; /**< @brief Mapeo de IDs de nodos a direcciones MAC */
 
@@ -173,6 +181,34 @@ private:
      * @see intervaloHorasSuelo
      */
     bool compareHsAndMs();
+
+    /**
+     * @brief Conecta a WiFi
+     * @details Intenta conectar a la red WiFi configurada
+     * @return true si la conexión fue exitosa
+     */
+    bool connectWiFi();
+
+    /**
+     * @brief Conecta a MQTT
+     * @details Intenta conectar al broker MQTT configurado
+     * @return true si la conexión fue exitosa
+     */
+    bool connectMQTT();
+
+    /**
+     * @brief Publica datos atmosféricos por MQTT
+     * @param nodeId ID del nodo
+     * @param data Datos atmosféricos a publicar
+     */
+    void publishAtmosphericData(uint8_t nodeId, const Protocol::AtmosphericSample& data);
+
+    /**
+     * @brief Publica datos de suelo por MQTT
+     * @param nodeId ID del nodo
+     * @param data Datos de suelo a publicar
+     */
+    void publishGroundData(uint8_t nodeId, const Protocol::GroundGpsPacket& data);
 
 public:
     /**

@@ -8,7 +8,7 @@
 #define MAX_NODES 250
 #define NUMERO_MUESTRAS_ATMOSFERICAS 8
 
-#define CANTIDAD_MUESTRAS_SUELO 2
+#define CANTIDAD_MUESTRAS_SUELO 8
 #define TIMEOUTGRAL 2000           /**< @brief timeout para espera recepcion de datos se usa en requestAmospheric y grondGps entre otros */
 #define INTERVALOANNOUNCE 5000     /**< @brief Intervalo en milisegundos (5 seg) para announce*/
 #define INTERVALOATMOSPHERIC 30000 /**< @brief Intervalo en milisegundos (1 minutos) para request atmospheric*/
@@ -69,7 +69,22 @@
 #define RADIO_MAX_FAILURES 5  
 
 
-// RTC DS1302 (3-wire interface)
-#define RTC_CLK 18  // Pin CLK del DS1302 (D3 en ESP8266)
-#define RTC_DAT 19  // Pin DAT del DS1302 (D2 en ESP8266) 
-#define RTC_RST 4  // Pin RST del DS1302 (D0 en ESP8266)
+// RTC DS1307 (I2C interface)
+// Los pines I2C están predefinidos en ESP8266:
+// SDA = GPIO4 (D2)
+// SCL = GPIO5 (D1)
+// No necesitamos definir pines específicos para I2C
+
+// Configuración del RTC DS1307
+#define RTC_I2C_ADDRESS 0x68
+
+// Configuración WiFi
+#define WIFI_SSID "Galaxy A32 F8E2"
+#define WIFI_PASSWORD "vdjn8544"
+
+// Configuración MQTT
+#define MQTT_SERVER "10.157.89.208"
+#define MQTT_PORT 1883
+#define MQTT_CLIENT_ID "esp8266_gateway"
+#define MQTT_TOPIC_ATMOSPHERIC "sensor/atmospheric"
+#define MQTT_TOPIC_GROUND "sensor/ground"

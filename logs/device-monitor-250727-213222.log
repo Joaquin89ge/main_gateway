@@ -1,0 +1,33 @@
+s$␀l��<␀�l�|␃␌␄␌�␄l�␌#|��␃�␓�r�#�␄c��go�dog���␄c␜8ćlsd;lx�o�␘␃␌␄�␌$␌��␌␄␌#␌g�|␂�␌�␜�␌#��ng�␀$��l ␃�␛␓og␄l`␃␏␂'{���g␄␌c$�␏lx�n�␘␃␌␌{����␜��␃␌c␄g�|␃␌�␌#��ng�␀␄␌d`␃�␛␓ng␄$`␃␏␃'{���o␄␄c�� ␃␏s��'␄␌c��`␃�␃␌␄␄����␄$`␃��'�␎$��␃�␛�'�{��o<�␄l␌�␌d`␃␜c�␓␃␌�|␃s�␃d�g�␌�g�␀␌d`␃��;�$�d␒�␄␌␄�Memoria libre: 42584 bytes
+Tamaño de sketch: 326288 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+Memoria libre: 40312 bytes
+Memoria libre: 40312 bytes
+Memoria libre: 40312 bytes
+Memoria libre: 40312 bytes
+Memoria libre: 40312 bytes
+Memoria libre: 40312 bytes

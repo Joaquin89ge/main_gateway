@@ -1,0 +1,146 @@
+# Estructura de JSON enviados por MQTT en el Gateway Agrícola
+
+## 1. DATOS ATMOSFÉRICOS
+Tópico: "sensor/atmospheric"
+
+### Estructura JSON:
+{
+  "nodeId": 66,                    // ID del nodo sensor (hexadecimal convertido a decimal)
+  "temperature": 22.0,             // Temperatura en °C (temp/10.0)
+  "moisture": 45.0                 // Humedad en % (moisture/10.0)
+}
+
+### Ejemplo real:
+{
+  "nodeId": 66,
+  "temperature": 22.0,
+  "moisture": 45.0
+}
+
+### Campos de la estructura original (Protocol::AtmosphericSample):
+- temp: int16_t (temperatura * 10)
+- moisture: int16_t (humedad * 10)
+- hour: uint8_t (hora)
+- minute: uint8_t (minuto)
+
+## 2. DATOS DE SUELO Y GPS
+Tópico: "sensor/ground"
+
+### Estructura JSON:
+{
+  "nodeId": 66,                    // ID del nodo sensor
+  "temperature": 22.0,             // Temperatura del suelo en °C (temperature/10.0)
+  "moisture": 45.0,               // Humedad del suelo en % (moisture/10.0)
+  "n": 15,                        // Nitrógeno (N)
+  "p": 25,                        // Fósforo (P)
+  "k": 30,                        // Potasio (K)
+  "ec": 1200,                     // Conductividad eléctrica
+  "ph": 6.5,                      // pH del suelo (ph/10.0)
+  "volt": 3.33,                   // Voltaje de batería
+  "latitude": -34.567890,         // Latitud GPS (latitude/10000000.0)
+  "longitude": -58.123456         // Longitud GPS (longitude/10000000.0)
+}
+
+### Ejemplo real:
+{
+  "nodeId": 66,
+  "temperature": 21.8,
+  "moisture": 47.3,
+  "n": 18,
+  "p": 22,
+  "k": 28,
+  "ec": 1250,
+  "ph": 6.8,
+  "volt": 3.33,
+  "latitude": -34.567890,
+  "longitude": -58.123456
+}
+
+### Campos de la estructura original (Protocol::GroundGpsPacket):
+- temperature: int16_t (temperatura * 10)
+- moisture: int16_t (humedad * 10)
+- n: uint8_t (nitrógeno)
+- p: uint8_t (fósforo)
+- k: uint8_t (potasio)
+- ec: uint16_t (conductividad)
+- ph: uint8_t (pH * 10)
+- latitude: int32_t (latitud * 10000000)
+- longitude: int32_t (longitud * 10000000)
+
+## 3. CONVERSIONES APLICADAS
+
+### Datos Atmosféricos:
+- temp (int16_t) → temperature (float): temp / 10.0
+- moisture (int16_t) → moisture (float): moisture / 10.0
+
+### Datos de Suelo:
+- temperature (int16_t) → temperature (float): temperature / 10.0
+- moisture (int16_t) → moisture (float): moisture / 10.0
+- n (uint8_t) → n (int): sin conversión
+- p (uint8_t) → p (int): sin conversión
+- k (uint8_t) → k (int): sin conversión
+- ec (uint16_t) → ec (int): sin conversión
+- ph (uint8_t) → ph (float): ph / 10.0
+- latitude (int32_t) → latitude (float): latitude / 10000000.0
+- longitude (int32_t) → longitude (float): longitude / 10000000.0
+
+## 4. CÓDIGO DE CONVERSIÓN
+
+### Datos Atmosféricos (publishAtmosphericData):
+```cpp
+String payload = "{";
+payload += "\"nodeId\":" + String(nodeId);
+payload += ",\"temperature\":" + String(data.temperature / 10.0, 1);
+payload += ",\"moisture\":" + String(data.humidity / 10.0, 1);
+payload += "}";
+```
+
+### Datos de Suelo (publishGroundData):
+```cpp
+String payload = "{";
+payload += "\"nodeId\":" + String(nodeId);
+payload += ",\"temperature\":" + String(data.temperature / 10.0, 1);
+payload += ",\"moisture\":" + String(data.moisture / 10.0, 1);
+payload += ",\"n\":" + String(data.n);
+payload += ",\"p\":" + String(data.p);
+payload += ",\"k\":" + String(data.k);
+payload += ",\"ec\":" + String(data.ec);
+payload += ",\"ph\":" + String(data.ph / 10.0, 1);
+payload += ",\"volt\":3.33";
+payload += ",\"latitude\":" + String(data.latitude, 7);
+payload += ",\"longitude\":" + String(data.longitude, 7);
+payload += "}";
+```
+
+## 5. UNIDADES Y RANGOS
+
+### Datos Atmosféricos:
+- temperature: °C (rango típico: -40 a +85)
+- moisture: % (rango: 0-100)
+
+### Datos de Suelo:
+- temperature: °C (rango típico: -10 a +60)
+- moisture: % (rango: 0-100)
+- n, p, k: mg/kg (rango típico: 0-255)
+- ec: μS/cm (rango típico: 0-5000)
+- ph: pH (rango: 0-14)
+- latitude: grados decimales (rango: -90 a +90)
+- longitude: grados decimales (rango: -180 a +180)
+
+## 6. VOLTAJE DE BATERÍA
+
+El campo "volt" se incluye en los datos de suelo con un valor fijo de 3.33V para indicar el estado de la batería del nodo sensor.
+
+## 7. ID DEL NODO
+
+El nodeId se convierte de hexadecimal a decimal para el JSON:
+- 0x42 → 66
+- 0x01 → 1
+- 0xFF → 255
+
+## 8. PRECISIÓN DE DECIMALES
+
+- Temperatura y humedad: 1 decimal
+- pH: 1 decimal
+- Latitud y longitud: 7 decimales
+- Enteros: sin decimales 

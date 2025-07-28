@@ -1,608 +1,293 @@
-# RtcManager - Gestión de Tiempo Real con DS1302
+# RtcManager - Gestor del Módulo RTC DS1307
 
-## 📋 Descripción General
+## Descripción General
 
-Clase especializada en la gestión de tiempo real utilizando el módulo RTC DS1302 con interfaz 3-wire. Proporciona funcionalidades completas para sincronización temporal, comparación de horarios y gestión de fecha/hora en sistemas IoT agrícolas.
+El `RtcManager` es una clase que maneja la comunicación con el módulo RTC DS1307 a través de I2C. Proporciona funciones para obtener fecha/hora actual y comparar intervalos de tiempo.
 
-## 🏗️ Arquitectura de la Clase
+## Características Técnicas
 
-### Propósito Principal
+### Hardware
 
-- **Sincronización Temporal:** Gestión precisa de fecha y hora
-- **Comparación de Horarios:** Validación de eventos programados
-- **Configuración Automática:** Inicialización con fecha de compilación
-- **Validación de Integridad:** Verificación de funcionamiento del RTC
+- **RTC**: DS1307 (I2C, dirección 0x68)
+- **Precisión**: ±2ppm a 0°C
+- **Batería**: CR2032 (hasta 10 años)
+- **Temperatura de operación**: -40°C a +85°C
+- **Consumo**: <500nA en modo batería
 
-### Características Técnicas
+### Comunicación
 
-- **Hardware:** DS1302 con interfaz 3-wire
-- **Librería:** andrewrapp/RtcDS1302
-- **Precisión:** ±2ppm a 25°C
-- **Batería:** Backup con batería de litio
-- **Interfaz:** Serial 3-wire (CLK, DAT, RST)
+- **Protocolo**: I2C
+- **Velocidad**: 100kHz (configurado para compatibilidad)
+- **Dirección**: 0x68 (DS1307)
 
-## 📁 Estructura de la Clase
-
-### Variables de Instancia
+## Estructura de la Clase
 
 ```cpp
+class RtcManager {
 private:
-    ThreeWire myWire;           ///< Interfaz 3-wire para DS1302
-    RtcDS1302<ThreeWire> rtc;   ///< Instancia del RTC DS1302
-    bool isInitialized;          ///< Estado de inicialización
+    RTC_DS1307 rtc;
+    bool isInitialized;
+    String getTimeString(const DateTime& dt);
+
+public:
+    RtcManager();
+    bool begin();
+    DateTime getDateTime();
+    bool setDateTime(const DateTime& dt);
+    bool isDateTimeValid(const DateTime& dt);
+    String getTimeString();
+    bool compareHsAndMs(const String& time1, const String& time2);
+    void printDateTime(const DateTime& dt);
+    bool isRunning();
+    bool isInitialized() const;
+};
 ```
 
-### Dependencias
-
-```cpp
-#include <RtcDS1302.h>  ///< Librería RtcDS1302
-#include <ThreeWire.h>   ///< Interfaz 3-wire
-```
-
-## 🔧 Métodos Públicos
+## Métodos Principales
 
 ### Constructor
 
 ```cpp
-RtcManager(int ioPin, int sclkPin, int cePin);
+RtcManager::RtcManager()
 ```
 
-**Propósito:**
+Inicializa el gestor del RTC sin parámetros (usa I2C).
 
-- Inicialización de pines para interfaz 3-wire
-- Configuración de comunicación con DS1302
-- Preparación para operación del RTC
-
-**Parámetros:**
-
-- `ioPin`: Pin de datos bidireccional
-- `sclkPin`: Pin de reloj
-- `cePin`: Pin de habilitación
-
-**Ejemplo de Uso:**
+### Inicialización
 
 ```cpp
-RtcManager rtc(RTC_DAT, RTC_CLK, RTC_RST);
+bool RtcManager::begin()
 ```
 
-### begin()
+Inicializa el RTC DS1307:
+
+- Configura I2C a 100kHz
+- Escanea dispositivos I2C
+- Verifica presencia del DS1307
+- Configura fecha/hora si es necesario
+- Valida funcionamiento
+
+**Retorna**: `true` si la inicialización fue exitosa
+
+### Obtención de Fecha/Hora
 
 ```cpp
-bool begin();
+DateTime RtcManager::getDateTime()
 ```
 
-**Funcionalidad:**
+Obtiene la fecha y hora actual del RTC.
 
-- Inicializa el módulo RTC DS1302
-- Configura fecha/hora con fecha de compilación
-- Verifica integridad del hardware
-- Establece parámetros de funcionamiento
+**Retorna**: Objeto `DateTime` con la fecha/hora actual
 
-**Retorno:**
-
-- `bool`: true si la inicialización fue exitosa
-
-**Proceso de Inicialización:**
-
-1. **Configuración de Pines:** Setup de interfaz 3-wire
-2. **Inicialización RTC:** Configuración del módulo
-3. **Verificación de Estado:** Validación de funcionamiento
-4. **Configuración de Fecha:** Establecimiento de fecha/hora
-5. **Validación Final:** Confirmación de operación correcta
-
-**Ejemplo de Uso:**
+### Configuración de Fecha/Hora
 
 ```cpp
-if (rtc.begin()) {
-    Serial.println("RTC inicializado correctamente");
-} else {
-    Serial.println("Error al inicializar RTC");
-}
+bool RtcManager::setDateTime(const DateTime& dt)
 ```
 
-### getDateTime()
+Establece la fecha y hora del RTC.
+
+**Parámetros**:
+
+- `dt`: Objeto `DateTime` con la nueva fecha/hora
+
+**Retorna**: `true` si se estableció correctamente
+
+### Validación de Fecha/Hora
 
 ```cpp
-RtcDateTime getDateTime();
+bool RtcManager::isDateTimeValid(const DateTime& dt)
 ```
 
-**Funcionalidad:**
+Verifica si una fecha/hora es válida (año entre 2000-2100).
 
-- Obtiene fecha y hora actual del RTC
-- Retorna estructura RtcDateTime completa
-- Incluye validación de estado
+**Parámetros**:
 
-**Retorno:**
+- `dt`: Objeto `DateTime` a validar
 
-- `RtcDateTime`: Fecha y hora actual
+**Retorna**: `true` si la fecha/hora es válida
 
-**Ejemplo de Uso:**
+### Obtención de Hora como String
 
 ```cpp
-RtcDateTime now = rtc.getDateTime();
-Serial.print("Fecha: ");
-Serial.print(now.Year());
-Serial.print("/");
-Serial.print(now.Month());
-Serial.print("/");
-Serial.println(now.Day());
+String RtcManager::getTimeString()
 ```
 
-### setDateTime()
+Obtiene la hora actual en formato "HH:MM".
+
+**Retorna**: String con formato "HH:MM"
+
+### Comparación de Horas
 
 ```cpp
-bool setDateTime(const RtcDateTime& dateTime);
+bool RtcManager::compareHsAndMs(const String& time1, const String& time2)
 ```
 
-**Funcionalidad:**
+Compara dos horas en formato "HH:MM".
 
-- Establece fecha y hora en el RTC
-- Valida parámetros de entrada
-- Confirma escritura exitosa
+**Parámetros**:
 
-**Parámetros:**
+- `time1`: Primera hora (formato "HH:MM")
+- `time2`: Segunda hora (formato "HH:MM")
 
-- `dateTime`: Nueva fecha/hora a establecer
+**Retorna**: `true` si las horas son iguales
 
-**Retorno:**
-
-- `bool`: true si se estableció correctamente
-
-**Ejemplo de Uso:**
+### Impresión de Fecha/Hora
 
 ```cpp
-RtcDateTime newTime(2025, 7, 20, 14, 30, 0);
-if (rtc.setDateTime(newTime)) {
-    Serial.println("Fecha/hora establecida correctamente");
-}
+void RtcManager::printDateTime(const DateTime& dt)
 ```
 
-### isDateTimeValid()
+Imprime la fecha/hora en formato legible (YYYY-MM-DD HH:MM:SS).
+
+**Parámetros**:
+
+- `dt`: Objeto `DateTime` a imprimir
+
+### Verificación de Estado
 
 ```cpp
-bool isDateTimeValid();
+bool RtcManager::isRunning()
 ```
 
-**Funcionalidad:**
+Verifica si el RTC está funcionando.
 
-- Verifica si la fecha/hora del RTC es válida
-- Detecta problemas de hardware
-- Valida integridad de datos
-
-**Retorno:**
-
-- `bool`: true si la fecha/hora es válida
-
-**Ejemplo de Uso:**
+**Retorna**: `true` si el RTC está funcionando
 
 ```cpp
-if (rtc.isDateTimeValid()) {
-    Serial.println("RTC funcionando correctamente");
-} else {
-    Serial.println("RTC con problemas de integridad");
-}
+bool RtcManager::isInitialized() const
 ```
 
-### getTimeString()
+Verifica si el RTC está inicializado.
+
+**Retorna**: `true` si el RTC está inicializado
+
+## Ejemplo de Uso
 
 ```cpp
-String getTimeString();
-```
+#include "rtc_manager.h"
 
-**Funcionalidad:**
+RtcManager rtc;
 
-- Obtiene hora actual en formato string
-- Formato: "HH:MM"
-- Incluye validación de estado
+void setup() {
+    Serial.begin(115200);
 
-**Retorno:**
-
-- `String`: Hora en formato "HH:MM"
-
-**Ejemplo de Uso:**
-
-```cpp
-String currentTime = rtc.getTimeString();
-Serial.print("Hora actual: ");
-Serial.println(currentTime);
-```
-
-### getTimeString() (Estático)
-
-```cpp
-static String getTimeString(const RtcDateTime& dateTime);
-```
-
-**Funcionalidad:**
-
-- Convierte RtcDateTime a string de hora
-- Formato: "HH:MM"
-- Método estático para uso independiente
-
-**Parámetros:**
-
-- `dateTime`: Fecha/hora a convertir
-
-**Retorno:**
-
-- `String`: Hora en formato "HH:MM"
-
-**Ejemplo de Uso:**
-
-```cpp
-RtcDateTime dt(2025, 7, 20, 14, 30, 0);
-String timeStr = RtcManager::getTimeString(dt);
-// timeStr = "14:30"
-```
-
-### compareHsAndMs()
-
-```cpp
-static bool compareHsAndMs(const String& time1, const String& time2);
-```
-
-**Funcionalidad:**
-
-- Compara dos horarios en formato "HH:MM"
-- Útil para programación de eventos
-- Manejo robusto de errores de formato
-
-**Parámetros:**
-
-- `time1`: Primer horario ("HH:MM")
-- `time2`: Segundo horario ("HH:MM")
-
-**Retorno:**
-
-- `bool`: true si los horarios son iguales
-
-**Ejemplo de Uso:**
-
-```cpp
-bool isTime = RtcManager::compareHsAndMs("14:30", "14:30");
-if (isTime) {
-    Serial.println("Es la hora programada");
-}
-```
-
-### compareCurrentTimeWith()
-
-```cpp
-bool compareCurrentTimeWith(const String& targetTime);
-```
-
-**Funcionalidad:**
-
-- Compara hora actual con horario objetivo
-- Utiliza getTimeString() internamente
-- Validación de estado del RTC
-
-**Parámetros:**
-
-- `targetTime`: Horario objetivo ("HH:MM")
-
-**Retorno:**
-
-- `bool`: true si coincide con hora actual
-
-**Ejemplo de Uso:**
-
-```cpp
-if (rtc.compareCurrentTimeWith("12:00")) {
-    Serial.println("Es mediodía");
-}
-```
-
-### printDateTime()
-
-```cpp
-void printDateTime(const RtcDateTime& dt);
-```
-
-**Funcionalidad:**
-
-- Imprime fecha/hora en formato legible
-- Formato: "MM/DD/YYYY HH:MM:SS"
-- Útil para debugging y logging
-
-**Parámetros:**
-
-- `dt`: Fecha/hora a imprimir
-
-**Ejemplo de Uso:**
-
-```cpp
-RtcDateTime now = rtc.getDateTime();
-rtc.printDateTime(now);
-// Output: "07/20/2025 14:30:25"
-```
-
-### isRunning()
-
-```cpp
-bool isRunning();
-```
-
-**Funcionalidad:**
-
-- Verifica si el RTC está funcionando
-- Detecta detenciones del oscilador
-- Valida estado del hardware
-
-**Retorno:**
-
-- `bool`: true si el RTC está funcionando
-
-**Ejemplo de Uso:**
-
-```cpp
-if (rtc.isRunning()) {
-    Serial.println("RTC funcionando correctamente");
-} else {
-    Serial.println("RTC detenido");
-}
-```
-
-### setWriteProtected()
-
-```cpp
-void setWriteProtected(bool writeProtected);
-```
-
-**Funcionalidad:**
-
-- Habilita/deshabilita protección de escritura
-- Previene cambios accidentales
-- Control de seguridad
-
-**Parámetros:**
-
-- `writeProtected`: true para proteger, false para permitir escritura
-
-**Ejemplo de Uso:**
-
-```cpp
-rtc.setWriteProtected(false);  // Permitir escritura
-rtc.setDateTime(newTime);
-rtc.setWriteProtected(true);   // Proteger contra cambios
-```
-
-### isWriteProtected()
-
-```cpp
-bool isWriteProtected();
-```
-
-**Funcionalidad:**
-
-- Verifica si el RTC está protegido contra escritura
-- Útil para validación de operaciones
-- Control de seguridad
-
-**Retorno:**
-
-- `bool`: true si está protegido contra escritura
-
-**Ejemplo de Uso:**
-
-```cpp
-if (!rtc.isWriteProtected()) {
-    rtc.setDateTime(newTime);
-} else {
-    Serial.println("RTC protegido contra escritura");
-}
-```
-
-## 📊 Configuración de Hardware
-
-### Pines de Conexión
-
-```cpp
-#define RTC_CLK 18   ///< Pin CLK del DS1302 (D3 en ESP8266)
-#define RTC_DAT 19   ///< Pin DAT del DS1302 (D2 en ESP8266)
-#define RTC_RST 4    ///< Pin RST del DS1302 (D0 en ESP8266)
-```
-
-### Características del DS1302
-
-- **Voltaje de Operación:** 2.0V a 5.5V
-- **Consumo:** <300nA en modo backup
-- **Precisión:** ±2ppm a 25°C
-- **Interfaz:** Serial 3-wire
-- **Memoria:** 31 bytes de RAM
-
-## 🔍 Características de Funcionamiento
-
-### 1. Inicialización Robusta
-
-- **Configuración Automática:** Fecha de compilación como fallback
-- **Validación de Hardware:** Verificación de funcionamiento
-- **Recuperación de Errores:** Manejo de fallos de inicialización
-- **Tolerancia a Fallos:** Continuación con advertencias
-
-### 2. Gestión de Tiempo
-
-- **Precisión:** Sincronización con oscilador de cristal
-- **Backup:** Batería de litio para continuidad
-- **Validación:** Verificación de integridad de datos
-- **Formato:** Conversión a formatos legibles
-
-### 3. Programación de Eventos
-
-- **Comparación de Horarios:** Validación de eventos programados
-- **Formato Estándar:** "HH:MM" para fácil uso
-- **Validación de Entrada:** Manejo de formatos incorrectos
-- **Flexibilidad:** Métodos estáticos para uso independiente
-
-## 📈 Métricas de Rendimiento
-
-### Tiempos de Operación
-
-- **Inicialización:** <100ms
-- **Lectura de Fecha/Hora:** <10ms
-- **Escritura de Fecha/Hora:** <50ms
-- **Comparación de Horarios:** <1ms
-
-### Precisión
-
-- **Oscilador:** ±2ppm a 25°C
-- **Drift Anual:** <1 minuto
-- **Temperatura:** Compensación automática
-- **Backup:** Continuidad durante apagados
-
-### Uso de Recursos
-
-- **RAM:** ~1KB por instancia
-- **Flash:** ~5KB (librería)
-- **CPU:** Mínimo impacto en operación
-- **Energía:** <300nA en modo backup
-
-## 🚨 Consideraciones Importantes
-
-### 1. Configuración de Hardware
-
-- **Pines Correctos:** Configuración específica para ESP8266
-- **Niveles de Voltaje:** Compatibilidad 3.3V
-- **Batería de Backup:** Requerida para continuidad
-- **Cristal:** Oscilador de 32.768kHz
-
-### 2. Gestión de Errores
-
-- **Hardware Fallido:** Detección y manejo
-- **Datos Corruptos:** Validación de integridad
-- **Batería Agotada:** Indicación de problemas
-- **Configuración Inválida:** Recuperación automática
-
-### 3. Optimización de Energía
-
-- **Modo Backup:** Consumo mínimo durante apagados
-- **Lecturas Eficientes:** Optimización de acceso
-- **Validación Selectiva:** Verificación solo cuando es necesario
-- **Gestión de Recursos:** Liberación automática
-
-## 🔮 Mejoras Futuras
-
-### Fase 1: Optimizaciones
-
-- **Configuración Dinámica:** Cambio de parámetros en tiempo real
-- **Monitoreo de Batería:** Indicación de estado de backup
-- **Calibración Automática:** Ajuste de precisión
-- **Logging Avanzado:** Registro de eventos temporales
-
-### Fase 2: Nuevas Funcionalidades
-
-- **Alarmas:** Configuración de alarmas temporales
-- **Zonas Horarias:** Soporte para múltiples zonas
-- **Sincronización NTP:** Actualización desde servidor
-- **Eventos Programados:** Sistema de eventos temporales
-
-### Fase 3: Integración
-
-- **Cloud Sync:** Sincronización con servidores de tiempo
-- **Analytics:** Análisis de patrones temporales
-- **Machine Learning:** Predicción de eventos
-- **Multi-device:** Sincronización entre dispositivos
-
-## 📋 Ejemplos de Uso
-
-### Ejemplo 1: Inicialización Básica
-
-```cpp
-RtcManager rtc(RTC_DAT, RTC_CLK, RTC_RST);
-if (rtc.begin()) {
-    Serial.println("RTC inicializado correctamente");
+    // Inicializar RTC
+    if (!rtc.begin()) {
+        Serial.println("Error: No se pudo inicializar el RTC");
+        return;
+    }
 
     // Obtener fecha/hora actual
-    RtcDateTime now = rtc.getDateTime();
+    DateTime now = rtc.getDateTime();
+    Serial.print("Fecha/hora actual: ");
     rtc.printDateTime(now);
-} else {
-    Serial.println("Error al inicializar RTC");
-}
-```
+    Serial.println();
 
-### Ejemplo 2: Programación de Eventos
-
-```cpp
-void checkScheduledEvents() {
-    // Verificar si es hora de muestreo atmosférico
-    if (rtc.compareCurrentTimeWith("08:00")) {
-        requestAtmosphericData();
-    }
-
-    // Verificar si es hora de muestreo de suelo
-    if (rtc.compareCurrentTimeWith("12:00")) {
-        requestGroundData();
-    }
-
-    // Verificar si es hora de announce
-    if (rtc.compareCurrentTimeWith("18:00")) {
-        sendAnnounce();
-    }
-}
-```
-
-### Ejemplo 3: Comparación de Horarios
-
-```cpp
-bool isTimeForSampling() {
+    // Obtener solo la hora
     String currentTime = rtc.getTimeString();
+    Serial.printf("Hora actual: %s\n", currentTime.c_str());
 
-    // Comparar con múltiples horarios
-    if (RtcManager::compareHsAndMs(currentTime, "06:00") ||
-        RtcManager::compareHsAndMs(currentTime, "12:00") ||
-        RtcManager::compareHsAndMs(currentTime, "18:00")) {
-        return true;
+    // Comparar horas
+    bool isEqual = rtc.compareHsAndMs("12:30", "12:30");
+    Serial.printf("¿12:30 = 12:30? %s\n", isEqual ? "Sí" : "No");
+}
+
+void loop() {
+    // Mostrar hora cada minuto
+    static unsigned long lastTime = 0;
+    if (millis() - lastTime > 60000) {
+        String time = rtc.getTimeString();
+        Serial.printf("Hora: %s\n", time.c_str());
+        lastTime = millis();
     }
 
-    return false;
+    delay(100);
 }
 ```
 
-### Ejemplo 4: Validación de Estado
+## Configuración de Hardware
+
+### Conexiones I2C
+
+```
+ESP8266    DS1307
+--------   ------
+D1 (GPIO5) → SCL
+D2 (GPIO4) → SDA
+3.3V       → VCC
+GND        → GND
+```
+
+### Notas Importantes
+
+- El DS1307 funciona a 5V, pero es compatible con 3.3V del ESP8266
+- La batería CR2032 mantiene el RTC funcionando cuando no hay alimentación
+- El módulo incluye resistencias pull-up para I2C
+
+## Manejo de Errores
+
+### Errores Comunes
+
+1. **DS1307 no encontrado**: Verificar conexiones I2C
+2. **RTC no funcionando**: Verificar batería CR2032
+3. **Fecha/hora inválida**: Configurar fecha/hora inicial
+
+### Diagnóstico
 
 ```cpp
-void validateRtcStatus() {
-    if (!rtc.isDateTimeValid()) {
-        Serial.println("RTC con problemas de integridad");
-        return;
-    }
+// Verificar inicialización
+if (!rtc.isInitialized()) {
+    Serial.println("RTC no inicializado");
+}
 
-    if (!rtc.isRunning()) {
-        Serial.println("RTC detenido");
-        return;
-    }
+// Verificar funcionamiento
+if (!rtc.isRunning()) {
+    Serial.println("RTC no está funcionando");
+}
 
-    if (rtc.isWriteProtected()) {
-        Serial.println("RTC protegido contra escritura");
-        return;
-    }
-
-    Serial.println("RTC funcionando correctamente");
+// Verificar fecha válida
+DateTime now = rtc.getDateTime();
+if (!rtc.isDateTimeValid(now)) {
+    Serial.println("Fecha/hora inválida");
 }
 ```
 
-### Ejemplo 5: Configuración de Fecha/Hora
+## Optimizaciones Implementadas
 
-```cpp
-void setRtcDateTime() {
-    // Configurar fecha/hora específica
-    RtcDateTime newTime(2025, 7, 20, 14, 30, 0);
+### Debug Reducido
 
-    // Deshabilitar protección de escritura
-    rtc.setWriteProtected(false);
+- Solo mensajes de error y confirmaciones importantes
+- Sin spam de debug en funciones de comparación
+- Información concisa de inicialización
 
-    // Establecer nueva fecha/hora
-    if (rtc.setDateTime(newTime)) {
-        Serial.println("Fecha/hora establecida correctamente");
-    } else {
-        Serial.println("Error al establecer fecha/hora");
-    }
+### Validaciones
 
-    // Habilitar protección de escritura
-    rtc.setWriteProtected(true);
-}
-```
+- Verificación de direcciones I2C
+- Validación de rangos de fecha/hora
+- Comprobación de formato de strings
 
----
+### Compatibilidad
 
-**Conclusión:** La clase RtcManager representa una implementación robusta y completa de gestión de tiempo real con DS1302, proporcionando funcionalidades avanzadas de sincronización temporal, programación de eventos y validación de integridad para sistemas IoT agrícolas.
+- Configuración I2C a 100kHz para mayor compatibilidad
+- Manejo de errores robusto
+- Fallbacks para casos de error
+
+## Diferencias con DS1302
+
+| Característica     | DS1302 (Anterior) | DS1307 (Actual) |
+| ------------------ | ----------------- | --------------- |
+| **Comunicación**   | 3-wire (SPI)      | I2C             |
+| **Pines**          | CLK, DAT, RST     | SDA, SCL        |
+| **Velocidad**      | Más lento         | Más rápido      |
+| **Compatibilidad** | Menor             | Mayor           |
+| **EEPROM**         | No incluida       | No usada        |
+| **Precisión**      | Similar           | Similar         |
+
+## Notas de Implementación
+
+- Se eliminó toda funcionalidad de EEPROM para simplificar el código
+- El debug se optimizó para reducir spam en pantalla
+- Se mantienen solo las funciones esenciales para el proyecto
+- La validación de fecha/hora es más robusta
+- El manejo de errores es más claro y específico

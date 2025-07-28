@@ -51,11 +51,11 @@ void setup()
         }
     }
     
-    // Inicializar RTC con los pines definidos en config.h
-    rtc = new RtcManager(RTC_DAT, RTC_CLK, RTC_RST);
+    // Inicializar RTC DS1307 (usa I2C, no necesita pines específicos)
+    rtc = new RtcManager();
     if (!rtc->begin())
     {
-        DEBUG_PRINTLN("Error al inicializar RTC");
+        DEBUG_PRINTLN("Error al inicializar RTC DS1307");
         errorFlag = true; // Detener ejecución
     }
     
@@ -68,39 +68,14 @@ void setup()
         if (errorFlag==false) DEBUG_PRINT("todo ok en gateway");
     }
     
-    // Configurar watchdog
-    ESP.wdtEnable(WDTO_8S);
-    ESP.wdtDisable();
+
 }
 
 void loop()
 {
-    if (1 == 1)
-    {
-        // Alimentar watchdog
-        ESP.wdtFeed();
-        
-        // Verificar memoria crítica
-        if (ESP.getFreeHeap() < 1024) {
-            Serial.println("ADVERTENCIA: Memoria crítica detectada");
-            delay(1000); // Dar tiempo para liberar memoria
-        }
-        
-        // Verificar memoria extremadamente baja
-        if (ESP.getFreeHeap() < 512) {
-            Serial.println("ERROR: Memoria extremadamente baja, reiniciando...");
-            ESP.restart();
-        }
-        
-        if (logic != nullptr && !errorFlag) {
+  
             logic->update();
-        }
         
-        // Monitoreo periódico de memoria
-        static unsigned long lastMemoryCheck = 0;
-        if (millis() - lastMemoryCheck > 30000) { // Cada 30 segundos
-                    Serial.printf("Memoria libre: %d bytes\n", ESP.getFreeHeap());
-            lastMemoryCheck = millis();
-        }
-    }
+        
+    
 }

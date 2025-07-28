@@ -1,205 +1,180 @@
-#include "rtc_manager.h"
-#include <Arduino.h>
+/**
+ * @file rtc_manager.cpp
+ * @brief Implementación del gestor del módulo RTC DS1307
+ * @date 2025
+ */
 
-// Constructor - inicializa los pines para DS1302 (IO, SCLK, CE)
-RtcManager::RtcManager(int ioPin, int sclkPin, int cePin) 
-    : myWire(ioPin, sclkPin, cePin), rtc(myWire), isInitialized(false) {
+#include "rtc_manager.h"
+
+// Constructor
+RtcManager::RtcManager() : initialized(false) {
 }
 
 // Inicializa el RTC
 bool RtcManager::begin() {
-    Serial.println("RtcManager::begin() - Iniciando inicialización");
+    Serial.printf("RtcManager::begin() - Iniciando DS1307\n");
     
-    rtc.Begin();
-    Serial.println("RtcManager::begin() - RTC.Begin() completado");
+    // Inicializar I2C
+    Wire.begin();
+    Wire.setClock(100000); // 100kHz para compatibilidad
+    delay(100);
     
-    // Obtener fecha y hora de compilación
-    RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
-    Serial.printf("RtcManager::begin() - Fecha de compilación: ");
-    printDateTime(compiled);
-    Serial.println();
+    // Verificar si hay dispositivos I2C conectados
+    bool foundDS1307 = false;
     
-    // Configurar el RTC con la fecha de compilación directamente
-    Serial.println("RtcManager::begin() - Configurando RTC con fecha de compilación");
-    rtc.SetDateTime(compiled);
-    delay(200); // Dar más tiempo para que se configure
+    for (byte addr = 1; addr < 127; addr++) {
+        Wire.beginTransmission(addr);
+        byte error = Wire.endTransmission();
+        if (error == 0) {
+            if (addr == 0x68) {
+                foundDS1307 = true;
+            }
+        }
+    }
     
-    // Verificar si el RTC está protegido contra escritura
-    if (rtc.GetIsWriteProtected()) {
-        Serial.println("RtcManager::begin() - RTC estaba protegido contra escritura, habilitando escritura");
-        rtc.SetIsWriteProtected(false);
-        delay(100);
+    if (!foundDS1307) {
+        Serial.printf("RtcManager::begin() - ERROR: DS1307 no encontrado\n");
+        return false;
+    }
+    
+    // Inicializar RTC DS1307
+    if (!rtc.begin()) {
+        Serial.printf("RtcManager::begin() - ERROR: No se pudo inicializar DS1307\n");
+        return false;
     }
     
     // Verificar si el RTC está funcionando
-    if (!rtc.GetIsRunning()) {
-        Serial.println("RtcManager::begin() - RTC no estaba funcionando, iniciando ahora");
-        rtc.SetIsRunning(true);
-        delay(200); // Dar más tiempo para que inicie
+    if (!rtc.isrunning()) {
+        Serial.printf("RtcManager::begin() - Configurando RTC con fecha de compilación\n");
+        
+        // Configurar con fecha de compilación
+        rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+        
+        // Verificar que se configuró correctamente
+        delay(100);
+        if (!rtc.isrunning()) {
+            Serial.printf("RtcManager::begin() - ERROR: RTC no responde después de configuración\n");
+            return false;
+        }
     }
     
     // Obtener fecha/hora actual y verificar
-    RtcDateTime now = rtc.GetDateTime();
-    Serial.printf("RtcManager::begin() - Fecha/hora actual del RTC: ");
-    printDateTime(now);
-    Serial.println();
+    DateTime now = rtc.now();
     
-    // Verificación final con más tolerancia
-    if (!rtc.IsDateTimeValid()) {
-        Serial.println("RtcManager::begin() - RTC no es válido, pero continuando de todas formas");
-        // No retornamos false aquí, continuamos para ver si funciona
+    // Verificar que la fecha sea válida
+    if (now.year() < 2000 || now.year() > 2100) {
+        Serial.printf("RtcManager::begin() - ADVERTENCIA: Año fuera de rango válido (%d)\n", now.year());
     }
     
-    if (!rtc.GetIsRunning()) {
-        Serial.println("RtcManager::begin() - RTC no está funcionando, pero continuando de todas formas");
-        // No retornamos false aquí, continuamos para ver si funciona
+    // Verificar que la hora sea razonable
+    if (now.hour() > 23 || now.minute() > 59 || now.second() > 59) {
+        Serial.printf("RtcManager::begin() - ERROR: Hora inválida\n");
+        return false;
     }
     
-    Serial.println("RtcManager::begin() - RTC inicializado (con advertencias)");
-    isInitialized = true;
+    Serial.printf("RtcManager::begin() - DS1307 inicializado correctamente\n");
+    
+    initialized = true;
     return true;
 }
 
 // Obtiene la fecha y hora actual
-RtcDateTime RtcManager::getDateTime() {
-    if (!isInitialized) {
-        return RtcDateTime(0);
+DateTime RtcManager::getDateTime() {
+    if (!initialized) {
+        return DateTime(2000, 1, 1, 0, 0, 0);
     }
-    return rtc.GetDateTime();
+    
+    if (!rtc.isrunning()) {
+        return DateTime(2000, 1, 1, 0, 0, 0);
+    }
+    
+    return rtc.now();
 }
 
 // Establece la fecha y hora
-bool RtcManager::setDateTime(const RtcDateTime& dateTime) {
-    if (!isInitialized) {
+bool RtcManager::setDateTime(const DateTime& dt) {
+    if (!initialized) {
         return false;
     }
-    rtc.SetDateTime(dateTime);
+    
+    rtc.adjust(dt);
     return true;
 }
 
-// Verifica si el RTC es válido
-bool RtcManager::isDateTimeValid() {
-    if (!isInitialized) {
-        return false;
-    }
-    return rtc.IsDateTimeValid();
+// Verifica si la fecha/hora es válida
+bool RtcManager::isDateTimeValid(const DateTime& dt) {
+    return (dt.year() >= 2000 && dt.year() <= 2100);
 }
 
 // Obtiene solo la hora y minutos como string (HH:MM)
 String RtcManager::getTimeString() {
-    if (!isInitialized) {
-        Serial.println("RtcManager: No inicializado");
+    if (!initialized) {
         return "00:00";
     }
     
     // Verificar si el RTC está funcionando
-    if (!rtc.GetIsRunning()) {
-        Serial.println("RtcManager: RTC no está funcionando");
+    if (!rtc.isrunning()) {
         return "00:00";
     }
     
-    // Verificar si la fecha es válida
-    if (!rtc.IsDateTimeValid()) {
-        Serial.println("RtcManager: Fecha/hora no válida");
-        return "00:00";
-    }
-    
-    // Obtener fecha/hora con validación adicional
-    RtcDateTime now = rtc.GetDateTime();
+    // Obtener fecha/hora
+    DateTime now = rtc.now();
     
     // Verificar que la fecha obtenida sea válida
-    if (now.Year() < 2000 || now.Year() > 2100) {
-        Serial.println("RtcManager: Año fuera de rango válido");
+    if (now.year() < 2000 || now.year() > 2100) {
         return "00:00";
     }
     
     return getTimeString(now);
 }
 
-// Obtiene solo la hora y minutos como string (HH:MM) desde un RtcDateTime
-String RtcManager::getTimeString(const RtcDateTime& dateTime) {
-    char timeString[6];
-    snprintf_P(timeString, sizeof(timeString), PSTR("%02u:%02u"), 
-               dateTime.Hour(), dateTime.Minute());
-    return String(timeString);
+// Convierte DateTime a string de hora (HH:MM)
+String RtcManager::getTimeString(const DateTime& dt) {
+    char timeStr[6];
+    sprintf(timeStr, "%02d:%02d", dt.hour(), dt.minute());
+    return String(timeStr);
 }
 
 // Compara dos horas en formato HH:MM
 bool RtcManager::compareHsAndMs(const String& time1, const String& time2) {
-    Serial.printf("RtcManager::compareHsAndMs: Comparando '%s' con '%s'\n", time1.c_str(), time2.c_str());
-    
     // Extraer horas y minutos de time1
     int colon1 = time1.indexOf(':');
     if (colon1 == -1) {
-        Serial.println("RtcManager::compareHsAndMs: Error - time1 no tiene formato HH:MM");
         return false;
     }
     
     int hour1 = time1.substring(0, colon1).toInt();
     int minute1 = time1.substring(colon1 + 1).toInt();
     
-    Serial.printf("RtcManager::compareHsAndMs: time1 = %d:%d\n", hour1, minute1);
-    
     // Extraer horas y minutos de time2
     int colon2 = time2.indexOf(':');
     if (colon2 == -1) {
-        Serial.println("RtcManager::compareHsAndMs: Error - time2 no tiene formato HH:MM");
         return false;
     }
     
     int hour2 = time2.substring(0, colon2).toInt();
     int minute2 = time2.substring(colon2 + 1).toInt();
     
-    Serial.printf("RtcManager::compareHsAndMs: time2 = %d:%d\n", hour2, minute2);
-    
     // Convertir a minutos totales para comparación
     int totalMinutes1 = hour1 * 60 + minute1;
     int totalMinutes2 = hour2 * 60 + minute2;
     
-    Serial.printf("RtcManager::compareHsAndMs: totalMinutes1 = %d, totalMinutes2 = %d\n", totalMinutes1, totalMinutes2);
-    
-    bool result = (totalMinutes1 == totalMinutes2);
-    Serial.printf("RtcManager::compareHsAndMs: Resultado = %s\n", result ? "true" : "false");
-    
-    return result;
-}
-
-// Compara la hora actual con una hora específica
-bool RtcManager::compareCurrentTimeWith(const String& targetTime) {
-    if (!isInitialized) {
-        return false;
-    }
-    String currentTime = getTimeString();
-    return compareHsAndMs(currentTime, targetTime);
+    return (totalMinutes1 == totalMinutes2);
 }
 
 // Imprime la fecha y hora en formato legible
-void RtcManager::printDateTime(const RtcDateTime& dt) {
+void RtcManager::printDateTime(const DateTime& dt) {
     char datestring[26];
-    snprintf_P(datestring, sizeof(datestring), PSTR("%02u/%02u/%04u %02u:%02u:%02u"),
-               dt.Month(), dt.Day(), dt.Year(), dt.Hour(), dt.Minute(), dt.Second());
+    sprintf(datestring, "%04d-%02d-%02d %02d:%02d:%02d", 
+            dt.year(), dt.month(), dt.day(), 
+            dt.hour(), dt.minute(), dt.second());
     Serial.printf("%s", datestring);
 }
 
 // Verifica si el RTC está funcionando
 bool RtcManager::isRunning() {
-    if (!isInitialized) {
+    if (!initialized) {
         return false;
     }
-    return rtc.GetIsRunning();
-}
-
-// Habilita/deshabilita la protección de escritura
-void RtcManager::setWriteProtected(bool writeProtected) {
-    if (isInitialized) {
-        rtc.SetIsWriteProtected(writeProtected);
-    }
-}
-
-// Verifica si está protegido contra escritura
-bool RtcManager::isWriteProtected() {
-    if (!isInitialized) {
-        return false;
-    }
-    return rtc.GetIsWriteProtected();
+    return rtc.isrunning();
 }

@@ -29,8 +29,11 @@
 AppLogic::AppLogic(NodeIdentity identity, RadioManager radioMgr, RtcManager& rtcMgr)
   : nodeIdentity(identity),
     radio(radioMgr),
-    rtc(rtcMgr) {
+    rtc(rtcMgr),
+    mqttClient(wifiClient) {
   gatewayAddress = nodeIdentity.getNodeID();
+  wifiConnected = false;
+  mqttConnected = false;
   // begin();
 }
 
@@ -59,6 +62,11 @@ void AppLogic::update() {
 
   handleHello();
   handleUartRequest();
+
+  // Mantener conexión MQTT activa
+  if (wifiConnected && mqttConnected) {
+    mqttClient.loop();
+  }
 
   timer();
 }
@@ -113,7 +121,7 @@ bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
     Serial.printf("AppLogic::handleHello(): First node detected. Registering 0x%02X as node 0.\n", from);
     mapNodesIDsMac[from] = String(receivedMac);
     Serial.printf("AppLogic::handleHello(): First node registered. Exiting.\n");
-    //return true;  // Exit the function as the first node has been processed succesful.
+    return true;  // Exit the function as the first node has been processed succesful.
   }
 
   // If not the first node, check if it's already registered
@@ -127,18 +135,18 @@ bool AppLogic::registerNewNode(char receivedMac, uint8_t from) {
     Serial.printf("  ¡Clave encontrada!\n");
             if (it1->second == String(receivedMac, MAC_STR_LEN_WITH_NULL)) {
       Serial.printf("nodo ya registrado\n");
-      //return true;  // Exit the function as the first node has been processed succesful.
+      return true;  // Exit the function as the first node has been processed succesful.
             } else if (it1->second != String(receivedMac, MAC_STR_LEN_WITH_NULL)) {
       Serial.printf("nodo ya registrado con mismo key pero diferente se prosede a envio changeID, MAC: ");
       Serial.printf(it1->second.c_str());  // it1->second es el valor (la String de la MAC)
       Serial.printf("AppLogic::handleHello(): envio send change ID.\n");
-      sendChangeID(from);
+      //sendChangeID(from);
       return false;  // Exit the function as the first node hasn't been processed .
     }
   } else {
     Serial.printf("AppLogic::handleHello(): Nuevo Nodo ya que no esta registrado su key. Registering 0x%02X as node 0.\n", from);
     mapNodesIDsMac[from] = String(receivedMac);
-    //return true;  // Exit the function as the first node has been processed succesful.
+    return true;  // Exit the function as the first node has been processed succesful.
   }
   return true;
 }
@@ -310,6 +318,12 @@ void AppLogic::requestAtmosphericData() {
             Serial.printf("DEBUG: Datos de nodo ");
             Serial.printf("%02X", nodeId);
             Serial.printf(" almacenados.\n");
+            
+            // Publicar datos por MQTT
+            for (const auto& sample : atmosSamples) {
+                publishAtmosphericData(nodeId, sample);
+            }
+            
             t = true;  // Marca como exitoso
 
 
@@ -519,6 +533,10 @@ void AppLogic::requestGroundGpsData() {
                     Serial.printf(" almacenado en posicion ");
                     Serial.printf("%d", countGroundSamples);
                     Serial.printf(".\n");
+                    
+                    // Publicar datos por MQTT
+                    publishGroundData(nodeId, receivedPacket);
+                    
                     countGroundSamples ++;
                     t = true; // Marca como exitoso
                     
@@ -667,7 +685,8 @@ bool AppLogic::compareHsAndMs() {
     //DEBUG_PRINTLN("compareHsAndMs: Iniciando función");
     
     // Verificar si el RTC está funcionando correctamente
-    if (!rtc.isDateTimeValid()) {
+    DateTime now = rtc.getDateTime();
+    if (!rtc.isDateTimeValid(now)) {
         //DEBUG_PRINTLN("compareHsAndMs: RTC no válido, retornando false");
         return false;
     }
@@ -721,4 +740,105 @@ bool AppLogic::compareHsAndMs() {
 void AppLogic::handleUartRequest() {
 
   return;
+}
+
+// ===== MÉTODOS MQTT =====
+
+bool AppLogic::connectWiFi() {
+    if (WiFi.status() == WL_CONNECTED) {
+        return true;
+    }
+    
+    Serial.printf("Conectando a WiFi: %s\n", WIFI_SSID);
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    
+    int attempts = 0;
+    while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+        delay(500);
+        Serial.printf(".");
+        attempts++;
+    }
+    
+    if (WiFi.status() == WL_CONNECTED) {
+        Serial.printf("\nConectado a WiFi! IP: %s\n", WiFi.localIP().toString().c_str());
+        wifiConnected = true;
+        return true;
+    } else {
+        Serial.printf("\nError al conectar WiFi\n");
+        wifiConnected = false;
+        return false;
+    }
+}
+
+bool AppLogic::connectMQTT() {
+    if (!wifiConnected) {
+        if (!connectWiFi()) {
+            return false;
+        }
+    }
+    
+    if (mqttClient.connected()) {
+        return true;
+    }
+    
+    mqttClient.setClient(wifiClient);
+    mqttClient.setServer(MQTT_SERVER, MQTT_PORT);
+    
+    Serial.printf("Conectando a MQTT: %s:%d\n", MQTT_SERVER, MQTT_PORT);
+    
+    if (mqttClient.connect(MQTT_CLIENT_ID)) {
+        Serial.printf("Conectado a MQTT!\n");
+        mqttConnected = true;
+        return true;
+    } else {
+        Serial.printf("Error al conectar MQTT\n");
+        mqttConnected = false;
+        return false;
+    }
+}
+
+void AppLogic::publishAtmosphericData(uint8_t nodeId, const Protocol::AtmosphericSample& data) {
+    if (!connectMQTT()) {
+        Serial.printf("No se pudo conectar MQTT para publicar datos atmosféricos\n");
+        return;
+    }
+    
+    String payload = "{";
+    payload += "\"nodeId\":" + String(nodeId);
+    payload += ",\"temperature\":" + String(data.temp / 10.0, 1);
+    payload += ",\"moisture\":" + String(data.moisture / 10.0, 1);
+    payload += "}";
+    
+    if (mqttClient.publish(MQTT_TOPIC_ATMOSPHERIC, payload.c_str())) {
+        Serial.printf("Datos atmosféricos publicados para nodo 0x%02X\n", nodeId);
+    } else {
+        Serial.printf("Error al publicar datos atmosféricos para nodo 0x%02X\n", nodeId);
+    }
+}
+
+void AppLogic::publishGroundData(uint8_t nodeId, const Protocol::GroundGpsPacket& data) {
+    if (!connectMQTT()) {
+        Serial.printf("No se pudo conectar MQTT para publicar datos de suelo\n");
+        return;
+    }
+    
+    String payload = "{";
+    payload += "\"nodeId\":" + String(nodeId);
+    payload += ",\"temperature\":" + String(data.ground.temp / 10.0, 1);
+    payload += ",\"moisture\":" + String(data.ground.moisture / 10.0, 1);
+    payload += ",\"n\":" + String(data.ground.n);
+    payload += ",\"p\":" + String(data.ground.p);
+    payload += ",\"k\":" + String(data.ground.k);
+    payload += ",\"ec\":" + String(data.ground.EC);
+    payload += ",\"ph\":" + String(data.ground.PH / 10.0, 1);
+    payload += ",\"volt\":3.33";
+    payload += ",\"latitude\":" + String(data.gps.latitude, 7);
+    payload += ",\"longitude\":" + String(data.gps.longitude, 7);
+    payload += "}";
+    
+    if (mqttClient.publish(MQTT_TOPIC_GROUND, payload.c_str())) {
+        Serial.printf("Datos de suelo publicados para nodo 0x%02X\n", nodeId);
+    } else {
+        Serial.printf("Error al publicar datos de suelo para nodo 0x%02X\n", nodeId);
+    }
 }

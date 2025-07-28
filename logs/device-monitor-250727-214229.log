@@ -1,0 +1,177 @@
+rl␀d��|␀�l�|␃␄␌␄�␄$�␄c|ǃ␂�␛�{�c�␌c��og�l'o���␌#␜x��l{l{$p�'�␘␃␄␌�␌l␄��␄␌␄c␄o�<␃�␄�␜�␄c��gn�␀d��d`␃�␛␛go␌d`␂␇␃gs�ۓn␌␄#l�␎dp�g�␐␂␄␄s����␜��␂␄c␌n�|␃␄�␄c��gn�␀␄␄l`␃�␓␛gn␌d`␃␇␃os���n␌␄c��`␂␎{��o␄␄b�� ␃�␂␄␌␌���x�l`␃��o�␇l��␃�␛�'�{��o<�␄l␌�␌d`␃␜c�␓␃␌�|␃s�␃d�g�␌�g�␀␌d`␃��;�$�d␓�␄␌␄�Memoria libre: 43168 bytes
+Tamaño de sketch: 325296 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Exiting.
+
+ ets Jan  8 2013,rst cause:4, boot mode:(3,6)
+
+wdt reset
+load 0x4010f000, len 3424, room 16 
+tail 0
+chksum 0x2e
+load 0x3fff20b8, len 40, room 8 
+tail 0
+chksum 0x2b
+csum 0x2b
+v0004f6b0
+~ld
+��␂�␛�n�{��o|�␄l␄�␌d`␂␜c�␛␃␌�<␃s�␂d�g�␌�'�␀␌d`␂��r�l�d␓�␄␌␄�Memoria libre: 43168 bytes
+Tamaño de sketch: 325296 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Exiting.
+
+ ets Jan  8 2013,rst cause:4, boot mode:(3,6)
+
+wdt reset
+load 0x4010f000, len 3424, room 16 
+tail 0
+chksum 0x2e
+load 0x3fff20b8, len 40, room 8 
+tail 0
+chksum 0x2b
+csum 0x2b
+v0004f6b0
+~ld
+��␂�␛�n�{��o|�␄l␄�␌d`␃␜c�␛␃␌�<␃s�␃d�g�␌�'�␀␌d`␂��r�l�d␓�␄␌␄�Memoria libre: 43168 bytes
+Tamaño de sketch: 325296 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+enviando announce KEY:
+enviando announce KEY: 105
+[DEBUG] RadioManager::sendMessage INICIO
+Resultado envío: 1
+AppLogic::handleHello(): Message received. Sender: 0x12, Length: 18, Flag: 0x06
+AppLogic::handleHello(): Message is of type HELLO.
+AppLogic::handleHello(): start the proses to registerNewNode.
+AppLogic::handleHello(): First node detected. Registering 0x12 as node 0.
+AppLogic::handleHello(): First node registered. Exiting.
+AppLogic::handleHello(): Exiting.
+
+ ets Jan  8 2013,rst cause:4, boot mode:(3,6)
+
+wdt reset
+load 0x4010f000, len 3424, room 16 
+tail 0
+chksum 0x2e
+load 0x3fff20b8, len 40, room 8 
+tail 0
+chksum 0x2b
+csum 0x2b
+v0004f6b0
+~ld
+��␃�␓�o�r��g|�␌d␄�␄l`␃␜b�␛␃␄�|␃{�␃l�n�␄�o�␀␄l`␃��s�l�l␛�␌␄␄�Memoria libre: 43168 bytes
+Tamaño de sketch: 325296 bytes
+Tamaño máximo de sketch: 2818048 bytes
+NodeIdentity: Inicializando sin persistencia
+NodeIdentity inicializado (modo sin persistencia)
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
+[DEBUG] RadioManager::init INICIO
+ RF95 MESH init failed
+RF95 MESH init okay[DEBUG] RadioManager::init FIN
+RtcManager::begin() - Iniciando DS1307
+RtcManager::begin() - ERROR: DS1307 no encontrado
+Error al inicializar RTC DS1307
+--- NodeIdentity::getNodeID() INICIO ---
+Parámetros recibidos: blacklist_len = 2
+Generando nuevo ID basado en MAC...
+MAC del dispositivo obtenida: FC:F5:C4:97:4A:C7
+sscanf(): Numero de items convertidos: 6
+Bytes MAC parseados (HEX): FC F5 C4 97 4A C7 
+Hash generado: 0x01
+--- NodeIdentity::getNodeID() FIN (Nuevo ID generado) ---
